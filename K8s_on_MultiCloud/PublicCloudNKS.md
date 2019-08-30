@@ -8,7 +8,7 @@ Azure는 VM기반으로 배포를 진행하고, AWS는 Managed Service(EKS)를 �
 ## Step1. Azure에 NKS 배포
 1. 배포 플랫폼 선택
 배포 진행의 첫번째 메뉴인 'Choose a provider' 단계에서 Microsoft Azure를 선택합니다.
-![enter image description here](https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/K8s_on_MultiCloud/images/05_Azure.png)
+![enter image description here](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/K8s_on_MultiCloud/images/05_Azure.png)
 
 'Configure your provider' 단계 에서는 Service provider의 환경을 구성 할 수 있습니다. 
 
@@ -56,7 +56,7 @@ NKS 홈페이지 우측상단의 '+ADD CLUSTER' 메뉴를 클릭합니다.
 ADD CLUSTER
 ```
 배포할 Provider로 AmazonEKS 를 선택합니다.
-![enter image description here](https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/K8s_on_MultiCloud/images/06_EKS.png)
+![enter image description here](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/K8s_on_MultiCloud/images/06_EKS.png)
 
 다음 단계인 Configure your provider에서는 Service provider의 환경을 구성 할 수 있습니다.
 
@@ -153,10 +153,11 @@ MY CHARTS에 등록이 완료 되면, NKS Home > CONTROL PLANE > CLUSTERS > Azur
 
 끝.
 
-[메인 메뉴로 이동](https://github.com/netappkr/NDX_Handsonworkshop-/) 
+[메인 메뉴로 이동](https://github.com/netappkr/NetAppCloudSolutionCenter/) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3OTk5ODM2LDczMjMwMTY5MywtNTU5Mz
-YxNjE5LDE1OTU1NDkzNzAsLTE3MTk5ODg2NSw2ODcyMjA3MzUs
-LTIwNDYyMTE5MTEsLTQyODc2NDk3NiwtMjA1MDU2NDY0MSwtND
-k0MTY3OTY0LC0xNjU1MjU4OTE3LDczMDk5ODExNl19
+eyJoaXN0b3J5IjpbLTE5NDc3MjQwMTksLTY3OTk5ODM2LDczMj
+MwMTY5MywtNTU5MzYxNjE5LDE1OTU1NDkzNzAsLTE3MTk5ODg2
+NSw2ODcyMjA3MzUsLTIwNDYyMTE5MTEsLTQyODc2NDk3NiwtMj
+A1MDU2NDY0MSwtNDk0MTY3OTY0LC0xNjU1MjU4OTE3LDczMDk5
+ODExNl19
 -->
