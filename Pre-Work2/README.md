@@ -192,8 +192,8 @@
 
 
 ### 수고하셨습니다. 실습을 위한 랩 환경 구성을 완료하였습니다. 
-[메인 메뉴로 이동](https://github.com/netappkr/NDX_Handsonworkshop-/) 
+[메인 메뉴로 이동](https://github.com/netappkr/NetAppCloudSolutionCenter/) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgzMjczMjIwMywxOTUwNDY4MTk1LDE1MT
-E0NDk3NTVdfQ==
+eyJoaXN0b3J5IjpbNTUzMjU2MzE2LDE4MzI3MzIyMDMsMTk1MD
+Q2ODE5NSwxNTExNDQ5NzU1XX0=
 -->
