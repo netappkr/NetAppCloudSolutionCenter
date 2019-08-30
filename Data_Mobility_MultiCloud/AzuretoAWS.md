@@ -6,14 +6,14 @@
 <p>이번 Task는 AWS내에 신규 Cloud Volumes ONTAP을 설치 후 Azure내에 기 설치된 Cloud Volumes ONTAP의 데이터를 AWS내의 신규 Cloud Volumes ONTAP으로 SnapMirror을 통해 복제 수행합니다.</p>
 <p><strong>사전 준비사항</strong></p>
 <ul>
-<li><a href="https://github.com/netappkr/NDX_Handsonworkshop-/tree/master/Pre-Work">AWS, Azure 네트워크 사전 구성 및 Permission 부여</a></li>
+<li><a href="https://github.com/netappkr/NetAppCloudSolutionCenter/tree/master/Pre-Work">AWS, Azure 네트워크 사전 구성 및 Permission 부여</a></li>
 </ul>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Data_Mobility_MultiCloud/images/azuretoaws.png?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Data_Mobility_MultiCloud/images/azuretoaws.png?raw=true" alt="enter image description here"></p>
 <h2 id="step-1.-aws-account-계정-추가">Step 1. AWS Account 계정 추가</h2>
 <ol>
 <li>Cloud Manager의 오른쪽 상단의 Settings 을 클릭합니다.</li>
 </ol>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Data_Mobility_MultiCloud/images/aws_account.PNG?raw=true" alt="enter image description here"><br>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Data_Mobility_MultiCloud/images/aws_account.PNG?raw=true" alt="enter image description here"><br>
 2.  'Cloud Provider &amp; Support Accounts’를 클릭합니다.<br>
 3.  '+ Add New Account’를 클릭합니다.<br>
 4.  Select Account Type을 AWS로 선택합니다.<br>
@@ -22,7 +22,7 @@
  * AWS Access Key: xxxxxxxxxxxxxxxxxx
  * AWS Secret Key: xxxxxxxxxxxxxxx
 </code></pre>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Data_Mobility_MultiCloud/images/aws_key.PNG?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Data_Mobility_MultiCloud/images/aws_key.PNG?raw=true" alt="enter image description here"></p>
 <h2 id="step-2.-aws에-cloud-volumes-ontap-설치">Step 2. AWS에 Cloud Volumes ONTAP 설치</h2>
 <ol>
 <li>
@@ -86,7 +86,7 @@
 <p>최종 구성 정보를 확인 후 체크 박스를 모두 선택하고 ‘Go’ 버튼을 클릭합니다.</p>
 </li>
 </ol>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Data_Mobility_MultiCloud/images/AWS_CVO.PNG?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Data_Mobility_MultiCloud/images/AWS_CVO.PNG?raw=true" alt="enter image description here"></p>
 <h2 id="step-3.-azure-cvo에서-aws-cvo로-복제-수행">Step 3. Azure CVO에서 AWS CVO로 복제 수행</h2>
 <ol>
 <li>
@@ -128,7 +128,7 @@
 <p>replication status에서 content_copy 볼륨의 왼쪽에 마우스를 가져가면 나타나는 메뉴에서 ‘break’ 버튼을 클릭합니다.</p>
 </li>
 </ol>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Data_Mobility_MultiCloud/images/break_replication.png?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Data_Mobility_MultiCloud/images/break_replication.png?raw=true" alt="enter image description here"></p>
 <ol start="12">
 <li>
 <p>target 볼륨인 content_copy_aws 볼륨은 마운트가 불가능한 상태입니다. 마운트가 가능하도록 설정하기 위해 ‘Edit’ 버튼을 클릭합니다.</p>
@@ -159,3 +159,6 @@
 </li>
 </ol>
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTUzNTM0Mjk2N119
+-->
