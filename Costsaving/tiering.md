@@ -4,7 +4,7 @@
 ---
 
 <p>이번 Task는 Azure CVO에서 Tiering이 적용된 NFS 볼륨을 생성합니다. 동일 Subnet내의 Linux VM에 마운트 후 해당 NFS 볼륨에 데이터를 생성하여 Tiering  동적 여부를 확인합니다.<br>
-<img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Costsaving/Images/tiering_cvo.png?raw=true" alt="enter image description here"></p>
+<img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Costsaving/Images/tiering_cvo.png?raw=true" alt="enter image description here"></p>
 <h2 id="step-1.-tiering이-적용된-신규-nfs-볼륨-생성">Step 1. Tiering이 적용된 신규 NFS 볼륨 생성</h2>
 <ol>
 <li>
@@ -43,7 +43,7 @@
 </ul>
 </li>
 </ol>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Costsaving/Images/cvo_public_ip.PNG?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Costsaving/Images/cvo_public_ip.PNG?raw=true" alt="enter image description here"></p>
 <ol start="3">
 <li>생성된 Public IP address를 이용해 웹 브라우저에서 CVO의 System Manager로 접속
 <ul>
@@ -55,7 +55,7 @@
 <li>Volumes에서 해당 볼륨을 찾은 후 마우스 오른쪽 버튼을 눌러 Change Tiering Policy를 선택합니다.</li>
 <li>Tiering Policy를 All로 선택 후 'Save’합니다.</li>
 </ol>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Costsaving/Images/tiering_policy.PNG?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Costsaving/Images/tiering_policy.PNG?raw=true" alt="enter image description here"></p>
 <ol start="7">
 <li>Cloud Manager GUI에서 해당 볼륨의 Tiering Policy가 All로 변경된 것을 확인합니다.</li>
 </ol>
@@ -77,5 +77,8 @@
 <ol start="5">
 <li>다운로드 완료 후 Cloud Manager GUI에서 해당 볼륨에서 Azure Blob으로 tiering된 데이터 용량을 확인합니다.</li>
 </ol>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Costsaving/Images/blob.PNG?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Costsaving/Images/blob.PNG?raw=true" alt="enter image description here"></p>
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNTU1OTI4NjA4XX0=
+-->
