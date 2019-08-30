@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ghost-content
+  labels:
+    app: ghost
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: netapp-file
+  resources:
+    requests:
+      storage: 5Gi
