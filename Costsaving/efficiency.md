@@ -4,7 +4,7 @@
 ---
 
 <p>이번 Task는 Azure CVO에서 Storage Efficiency가 적용된 NFS 볼륨을 생성합니다. 동일 Subnet내의 Linux VM에 마운트 후 해당 NFS 볼륨에 데이터를 생성하여 Storage Efficiency 동작 여부를 확인합니다.<br>
-<img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Costsaving/Images/storage_efficiency.png?raw=true" alt="enter image description here"></p>
+<img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Costsaving/Images/storage_efficiency.png?raw=true" alt="enter image description here"></p>
 <h2 id="step-1.-no-storage-efficiency가-적용된-신규-nfs-볼륨에-데이터-생성">Step 1. No Storage Efficiency가 적용된 신규 NFS 볼륨에 데이터 생성</h2>
 <ol>
 <li>
@@ -50,7 +50,7 @@
 <ol start="8">
 <li>Cloud Manager에서 해당 볼륨의  info을 클릭하여 저장된 데이터 용량과 Storage Efficiency 정보를 확인합니다.</li>
 </ol>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Costsaving/Images/cvo_no_efficiency.PNG?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Costsaving/Images/cvo_no_efficiency.PNG?raw=true" alt="enter image description here"></p>
 <h2 id="step-2.-storage-efficiency가-적용된-신규-nfs-볼륨에-데이터-생성">Step 2. Storage Efficiency가 적용된 신규 NFS 볼륨에 데이터 생성</h2>
 <ol>
 <li>
@@ -96,9 +96,12 @@
 <ol start="8">
 <li>Cloud Manager에서 해당 볼륨의  info을 클릭하여 저장된 데이터 용량과 Storage Efficiency 정보를 확인합니다.</li>
 </ol>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Costsaving/Images/cvo_efficiency.PNG?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Costsaving/Images/cvo_efficiency.PNG?raw=true" alt="enter image description here"></p>
 <ol start="10">
 <li>Step 1의 No_Efficiency_Vol 볼륨과 Step 2의 Efficiency_Vol 볼륨 사용량을 비교합니다.</li>
 </ol>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Costsaving/Images/comparison_vols.PNG?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Costsaving/Images/comparison_vols.PNG?raw=true" alt="enter image description here"></p>
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTM2MjI3NTExOF19
+-->
