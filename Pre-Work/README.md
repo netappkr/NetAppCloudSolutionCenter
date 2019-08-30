@@ -24,7 +24,7 @@
 </li>
 <li>
 <p>Azure portal에서 제공되는 cloud shell에서 해당 JSON 파일을 업로드합니다.<br>
-<img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Pre-Work/Images/cloudshell.png?raw=true" alt="enter image description here"></p>
+<img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Pre-Work/Images/cloudshell.png?raw=true" alt="enter image description here"></p>
 </li>
 <li>
 <p>업로드된 JSON 파일을 통해 custom role을 생성합니다.</p>
@@ -41,7 +41,7 @@
 </ul>
 </li>
 </ol>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/raw/master/Pre-Work/Images/Azure_setup_service_rol.png?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/raw/master/Pre-Work/Images/Azure_setup_service_rol.png?raw=true" alt="enter image description here"></p>
 <ol start="8">
 <li>NetApp Cloud Central에서 Cloud Manager를 설치할 user에게 role을 할당합니다.
 <ul>
@@ -54,7 +54,7 @@
 </ul>
 </li>
 </ol>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Pre-Work/Images/azure_IAM.png?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Pre-Work/Images/azure_IAM.png?raw=true" alt="enter image description here"></p>
 <h2 id="task-2-azure-networking-설정">Task 2: Azure Networking 설정</h2>
 <ol>
 <li>
@@ -75,17 +75,17 @@
 <ol>
 <li>
 <p>AWS Market Place에서 Cloud Volumes ONTAP을 구독합니다.<br>
-<img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Pre-Work/Images/Marketpalce_AWS.png?raw=true" alt="enter image description here"></p>
+<img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Pre-Work/Images/Marketpalce_AWS.png?raw=true" alt="enter image description here"></p>
 </li>
 <li>
 <p>NetApp Cloud Central policy for AWS 파일을 다운 받아 AWS IAM 콘솔에서 해당 파일을 copy하여 Policy를 생성합니다. (<a href="https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service.json">NetApp Cloud Central policy for AWS</a>)</p>
 </li>
 </ol>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Pre-Work/Images/AWS_IAM_Policy.PNG?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Pre-Work/Images/AWS_IAM_Policy.PNG?raw=true" alt="enter image description here"></p>
 <ol start="3">
 <li>해당 Policy를 IAM 사용자에게 할당합니다.</li>
 </ol>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Pre-Work/Images/AWS_IAM_User.PNG?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Pre-Work/Images/AWS_IAM_User.PNG?raw=true" alt="enter image description here"></p>
 <h2 id="task-4-aws-networking-설정">Task 4: AWS Networking 설정</h2>
 <ol>
 <li>
@@ -109,3 +109,6 @@
 </li>
 </ol>
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNDY0NDc0MDc1XX0=
+-->
