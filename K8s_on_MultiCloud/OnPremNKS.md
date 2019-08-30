@@ -7,11 +7,11 @@
 ## Step 1. NKS에서 HCI 기반의 Cluster 생성
 
 1. NetApp Cloud Portal ([https://cloud.netapp.com](https://cloud.netapp.com))에 자신의 계정으로 login 하여, 'NKS(NetApp Kubernetes Service)' 를 선택 합니다.
-![enter image description here](https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/K8s_on_MultiCloud/images/01_NKS%20memu1.png)
+![enter image description here](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/K8s_on_MultiCloud/images/01_NKS%20memu1.png)
 >30일 trial license를 제공하기 때문에, credit card 등록없이 체험 가능
 
 또는, NKS 홈페이지([https://nks.netapp.io](https://nks.netapp.io))  로 직접 접속하여서 로그인하면, 아래 웹페이지로 접속이 되고, '+ADD A CLUSTER NOW' 메뉴 선택하여 다음 단계를 진행 할 수 있습니다.
-![enter image description here](https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/K8s_on_MultiCloud/images/02_NKS%20home.png)
+![enter image description here](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/K8s_on_MultiCloud/images/02_NKS%20home.png)
 
 2. 다음 단계는 Provider를 선택하는 단계입니다.
 
@@ -23,7 +23,7 @@
 
 NKS home 클릭 > 우측 상단 Organizations 아이콘 클릭 > NetAppKR_LAB 클릭 
 
-![enter image description here](https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/K8s_on_MultiCloud/images/02_NKSorg1.png) >'+ ADD CLUSTER' 클릭 > NetApp | HCI 클릭 > 디폴트 설정 유지하면서 SUBMIT 클릭 > 디폴트 설정 유지(K8s version : 1.14.3)하고 SUBMIT 클릭
+![enter image description here](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/K8s_on_MultiCloud/images/02_NKSorg1.png) >'+ ADD CLUSTER' 클릭 > NetApp | HCI 클릭 > 디폴트 설정 유지하면서 SUBMIT 클릭 > 디폴트 설정 유지(K8s version : 1.14.3)하고 SUBMIT 클릭
 
 약 5~10분후, On-premise 상에 K8s Cluster 설치가 완료 됩니다.
 
@@ -40,13 +40,13 @@ NKS home 클릭 > 우측 상단 Organizations 아이콘 클릭 > NetAppKR_LAB �
 2. 다운받은 Key를 ppk 타입으로 변환합니다.
 다운로드 받은 private key를 이용하여 master node에 ssh 접속이 가능한데, 만약 Putty를 이용하여 접속을 한다면, Putty Private Key로 변환하여야 하며, 변환은 Putty Key Generator를 설치하여 생성 가능 합니다.
 PuTTYgen ([https://www.puttygen.com/](https://www.puttygen.com/))을 자신의 PC에 설치 후, 실행하여 Conversions > Import key > 다운로드 받은 SSH Key (id_rsa) 선택 > Save Private key 메뉴 클릭하여 자신의 로컬 PC에 저장 합니다.
-![enter image description here](https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/K8s_on_MultiCloud/images/03_Puttygen.png)
+![enter image description here](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/K8s_on_MultiCloud/images/03_Puttygen.png)
 
 3. Putty를 이용하여 SSH 접속합니다.
 Putty를 실행하고,
 * Host Name (or IP address) : master node의 IP address
 * Connection > SSH > Auth > Browse 클릭하여 Putty Private Key (.ppk 파일) 선택 > Open
-![enter image description here](https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/K8s_on_MultiCloud/images/04_Putty.png)
+![enter image description here](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/K8s_on_MultiCloud/images/04_Putty.png)
 
 On-premise에 구성되는 K8s는 디폴트로 Debian OS를 기반으로 하고 있으며, SSH 접속 가능한 계정은 debian user를 이용하여 login 하면 됩니다.
 debian user로 접속 후, 해당 계정으로 kubectl 사용을 위해 kubeconfig 파일을 $HOME 에 copy합니다.
@@ -259,13 +259,13 @@ Filesystem  Size  Used Avail Use% Mounted on
 
 끝.
 
-[메인 메뉴로 이동](https://github.com/netappkr/NDX_Handsonworkshop-/) 
+[메인 메뉴로 이동](https://github.com/netappkr/NetAppCloudSolutionCenter/) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5ODk4NzY0LDE2NzU3NDYyNzgsMTQxNj
-IwNjIxLDY4OTYxNTgzMCw1MzQ1MDQwODIsMTIzOTA3MjkyNywt
-MTU1NzY4ODg0MiwtMTEyNTYyNjIxMCwxMTM5NjQ4MTk0LDExOT
-kwMjIxMTEsLTE2Mzc0ODA2OTMsOTU1MDE4OTk5LDE5MzA0NjYx
-MTgsOTU1MDE4OTk5LDE5MzA0NjYxMTgsLTY5NjQ4MTU3NiwtOD
-k1ODIxMTYwLDMwNzY0MTkyOCwxMTEwNzQ5NzgsNDU4Mzc2MTgy
-XX0=
+eyJoaXN0b3J5IjpbMTQ3NTYwODUwOCwtMjk4OTg3NjQsMTY3NT
+c0NjI3OCwxNDE2MjA2MjEsNjg5NjE1ODMwLDUzNDUwNDA4Miwx
+MjM5MDcyOTI3LC0xNTU3Njg4ODQyLC0xMTI1NjI2MjEwLDExMz
+k2NDgxOTQsMTE5OTAyMjExMSwtMTYzNzQ4MDY5Myw5NTUwMTg5
+OTksMTkzMDQ2NjExOCw5NTUwMTg5OTksMTkzMDQ2NjExOCwtNj
+k2NDgxNTc2LC04OTU4MjExNjAsMzA3NjQxOTI4LDExMTA3NDk3
+OF19
 -->
