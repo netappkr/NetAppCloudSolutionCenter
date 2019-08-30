@@ -1,0 +1,40 @@
+---
+- hosts: '{{ userid }}'
+  become: yes
+  remote_user: root
+  vars_files:
+      - vars/main.yml
+  name: mount & copy content files to storage volume
+
+  tasks: 
+
+  - name: Mount nfs export 
+    mount: 
+      state: mounted
+      path: /var/lib/ghost/content
+      #src: "{{ address }}:/{{ volname }}" 
+      src: "{{ ipaddress_nfs }}:/content"
+      fstype: nfs
+
+  - name: Copy content files to storage volume
+    synchronize: 
+      src: /home/ghost/userfiles/content/
+      dest: /var/lib/ghost/content
+    delegate_to: '{{ userid }}'
+
+
+  - name: Start your Ghost blog app.
+    become: yes
+    become_method: sudo
+    become_user: ghost
+    command: ghost start 
+    args:
+      chdir: /var/lib/ghost
+
+  - name: Please check your Storage Configuration & Blog app. status
+    debug: 
+      msg:  
+      - "Please access the following address through your web browser."
+      - "Storage Management URL --> https://xxx.xxx.xxx.xxx (ansible / xxxxxxxxxxx)"
+      - "Your Blog URL --> http://{{ ansible_facts.default_ipv4.address }}:2368/ghost" 
+
