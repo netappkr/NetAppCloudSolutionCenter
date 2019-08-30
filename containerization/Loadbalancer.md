@@ -1,19 +1,19 @@
 이번 Task는 K8S Cluster내의 Container를 외부에서 접속할 수 있는 S/W Load balancer Pod를 설치 합니다.
 
 **사전 준비사항** 
- - [ ] [K8s Cluster 접속 환경 셋업](https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/K8s_on_MultiCloud/OnPremNKS.md)    
+ - [ ] [K8s Cluster 접속 환경 셋업](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/K8s_on_MultiCloud/OnPremNKS.md)    
 
 ## Step 1. MetalLB manifest  적용 
 
 1. 이미 설치된  K8S Cluster에 접속합니다.
-2.  Metallb yaml 파일을 다운 받아 Cluster 내에서 적용합니다. ([metallb.yaml](https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/containerization/files/metallb.yaml))
+2.  Metallb yaml 파일을 다운 받아 Cluster 내에서 적용합니다. ([metallb.yaml](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/containerization/files/metallb.yaml))
    ` # kubectl apply -f metallb.yaml`
 
 3.  MetalLB POD 정상 동작 동작을 확인합니다.
 
    `# kubectl get pods -n metallb-system`
  
-4.  Metallb configmap 파일을 다운 받아 address 부분에 사전에 배정된 IP을 기입합니다. ([metallb_configmap.yaml](https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/containerization/files/metallbconfigmap.yaml))
+4.  Metallb configmap 파일을 다운 받아 address 부분에 사전에 배정된 IP을 기입합니다. ([metallb_configmap.yaml](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/containerization/files/metallbconfigmap.yaml))
   <pre class=" language-undefined"><code class="prism language-&quot;NotActions&quot;: language-undefined">apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -38,7 +38,7 @@ data:
 
     # kubectl get namespaces`
     
-4.  Service yaml 파일을 다운 받아 ghost namesapce에 Service를 생성합니다.([ghost_service.yaml](https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/file/ghost_service.yaml))
+4.  Service yaml 파일을 다운 받아 ghost namesapce에 Service를 생성합니다.([ghost_service.yaml](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/file/ghost_service.yaml))
 
     `# kubectl apply -f ghost_service.yaml -n ghost` 
        
@@ -49,13 +49,14 @@ ghost   LoadBalancer   10.255.100.23   115.144.174.247   80:31435/TCP   4h36</co
 
 > **해당 Service는 향후 Task 2 POD 배포시 사용될 예정** 
 
-[메인 메뉴로 이동](https://github.com/netappkr/NDX_Handsonworkshop-/)
+[메인 메뉴로 이동](https://github.com/netappkr/NetAppCloudSolutionCenter/)
    
    
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ4MDg5NTUsLTE0MzgzODM4MDgsLTE1MT
-MxMzUyLDE4NjM0NjE2MzIsMTY1OTUxNzg5NCwxNjY4Nzk1NjE0
-LDM3ODU0Nzc1MywtMTQ4MDg2OTEzLDg2NzY5NDg4NV19
+eyJoaXN0b3J5IjpbMjE2MjgzODE2LDk0ODA4OTU1LC0xNDM4Mz
+gzODA4LC0xNTEzMTM1MiwxODYzNDYxNjMyLDE2NTk1MTc4OTQs
+MTY2ODc5NTYxNCwzNzg1NDc3NTMsLTE0ODA4NjkxMyw4Njc2OT
+Q4ODVdfQ==
 -->
