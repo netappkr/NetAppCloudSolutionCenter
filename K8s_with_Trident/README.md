@@ -9,7 +9,7 @@
 - Kubernetes cluster 설치
 - Trident 설치
 >Trident를 설치하지 않은 분은 이전 실습과제를 참조하여 Trident 설치 및 구성을 진행합니다.
->[Trident 설치 및 구성 가이드](https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/K8s_on_MultiCloud/OnPremNKS.md#step3-k8s-cluster%EC%97%90-trident-%EC%84%A4%EC%B9%98)
+>[Trident 설치 및 구성 가이드](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/K8s_on_MultiCloud/OnPremNKS.md#step3-k8s-cluster%EC%97%90-trident-%EC%84%A4%EC%B9%98)
 >Step3 - 4까지 진행
 
 ## RWX Access mode PVC 구성
@@ -155,7 +155,7 @@ On-premise의 Linux서버에 Mount 되어 있는 Legacy NAS 스토리지 Volume 
 - Total Size: 1GB
 - Snapshot Reserve (%): 0
 
-![enter image description here](https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/K8s_with_Trident/images/10_VolCreate.PNG)
+![enter image description here](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/K8s_with_Trident/images/10_VolCreate.PNG)
 
 **Legacy에 Test 데이터 생성**
 <pre class=" language-undefined"><code class="prism language-&quot;NotActions&quot;: language-undefined">ssh root@115.144.xxx.xxx [user1 VM IP]
@@ -249,11 +249,11 @@ This is test data!!!
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTMzNjM3NTY2LDI1ODA3NDkyOCwxMjMyOT
-Y5OTQwLC02MTA0NTg0NDksLTExMjQ3NjI1NjAsODg2MzcyMjEw
-LDE5ODk4ODkyNDEsLTYwOTk5ODE2LC05NDI1ODExMjgsMjAzNz
-E5MTM2NiwtMzc1MDk1OTMsLTk5NjA2NzQxOSwtNDExMTI5NTc1
-LDE4MDU2NDgwNjIsLTczNjIzMDMzNSwtMTExMDg1MzE3MiwtMj
-Y5MzM0NDYxLC0yMzA5MjU2NTksNDc4Nzc3NDEyLC0xNjY4NTE1
-ODM1XX0=
+eyJoaXN0b3J5IjpbMjA2ODA3OTA2NCw5MzM2Mzc1NjYsMjU4MD
+c0OTI4LDEyMzI5Njk5NDAsLTYxMDQ1ODQ0OSwtMTEyNDc2MjU2
+MCw4ODYzNzIyMTAsMTk4OTg4OTI0MSwtNjA5OTk4MTYsLTk0Mj
+U4MTEyOCwyMDM3MTkxMzY2LC0zNzUwOTU5MywtOTk2MDY3NDE5
+LC00MTExMjk1NzUsMTgwNTY0ODA2MiwtNzM2MjMwMzM1LC0xMT
+EwODUzMTcyLC0yNjkzMzQ0NjEsLTIzMDkyNTY1OSw0Nzg3Nzc0
+MTJdfQ==
 -->
