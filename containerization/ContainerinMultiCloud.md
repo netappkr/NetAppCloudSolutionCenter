@@ -51,7 +51,7 @@
      * Services 클릭 
 ![enter image description here](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/containerization/images/ghost_external_ip.PNG)
 11. Ghost Service 내의 External end Points를 클릭하여 Ghost 블로그 POD 정상 동작을 확인합니다.     
-![enter image description here](https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/containerization/images/aws_ghost.PNG)
+![enter image description here](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/containerization/images/aws_ghost.PNG)
 
  ## Step 2. 온프레미스 Ghost POD 및 데이터를 Azure로 이동 
 1. NKS에서 설치한 Azure K8SCluster 콘솔에 접속합니다. 
@@ -60,7 +60,7 @@
      
       `# kubectl create namespace ghost`
      
-3. Azure내에 설치된 K8SCluster에서 신규 PVC를 생성합니다. ([ghost_PVC.yaml](https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/containerization/files/ghost_PVC.yaml))
+3. Azure내에 설치된 K8SCluster에서 신규 PVC를 생성합니다. ([ghost_PVC.yaml](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/containerization/files/ghost_PVC.yaml))
      
      `# kubectl apply -f ghost_pvc.yaml -n ghost` 
 
@@ -93,7 +93,8 @@
 11. Ghost Service 내의 External end Points를 클릭하여 Ghost 블로그 POD 정상 동작을 확인합니다.     
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzIzMTMyOTcsODMxOTY2Nzg4LC05MzQ3OD
-MwMzIsNDU4MzQ0NDAwLDIxNDExNjIyNzcsLTMxNTA4ODI1OSwt
-MTYxMDAyODc2NywxMjEzNjg0MjgwLC0xNzAyMzQ1MTAzXX0=
+eyJoaXN0b3J5IjpbLTE0Mzc5MzM1MjUsODMxOTY2Nzg4LC05Mz
+Q3ODMwMzIsNDU4MzQ0NDAwLDIxNDExNjIyNzcsLTMxNTA4ODI1
+OSwtMTYxMDAyODc2NywxMjEzNjg0MjgwLC0xNzAyMzQ1MTAzXX
+0=
 -->
