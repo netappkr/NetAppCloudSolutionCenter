@@ -4,7 +4,7 @@
 ---
 
 <p>이번 Task에서는 NetApp Cloud Central을 통해 Data Broker를 AWS에서 설치 후 온프레미스내의 NFS 데이터를 AWS S3로 마이그레이션을 수행합니다.</p>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Data_Mobility_MultiCloud/images/cloudsync.png?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Data_Mobility_MultiCloud/images/cloudsync.png?raw=true" alt="enter image description here"></p>
 <h2 id="step-1.-data-broker-설치">Step 1. Data Broker 설치</h2>
 <ol>
 <li>
@@ -17,7 +17,7 @@
 <p>AWS S3를 Target으로 Drag &amp; Drop 합니다.</p>
 </li>
 </ol>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Data_Mobility_MultiCloud/images/cloudsync_aws_s3.PNG?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Data_Mobility_MultiCloud/images/cloudsync_aws_s3.PNG?raw=true" alt="enter image description here"></p>
 <ol start="4">
 <li>
 <p>하단의 Continue 버튼을 클릭합니다.</p>
@@ -62,7 +62,7 @@
 </li>
 <li>
 <p>설치 완료 후 열려 있는 Cloud Sync GUI에서 등록된 Data Broker가 활성화된 것을 확인한 후 ‘Continue’ 메뉴를 클릭합니다.<br>
-<img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Data_Mobility_MultiCloud/images/aws_databroker.PNG?raw=true" alt="enter image description here"></p>
+<img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Data_Mobility_MultiCloud/images/aws_databroker.PNG?raw=true" alt="enter image description here"></p>
 </li>
 </ol>
 <h2 id="step-2.-sync-relationship-생성">Step 2. Sync Relationship 생성</h2>
@@ -96,7 +96,7 @@
 </li>
 <li>
 <p>Relationship 100% 완료되면 'View In Dashboard’를 클릭합니다.<br>
-<img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Data_Mobility_MultiCloud/images/ghost_relationship.PNG?raw=true" alt="enter image description here"></p>
+<img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Data_Mobility_MultiCloud/images/ghost_relationship.PNG?raw=true" alt="enter image description here"></p>
 </li>
 </ol>
 <h2 id="step-3.-data-복제-수행">Step 3. Data 복제 수행</h2>
@@ -112,7 +112,10 @@
 </li>
 <li>
 <p>AWS S3 웹 GUI에서 Target Bucket에 파일들이 복제 되었는지를 확인합니다.<br>
-<img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Data_Mobility_MultiCloud/images/s3bucket.PNG?raw=true" alt="enter image description here"></p>
+<img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Data_Mobility_MultiCloud/images/s3bucket.PNG?raw=true" alt="enter image description here"></p>
 </li>
 </ol>
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE3Njk2NjQxMDNdfQ==
+-->
