@@ -6,14 +6,14 @@
 <p>이번 Task는 NetApp Cloud Central에서 Cloud Manager 및 Cloud Volume ONTAP을 Azure 내에 설치 후 온프레미스 내의 ONTAP의 데이터를 NetApp 복제 솔루션인 SnapMirror을 통해 Azure내의 Cloud Volumes ONTAP으로 복제합니다.</p>
 <p><strong>사전 준비사항</strong></p>
 <ul>
-<li><a href="https://github.com/netappkr/NDX_Handsonworkshop-/tree/master/Pre-Work">AWS, Azure 네트워크 사전 구성 및 Permission 부여</a></li>
+<li><a href="https://github.com/netappkr/NetAppCloudSolutionCenter/tree/master/Pre-Work">AWS, Azure 네트워크 사전 구성 및 Permission 부여</a></li>
 </ul>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Data_Mobility_MultiCloud/images/diagram_onpremtoazure.png?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Data_Mobility_MultiCloud/images/diagram_onpremtoazure.png?raw=true" alt="enter image description here"></p>
 <h2 id="step-1.-azure에-cloud-manager-설치">Step 1. Azure에 Cloud Manager 설치</h2>
 <ol>
 <li>
 <p>NetApp Cloud Central의 Cloud Volumes ONTAP  아래 'create cloud manager’을 클릭합니다.<br>
-<img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Data_Mobility_MultiCloud/images/cloudmanagergui.png?raw=true" alt="enter image description here"></p>
+<img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Data_Mobility_MultiCloud/images/cloudmanagergui.png?raw=true" alt="enter image description here"></p>
 </li>
 <li>
 <p>Cloud Manager가 설치될 Cloud로 ‘Azure’를 선택합니다.</p>
@@ -53,11 +53,11 @@
 </li>
 <li>
 <p>Cloud Manager의 설치가 진행됩니다. (약 7분 소요) 진행중에 창을 닫지 않도록 주의합니다.<br>
-<img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Data_Mobility_MultiCloud/images/cm_install.png?raw=true" alt="enter image description here"></p>
+<img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Data_Mobility_MultiCloud/images/cm_install.png?raw=true" alt="enter image description here"></p>
 </li>
 <li>
 <p>정상적으로 설치되면 아래와 같은 Cloud Manager 창이 나타납니다.<br>
-<img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Data_Mobility_MultiCloud/images/cm_done.png?raw=true" alt="cm_done.png"></p>
+<img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Data_Mobility_MultiCloud/images/cm_done.png?raw=true" alt="cm_done.png"></p>
 </li>
 </ol>
 <h2 id="step-2.-azure에-cloud-volumes-ontap-설치">Step 2. Azure에 Cloud Volumes ONTAP 설치</h2>
@@ -121,7 +121,7 @@
 </li>
 <li>
 <p>최종 구성 정보를 확인 후 체크 박스를 모두 선택하고 ‘Go’ 버튼을 클릭합니다.<br>
-<img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Data_Mobility_MultiCloud/images/cvo_azure_check.png?raw=true" alt="enter image description here"></p>
+<img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Data_Mobility_MultiCloud/images/cvo_azure_check.png?raw=true" alt="enter image description here"></p>
 </li>
 <li>
 <p>Cloud Volumes ONTAP 설치가  진행됩니다. (<strong>약 25분 소요</strong>)</p>
@@ -173,7 +173,7 @@
 </li>
 <li>
 <p>Working Environment에서 replication 구성이 되었음을 확인합니다.</p>
-<p><img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Data_Mobility_MultiCloud/images/azure_replication.PNG?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Data_Mobility_MultiCloud/images/azure_replication.PNG?raw=true" alt="enter image description here"></p>
 </li>
 <li>
 <p>Replication status에서 Replication 완료 상태를 확인합니다.</p>
@@ -184,7 +184,7 @@
 </li>
 <li>
 <p>replication status에서 Content 볼륨의 왼쪽에 마우스를 가져가면 나타나는 메뉴에서 ‘break’ 버튼을 클릭합니다.<br>
-<img src="https://github.com/netappkr/NDX_Handsonworkshop-/blob/master/Data_Mobility_MultiCloud/images/break_replication.png?raw=true" alt="enter image description here"></p>
+<img src="https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/Data_Mobility_MultiCloud/images/break_replication.png?raw=true" alt="enter image description here"></p>
 </li>
 <li>
 <p>target 볼륨인 content_copy 볼륨은 마운트가 불가능한 상태입니다. 마운트가 가능하도록 설정하기 위해 ‘Edit’ 버튼을 클릭합니다.</p>
@@ -216,3 +216,6 @@
 </li>
 </ol>
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMjA3OTQ0MTA5NV19
+-->
