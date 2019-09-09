@@ -36,7 +36,7 @@ data:
      
 3. 생성된 ghost namespace를 확인합니다. 
 
-    # kubectl get namespaces`
+    `# kubectl get namespaces`
     
 4.  Service yaml 파일을 다운 받아 ghost namesapce에 Service를 생성합니다.([ghost_service.yaml](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/file/ghost_service.yaml))
 
