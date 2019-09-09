@@ -11,7 +11,7 @@
 
 3.  MetalLB POD 정상 동작 동작을 확인합니다.
 
-   `# kubectl get pods -n metallb-system`
+    `# kubectl get pods -n metallb-system`
  
 4.  Metallb configmap 파일을 다운 받아 address 부분에 사전에 배정된 IP을 기입합니다. ([metallb_configmap.yaml](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/containerization/files/metallbconfigmap.yaml))
   <pre class=" language-undefined"><code class="prism language-&quot;NotActions&quot;: language-undefined">apiVersion: v1
@@ -58,8 +58,8 @@ ghost   LoadBalancer   10.255.100.23   115.144.174.247   80:31435/TCP   4h36</co
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjk1MjQ5ODUwLDIxNjI4MzgxNiw5NDgwOD
-k1NSwtMTQzODM4MzgwOCwtMTUxMzEzNTIsMTg2MzQ2MTYzMiwx
-NjU5NTE3ODk0LDE2Njg3OTU2MTQsMzc4NTQ3NzUzLC0xNDgwOD
-Y5MTMsODY3Njk0ODg1XX0=
+eyJoaXN0b3J5IjpbMTM5OTcwMTYyMCwyMTYyODM4MTYsOTQ4MD
+g5NTUsLTE0MzgzODM4MDgsLTE1MTMxMzUyLDE4NjM0NjE2MzIs
+MTY1OTUxNzg5NCwxNjY4Nzk1NjE0LDM3ODU0Nzc1MywtMTQ4MD
+g2OTEzLDg2NzY5NDg4NV19
 -->
