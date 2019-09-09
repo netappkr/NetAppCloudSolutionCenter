@@ -25,7 +25,8 @@ data:
     - name: my-ip-space
       protocol: layer2
       addresses:
-      - xx.xx.xx.xx </code></pre>
+      - xx.xx.xx.xx/32</code></pre>
+   
       
 ## Step 2. External-IP Service  생성
 
@@ -55,8 +56,8 @@ ghost   LoadBalancer   10.255.100.23   115.144.174.247   80:31435/TCP   4h36</co
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjE2MjgzODE2LDk0ODA4OTU1LC0xNDM4Mz
-gzODA4LC0xNTEzMTM1MiwxODYzNDYxNjMyLDE2NTk1MTc4OTQs
-MTY2ODc5NTYxNCwzNzg1NDc3NTMsLTE0ODA4NjkxMyw4Njc2OT
-Q4ODVdfQ==
+eyJoaXN0b3J5IjpbNjUyMTgxODAxLDIxNjI4MzgxNiw5NDgwOD
+k1NSwtMTQzODM4MzgwOCwtMTUxMzEzNTIsMTg2MzQ2MTYzMiwx
+NjU5NTE3ODk0LDE2Njg3OTU2MTQsMzc4NTQ3NzUzLC0xNDgwOD
+Y5MTMsODY3Njk0ODg1XX0=
 -->
