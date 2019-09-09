@@ -27,7 +27,9 @@ data:
       addresses:
       - xx.xx.xx.xx/32</code></pre>
    
-      
+ 5.  수정된 Yaml 파일을 Cluster에 적용합니다.     
+    ` # kubectl apply -f metallb_configmap.yaml`
+
 ## Step 2. External-IP Service  생성
 
 1. Service 생성될 ghost라는 namespace를 생성합니다.
@@ -56,7 +58,7 @@ ghost   LoadBalancer   10.255.100.23   115.144.174.247   80:31435/TCP   4h36</co
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjUyMTgxODAxLDIxNjI4MzgxNiw5NDgwOD
+eyJoaXN0b3J5IjpbNjk1MjQ5ODUwLDIxNjI4MzgxNiw5NDgwOD
 k1NSwtMTQzODM4MzgwOCwtMTUxMzEzNTIsMTg2MzQ2MTYzMiwx
 NjU5NTE3ODk0LDE2Njg3OTU2MTQsMzc4NTQ3NzUzLC0xNDgwOD
 Y5MTMsODY3Njk0ODg1XX0=
