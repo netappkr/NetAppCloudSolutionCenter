@@ -38,7 +38,7 @@ data:
 
     `# kubectl get namespaces`
     
-4.  Service yaml 파일을 다운 받아 ghost namesapce에 Service를 생성합니다.([ghost_service.yaml](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/file/ghost_service.yaml))
+4.  Service yaml 파일을 다운 받아 ghost namesapce에 Service를 생성합니다.([ghost_service.yaml](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/containerization/files/ghost_service.yaml))
 
     `# kubectl apply -f ghost_service.yaml -n ghost` 
        
