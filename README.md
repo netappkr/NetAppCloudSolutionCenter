@@ -1,11 +1,11 @@
-NCSC Hands-on Workshop 은 Multi-Hbrid Cloud Experience/DevOps & MicroServices  2개의 모듈로 구성되어 있습니다. 
+NCSC Hands-on Workshop 은 Hybrid-Multi Cloud Experience/DevOps & MicroServices  2개의 모듈로 구성되어 있습니다. 
 각 모듈은 여러 개의 시나리오로 구성되어 있습니다.  
 ## Pre-Works for Workshop
 2개의  Workshop을 진행하기 위해서는 온프레미스 환경을 사전에 구성해야 합니다. 해당 구성은 Ansible을 통해 자동화 구현 됩니다. 이미 구성하신 분들은 바로 Workshop Scenario을 진행하시면 됩니다.  
 
 [Hands-on Scenario 0: Ansible 을 통해 풀 스택 온프레미스 환경 자동화 구현](https://github.com/netappkr/NetAppCloudSolutionCenter/tree/master/Pre-Work2)
 
-## Multi-Hybrid Cloud Experience Hands-on Workshop 
+## Hybrid-Multi Cloud Experience Hands-on Workshop 
 
 [Hands-on Scenario 1 : 멀티 클라우드 환경에서의 데이터 이동](https://github.com/netappkr/NetAppCloudSolutionCenter/tree/master/Data_Mobility_MultiCloud) 
 
