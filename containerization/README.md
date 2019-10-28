@@ -2,9 +2,9 @@
 
  - [Task 1. Load Balancer 구현](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/containerization/Loadbalancer.md)
  
- - [Task 2. 오프레미스의 Legacy Application을 Container로 전환](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/containerization/OnPremcontainer.md) 
+ - [Task 2. 온프레미스의 Legacy Application을 Container로 전환](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/containerization/OnPremcontainer.md) 
  
- - [Task 3. 오프레미스의 Container Application을 Public Cloud로 (AWS,Azure) 확장](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/containerization/ContainerinMultiCloud.md) 
+ - [Task 3. 온프레미스의 Container Application을 Public Cloud로 (AWS,Azure) 확장](https://github.com/netappkr/NetAppCloudSolutionCenter/blob/master/containerization/ContainerinMultiCloud.md) 
 
 [메인 메뉴로 이동](https://github.com/netappkr/NetAppCloudSolutionCenter/)
 <!--stackedit_data:
