@@ -93,7 +93,7 @@ PS C:\Users\wyahn\OneDrive\자료\11. Netapp\PartnerSumit>
 ```
 
 ### 결과물 확인
-<img width="80%" height="80%" src="./images/image-37a158b9-799f-4ad6-8ed1-2ef9330acd1e.png">
+<img width="80%" height="80%" src="../images/image-37a158b9-799f-4ad6-8ed1-2ef9330acd1e.png">
 이제 신나게 즐길 수 있습니다.!
 
 # 참고자료
