@@ -3,7 +3,7 @@ _A사용자 로그인 시 SSO 동작 과정 설명_
 먼저 ADFS의 주요 항목 및 용어에 대해 이해합니다.
 [Understanding Key AD FS Concepts](https://docs.microsoft.com/ko-kr/windows-server/identity/ad-fs/technical-reference/understanding-key-ad-fs-concepts)
 
-![image.png](/.attachments/image-c71c96e1-db88-4662-9186-d92d113008fe.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-c71c96e1-db88-4662-9186-d92d113008fe.png)
 #전제 조건
 - Spot 계정 및 계정의 관리자 권한
 - ADFS 역할이 설치된 도메인 구성원 Windows Server 2012R2/2016
@@ -12,31 +12,31 @@ _A사용자 로그인 시 SSO 동작 과정 설명_
 2. 신뢰 당사자 트러스트를 마우스 오른쪽 단추로 클릭하고 신뢰 당사자 트러스트 추가를 클릭합니다.
 <IMG  src="https://docs.spot.io/administration/_media/adfs-saml-01.png"/>
 3. 클레임 인식을 선택하고 시작을 클릭합니다.
-![image.png](/.attachments/image-693b9849-b8ff-4a29-b5a1-f294fcfb99a2.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-693b9849-b8ff-4a29-b5a1-f294fcfb99a2.png)
 'Enter data about the relying party manually' 선택하고 다음을 클릭합니다.
 
 4. RP의 이름을 선택하고 다음을 클릭합니다.
-![image.png](/.attachments/image-3ec16258-cd2b-4a81-9a77-d836afdb6912.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-3ec16258-cd2b-4a81-9a77-d836afdb6912.png)
 5. 인증서를 요청하면 다음을 클릭합니다.
 ( 클레임값 암호화 할 키(인증서)를 넣을것인지 묻습니다만 test에서는 구성하지 않습니다.)
-![image.png](/.attachments/image-6c638d0e-ecb5-439c-8b4b-4e12f33e53d2.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-6c638d0e-ecb5-439c-8b4b-4e12f33e53d2.png)
 
 6. "Enable support for the SAML 2.0 WebSSO protocol"을 선택하고 URL을 입력합니다. 
 https://console.spotinst.com/auth/saml
 (이 url은 인증처리 완료 시 브로커(ADFS)가 처리결과를 보고 할 주소 입력란 입니다.)
-![image.png](/.attachments/image-ed7b200b-a9ce-4bb2-9109-87582d7bfb30.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-ed7b200b-a9ce-4bb2-9109-87582d7bfb30.png)
 
 
 7. RPID(신뢰 당사자 ID)와 동일한 URL을 추가합니다.
 _대부분 주소를 동일하게 구성합니다._
-![image.png](/.attachments/image-30ec2941-9bae-42a5-b02a-f05fe8c1a8ad.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-30ec2941-9bae-42a5-b02a-f05fe8c1a8ad.png)
 8. 다음을 클릭한 후 마침을 클릭하여 마법사를 완료합니다.
-![image.png](/.attachments/image-84aafc0a-0731-48d9-af46-1a70216ceaaa.png)
-![image.png](/.attachments/image-b7128909-bf22-460a-909b-031d1a37f821.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-84aafc0a-0731-48d9-af46-1a70216ceaaa.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-b7128909-bf22-460a-909b-031d1a37f821.png)
 
 # 클레임 규칙 구성
 1. 클레임 규칙을 구성할 수 있는 새 마법사를 엽니다.
-![image.png](/.attachments/image-3ab1d55b-450f-40d9-a83c-87712bf967e2.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-3ab1d55b-450f-40d9-a83c-87712bf967e2.png)
 2. 규칙 유형을 묻는 메시지가 나타나면 다음을 클릭합니다.
 3. 클레임 규칙의 이름을 입력하고 Active Directory를 속성 저장소로 선택합니다.
 다음 속성 매핑을 입력합니다.
@@ -47,14 +47,14 @@ _대부분 주소를 동일하게 구성합니다._
 | Given-Name | FirstName |
 | Surname | LastName |
 		
-![image.png](/.attachments/image-ee29aea9-dd44-4c06-9636-9e889625a2fc.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-ee29aea9-dd44-4c06-9636-9e889625a2fc.png)
 ```
 [TIP]
  클레임값 mapping을 통해 AD 계정이 사용할 spot 계정을 구분합니다.
  일반적으로 로그인시 문제가 있다면 클레임값이 불일치 하는 경우가 많습니다.
  이러한 문제에 대해 트러블슈팅이 필요한 경우 Saml tracer라는 tool 사용을 추천합니다.
 ```
-![image.png](/.attachments/image-22868aec-f316-4996-8f38-73c24d01fe99.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-22868aec-f316-4996-8f38-73c24d01fe99.png)
 
 4. 마침을 클릭하여 마법사를 완료합니다.
 
@@ -67,11 +67,11 @@ https:://<adfs_domain>/federationmetadata/2007-06/federationmetadata.xml
 https://fs.wyahn.com/FederationMetadata/2007-06/FederationMetadata.xml
 
 2. 편집을 위해 XML 파일을 엽니다.
-![image.png](/.attachments/image-3c24424a-c44a-476d-9782-d31064aecb70.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-3c24424a-c44a-476d-9782-d31064aecb70.png)
 
 3. 시작태그와 마침태그 모두 `ds:X509Certificate` 로 변경합니다.
 x509Certificat >> ds:X509Certificate
-![image.png](/.attachments/image-89a94d47-870c-421f-9a40-27c201ef2681.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-89a94d47-870c-421f-9a40-27c201ef2681.png)
 
 ```
 아직 XML 항목에 어떤것들이 있는지 정확히 이해하지 못했습니다. ( 공부를 다하는데로 추후 업데이트 하겠습니다.)
@@ -84,10 +84,10 @@ x509Certificat >> ds:X509Certificate
 - AD 사용자 상세정보 이메일 항목 : Wooyeoung.Ahn@netapp.com
 ```
 5. 화면 오른쪽 상단의 사용자 아이콘을 클릭하고 설정을 클릭합니다.
-![image.png](/.attachments/image-e826f6ef-e5e0-4f38-9735-02747bb31241.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-e826f6ef-e5e0-4f38-9735-02747bb31241.png)
 
 6. 보안 탭을 클릭한 다음 ID 제공자를 선택하십시오.
-![image.png](/.attachments/image-d36ee542-634d-4d13-9a86-476b081ab88d.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-d36ee542-634d-4d13-9a86-476b081ab88d.png)
 
 7. 찾아보기를 클릭하고 메타데이터 파일을 선택한 다음 저장을 클릭합니다.
 
@@ -97,11 +97,11 @@ x509Certificat >> ds:X509Certificate
      E-Mail-Address	Email
      Given-Name	FirstName
      Surname	LastName
-     ![image.png](/.attachments/image-8c08e80e-38be-47bf-871a-cd6c8c19f8ac.png)
+     ![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-8c08e80e-38be-47bf-871a-cd6c8c19f8ac.png)
 2. OU 레벨 계정생성
-![image.png](/.attachments/image-6194c407-1fcc-4715-8c46-ccf11aa27511.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-6194c407-1fcc-4715-8c46-ccf11aa27511.png)
 3. 하단 SSO 로그인 선택 > 이메일 입력
-![image.png](/.attachments/image-3a915083-e95f-49c5-bbad-2946a89ed028.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-3a915083-e95f-49c5-bbad-2946a89ed028.png)
 
 ---
 # 추가구성( 옵션 )
@@ -112,7 +112,7 @@ IDP에서 SSO를 구성하려면 다음과 같이 추가 설정을 구성해야 
 2. 화면 오른쪽 상단의 사용자 아이콘을 클릭하고 설정을 클릭합니다.
 3. 보안 탭을 클릭한 다음 ID 제공자를 선택하십시오.
 4. 릴레이 값을 복사합니다. ( 릴레이값은 유출되면 피곤합니다.)
-![image.png](/.attachments/image-abcae635-8989-44c3-9c4f-a6f7ec80216e.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-abcae635-8989-44c3-9c4f-a6f7ec80216e.png)
 5. ADFS 서버에 연결합니다.
 6. 관리 권한으로 Powershell을 엽니다.
 7. 다음 명령을 실행하여 IDP 시작 SSO를 활성화합니다. 
@@ -142,11 +142,11 @@ IDP에서 SSO를 구성하려면 다음과 같이 추가 설정을 구성해야 
      - `<microsoft.identityserver.web>` 항목 바로 뒤에 다음 행을 추가합니다. `<useRelayStateForIdpInitiatedSignOn enabled="true" />`
 
 8. Active Directory Federation Services 서비스를 재시작 합니다.
-![image.png](/.attachments/image-d3ecdee9-0204-4814-b4fd-cb6dae139243.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-d3ecdee9-0204-4814-b4fd-cb6dae139243.png)
 
 # IDP SSO URL 생성
 [ADFS relay state 생성기](http://jackstromberg.com/adfs-relay-state-generator/)
-![image.png](/.attachments/image-a7640499-7ae7-451f-b994-834656479b93.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-a7640499-7ae7-451f-b994-834656479b93.png)
 
 [ 필요 항목 설명 ]
 - RPM

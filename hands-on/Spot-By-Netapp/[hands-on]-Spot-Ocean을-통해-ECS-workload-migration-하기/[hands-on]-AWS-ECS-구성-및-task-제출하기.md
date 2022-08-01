@@ -5,7 +5,7 @@
 - `K8S와 같은 컨테이너 관리 서비스로서 AWS가 개발 관리합니다.`
 ecs 동작방식에 대한 자세한 내용은 [여기](https://docs.aws.amazon.com/ko_kr/AmazonECS/latest/developerguide/Welcome.html)서 확인 하실 수 있습니다.
 #구성도
-![image.png](/.attachments/image-972a7457-7ad3-4fc3-a3fe-d84755282e89.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-972a7457-7ad3-4fc3-a3fe-d84755282e89.png)
 
 ##ECS cli 설치 및 구성
 ecs-cli configure profile --profile-name netapp_wyahn --access-key AKIAQRRGCXHYLLBVGIRS --secret-key 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
@@ -85,7 +85,7 @@ compose 파일을 생성한 후 ecs-cli compose service up을 사용하여 클�
 ```bash
 $ ecs-cli compose --project-name wyahn-tutorial service up --create-log-groups --file docker-compose.yml --ecs-params ecs-params.yml
 ```
-![ecs compose.png](/.attachments/ecs%20compose-bf0514bd-e9ad-46c3-9064-b661a2910bb4.png)
+![ecs compose.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/ecs%20compose-bf0514bd-e9ad-46c3-9064-b661a2910bb4.png)
 
 
 ##로드 밸런서에 서비스 연결
@@ -97,8 +97,8 @@ $ ecs-cli compose --project-name wyahn-tutorial service up \
 --target-groups "targetGroupArn=arn:aws:elasticloadbalancing:ap-northeast-2:037660834288:targetgroup/ECS-WEB/8e857f02e29045a2,containerPort=80,containerName=web" \
 --create-log-groups 
 ```
-![targetgroup.png](/.attachments/targetgroup-c46f300c-95e4-404d-9823-885c2e79fb0d.png)
-![console-targetgroup.png](/.attachments/console-targetgroup-e369bb62-d098-4965-9314-fa296b330362.png)
+![targetgroup.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/targetgroup-c46f300c-95e4-404d-9823-885c2e79fb0d.png)
+![console-targetgroup.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/console-targetgroup-e369bb62-d098-4965-9314-fa296b330362.png)
 > ecs-cli compose --project-name wyahn-tutorial service ps
 
 >###[ 로그보기 ]
