@@ -1,6 +1,6 @@
 # AWS CDK 란?
 ---
-![image.png](https://docs.aws.amazon.com/ko_kr/cdk/v2/guide/images/AppStacks.png =50%x50%)
+<img width="80%" height="80%" src="https://docs.aws.amazon.com/ko_kr/cdk/v2/guide/images/AppStacks.png"> 
 AWS CDK를 사용하면 프로그래밍 언어의 뛰어난 표현력으로 클라우드에서 안정적이고 확장 가능하며 비용 효율적인 애플리케이션을 구축할 수 있습니다. 
 이 접근 방식은 다음과 같은 많은 이점을 제공합니다.
 
@@ -93,7 +93,7 @@ PS C:\Users\wyahn\OneDrive\자료\11. Netapp\PartnerSumit>
 ```
 
 ### 결과물 확인
-![image.png](/.attachments/image-37a158b9-799f-4ad6-8ed1-2ef9330acd1e.png =60%x60%)
+<img width="80%" height="80%" src="../images/image-37a158b9-799f-4ad6-8ed1-2ef9330acd1e.png">
 이제 신나게 즐길 수 있습니다.!
 
 # 참고자료

@@ -7,10 +7,10 @@ AWS Fargate 서비스는 task를 ec2 node에 할당하는것이 아닌 aws 관�
 https://docs.spot.io/api/#operation/oceanEcsFargateGetMigrationStatus
 
 1. spot ocean 콘솔 > action > imaport Fargate Services로 이동합니다.
-![image.png](/.attachments/image-214331f8-9d15-46ba-a177-013b46c3fad9.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-214331f8-9d15-46ba-a177-013b46c3fad9.png)
 
 2. migration 할 fargate task를 선택합니다.
-![image.png](/.attachments/image-a4bcda1e-86dc-4bc8-8dc3-51492d5f7029.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-a4bcda1e-86dc-4bc8-8dc3-51492d5f7029.png)
 
 3. task 정보를 수집하여 migration을 진행합니다.
-![image.png](/.attachments/image-93c37877-0cdc-43dd-9f7e-75f285a09bbf.png)
+![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-93c37877-0cdc-43dd-9f7e-75f285a09bbf.png)
