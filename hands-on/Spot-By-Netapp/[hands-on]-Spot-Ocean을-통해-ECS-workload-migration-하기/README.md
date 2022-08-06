@@ -17,4 +17,4 @@ Spot 서비스가 AWS 계정과 연동되어 있어야 합니다. 자세한 사�
 
 #workshop 구성도
 
-<img width="80%" height="80%" src="../images/spot_for_ecs_test_plan.png">
+<img width="80%" height="80%" src="../../images/spot_for_ecs_test_plan.png">
