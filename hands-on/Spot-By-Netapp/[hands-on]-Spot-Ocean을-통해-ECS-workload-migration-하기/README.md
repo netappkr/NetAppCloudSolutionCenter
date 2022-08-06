@@ -16,9 +16,5 @@ Spot 서비스가 AWS 계정과 연동되어 있어야 합니다. 자세한 사�
 
 
 #workshop 구성도
-<<<<<<< HEAD
-<img width="80%" height="80%" src="https://../../image/images/spot_for_ecs_test_plan.png">
-=======
-<img width="80%" height="80%" src="https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/spot%20for%20ecs-8b094d9f-1899-4681-9c32-1a8f25c708dc.png">
 
->>>>>>> 06de25b745a43be60d2565391493c8b561a4fab9
+<img width="80%" height="80%" src="../../images/spot_for_ecs_test_plan.png">
