@@ -8,7 +8,11 @@ ecs 동작방식에 대한 자세한 내용은 [여기](https://docs.aws.amazon.
 ![image.png](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_git/NetApp_KR_Cloud_KB.wiki?path=/.attachments/image-972a7457-7ad3-4fc3-a3fe-d84755282e89.png)
 
 ##ECS cli 설치 및 구성
+<<<<<<< HEAD
+ecs-cli configure profile --profile-name netapp_wyahn --access-key <your acceess key> --secret-key <your secret key> 
+=======
 ecs-cli configure profile --profile-name netapp_wyahn --access-ke
+>>>>>>> 06de25b745a43be60d2565391493c8b561a4fab9
 ecs-cli configure --cluster wyahn-ecs-spot --region ap-northeast-2 --default-launch-type FARGATE --config-name wyahn-ecs-spot
 ecs-cli configure default --config-name netapp_wyahn
 
