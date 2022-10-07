@@ -12,7 +12,7 @@
 # 절차
 1. [Create Lab Quickstart Guide](./QuickStart/CreateLabQuickstartGuide.md)
 2. [Deploying Cloud Manager](./FSXforOntap/DeployCloudmanager.md)
-3. [Create FSX on Cloudmanager](./FSXforOntap/CreateFSXontap.md)
+3. [Createing FSxOntap from Cloudmanager](./FSXforOntap/CreateFSXontap.md)
 4. [Install Trident](./Trident/install_Trident.md)
 5. [Deploy testapp](./Trident/deploy_testapp.md)
 6. [Connecting Ocean to EKS](./OceanforEKS/ConnectAnEKSCluster.md)
