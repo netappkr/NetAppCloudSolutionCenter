@@ -42,8 +42,8 @@ Hands on 환경을 빠르게 생성합니다.
 ![image](./image/stackview.png)
 
 # 다음과정
-Netapp Cloudmanager를 이용해 AWS FSXontap을 생성하는 과정에 대해 알아 봅니다.</br>
-- 다음과정: [Deploy Cloudmanager](../FSXforOntap/DeployCloudmanager.md)
+Netapp Cloudmanager 생성하는 과정에 대해 알아 봅니다.</br>
+- 다음과정: [Deploying Cloud Manager](../FSXforOntap/DeployCloudmanager.md)
 
 # 참고문서
 - [CDKv2 doc](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html)

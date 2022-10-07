@@ -8,7 +8,7 @@
 # 절차
 1. [Create Lab Quickstart Guide](./Quickstart/Quickstart.md)
 2. [Connecting Ocean to AKS](./OceanforAKS/ConnectAnAKSCluster.md)
-3. [Deploy Cloudmanager](./AzureNetappFiles/Deploy_Cloudmanager.md) 
+3. [Deploying Cloud Manager](./AzureNetappFiles/Deploy_Cloudmanager.md) 
 4. [Azure Netapp Files](./AzureNetappFiles/Readme.md) </br>
   4-1. [Create ANF on Azure](./AzureNetappFiles/CreateAzureNetappFilesonAzure.md) </br>
   **번외**
