@@ -24,11 +24,11 @@
   **번외**</br>
   8-4. [Cost Analysis](./OceanforEKS/CostAnalysis.md)</br>
   8-5. [Right Sizing](./OceanforEKS/RightSizing.md)</br>
-9. [AWS FSxontap](./FSXforOntap/README.md)</br>
+9. [AWS FSx for ontap](./FSXforOntap/README.md)</br>
   9-1. [Create Volume](./FSXforOntap/CreateVolume.md)</br>
   9-2. [Storage Efficiency](./FSXforOntap/StorageEfficiency.md)</br>
   9-3. [Volume Backup & restore](./FSXforOntap/VolumeBackupAndRestore.md)</br>
-  9-4. [import volume to EKS](./FSXforOntap/ImportVolumeToEKS.md) </br>
+  9-4. [Import volume to EKS](./FSXforOntap/ImportVolumeToEKS.md) </br>
   **번외**</br>
   9-5. [stateful pod](./FSXforOntap/K8SWithFSxOntap_Stateful.md)
  
