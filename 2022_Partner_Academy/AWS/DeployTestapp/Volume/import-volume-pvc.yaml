@@ -1,0 +1,9 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nginx-filebrowser-vol
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: fsxontap-nas

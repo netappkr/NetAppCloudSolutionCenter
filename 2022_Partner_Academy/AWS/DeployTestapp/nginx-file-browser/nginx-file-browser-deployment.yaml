@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-file-bro
+    alb: handson-eks-alb
+  name: nginx-file-bro
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-file-bro
+  template:
+    metadata:
+      labels:
+        app: nginx-file-bro
+        alb: handson-eks-alb
+    spec:
+      containers:
+      - image: docker.io/mohamnag/nginx-file-browser:latest
+        name: nginx-file-browser
+        volumeMounts:
+        - mountPath: /opt/www/files
+          name: fsxontap-volume
+
+      volumes:
+      - name: fsxontap-volume
+        persistentVolumeClaim:
+          claimName: fsxontap-pvc
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - operator: In
+                key: owner
+                values:
+                - handsonadmin

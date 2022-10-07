@@ -1,0 +1,652 @@
+{
+  "version": "20.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "PartnerAcademyStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "PartnerAcademyStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "PartnerAcademyStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "PartnerAcademyStack.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/ef27f69853b779b1aac8507f2c1bb3c0d2a0deb0dd6be71b28e129dfe05c5022.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "PartnerAcademyStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "PartnerAcademyStack.assets"
+      ],
+      "metadata": {
+        "/PartnerAcademyStack/Hands-on-VPC/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPC387F50B2"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCpublicsubnetSubnet1Subnet34815136"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCpublicsubnetSubnet1RouteTableECF1561D"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCpublicsubnetSubnet1RouteTableAssociation676637E8"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCpublicsubnetSubnet1DefaultRoute09DBA6DA"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet1/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCpublicsubnetSubnet1EIP105D34CA"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet1/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCpublicsubnetSubnet1NATGateway24A90A99"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCpublicsubnetSubnet2Subnet054EF5FD"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCpublicsubnetSubnet2RouteTableDDCE2151"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCpublicsubnetSubnet2RouteTableAssociation5FE9A59E"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCpublicsubnetSubnet2DefaultRoute7FE38D66"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCprivatesubnetSubnet1SubnetE2BC2268"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCprivatesubnetSubnet1RouteTable413AFC78"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCprivatesubnetSubnet1RouteTableAssociationA6916A37"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCprivatesubnetSubnet1DefaultRouteF0F63285"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCprivatesubnetSubnet2SubnetDF9F1A71"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCprivatesubnetSubnet2RouteTable13B8461D"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCprivatesubnetSubnet2RouteTableAssociation96BF18C3"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCprivatesubnetSubnet2DefaultRouteB813BEF8"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/IGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCIGW52DFC891"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-VPC/VPCGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonVPCVPCGWC5525E68"
+          }
+        ],
+        "/PartnerAcademyStack/HandsonbastionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonbastionRole77C58B98"
+          }
+        ],
+        "/PartnerAcademyStack/handsonbastionSG/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "handsonbastionSGFA6BA8AC"
+          }
+        ],
+        "/PartnerAcademyStack/Handsonkey": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Handsonkey"
+          }
+        ],
+        "/PartnerAcademyStack/Handsonbastion/InstanceProfile": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonbastionInstanceProfileB9F5819B"
+          }
+        ],
+        "/PartnerAcademyStack/Handsonbastion/AmiMap": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonbastionAmiMapB4354429"
+          }
+        ],
+        "/PartnerAcademyStack/Handsonbastion/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonbastionC6EF9FAA"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-eks/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsoneksRole9A8572E5"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-eks/ControlPlaneSecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsoneksControlPlaneSecurityGroup56432B77"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-eks/Resource/CreationRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsoneksCreationRoleD88D95F4"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-eks/Resource/CreationRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsoneksCreationRoleDefaultPolicyF866D4EA"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-eks/Resource/Resource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Handsoneks23777250"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-eks/KubectlReadyBarrier": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsoneksKubectlReadyBarrier60AFD4D9"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-eks/ClusterSecurityGroup/from 0.0.0.0_0:80": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsoneksClusterSecurityGroupfrom0000080FD7FA54A"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-eks/ClusterSecurityGroup/from 0.0.0.0_0:443": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsoneksClusterSecurityGroupfrom000004434D63A340"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-eks/MastersRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsoneksMastersRole11BC756C"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-eks/AwsAuth/manifest/Resource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsoneksAwsAuthmanifest541BB0AB"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-eks/OpenIdConnectProvider/Resource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsoneksOpenIdConnectProvider196AD52B"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-eks/NodegroupDefaultCapacity/NodeGroupRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsoneksNodegroupDefaultCapacityNodeGroupRole521332FC"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-eks/NodegroupDefaultCapacity/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsoneksNodegroupDefaultCapacityCD3D06DB"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-eks/ConfigCommand": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsoneksConfigCommandA7A73629"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-eks/GetTokenCommand": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsoneksGetTokenCommand8B247A17"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/NodeProxyAgentLayer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NodeProxyAgentLayer924C1971"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/OnEventHandler/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "OnEventHandlerServiceRole15A26729"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/OnEventHandler/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "OnEventHandlerServiceRoleDefaultPolicyC57085D4"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/OnEventHandler/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "OnEventHandler42BEBAE0"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/IsCompleteHandler/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "IsCompleteHandlerServiceRole5810CC58"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/IsCompleteHandler/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "IsCompleteHandlerServiceRoleDefaultPolicy8F64197B"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/IsCompleteHandler/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "IsCompleteHandler7073F4DA"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/Provider/framework-onEvent/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkonEventServiceRole9FF04296"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/Provider/framework-onEvent/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkonEventServiceRoleDefaultPolicy48CD2133"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/Provider/framework-onEvent/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkonEvent83C1D0A7"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/Provider/framework-isComplete/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkisCompleteServiceRoleB1087139"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/Provider/framework-isComplete/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkisCompleteServiceRoleDefaultPolicy2E7140AC"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/Provider/framework-isComplete/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkisComplete26D7B0CB"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/Provider/framework-onTimeout/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkonTimeoutServiceRole28643D26"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/Provider/framework-onTimeout/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkonTimeoutServiceRoleDefaultPolicy2688969F"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/Provider/framework-onTimeout/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkonTimeout0B47CA38"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/Provider/waiter-state-machine/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderwaiterstatemachineRole0C7159F9"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/Provider/waiter-state-machine/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderwaiterstatemachineRoleDefaultPolicyD3C3DA1A"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/Provider/waiter-state-machine/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerwaiterstatemachine5D4A9DF0"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/PartnerAcademyStackawscdkawseksClusterResourceProviderframeworkonEventB5FAE5DEArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PartnerAcademyStackawscdkawseksClusterResourceProviderframeworkonEventB5FAE5DEArn"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider/reference-to-PartnerAcademyStackHandsoneksCreationRole9349EE73Arn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoPartnerAcademyStackHandsoneksCreationRole9349EE73Arn"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider.NestedStack/@aws-cdk--aws-eks.ClusterResourceProvider.NestedStackResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "awscdkawseksClusterResourceProviderNestedStackawscdkawseksClusterResourceProviderNestedStackResource9827C454"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider/Handler/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandlerServiceRoleFCDC14AE"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider/Handler/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandlerServiceRoleDefaultPolicyCBD0CC91"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider/Handler/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Handler886CB40B"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider/AwsCliLayer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AwsCliLayerF44AAF94"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider/KubectlLayer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "KubectlLayer600207B5"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider/Provider/framework-onEvent/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkonEventServiceRole9FF04296"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider/Provider/framework-onEvent/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkonEventServiceRoleDefaultPolicy48CD2133"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider/Provider/framework-onEvent/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ProviderframeworkonEvent83C1D0A7"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider/PartnerAcademyStackawscdkawseksKubectlProviderframeworkonEvent69FA0536Arn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PartnerAcademyStackawscdkawseksKubectlProviderframeworkonEvent69FA0536Arn"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider/reference-to-PartnerAcademyStackHandsoneksC462D608Arn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoPartnerAcademyStackHandsoneksC462D608Arn"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider/reference-to-PartnerAcademyStackHandsoneksCreationRole9349EE73Arn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoPartnerAcademyStackHandsoneksCreationRole9349EE73Arn"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider/reference-to-PartnerAcademyStackHandsonVPCprivatesubnetSubnet1Subnet5161D29ARef": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoPartnerAcademyStackHandsonVPCprivatesubnetSubnet1Subnet5161D29ARef"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider/reference-to-PartnerAcademyStackHandsonVPCprivatesubnetSubnet2Subnet9266B550Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoPartnerAcademyStackHandsonVPCprivatesubnetSubnet2Subnet9266B550Ref"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider/reference-to-PartnerAcademyStackHandsoneksC462D608ClusterSecurityGroupId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoPartnerAcademyStackHandsoneksC462D608ClusterSecurityGroupId"
+          }
+        ],
+        "/PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider.NestedStack/@aws-cdk--aws-eks.KubectlProvider.NestedStackResource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "awscdkawseksKubectlProviderNestedStackawscdkawseksKubectlProviderNestedStackResourceA7AEBA6B"
+          }
+        ],
+        "/PartnerAcademyStack/PartnerAcademyStackHandsoneks54056D96-AlbController/alb-sa/ConditionJson/Resource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PartnerAcademyStackHandsoneks54056D96AlbControlleralbsaConditionJsonF4DDCC72"
+          }
+        ],
+        "/PartnerAcademyStack/PartnerAcademyStackHandsoneks54056D96-AlbController/alb-sa/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PartnerAcademyStackHandsoneks54056D96AlbControlleralbsaRoleA780F51A"
+          }
+        ],
+        "/PartnerAcademyStack/PartnerAcademyStackHandsoneks54056D96-AlbController/alb-sa/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PartnerAcademyStackHandsoneks54056D96AlbControlleralbsaRoleDefaultPolicyDAFC1AA5"
+          }
+        ],
+        "/PartnerAcademyStack/PartnerAcademyStackHandsoneks54056D96-AlbController/alb-sa/manifest-alb-saServiceAccountResource/Resource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PartnerAcademyStackHandsoneks54056D96AlbControlleralbsamanifestalbsaServiceAccountResource19513AC9"
+          }
+        ],
+        "/PartnerAcademyStack/PartnerAcademyStackHandsoneks54056D96-AlbController/Resource/Resource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PartnerAcademyStackHandsoneks54056D96AlbController9C2FD801"
+          }
+        ],
+        "/PartnerAcademyStack/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Role": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderRole517FED65"
+          }
+        ],
+        "/PartnerAcademyStack/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Handler": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderHandlerF2C543E0"
+          }
+        ],
+        "/PartnerAcademyStack/AWSCDKCfnUtilsProviderCustomResourceProvider/Role": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AWSCDKCfnUtilsProviderCustomResourceProviderRoleFE0EE867"
+          }
+        ],
+        "/PartnerAcademyStack/AWSCDKCfnUtilsProviderCustomResourceProvider/Handler": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AWSCDKCfnUtilsProviderCustomResourceProviderHandlerCF82AA57"
+          }
+        ],
+        "/PartnerAcademyStack/HandsOnAdmin/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsOnAdmin66510502"
+          }
+        ],
+        "/PartnerAcademyStack/HandsonCloudmangerRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonCloudmangerRole997D2BAC"
+          }
+        ],
+        "/PartnerAcademyStack/HandsonCloudmangerPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonCloudmangerPolicy6A3BA2EF"
+          }
+        ],
+        "/PartnerAcademyStack/HandsonOCCMFSx/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "HandsonOCCMFSxE2658C19"
+          }
+        ],
+        "/PartnerAcademyStack/Hands-on-fsx": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Handsonfsx"
+          }
+        ],
+        "/PartnerAcademyStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/PartnerAcademyStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/PartnerAcademyStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/PartnerAcademyStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "PartnerAcademyStack"
+    }
+  }
+}

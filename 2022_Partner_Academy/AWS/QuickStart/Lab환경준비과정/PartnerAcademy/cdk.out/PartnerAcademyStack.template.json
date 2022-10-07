@@ -1,0 +1,2607 @@
+{
+ "Resources": {
+  "HandsonVPC387F50B2": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "172.30.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "PartnerAcademyStack/Hands-on-VPC"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/Resource"
+   }
+  },
+  "HandsonVPCpublicsubnetSubnet1Subnet34815136": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "HandsonVPC387F50B2"
+    },
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "172.30.0.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "public-subnet"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "kubernetes.io/role/elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet1/Subnet"
+   }
+  },
+  "HandsonVPCpublicsubnetSubnet1RouteTableECF1561D": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "HandsonVPC387F50B2"
+    },
+    "Tags": [
+     {
+      "Key": "kubernetes.io/role/elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet1/RouteTable"
+   }
+  },
+  "HandsonVPCpublicsubnetSubnet1RouteTableAssociation676637E8": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "HandsonVPCpublicsubnetSubnet1RouteTableECF1561D"
+    },
+    "SubnetId": {
+     "Ref": "HandsonVPCpublicsubnetSubnet1Subnet34815136"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet1/RouteTableAssociation"
+   }
+  },
+  "HandsonVPCpublicsubnetSubnet1DefaultRoute09DBA6DA": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "HandsonVPCpublicsubnetSubnet1RouteTableECF1561D"
+    },
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "HandsonVPCIGW52DFC891"
+    }
+   },
+   "DependsOn": [
+    "HandsonVPCVPCGWC5525E68"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet1/DefaultRoute"
+   }
+  },
+  "HandsonVPCpublicsubnetSubnet1EIP105D34CA": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "kubernetes.io/role/elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet1/EIP"
+   }
+  },
+  "HandsonVPCpublicsubnetSubnet1NATGateway24A90A99": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "SubnetId": {
+     "Ref": "HandsonVPCpublicsubnetSubnet1Subnet34815136"
+    },
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "HandsonVPCpublicsubnetSubnet1EIP105D34CA",
+      "AllocationId"
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "kubernetes.io/role/elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet1/NATGateway"
+   }
+  },
+  "HandsonVPCpublicsubnetSubnet2Subnet054EF5FD": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "HandsonVPC387F50B2"
+    },
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "172.30.1.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "public-subnet"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "kubernetes.io/role/elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet2/Subnet"
+   }
+  },
+  "HandsonVPCpublicsubnetSubnet2RouteTableDDCE2151": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "HandsonVPC387F50B2"
+    },
+    "Tags": [
+     {
+      "Key": "kubernetes.io/role/elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet2/RouteTable"
+   }
+  },
+  "HandsonVPCpublicsubnetSubnet2RouteTableAssociation5FE9A59E": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "HandsonVPCpublicsubnetSubnet2RouteTableDDCE2151"
+    },
+    "SubnetId": {
+     "Ref": "HandsonVPCpublicsubnetSubnet2Subnet054EF5FD"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet2/RouteTableAssociation"
+   }
+  },
+  "HandsonVPCpublicsubnetSubnet2DefaultRoute7FE38D66": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "HandsonVPCpublicsubnetSubnet2RouteTableDDCE2151"
+    },
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "HandsonVPCIGW52DFC891"
+    }
+   },
+   "DependsOn": [
+    "HandsonVPCVPCGWC5525E68"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/public-subnetSubnet2/DefaultRoute"
+   }
+  },
+  "HandsonVPCprivatesubnetSubnet1SubnetE2BC2268": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "HandsonVPC387F50B2"
+    },
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "172.30.2.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "private-subnet"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "kubernetes.io/role/internal-elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet1/Subnet"
+   }
+  },
+  "HandsonVPCprivatesubnetSubnet1RouteTable413AFC78": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "HandsonVPC387F50B2"
+    },
+    "Tags": [
+     {
+      "Key": "kubernetes.io/role/internal-elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet1/RouteTable"
+   }
+  },
+  "HandsonVPCprivatesubnetSubnet1RouteTableAssociationA6916A37": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "HandsonVPCprivatesubnetSubnet1RouteTable413AFC78"
+    },
+    "SubnetId": {
+     "Ref": "HandsonVPCprivatesubnetSubnet1SubnetE2BC2268"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet1/RouteTableAssociation"
+   }
+  },
+  "HandsonVPCprivatesubnetSubnet1DefaultRouteF0F63285": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "HandsonVPCprivatesubnetSubnet1RouteTable413AFC78"
+    },
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "HandsonVPCpublicsubnetSubnet1NATGateway24A90A99"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet1/DefaultRoute"
+   }
+  },
+  "HandsonVPCprivatesubnetSubnet2SubnetDF9F1A71": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "HandsonVPC387F50B2"
+    },
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "172.30.3.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "private-subnet"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "kubernetes.io/role/internal-elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet2/Subnet"
+   }
+  },
+  "HandsonVPCprivatesubnetSubnet2RouteTable13B8461D": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "HandsonVPC387F50B2"
+    },
+    "Tags": [
+     {
+      "Key": "kubernetes.io/role/internal-elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet2/RouteTable"
+   }
+  },
+  "HandsonVPCprivatesubnetSubnet2RouteTableAssociation96BF18C3": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "HandsonVPCprivatesubnetSubnet2RouteTable13B8461D"
+    },
+    "SubnetId": {
+     "Ref": "HandsonVPCprivatesubnetSubnet2SubnetDF9F1A71"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet2/RouteTableAssociation"
+   }
+  },
+  "HandsonVPCprivatesubnetSubnet2DefaultRouteB813BEF8": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "HandsonVPCprivatesubnetSubnet2RouteTable13B8461D"
+    },
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "HandsonVPCpublicsubnetSubnet1NATGateway24A90A99"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/private-subnetSubnet2/DefaultRoute"
+   }
+  },
+  "HandsonVPCIGW52DFC891": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "PartnerAcademyStack/Hands-on-VPC"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/IGW"
+   }
+  },
+  "HandsonVPCVPCGWC5525E68": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "VpcId": {
+     "Ref": "HandsonVPC387F50B2"
+    },
+    "InternetGatewayId": {
+     "Ref": "HandsonVPCIGW52DFC891"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-VPC/VPCGW"
+   }
+  },
+  "HandsonbastionRole77C58B98": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": {
+         "Fn::Join": [
+          "",
+          [
+           "ec2.",
+           {
+            "Ref": "AWS::URLSuffix"
+           }
+          ]
+         ]
+        }
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Description": "Netapp Pertner Summit Hands on bastion Role",
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AdministratorAccess"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/HandsonbastionRole/Resource"
+   }
+  },
+  "handsonbastionSGFA6BA8AC": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "PartnerAcademyStack/handsonbastionSG",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "allow ssh access from the world",
+      "FromPort": 22,
+      "IpProtocol": "tcp",
+      "ToPort": 22
+     }
+    ],
+    "VpcId": {
+     "Ref": "HandsonVPC387F50B2"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/handsonbastionSG/Resource"
+   }
+  },
+  "Handsonkey": {
+   "Type": "AWS::EC2::KeyPair",
+   "Properties": {
+    "KeyName": "Handsonkey",
+    "PublicKeyMaterial": "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAvu2v6lkF59XSY3ch+Df2w/AN10EPXZ3JL2Xbqtsv13xVq9ZuzmUcdCpfa9NyjnyBoaXxymUvQSaeQCFxnjroAySOKVXaR6n6ahWFGQOYlfZHkKYg/N8pTpQht3QXNLoA8lUlrb3lyehQHxtCAhtgmx4BIaBpGM/FLaJqhu1OQ7gz0GBbG1qZOmEyrzcklkvriyPYzEESg3N9w+eM09rWvu3dK+EezAsgeFBlcsfHY5eNRmgp2iPfvz8tNZ3wgsrU/UiZHueqsMmGYS+Njjr461cx2q3EhjjPbYz8+tj3t/taZ/Jf419r9ZhT1JHm8/vUh22B5Xm31LdbMBPGvuUKPQ=="
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Handsonkey"
+   }
+  },
+  "HandsonbastionInstanceProfileB9F5819B": {
+   "Type": "AWS::IAM::InstanceProfile",
+   "Properties": {
+    "Roles": [
+     {
+      "Ref": "HandsonbastionRole77C58B98"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Handsonbastion/InstanceProfile"
+   }
+  },
+  "HandsonbastionC6EF9FAA": {
+   "Type": "AWS::EC2::Instance",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "IamInstanceProfile": {
+     "Ref": "HandsonbastionInstanceProfileB9F5819B"
+    },
+    "ImageId": {
+     "Fn::FindInMap": [
+      "HandsonbastionAmiMapB4354429",
+      {
+       "Ref": "AWS::Region"
+      },
+      "ami"
+     ]
+    },
+    "InstanceType": "m5.large",
+    "KeyName": "Handsonkey",
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "handsonbastionSGFA6BA8AC",
+       "GroupId"
+      ]
+     }
+    ],
+    "SubnetId": {
+     "Ref": "HandsonVPCpublicsubnetSubnet1Subnet34815136"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "PartnerAcademyStack/Handsonbastion"
+     }
+    ],
+    "UserData": {
+     "Fn::Base64": "#!/bin/bash\naws s3 cp s3://netappkr-wyahn-s3/public/DeployTestapp/ /opt/DeployTestapp --recursive"
+    }
+   },
+   "DependsOn": [
+    "HandsonbastionRole77C58B98"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Handsonbastion/Resource"
+   }
+  },
+  "HandsoneksRole9A8572E5": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "eks.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonEKSClusterPolicy"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-eks/Role/Resource"
+   }
+  },
+  "HandsoneksControlPlaneSecurityGroup56432B77": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "EKS Control Plane Security Group",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "HandsonVPC387F50B2"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-eks/ControlPlaneSecurityGroup/Resource"
+   }
+  },
+  "HandsoneksCreationRoleD88D95F4": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":iam::",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":root"
+          ]
+         ]
+        }
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "DependsOn": [
+    "HandsonVPCIGW52DFC891",
+    "HandsonVPCprivatesubnetSubnet1DefaultRouteF0F63285",
+    "HandsonVPCprivatesubnetSubnet1RouteTable413AFC78",
+    "HandsonVPCprivatesubnetSubnet1RouteTableAssociationA6916A37",
+    "HandsonVPCprivatesubnetSubnet1SubnetE2BC2268",
+    "HandsonVPCprivatesubnetSubnet2DefaultRouteB813BEF8",
+    "HandsonVPCprivatesubnetSubnet2RouteTable13B8461D",
+    "HandsonVPCprivatesubnetSubnet2RouteTableAssociation96BF18C3",
+    "HandsonVPCprivatesubnetSubnet2SubnetDF9F1A71",
+    "HandsonVPCpublicsubnetSubnet1DefaultRoute09DBA6DA",
+    "HandsonVPCpublicsubnetSubnet1EIP105D34CA",
+    "HandsonVPCpublicsubnetSubnet1NATGateway24A90A99",
+    "HandsonVPCpublicsubnetSubnet1RouteTableECF1561D",
+    "HandsonVPCpublicsubnetSubnet1RouteTableAssociation676637E8",
+    "HandsonVPCpublicsubnetSubnet1Subnet34815136",
+    "HandsonVPCpublicsubnetSubnet2DefaultRoute7FE38D66",
+    "HandsonVPCpublicsubnetSubnet2RouteTableDDCE2151",
+    "HandsonVPCpublicsubnetSubnet2RouteTableAssociation5FE9A59E",
+    "HandsonVPCpublicsubnetSubnet2Subnet054EF5FD",
+    "HandsonVPC387F50B2",
+    "HandsonVPCVPCGWC5525E68"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-eks/Resource/CreationRole/Resource"
+   }
+  },
+  "HandsoneksCreationRoleDefaultPolicyF866D4EA": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "iam:PassRole",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "HandsoneksRole9A8572E5",
+         "Arn"
+        ]
+       }
+      },
+      {
+       "Action": [
+        "eks:CreateCluster",
+        "eks:CreateFargateProfile",
+        "eks:DeleteCluster",
+        "eks:DescribeCluster",
+        "eks:DescribeUpdate",
+        "eks:TagResource",
+        "eks:UntagResource",
+        "eks:UpdateClusterConfig",
+        "eks:UpdateClusterVersion"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":eks:",
+           {
+            "Ref": "AWS::Region"
+           },
+           ":",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":cluster/Hands-on-eks"
+          ]
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":eks:",
+           {
+            "Ref": "AWS::Region"
+           },
+           ":",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":cluster/Hands-on-eks/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "eks:DeleteFargateProfile",
+        "eks:DescribeFargateProfile"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:",
+          {
+           "Ref": "AWS::Partition"
+          },
+          ":eks:",
+          {
+           "Ref": "AWS::Region"
+          },
+          ":",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          ":fargateprofile/Hands-on-eks/*"
+         ]
+        ]
+       }
+      },
+      {
+       "Action": [
+        "ec2:DescribeDhcpOptions",
+        "ec2:DescribeInstances",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeRouteTables",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeVpcs",
+        "iam:CreateServiceLinkedRole",
+        "iam:GetRole",
+        "iam:listAttachedRolePolicies"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "HandsoneksCreationRoleDefaultPolicyF866D4EA",
+    "Roles": [
+     {
+      "Ref": "HandsoneksCreationRoleD88D95F4"
+     }
+    ]
+   },
+   "DependsOn": [
+    "HandsonVPCIGW52DFC891",
+    "HandsonVPCprivatesubnetSubnet1DefaultRouteF0F63285",
+    "HandsonVPCprivatesubnetSubnet1RouteTable413AFC78",
+    "HandsonVPCprivatesubnetSubnet1RouteTableAssociationA6916A37",
+    "HandsonVPCprivatesubnetSubnet1SubnetE2BC2268",
+    "HandsonVPCprivatesubnetSubnet2DefaultRouteB813BEF8",
+    "HandsonVPCprivatesubnetSubnet2RouteTable13B8461D",
+    "HandsonVPCprivatesubnetSubnet2RouteTableAssociation96BF18C3",
+    "HandsonVPCprivatesubnetSubnet2SubnetDF9F1A71",
+    "HandsonVPCpublicsubnetSubnet1DefaultRoute09DBA6DA",
+    "HandsonVPCpublicsubnetSubnet1EIP105D34CA",
+    "HandsonVPCpublicsubnetSubnet1NATGateway24A90A99",
+    "HandsonVPCpublicsubnetSubnet1RouteTableECF1561D",
+    "HandsonVPCpublicsubnetSubnet1RouteTableAssociation676637E8",
+    "HandsonVPCpublicsubnetSubnet1Subnet34815136",
+    "HandsonVPCpublicsubnetSubnet2DefaultRoute7FE38D66",
+    "HandsonVPCpublicsubnetSubnet2RouteTableDDCE2151",
+    "HandsonVPCpublicsubnetSubnet2RouteTableAssociation5FE9A59E",
+    "HandsonVPCpublicsubnetSubnet2Subnet054EF5FD",
+    "HandsonVPC387F50B2",
+    "HandsonVPCVPCGWC5525E68"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-eks/Resource/CreationRole/DefaultPolicy/Resource"
+   }
+  },
+  "Handsoneks23777250": {
+   "Type": "Custom::AWSCDK-EKS-Cluster",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "awscdkawseksClusterResourceProviderNestedStackawscdkawseksClusterResourceProviderNestedStackResource9827C454",
+      "Outputs.PartnerAcademyStackawscdkawseksClusterResourceProviderframeworkonEventB5FAE5DEArn"
+     ]
+    },
+    "Config": {
+     "name": "Hands-on-eks",
+     "version": "1.21",
+     "roleArn": {
+      "Fn::GetAtt": [
+       "HandsoneksRole9A8572E5",
+       "Arn"
+      ]
+     },
+     "resourcesVpcConfig": {
+      "subnetIds": [
+       {
+        "Ref": "HandsonVPCpublicsubnetSubnet1Subnet34815136"
+       },
+       {
+        "Ref": "HandsonVPCpublicsubnetSubnet2Subnet054EF5FD"
+       },
+       {
+        "Ref": "HandsonVPCprivatesubnetSubnet1SubnetE2BC2268"
+       },
+       {
+        "Ref": "HandsonVPCprivatesubnetSubnet2SubnetDF9F1A71"
+       }
+      ],
+      "securityGroupIds": [
+       {
+        "Fn::GetAtt": [
+         "HandsoneksControlPlaneSecurityGroup56432B77",
+         "GroupId"
+        ]
+       }
+      ],
+      "endpointPublicAccess": true,
+      "endpointPrivateAccess": true
+     }
+    },
+    "AssumeRoleArn": {
+     "Fn::GetAtt": [
+      "HandsoneksCreationRoleD88D95F4",
+      "Arn"
+     ]
+    },
+    "AttributesRevision": 2
+   },
+   "DependsOn": [
+    "HandsoneksCreationRoleDefaultPolicyF866D4EA",
+    "HandsoneksCreationRoleD88D95F4",
+    "HandsonVPCIGW52DFC891",
+    "HandsonVPCprivatesubnetSubnet1DefaultRouteF0F63285",
+    "HandsonVPCprivatesubnetSubnet1RouteTable413AFC78",
+    "HandsonVPCprivatesubnetSubnet1RouteTableAssociationA6916A37",
+    "HandsonVPCprivatesubnetSubnet1SubnetE2BC2268",
+    "HandsonVPCprivatesubnetSubnet2DefaultRouteB813BEF8",
+    "HandsonVPCprivatesubnetSubnet2RouteTable13B8461D",
+    "HandsonVPCprivatesubnetSubnet2RouteTableAssociation96BF18C3",
+    "HandsonVPCprivatesubnetSubnet2SubnetDF9F1A71",
+    "HandsonVPCpublicsubnetSubnet1DefaultRoute09DBA6DA",
+    "HandsonVPCpublicsubnetSubnet1EIP105D34CA",
+    "HandsonVPCpublicsubnetSubnet1NATGateway24A90A99",
+    "HandsonVPCpublicsubnetSubnet1RouteTableECF1561D",
+    "HandsonVPCpublicsubnetSubnet1RouteTableAssociation676637E8",
+    "HandsonVPCpublicsubnetSubnet1Subnet34815136",
+    "HandsonVPCpublicsubnetSubnet2DefaultRoute7FE38D66",
+    "HandsonVPCpublicsubnetSubnet2RouteTableDDCE2151",
+    "HandsonVPCpublicsubnetSubnet2RouteTableAssociation5FE9A59E",
+    "HandsonVPCpublicsubnetSubnet2Subnet054EF5FD",
+    "HandsonVPC387F50B2",
+    "HandsonVPCVPCGWC5525E68"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-eks/Resource/Resource/Default"
+   }
+  },
+  "HandsoneksKubectlReadyBarrier60AFD4D9": {
+   "Type": "AWS::SSM::Parameter",
+   "Properties": {
+    "Type": "String",
+    "Value": "aws:cdk:eks:kubectl-ready"
+   },
+   "DependsOn": [
+    "HandsoneksCreationRoleDefaultPolicyF866D4EA",
+    "HandsoneksCreationRoleD88D95F4",
+    "Handsoneks23777250"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-eks/KubectlReadyBarrier"
+   }
+  },
+  "HandsoneksClusterSecurityGroupfrom0000080FD7FA54A": {
+   "Type": "AWS::EC2::SecurityGroupIngress",
+   "Properties": {
+    "IpProtocol": "tcp",
+    "CidrIp": "0.0.0.0/0",
+    "Description": "allow http access from the world",
+    "FromPort": 80,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "Handsoneks23777250",
+      "ClusterSecurityGroupId"
+     ]
+    },
+    "ToPort": 80
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-eks/ClusterSecurityGroup/from 0.0.0.0_0:80"
+   }
+  },
+  "HandsoneksClusterSecurityGroupfrom000004434D63A340": {
+   "Type": "AWS::EC2::SecurityGroupIngress",
+   "Properties": {
+    "IpProtocol": "tcp",
+    "CidrIp": "0.0.0.0/0",
+    "Description": "allow https access from the world",
+    "FromPort": 443,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "Handsoneks23777250",
+      "ClusterSecurityGroupId"
+     ]
+    },
+    "ToPort": 443
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-eks/ClusterSecurityGroup/from 0.0.0.0_0:443"
+   }
+  },
+  "HandsoneksMastersRole11BC756C": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":iam::",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":root"
+          ]
+         ]
+        }
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-eks/MastersRole/Resource"
+   }
+  },
+  "HandsoneksAwsAuthmanifest541BB0AB": {
+   "Type": "Custom::AWSCDK-EKS-KubernetesResource",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "awscdkawseksKubectlProviderNestedStackawscdkawseksKubectlProviderNestedStackResourceA7AEBA6B",
+      "Outputs.PartnerAcademyStackawscdkawseksKubectlProviderframeworkonEvent69FA0536Arn"
+     ]
+    },
+    "Manifest": {
+     "Fn::Join": [
+      "",
+      [
+       "[{\"apiVersion\":\"v1\",\"kind\":\"ConfigMap\",\"metadata\":{\"name\":\"aws-auth\",\"namespace\":\"kube-system\",\"labels\":{\"aws.cdk.eks/prune-c88d090cc5d439ef7389e422a8c29fa8d2959cb726\":\"\"}},\"data\":{\"mapRoles\":\"[{\\\"rolearn\\\":\\\"",
+       {
+        "Fn::GetAtt": [
+         "HandsoneksMastersRole11BC756C",
+         "Arn"
+        ]
+       },
+       "\\\",\\\"username\\\":\\\"",
+       {
+        "Fn::GetAtt": [
+         "HandsoneksMastersRole11BC756C",
+         "Arn"
+        ]
+       },
+       "\\\",\\\"groups\\\":[\\\"system:masters\\\"]},{\\\"rolearn\\\":\\\"",
+       {
+        "Fn::GetAtt": [
+         "HandsoneksNodegroupDefaultCapacityNodeGroupRole521332FC",
+         "Arn"
+        ]
+       },
+       "\\\",\\\"username\\\":\\\"system:node:{{EC2PrivateDNSName}}\\\",\\\"groups\\\":[\\\"system:bootstrappers\\\",\\\"system:nodes\\\"]},{\\\"rolearn\\\":\\\"",
+       {
+        "Fn::GetAtt": [
+         "HandsonbastionRole77C58B98",
+         "Arn"
+        ]
+       },
+       "\\\",\\\"username\\\":\\\"",
+       {
+        "Fn::GetAtt": [
+         "HandsonbastionRole77C58B98",
+         "Arn"
+        ]
+       },
+       "\\\",\\\"groups\\\":[\\\"system:masters\\\"]}]\",\"mapUsers\":\"[{\\\"userarn\\\":\\\"",
+       {
+        "Fn::GetAtt": [
+         "HandsOnAdmin66510502",
+         "Arn"
+        ]
+       },
+       "\\\",\\\"username\\\":\\\"",
+       {
+        "Fn::GetAtt": [
+         "HandsOnAdmin66510502",
+         "Arn"
+        ]
+       },
+       "\\\",\\\"groups\\\":[\\\"system:masters\\\"]}]\",\"mapAccounts\":\"[]\"}}]"
+      ]
+     ]
+    },
+    "ClusterName": {
+     "Ref": "Handsoneks23777250"
+    },
+    "RoleArn": {
+     "Fn::GetAtt": [
+      "HandsoneksCreationRoleD88D95F4",
+      "Arn"
+     ]
+    },
+    "PruneLabel": "aws.cdk.eks/prune-c88d090cc5d439ef7389e422a8c29fa8d2959cb726",
+    "Overwrite": true
+   },
+   "DependsOn": [
+    "HandsoneksKubectlReadyBarrier60AFD4D9"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-eks/AwsAuth/manifest/Resource/Default"
+   }
+  },
+  "HandsoneksOpenIdConnectProvider196AD52B": {
+   "Type": "Custom::AWSCDKOpenIdConnectProvider",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderHandlerF2C543E0",
+      "Arn"
+     ]
+    },
+    "ClientIDList": [
+     "sts.amazonaws.com"
+    ],
+    "ThumbprintList": [
+     "9e99a48a9960b14926bb7f3b02e22da2b0ab7280"
+    ],
+    "Url": {
+     "Fn::GetAtt": [
+      "Handsoneks23777250",
+      "OpenIdConnectIssuerUrl"
+     ]
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-eks/OpenIdConnectProvider/Resource/Default"
+   }
+  },
+  "HandsoneksNodegroupDefaultCapacityNodeGroupRole521332FC": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": {
+         "Fn::Join": [
+          "",
+          [
+           "ec2.",
+           {
+            "Ref": "AWS::URLSuffix"
+           }
+          ]
+         ]
+        }
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonEKSWorkerNodePolicy"
+       ]
+      ]
+     },
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonEKS_CNI_Policy"
+       ]
+      ]
+     },
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-eks/NodegroupDefaultCapacity/NodeGroupRole/Resource"
+   }
+  },
+  "HandsoneksNodegroupDefaultCapacityCD3D06DB": {
+   "Type": "AWS::EKS::Nodegroup",
+   "Properties": {
+    "ClusterName": {
+     "Ref": "Handsoneks23777250"
+    },
+    "NodeRole": {
+     "Fn::GetAtt": [
+      "HandsoneksNodegroupDefaultCapacityNodeGroupRole521332FC",
+      "Arn"
+     ]
+    },
+    "Subnets": [
+     {
+      "Ref": "HandsonVPCprivatesubnetSubnet1SubnetE2BC2268"
+     },
+     {
+      "Ref": "HandsonVPCprivatesubnetSubnet2SubnetDF9F1A71"
+     }
+    ],
+    "AmiType": "AL2_x86_64",
+    "ForceUpdateEnabled": true,
+    "InstanceTypes": [
+     "m5.large"
+    ],
+    "ScalingConfig": {
+     "DesiredSize": 1,
+     "MaxSize": 1,
+     "MinSize": 1
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-eks/NodegroupDefaultCapacity/Resource"
+   }
+  },
+  "awscdkawseksClusterResourceProviderNestedStackawscdkawseksClusterResourceProviderNestedStackResource9827C454": {
+   "Type": "AWS::CloudFormation::Stack",
+   "Properties": {
+    "TemplateURL": {
+     "Fn::Join": [
+      "",
+      [
+       "https://s3.",
+       {
+        "Ref": "AWS::Region"
+       },
+       ".",
+       {
+        "Ref": "AWS::URLSuffix"
+       },
+       "/",
+       {
+        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+       },
+       "/aabc39738c03e4fc6f9e7d80d06f1dcd0fd18a0a570f175cc782d261e372fbd4.json"
+      ]
+     ]
+    },
+    "Parameters": {
+     "referencetoPartnerAcademyStackHandsoneksCreationRole9349EE73Arn": {
+      "Fn::GetAtt": [
+       "HandsoneksCreationRoleD88D95F4",
+       "Arn"
+      ]
+     }
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/@aws-cdk--aws-eks.ClusterResourceProvider.NestedStack/@aws-cdk--aws-eks.ClusterResourceProvider.NestedStackResource",
+    "aws:asset:path": "PartnerAcademyStackawscdkawseksClusterResourceProvider100ADF48.nested.template.json",
+    "aws:asset:property": "TemplateURL"
+   }
+  },
+  "awscdkawseksKubectlProviderNestedStackawscdkawseksKubectlProviderNestedStackResourceA7AEBA6B": {
+   "Type": "AWS::CloudFormation::Stack",
+   "Properties": {
+    "TemplateURL": {
+     "Fn::Join": [
+      "",
+      [
+       "https://s3.",
+       {
+        "Ref": "AWS::Region"
+       },
+       ".",
+       {
+        "Ref": "AWS::URLSuffix"
+       },
+       "/",
+       {
+        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+       },
+       "/c08d1d7d43885303c24c1f309cd158aadc6452ecefeab4f819098d8dfc61361b.json"
+      ]
+     ]
+    },
+    "Parameters": {
+     "referencetoPartnerAcademyStackHandsoneksC462D608Arn": {
+      "Fn::GetAtt": [
+       "Handsoneks23777250",
+       "Arn"
+      ]
+     },
+     "referencetoPartnerAcademyStackHandsoneksCreationRole9349EE73Arn": {
+      "Fn::GetAtt": [
+       "HandsoneksCreationRoleD88D95F4",
+       "Arn"
+      ]
+     },
+     "referencetoPartnerAcademyStackHandsonVPCprivatesubnetSubnet1Subnet5161D29ARef": {
+      "Ref": "HandsonVPCprivatesubnetSubnet1SubnetE2BC2268"
+     },
+     "referencetoPartnerAcademyStackHandsonVPCprivatesubnetSubnet2Subnet9266B550Ref": {
+      "Ref": "HandsonVPCprivatesubnetSubnet2SubnetDF9F1A71"
+     },
+     "referencetoPartnerAcademyStackHandsoneksC462D608ClusterSecurityGroupId": {
+      "Fn::GetAtt": [
+       "Handsoneks23777250",
+       "ClusterSecurityGroupId"
+      ]
+     }
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/@aws-cdk--aws-eks.KubectlProvider.NestedStack/@aws-cdk--aws-eks.KubectlProvider.NestedStackResource",
+    "aws:asset:path": "PartnerAcademyStackawscdkawseksKubectlProvider8B3C1392.nested.template.json",
+    "aws:asset:property": "TemplateURL"
+   }
+  },
+  "PartnerAcademyStackHandsoneks54056D96AlbControlleralbsaConditionJsonF4DDCC72": {
+   "Type": "Custom::AWSCDKCfnJson",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "AWSCDKCfnUtilsProviderCustomResourceProviderHandlerCF82AA57",
+      "Arn"
+     ]
+    },
+    "Value": {
+     "Fn::Join": [
+      "",
+      [
+       "{\"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           ":oidc-provider/",
+           {
+            "Ref": "HandsoneksOpenIdConnectProvider196AD52B"
+           }
+          ]
+         }
+        ]
+       },
+       ":aud\":\"sts.amazonaws.com\",\"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           ":oidc-provider/",
+           {
+            "Ref": "HandsoneksOpenIdConnectProvider196AD52B"
+           }
+          ]
+         }
+        ]
+       },
+       ":sub\":\"system:serviceaccount:kube-system:aws-load-balancer-controller\"}"
+      ]
+     ]
+    }
+   },
+   "DependsOn": [
+    "HandsoneksNodegroupDefaultCapacityNodeGroupRole521332FC",
+    "HandsoneksNodegroupDefaultCapacityCD3D06DB"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/PartnerAcademyStackHandsoneks54056D96-AlbController/alb-sa/ConditionJson/Resource/Default"
+   }
+  },
+  "PartnerAcademyStackHandsoneks54056D96AlbControlleralbsaRoleA780F51A": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRoleWithWebIdentity",
+       "Condition": {
+        "StringEquals": {
+         "Fn::GetAtt": [
+          "PartnerAcademyStackHandsoneks54056D96AlbControlleralbsaConditionJsonF4DDCC72",
+          "Value"
+         ]
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "Federated": {
+         "Ref": "HandsoneksOpenIdConnectProvider196AD52B"
+        }
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "DependsOn": [
+    "HandsoneksNodegroupDefaultCapacityNodeGroupRole521332FC",
+    "HandsoneksNodegroupDefaultCapacityCD3D06DB"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/PartnerAcademyStackHandsoneks54056D96-AlbController/alb-sa/Role/Resource"
+   }
+  },
+  "PartnerAcademyStackHandsoneks54056D96AlbControlleralbsaRoleDefaultPolicyDAFC1AA5": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "iam:CreateServiceLinkedRole",
+       "Condition": {
+        "StringEquals": {
+         "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
+        }
+       },
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "acm:DescribeCertificate",
+        "acm:ListCertificates",
+        "cognito-idp:DescribeUserPoolClient",
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:CreateSecurityGroup",
+        "ec2:DescribeAccountAttributes",
+        "ec2:DescribeAddresses",
+        "ec2:DescribeAvailabilityZones",
+        "ec2:DescribeCoipPools",
+        "ec2:DescribeInstances",
+        "ec2:DescribeInternetGateways",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeTags",
+        "ec2:DescribeVpcPeeringConnections",
+        "ec2:DescribeVpcs",
+        "ec2:GetCoipPoolUsage",
+        "ec2:RevokeSecurityGroupIngress",
+        "elasticloadbalancing:AddListenerCertificates",
+        "elasticloadbalancing:CreateListener",
+        "elasticloadbalancing:CreateRule",
+        "elasticloadbalancing:DeleteListener",
+        "elasticloadbalancing:DeleteRule",
+        "elasticloadbalancing:DescribeListenerCertificates",
+        "elasticloadbalancing:DescribeListeners",
+        "elasticloadbalancing:DescribeLoadBalancerAttributes",
+        "elasticloadbalancing:DescribeLoadBalancers",
+        "elasticloadbalancing:DescribeRules",
+        "elasticloadbalancing:DescribeSSLPolicies",
+        "elasticloadbalancing:DescribeTags",
+        "elasticloadbalancing:DescribeTargetGroupAttributes",
+        "elasticloadbalancing:DescribeTargetGroups",
+        "elasticloadbalancing:DescribeTargetHealth",
+        "elasticloadbalancing:ModifyListener",
+        "elasticloadbalancing:ModifyRule",
+        "elasticloadbalancing:RemoveListenerCertificates",
+        "elasticloadbalancing:SetWebAcl",
+        "iam:GetServerCertificate",
+        "iam:ListServerCertificates",
+        "shield:CreateProtection",
+        "shield:DeleteProtection",
+        "shield:DescribeProtection",
+        "shield:GetSubscriptionState",
+        "waf-regional:AssociateWebACL",
+        "waf-regional:DisassociateWebACL",
+        "waf-regional:GetWebACL",
+        "waf-regional:GetWebACLForResource",
+        "wafv2:AssociateWebACL",
+        "wafv2:DisassociateWebACL",
+        "wafv2:GetWebACL",
+        "wafv2:GetWebACLForResource"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": "ec2:CreateTags",
+       "Condition": {
+        "StringEquals": {
+         "ec2:CreateAction": "CreateSecurityGroup"
+        },
+        "Null": {
+         "aws:RequestTag/elbv2.k8s.aws/cluster": "false"
+        }
+       },
+       "Effect": "Allow",
+       "Resource": "arn:aws:ec2:*:*:security-group/*"
+      },
+      {
+       "Action": [
+        "ec2:CreateTags",
+        "ec2:DeleteTags"
+       ],
+       "Condition": {
+        "Null": {
+         "aws:RequestTag/elbv2.k8s.aws/cluster": "true",
+         "aws:ResourceTag/elbv2.k8s.aws/cluster": "false"
+        }
+       },
+       "Effect": "Allow",
+       "Resource": "arn:aws:ec2:*:*:security-group/*"
+      },
+      {
+       "Action": [
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:DeleteSecurityGroup",
+        "ec2:RevokeSecurityGroupIngress",
+        "elasticloadbalancing:DeleteLoadBalancer",
+        "elasticloadbalancing:DeleteTargetGroup",
+        "elasticloadbalancing:ModifyLoadBalancerAttributes",
+        "elasticloadbalancing:ModifyTargetGroup",
+        "elasticloadbalancing:ModifyTargetGroupAttributes",
+        "elasticloadbalancing:SetIpAddressType",
+        "elasticloadbalancing:SetSecurityGroups",
+        "elasticloadbalancing:SetSubnets"
+       ],
+       "Condition": {
+        "Null": {
+         "aws:ResourceTag/elbv2.k8s.aws/cluster": "false"
+        }
+       },
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "elasticloadbalancing:CreateLoadBalancer",
+        "elasticloadbalancing:CreateTargetGroup"
+       ],
+       "Condition": {
+        "Null": {
+         "aws:RequestTag/elbv2.k8s.aws/cluster": "false"
+        }
+       },
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "elasticloadbalancing:AddTags",
+        "elasticloadbalancing:RemoveTags"
+       ],
+       "Condition": {
+        "Null": {
+         "aws:RequestTag/elbv2.k8s.aws/cluster": "true",
+         "aws:ResourceTag/elbv2.k8s.aws/cluster": "false"
+        }
+       },
+       "Effect": "Allow",
+       "Resource": [
+        "arn:aws:elasticloadbalancing:*:*:loadbalancer/app/*/*",
+        "arn:aws:elasticloadbalancing:*:*:loadbalancer/net/*/*",
+        "arn:aws:elasticloadbalancing:*:*:targetgroup/*/*"
+       ]
+      },
+      {
+       "Action": [
+        "elasticloadbalancing:AddTags",
+        "elasticloadbalancing:RemoveTags"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        "arn:aws:elasticloadbalancing:*:*:listener-rule/app/*/*/*",
+        "arn:aws:elasticloadbalancing:*:*:listener-rule/net/*/*/*",
+        "arn:aws:elasticloadbalancing:*:*:listener/app/*/*/*",
+        "arn:aws:elasticloadbalancing:*:*:listener/net/*/*/*"
+       ]
+      },
+      {
+       "Action": [
+        "elasticloadbalancing:DeregisterTargets",
+        "elasticloadbalancing:RegisterTargets"
+       ],
+       "Effect": "Allow",
+       "Resource": "arn:aws:elasticloadbalancing:*:*:targetgroup/*/*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "PartnerAcademyStackHandsoneks54056D96AlbControlleralbsaRoleDefaultPolicyDAFC1AA5",
+    "Roles": [
+     {
+      "Ref": "PartnerAcademyStackHandsoneks54056D96AlbControlleralbsaRoleA780F51A"
+     }
+    ]
+   },
+   "DependsOn": [
+    "HandsoneksNodegroupDefaultCapacityNodeGroupRole521332FC",
+    "HandsoneksNodegroupDefaultCapacityCD3D06DB"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/PartnerAcademyStackHandsoneks54056D96-AlbController/alb-sa/Role/DefaultPolicy/Resource"
+   }
+  },
+  "PartnerAcademyStackHandsoneks54056D96AlbControlleralbsamanifestalbsaServiceAccountResource19513AC9": {
+   "Type": "Custom::AWSCDK-EKS-KubernetesResource",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "awscdkawseksKubectlProviderNestedStackawscdkawseksKubectlProviderNestedStackResourceA7AEBA6B",
+      "Outputs.PartnerAcademyStackawscdkawseksKubectlProviderframeworkonEvent69FA0536Arn"
+     ]
+    },
+    "Manifest": {
+     "Fn::Join": [
+      "",
+      [
+       "[{\"apiVersion\":\"v1\",\"kind\":\"ServiceAccount\",\"metadata\":{\"name\":\"aws-load-balancer-controller\",\"namespace\":\"kube-system\",\"labels\":{\"aws.cdk.eks/prune-c8f69eb37c4b792f15a7fbbef209d3837dc34396a4\":\"\",\"app.kubernetes.io/name\":\"aws-load-balancer-controller\"},\"annotations\":{\"eks.amazonaws.com/role-arn\":\"",
+       {
+        "Fn::GetAtt": [
+         "PartnerAcademyStackHandsoneks54056D96AlbControlleralbsaRoleA780F51A",
+         "Arn"
+        ]
+       },
+       "\"}}}]"
+      ]
+     ]
+    },
+    "ClusterName": {
+     "Ref": "Handsoneks23777250"
+    },
+    "RoleArn": {
+     "Fn::GetAtt": [
+      "HandsoneksCreationRoleD88D95F4",
+      "Arn"
+     ]
+    },
+    "PruneLabel": "aws.cdk.eks/prune-c8f69eb37c4b792f15a7fbbef209d3837dc34396a4"
+   },
+   "DependsOn": [
+    "HandsoneksKubectlReadyBarrier60AFD4D9",
+    "HandsoneksNodegroupDefaultCapacityNodeGroupRole521332FC",
+    "HandsoneksNodegroupDefaultCapacityCD3D06DB"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/PartnerAcademyStackHandsoneks54056D96-AlbController/alb-sa/manifest-alb-saServiceAccountResource/Resource/Default"
+   }
+  },
+  "PartnerAcademyStackHandsoneks54056D96AlbController9C2FD801": {
+   "Type": "Custom::AWSCDK-EKS-HelmChart",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "awscdkawseksKubectlProviderNestedStackawscdkawseksKubectlProviderNestedStackResourceA7AEBA6B",
+      "Outputs.PartnerAcademyStackawscdkawseksKubectlProviderframeworkonEvent69FA0536Arn"
+     ]
+    },
+    "ClusterName": {
+     "Ref": "Handsoneks23777250"
+    },
+    "RoleArn": {
+     "Fn::GetAtt": [
+      "HandsoneksCreationRoleD88D95F4",
+      "Arn"
+     ]
+    },
+    "Release": "aws-load-balancer-controller",
+    "Chart": "aws-load-balancer-controller",
+    "Version": "1.4.1",
+    "Wait": true,
+    "Timeout": "900s",
+    "Values": {
+     "Fn::Join": [
+      "",
+      [
+       "{\"clusterName\":\"",
+       {
+        "Ref": "Handsoneks23777250"
+       },
+       "\",\"serviceAccount\":{\"create\":false,\"name\":\"aws-load-balancer-controller\"},\"region\":\"",
+       {
+        "Ref": "AWS::Region"
+       },
+       "\",\"vpcId\":\"",
+       {
+        "Ref": "HandsonVPC387F50B2"
+       },
+       "\",\"image\":{\"repository\":\"602401143452.dkr.ecr.us-west-2.amazonaws.com/amazon/aws-load-balancer-controller\",\"tag\":\"v2.4.1\"}}"
+      ]
+     ]
+    },
+    "Namespace": "kube-system",
+    "Repository": "https://aws.github.io/eks-charts",
+    "CreateNamespace": true
+   },
+   "DependsOn": [
+    "HandsoneksAwsAuthmanifest541BB0AB",
+    "HandsoneksKubectlReadyBarrier60AFD4D9",
+    "HandsoneksNodegroupDefaultCapacityNodeGroupRole521332FC",
+    "HandsoneksNodegroupDefaultCapacityCD3D06DB",
+    "HandsoneksOpenIdConnectProvider196AD52B",
+    "PartnerAcademyStackHandsoneks54056D96AlbControlleralbsaConditionJsonF4DDCC72",
+    "PartnerAcademyStackHandsoneks54056D96AlbControlleralbsamanifestalbsaServiceAccountResource19513AC9",
+    "PartnerAcademyStackHandsoneks54056D96AlbControlleralbsaRoleDefaultPolicyDAFC1AA5",
+    "PartnerAcademyStackHandsoneks54056D96AlbControlleralbsaRoleA780F51A"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/PartnerAcademyStackHandsoneks54056D96-AlbController/Resource/Resource/Default"
+   }
+  },
+  "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderRole517FED65": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Version": "2012-10-17",
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ]
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Sub": "arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+     }
+    ],
+    "Policies": [
+     {
+      "PolicyName": "Inline",
+      "PolicyDocument": {
+       "Version": "2012-10-17",
+       "Statement": [
+        {
+         "Effect": "Allow",
+         "Resource": "*",
+         "Action": [
+          "iam:CreateOpenIDConnectProvider",
+          "iam:DeleteOpenIDConnectProvider",
+          "iam:UpdateOpenIDConnectProviderThumbprint",
+          "iam:AddClientIDToOpenIDConnectProvider",
+          "iam:RemoveClientIDFromOpenIDConnectProvider"
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Role"
+   }
+  },
+  "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderHandlerF2C543E0": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "494e82802f093e633e580188c7937aef9d6ee0ad4a788d58c647e6bea26d2915.zip"
+    },
+    "Timeout": 900,
+    "MemorySize": 128,
+    "Handler": "__entrypoint__.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderRole517FED65",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs14.x"
+   },
+   "DependsOn": [
+    "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderRole517FED65"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Handler",
+    "aws:asset:path": "asset.494e82802f093e633e580188c7937aef9d6ee0ad4a788d58c647e6bea26d2915",
+    "aws:asset:property": "Code"
+   }
+  },
+  "AWSCDKCfnUtilsProviderCustomResourceProviderRoleFE0EE867": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Version": "2012-10-17",
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ]
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Sub": "arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/AWSCDKCfnUtilsProviderCustomResourceProvider/Role"
+   }
+  },
+  "AWSCDKCfnUtilsProviderCustomResourceProviderHandlerCF82AA57": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "a97987a1729ad440a42cac8aa979b932696afb2dc47dec373aad1a333a1cdbfc.zip"
+    },
+    "Timeout": 900,
+    "MemorySize": 128,
+    "Handler": "__entrypoint__.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "AWSCDKCfnUtilsProviderCustomResourceProviderRoleFE0EE867",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs14.x"
+   },
+   "DependsOn": [
+    "AWSCDKCfnUtilsProviderCustomResourceProviderRoleFE0EE867"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/AWSCDKCfnUtilsProviderCustomResourceProvider/Handler",
+    "aws:asset:path": "asset.a97987a1729ad440a42cac8aa979b932696afb2dc47dec373aad1a333a1cdbfc",
+    "aws:asset:property": "Code"
+   }
+  },
+  "HandsOnAdmin66510502": {
+   "Type": "AWS::IAM::User",
+   "Properties": {
+    "LoginProfile": {
+     "Password": "HandsOnAdmin123!@#"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AdministratorAccess"
+       ]
+      ]
+     }
+    ],
+    "UserName": "HandsOnAdmin"
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/HandsOnAdmin/Resource"
+   }
+  },
+  "HandsonCloudmangerRole997D2BAC": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":iam::952013314444:root"
+          ]
+         ]
+        }
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Description": "Netapp Pertner Summit Hands on Cloudmanager Role"
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/HandsonCloudmangerRole/Resource"
+   }
+  },
+  "HandsonCloudmangerPolicy6A3BA2EF": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "ce:GetCostAndUsage",
+        "ce:GetDimensionValues",
+        "ce:GetReservationUtilization",
+        "ce:GetTags",
+        "cloudformation:CreateStack",
+        "cloudformation:DeleteStack",
+        "cloudformation:DescribeStackEvents",
+        "cloudformation:DescribeStacks",
+        "cloudformation:ValidateTemplate",
+        "ec2:AssignPrivateIpAddresses",
+        "ec2:AssociateIamInstanceProfile",
+        "ec2:AuthorizeSecurityGroupEgress",
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:CreateNetworkInterface",
+        "ec2:CreatePlacementGroup",
+        "ec2:CreateRoute",
+        "ec2:CreateSecurityGroup",
+        "ec2:CreateSnapshot",
+        "ec2:CreateTags",
+        "ec2:CreateVolume",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DeletePlacementGroup",
+        "ec2:DeleteRoute",
+        "ec2:DeleteSecurityGroup",
+        "ec2:DeleteSnapshot",
+        "ec2:DeleteTags",
+        "ec2:DescribeDhcpOptions",
+        "ec2:DescribeIamInstanceProfileAssociations",
+        "ec2:DescribeImages",
+        "ec2:DescribeInstanceAttribute",
+        "ec2:DescribeInstanceStatus",
+        "ec2:DescribeInstances",
+        "ec2:DescribeKeyPairs",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribePlacementGroups",
+        "ec2:DescribeRegions",
+        "ec2:DescribeReservedInstancesOfferings",
+        "ec2:DescribeRouteTables",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSnapshots",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeTags",
+        "ec2:DescribeVolumes",
+        "ec2:DescribeVolumesModifications",
+        "ec2:DescribeVpcs",
+        "ec2:DisassociateIamInstanceProfile",
+        "ec2:GetConsoleOutput",
+        "ec2:ModifyInstanceAttribute",
+        "ec2:ModifyNetworkInterfaceAttribute",
+        "ec2:ModifyVolume",
+        "ec2:ModifyVolumeAttribute",
+        "ec2:ReplaceRoute",
+        "ec2:RevokeSecurityGroupEgress",
+        "ec2:RevokeSecurityGroupIngress",
+        "ec2:RunInstances",
+        "ec2:UnassignPrivateIpAddresses",
+        "fsx:Describe*",
+        "fsx:List*",
+        "iam:AddRoleToInstanceProfile",
+        "iam:CreateInstanceProfile",
+        "iam:CreateRole",
+        "iam:DeleteInstanceProfile",
+        "iam:DeleteRole",
+        "iam:DeleteRolePolicy",
+        "iam:GetRole",
+        "iam:GetRolePolicy",
+        "iam:ListInstanceProfiles",
+        "iam:PassRole",
+        "iam:PutRolePolicy",
+        "iam:RemoveRoleFromInstanceProfile",
+        "kms:CreateGrant",
+        "kms:Describe*",
+        "kms:List*",
+        "kms:ReEncrypt*",
+        "s3:CreateBucket",
+        "s3:DeleteObject",
+        "s3:DeleteObjectVersion",
+        "s3:GetBucketAcl",
+        "s3:GetBucketLocation",
+        "s3:GetBucketPolicy",
+        "s3:GetBucketPolicyStatus",
+        "s3:GetBucketPublicAccessBlock",
+        "s3:GetBucketTagging",
+        "s3:GetLifecycleConfiguration",
+        "s3:GetObject",
+        "s3:GetObjectTagging",
+        "s3:ListAllMyBuckets",
+        "s3:ListBucket",
+        "s3:ListBucketVersions",
+        "s3:PutObject",
+        "s3:PutObjectTagging",
+        "sts:AssumeRole",
+        "sts:DecodeAuthorizationMessage"
+       ],
+       "Effect": "Allow",
+       "Resource": "*",
+       "Sid": "cvoServicePolicy"
+      },
+      {
+       "Action": [
+        "athena:GetQueryExecution",
+        "athena:GetQueryResults",
+        "athena:StartQueryExecution",
+        "athena:StopQueryExecution",
+        "cloudformation:CreateStack",
+        "cloudformation:DeleteStack",
+        "cloudformation:DescribeStacks",
+        "ec2:CreateSecurityGroup",
+        "ec2:CreateTags",
+        "ec2:CreateVolume",
+        "ec2:DescribeImages",
+        "ec2:DescribeInstanceAttribute",
+        "ec2:DescribeInstanceStatus",
+        "ec2:DescribeInstances",
+        "ec2:DescribeRegions",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeVpcs",
+        "ec2:RunInstances",
+        "ec2:StartInstances",
+        "ec2:StopInstances",
+        "ec2:TerminateInstances",
+        "ec2:describeVpcEndpoints",
+        "glue:BatchDeletePartition",
+        "glue:CreateDatabase",
+        "glue:CreateTable",
+        "kms:Describe*",
+        "kms:List*",
+        "kms:ListAliases"
+       ],
+       "Effect": "Allow",
+       "Resource": "*",
+       "Sid": "backupPolicy"
+      },
+      {
+       "Action": [
+        "s3:AbortMultipartUpload",
+        "s3:CreateBucket",
+        "s3:DeleteBucket",
+        "s3:DeleteObject",
+        "s3:DeleteObjectVersion",
+        "s3:GetBucketAcl",
+        "s3:GetBucketLocation",
+        "s3:GetLifecycleConfiguration",
+        "s3:GetObject",
+        "s3:ListAllMyBuckets",
+        "s3:ListBucket",
+        "s3:ListBucketMultipartUploads",
+        "s3:ListBucketVersions",
+        "s3:ListMultipartUploadParts",
+        "s3:PutBucketAcl",
+        "s3:PutBucketPublicAccessBlock",
+        "s3:PutBucketTagging",
+        "s3:PutEncryptionConfiguration",
+        "s3:PutLifecycleConfiguration",
+        "s3:PutObject"
+       ],
+       "Effect": "Allow",
+       "Resource": "arn:aws:s3:::netapp-backup-*",
+       "Sid": "backupS3Policy"
+      },
+      {
+       "Action": [
+        "ec2:CreateTags",
+        "ec2:DeleteTags",
+        "ec2:DescribeTags",
+        "tag:TagResources",
+        "tag:UntagResources",
+        "tag:getResources",
+        "tag:getTagKeys",
+        "tag:getTagValues"
+       ],
+       "Effect": "Allow",
+       "Resource": "*",
+       "Sid": "tagServicePolicy"
+      },
+      {
+       "Action": [
+        "s3:CreateBucket",
+        "s3:DeleteBucket",
+        "s3:GetBucketAcl",
+        "s3:GetBucketPolicy",
+        "s3:GetBucketPolicyStatus",
+        "s3:GetBucketPublicAccessBlock",
+        "s3:GetLifecycleConfiguration",
+        "s3:ListBucketVersions",
+        "s3:PutBucketPublicAccessBlock",
+        "s3:PutBucketTagging",
+        "s3:PutLifecycleConfiguration"
+       ],
+       "Effect": "Allow",
+       "Resource": "arn:aws:s3:::fabric-pool*",
+       "Sid": "fabricPoolS3Policy"
+      },
+      {
+       "Action": "ec2:DescribeRegions",
+       "Effect": "Allow",
+       "Resource": "*",
+       "Sid": "fabricPoolPolicy"
+      },
+      {
+       "Action": [
+        "ec2:StartInstances",
+        "ec2:StopInstances",
+        "ec2:TerminateInstances"
+       ],
+       "Condition": {
+        "StringLike": {
+         "ec2:ResourceTag/netapp-adc-manager": "*"
+        }
+       },
+       "Effect": "Allow",
+       "Resource": "arn:aws:ec2:*:*:instance/*"
+      },
+      {
+       "Action": [
+        "ec2:AttachVolume",
+        "ec2:DetachVolume",
+        "ec2:StartInstances",
+        "ec2:TerminateInstances"
+       ],
+       "Condition": {
+        "StringLike": {
+         "ec2:ResourceTag/GFCInstance": "*"
+        }
+       },
+       "Effect": "Allow",
+       "Resource": "arn:aws:ec2:*:*:instance/*"
+      },
+      {
+       "Action": [
+        "ec2:AttachVolume",
+        "ec2:DeleteVolume",
+        "ec2:DetachVolume",
+        "ec2:StartInstances",
+        "ec2:StopInstances",
+        "ec2:TerminateInstances"
+       ],
+       "Condition": {
+        "StringLike": {
+         "ec2:ResourceTag/WorkingEnvironment": "*"
+        }
+       },
+       "Effect": "Allow",
+       "Resource": "arn:aws:ec2:*:*:instance/*"
+      },
+      {
+       "Action": [
+        "ec2:AttachVolume",
+        "ec2:DetachVolume"
+       ],
+       "Effect": "Allow",
+       "Resource": "arn:aws:ec2:*:*:volume/*"
+      },
+      {
+       "Action": "ec2:DeleteVolume",
+       "Condition": {
+        "StringLike": {
+         "ec2:ResourceTag/WorkingEnvironment": "*"
+        }
+       },
+       "Effect": "Allow",
+       "Resource": "arn:aws:ec2:*:*:volume/*"
+      },
+      {
+       "Action": [
+        "ec2:DescribeRegions",
+        "eks:DescribeCluster",
+        "eks:ListClusters",
+        "iam:ListInstanceProfiles"
+       ],
+       "Effect": "Allow",
+       "Resource": "*",
+       "Sid": "K8sServicePolicy"
+      },
+      {
+       "Action": [
+        "cloudformation:DescribeStacks",
+        "cloudformation:ListStacks",
+        "cloudwatch:GetMetricStatistics"
+       ],
+       "Effect": "Allow",
+       "Resource": "*",
+       "Sid": "GFCservicePolicy"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "HandsonCloudmangerPolicy6A3BA2EF",
+    "Roles": [
+     {
+      "Ref": "HandsonCloudmangerRole997D2BAC"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/HandsonCloudmangerPolicy/Resource"
+   }
+  },
+  "HandsonOCCMFSxE2658C19": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "ec2:CreateTags",
+        "ec2:Describe*",
+        "fsx:*",
+        "iam:CreateServiceLinkedRole",
+        "kms:CreateGrant",
+        "kms:Describe*",
+        "kms:List*"
+       ],
+       "Effect": "Allow",
+       "Resource": "*",
+       "Sid": "createfsx"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "HandsonOCCMFSxE2658C19",
+    "Roles": [
+     {
+      "Ref": "HandsonCloudmangerRole997D2BAC"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/HandsonOCCMFSx/Resource"
+   }
+  },
+  "Handsonfsx": {
+   "Type": "AWS::FSx::FileSystem",
+   "Properties": {
+    "FileSystemType": "ONTAP",
+    "SubnetIds": [
+     {
+      "Ref": "HandsonVPCprivatesubnetSubnet1SubnetE2BC2268"
+     },
+     {
+      "Ref": "HandsonVPCprivatesubnetSubnet2SubnetDF9F1A71"
+     }
+    ],
+    "OntapConfiguration": {
+     "AutomaticBackupRetentionDays": 0,
+     "DeploymentType": "MULTI_AZ_1",
+     "DiskIopsConfiguration": {
+      "Mode": "AUTOMATIC"
+     },
+     "FsxAdminPassword": "Netapp1!",
+     "PreferredSubnetId": {
+      "Ref": "HandsonVPCprivatesubnetSubnet1SubnetE2BC2268"
+     },
+     "RouteTableIds": [
+      {
+       "Ref": "HandsonVPCprivatesubnetSubnet1RouteTable413AFC78"
+      },
+      {
+       "Ref": "HandsonVPCpublicsubnetSubnet1RouteTableECF1561D"
+      }
+     ],
+     "ThroughputCapacity": 128
+    },
+    "StorageCapacity": 1024
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/Hands-on-fsx"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11Sy26DMBD8lt4d95FTjwj1QaukKLS9VsYsyTZgI3udFCH+vQs0Je1pZ4fZ1YyXG7lcyqsLdfQLXewXFeayy0jpvWDqowN9I7v3Rou4NO9pLNKQV6izkBuggZvRxgaCV5VXMPMzF3lvNSpCa37FA7hL0qGsFT0ogqNqRerwwHBenBgCx/gkmJz8dBGx110NhkQGOjik9sHZ0Iwe/hPP0KYKnUiMJ2U0TNtn/GcgMVsH3vcCVS27jZ1yneppLHW2RKZSy88yevtBbx7c0A61F7D3sour4DmKiI4+CrQTzyEfg4FfKYMleBIvDZikiK0xoIl3H7DggbUtYHsKMTdRlbOSnK0qFmXgDqgh0toGfo1HqOp4pxz1ovRfkgfv2WfWsoO6FxvwNrgp9Uo1DZqtiNmdrc+/nOOXQE2YTj7+HQye/HDMP1O/lvneQKzcjptLw0YLHK7fi7SlnTWXS3krry8+PeLCsWGsQW6m+g2S2mPLkwIAAA=="
+   },
+   "Metadata": {
+    "aws:cdk:path": "PartnerAcademyStack/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Mappings": {
+  "HandsonbastionAmiMapB4354429": {
+   "ap-northeast-2": {
+    "ami": "ami-0f66e1efa1404fdaf"
+   }
+  }
+ },
+ "Outputs": {
+  "HandsoneksConfigCommandA7A73629": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "aws eks update-kubeconfig --name ",
+      {
+       "Ref": "Handsoneks23777250"
+      },
+      " --region ",
+      {
+       "Ref": "AWS::Region"
+      },
+      " --role-arn ",
+      {
+       "Fn::GetAtt": [
+        "HandsoneksMastersRole11BC756C",
+        "Arn"
+       ]
+      }
+     ]
+    ]
+   }
+  },
+  "HandsoneksGetTokenCommand8B247A17": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "aws eks get-token --cluster-name ",
+      {
+       "Ref": "Handsoneks23777250"
+      },
+      " --region ",
+      {
+       "Ref": "AWS::Region"
+      },
+      " --role-arn ",
+      {
+       "Fn::GetAtt": [
+        "HandsoneksMastersRole11BC756C",
+        "Arn"
+       ]
+      }
+     ]
+    ]
+   }
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-2"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

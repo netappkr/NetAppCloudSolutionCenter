@@ -1,0 +1,694 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "natGateways_NetappHandsonNAT_name": {
+            "defaultValue": "NetappHandson-NAT",
+            "type": "String"
+        },
+        "bastionHosts_NetappHandsonBastion_name": {
+            "defaultValue": "NetappHandson-Bastion",
+            "type": "String"
+        },
+        "virtualNetworks_NetappHandsonVnet_name": {
+            "defaultValue": "NetappHandson-Vnet",
+            "type": "String"
+        },
+        "publicIPAddresses_NetappHandsonNAT_IP_name": {
+            "defaultValue": "NetappHandsonNAT-IP",
+            "type": "String"
+        },
+        "publicIPPrefixes_NetappHandsonNAT_CIDR_name": {
+            "defaultValue": "NetappHandsonNAT-CIDR",
+            "type": "String"
+        },
+        "publicIPAddresses_NetappHandsonBastion_IP_name": {
+            "defaultValue": "NetappHandsonBastion-IP",
+            "type": "String"
+        },
+        "clusterName": {
+            "defaultValue": "Handson-AKS",
+            "type": "string",
+            "metadata": {
+                "description": "The name of the Managed Cluster resource."
+            }
+        },
+        "linuxAdminUsername": {
+            "type": "string",
+            "defaultValue": "azureuser",
+            "metadata": {
+                "description": "User name for the Linux Virtual Machines."
+            }
+        },
+        "sshRSAPublicKey": {
+            "type": "string",
+            "defaultValue": "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAvu2v6lkF59XSY3ch+Df2w/AN10EPXZ3JL2Xbqtsv13xVq9ZuzmUcdCpfa9NyjnyBoaXxymUvQSaeQCFxnjroAySOKVXaR6n6ahWFGQOYlfZHkKYg/N8pTpQht3QXNLoA8lUlrb3lyehQHxtCAhtgmx4BIaBpGM/FLaJqhu1OQ7gz0GBbG1qZOmEyrzcklkvriyPYzEESg3N9w+eM09rWvu3dK+EezAsgeFBlcsfHY5eNRmgp2iPfvz8tNZ3wgsrU/UiZHueqsMmGYS+Njjr461cx2q3EhjjPbYz8+tj3t/taZ/Jf419r9ZhT1JHm8/vUh22B5Xm31LdbMBPGvuUKPQ==",
+            "metadata": {
+                "description": "Configure all linux machines with the SSH RSA public key string. Your key should include three parts, for example 'ssh-rsa AAAAB...snip...UcyupgH azureuser@linuxvm'"
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('publicIPAddresses_NetappHandsonBastion_IP_name')]",
+            "location": "koreacentral",
+            "sku": {
+                "name": "Standard",
+                "tier": "Regional"
+            },
+            "properties": {
+                "ipAddress": "20.249.99.170",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Static",
+                "idleTimeoutInMinutes": 4,
+                "ipTags": []
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('publicIPAddresses_NetappHandsonNAT_IP_name')]",
+            "location": "koreacentral",
+            "sku": {
+                "name": "Standard",
+                "tier": "Regional"
+            },
+            "properties": {
+                "ipAddress": "20.196.223.244",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Static",
+                "idleTimeoutInMinutes": 4,
+                "ipTags": []
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIPPrefixes",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('publicIPPrefixes_NetappHandsonNAT_CIDR_name')]",
+            "location": "koreacentral",
+            "sku": {
+                "name": "Standard",
+                "tier": "Regional"
+            },
+            "properties": {
+                "prefixLength": 31,
+                "publicIPAddressVersion": "IPv4",
+                "ipTags": []
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('virtualNetworks_NetappHandsonVnet_name')]",
+            "location": "koreacentral",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/natGateways', parameters('natGateways_NetappHandsonNAT_name'))]"
+            ],
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "172.18.0.0/16"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "PublicSubnet-1",
+                        "properties": {
+                            "addressPrefix": "172.18.0.0/24",
+                            "natGateway": {
+                                "id": "[resourceId('Microsoft.Network/natGateways', parameters('natGateways_NetappHandsonNAT_name'))]"
+                            },
+                            "serviceEndpoints": [
+                                {
+                                    "service": "Microsoft.AzureActiveDirectory",
+                                    "locations": [
+                                        "*"
+                                    ]
+                                },
+                                {
+                                    "service": "Microsoft.KeyVault",
+                                    "locations": [
+                                        "*"
+                                    ]
+                                },
+                                {
+                                    "service": "Microsoft.Storage",
+                                    "locations": [
+                                        "koreacentral",
+                                        "koreasouth"
+                                    ]
+                                }
+                            ],
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Disabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    },
+                    {
+                        "name": "PublicSubnet-2",
+                        "properties": {
+                            "addressPrefix": "172.18.1.0/24",
+                            "serviceEndpoints": [
+                                {
+                                    "service": "Microsoft.AzureActiveDirectory",
+                                    "locations": [
+                                        "*"
+                                    ]
+                                },
+                                {
+                                    "service": "Microsoft.KeyVault",
+                                    "locations": [
+                                        "*"
+                                    ]
+                                },
+                                {
+                                    "service": "Microsoft.Storage",
+                                    "locations": [
+                                        "koreacentral",
+                                        "koreasouth"
+                                    ]
+                                }
+                            ],
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Disabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    },
+                    {
+                        "name": "PrivateSubnet-1",
+                        "properties": {
+                            "addressPrefix": "172.18.2.0/24",
+                            "serviceEndpoints": [
+                                {
+                                    "service": "Microsoft.AzureActiveDirectory",
+                                    "locations": [
+                                        "*"
+                                    ]
+                                },
+                                {
+                                    "service": "Microsoft.KeyVault",
+                                    "locations": [
+                                        "*"
+                                    ]
+                                },
+                                {
+                                    "service": "Microsoft.Storage",
+                                    "locations": [
+                                        "koreacentral",
+                                        "koreasouth"
+                                    ]
+                                }
+                            ],
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Disabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    },
+                    {
+                        "name": "PrivateSubnet-2",
+                        "properties": {
+                            "addressPrefix": "172.18.3.0/24",
+                            "serviceEndpoints": [
+                                {
+                                    "service": "Microsoft.AzureActiveDirectory",
+                                    "locations": [
+                                        "*"
+                                    ]
+                                },
+                                {
+                                    "service": "Microsoft.KeyVault",
+                                    "locations": [
+                                        "*"
+                                    ]
+                                },
+                                {
+                                    "service": "Microsoft.Storage",
+                                    "locations": [
+                                        "koreacentral",
+                                        "koreasouth"
+                                    ]
+                                }
+                            ],
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Disabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    },
+                    {
+                        "name": "AzureBastionSubnet",
+                        "properties": {
+                            "addressPrefix": "172.18.255.0/24",
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Disabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    },
+                    {
+                        "name": "ANFsubnet",
+                        "properties": {
+                            "addressPrefix": "172.18.4.0/24",
+                            "serviceEndpoints": [],
+                            "delegations": [
+                                {
+                                    "name": "Microsoft.Netapp.volumes",
+                                    "properties": {
+                                        "serviceName": "Microsoft.Netapp/volumes"
+                                    }
+                                }
+                            ],
+                            "privateEndpointNetworkPolicies": "Disabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    },
+                    {
+                        "name": "GatewaySubnet",
+                        "properties": {
+                            "addressPrefix": "172.18.5.0/24",
+                            "serviceEndpoints": [],
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Disabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    }
+                ],
+                "virtualNetworkPeerings": [],
+                "enableDdosProtection": false
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_NetappHandsonVnet_name'), '/ANFsubnet')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_NetappHandsonVnet_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "172.18.4.0/24",
+                "serviceEndpoints": [],
+                "delegations": [
+                    {
+                        "name": "Microsoft.Netapp.volumes",
+                        "properties": {
+                            "serviceName": "Microsoft.Netapp/volumes"
+                        }
+                    }
+                ],
+                "privateEndpointNetworkPolicies": "Disabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_NetappHandsonVnet_name'), '/AzureBastionSubnet')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_NetappHandsonVnet_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "172.18.255.0/24",
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Disabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_NetappHandsonVnet_name'), '/GatewaySubnet')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_NetappHandsonVnet_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "172.18.5.0/24",
+                "serviceEndpoints": [],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Disabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_NetappHandsonVnet_name'), '/PrivateSubnet-1')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_NetappHandsonVnet_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "172.18.2.0/24",
+                "serviceEndpoints": [
+                    {
+                        "service": "Microsoft.AzureActiveDirectory",
+                        "locations": [
+                            "*"
+                        ]
+                    },
+                    {
+                        "service": "Microsoft.KeyVault",
+                        "locations": [
+                            "*"
+                        ]
+                    },
+                    {
+                        "service": "Microsoft.Storage",
+                        "locations": [
+                            "koreacentral",
+                            "koreasouth"
+                        ]
+                    }
+                ],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Disabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_NetappHandsonVnet_name'), '/PrivateSubnet-2')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_NetappHandsonVnet_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "172.18.3.0/24",
+                "serviceEndpoints": [
+                    {
+                        "service": "Microsoft.AzureActiveDirectory",
+                        "locations": [
+                            "*"
+                        ]
+                    },
+                    {
+                        "service": "Microsoft.KeyVault",
+                        "locations": [
+                            "*"
+                        ]
+                    },
+                    {
+                        "service": "Microsoft.Storage",
+                        "locations": [
+                            "koreacentral",
+                            "koreasouth"
+                        ]
+                    }
+                ],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Disabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_NetappHandsonVnet_name'), '/PublicSubnet-2')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_NetappHandsonVnet_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "172.18.1.0/24",
+                "serviceEndpoints": [
+                    {
+                        "service": "Microsoft.AzureActiveDirectory",
+                        "locations": [
+                            "*"
+                        ]
+                    },
+                    {
+                        "service": "Microsoft.KeyVault",
+                        "locations": [
+                            "*"
+                        ]
+                    },
+                    {
+                        "service": "Microsoft.Storage",
+                        "locations": [
+                            "koreacentral",
+                            "koreasouth"
+                        ]
+                    }
+                ],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Disabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/bastionHosts",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('bastionHosts_NetappHandsonBastion_name')]",
+            "location": "koreacentral",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_NetappHandsonBastion_IP_name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_NetappHandsonVnet_name'), 'AzureBastionSubnet')]"
+            ],
+            "sku": {
+                "name": "Basic"
+            },
+            "properties": {
+                "dnsName": "bst-66aed0f8-d41b-4741-8482-df1bb53892c4.bastion.azure.com",
+                "ipConfigurations": [
+                    {
+                        "name": "IpConf",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_NetappHandsonBastion_IP_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_NetappHandsonVnet_name'), 'AzureBastionSubnet')]"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/natGateways",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('natGateways_NetappHandsonNAT_name')]",
+            "location": "koreacentral",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_NetappHandsonNAT_IP_name'))]",
+                "[resourceId('Microsoft.Network/publicIPPrefixes', parameters('publicIPPrefixes_NetappHandsonNAT_CIDR_name'))]"
+            ],
+            "sku": {
+                "name": "Standard",
+                "tier": "Regional"
+            },
+            "properties": {
+                "idleTimeoutInMinutes": 4,
+                "publicIpAddresses": [
+                    {
+                        "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_NetappHandsonNAT_IP_name'))]"
+                    }
+                ],
+                "publicIpPrefixes": [
+                    {
+                        "id": "[resourceId('Microsoft.Network/publicIPPrefixes', parameters('publicIPPrefixes_NetappHandsonNAT_CIDR_name'))]"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_NetappHandsonVnet_name'), '/PublicSubnet-1')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_NetappHandsonVnet_name'))]",
+                "[resourceId('Microsoft.Network/natGateways', parameters('natGateways_NetappHandsonNAT_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "172.18.0.0/24",
+                "natGateway": {
+                    "id": "[resourceId('Microsoft.Network/natGateways', parameters('natGateways_NetappHandsonNAT_name'))]"
+                },
+                "serviceEndpoints": [
+                    {
+                        "service": "Microsoft.AzureActiveDirectory",
+                        "locations": [
+                            "*"
+                        ]
+                    },
+                    {
+                        "service": "Microsoft.KeyVault",
+                        "locations": [
+                            "*"
+                        ]
+                    },
+                    {
+                        "service": "Microsoft.Storage",
+                        "locations": [
+                            "koreacentral",
+                            "koreasouth"
+                        ]
+                    }
+                ],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Disabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.ContainerService/managedClusters",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('clusterName')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_NetappHandsonVnet_name'))]"
+            ],
+            "location": "koreacentral",
+            "sku": {
+                "name": "Basic",
+                "tier": "Free"
+            },
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "kubernetesVersion": "1.23.8",
+                "dnsPrefix": "[concat(parameters('clusterName'), '-dns')]",
+                "agentPoolProfiles": [
+                    {
+                        "name": "agentpool",
+                        "count": 1,
+                        "vmSize": "Standard_DS2_v2",
+                        "osDiskSizeGB": 30,
+                        "osDiskType": "Managed",
+                        "kubeletDiskType": "OS",
+                        "vnetSubnetID": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_NetappHandsonVnet_name'), 'PublicSubnet-1')]",
+                        "maxPods": 110,
+                        "type": "VirtualMachineScaleSets",
+                        "availabilityZones": [
+                            "1",
+                            "2",
+                            "3"
+                        ],
+                        "maxCount": 5,
+                        "minCount": 1,
+                        "enableAutoScaling": true,
+                        "powerState": {
+                            "code": "Running"
+                        },
+                        "orchestratorVersion": "1.23.8",
+                        "enableNodePublicIP": false,
+                        "mode": "System",
+                        "osType": "Linux",
+                        "osSKU": "Ubuntu",
+                        "enableFIPS": false
+                    },
+                    {
+                        "name": "userpool",
+                        "count": 1,
+                        "vmSize": "Standard_B2ms",
+                        "osDiskSizeGB": 30,
+                        "osDiskType": "Managed",
+                        "kubeletDiskType": "OS",
+                        "vnetSubnetID": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_NetappHandsonVnet_name'), 'PublicSubnet-2')]",
+                        "maxPods": 10,
+                        "type": "VirtualMachineScaleSets",
+                        "availabilityZones": [
+                            "1",
+                            "2",
+                            "3"
+                        ],
+                        "enableAutoScaling": false,
+                        "powerState": {
+                            "code": "Running"
+                        },
+                        "orchestratorVersion": "1.23.8",
+                        "enableNodePublicIP": false,
+                        "enableCustomCATrust": false,
+                        "nodeLabels": {
+                            "purpose": "test"
+                        },
+                        "mode": "User",
+                        "osType": "Linux",
+                        "osSKU": "Ubuntu",
+                        "enableFIPS": false
+                    }
+                ],
+                "linuxProfile": {
+                    "adminUsername": "[parameters('linuxAdminUsername')]",
+                    "ssh": {
+                        "publicKeys": [
+                            {
+                                "keyData": "[parameters('sshRSAPublicKey')]"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ContainerService/managedClusters/agentPools",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('clusterName'), '/agentpool')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName'))]"
+            ],
+            "properties": {
+                "count": 1,
+                "vmSize": "Standard_DS2_v2",
+                "osDiskSizeGB": 30,
+                "osDiskType": "Managed",
+                "kubeletDiskType": "OS",
+                "vnetSubnetID": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_NetappHandsonVnet_name'), 'PublicSubnet-1')]",
+                "type": "VirtualMachineScaleSets",
+                "availabilityZones": [
+                    "1",
+                    "2",
+                    "3"
+                ],
+                "maxCount": 5,
+                "minCount": 1,
+                "enableAutoScaling": true,
+                "powerState": {
+                    "code": "Running"
+                },
+                "orchestratorVersion": "1.23.8",
+                "enableNodePublicIP": false,
+                "mode": "System",
+                "osType": "Linux",
+                "osSKU": "Ubuntu",
+                "enableFIPS": false
+            }
+        },
+        {
+            "type": "Microsoft.ContainerService/managedClusters/agentPools",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('clusterName'), '/userpool')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName'))]"
+            ],
+            "properties": {
+                "count": 1,
+                "vmSize": "Standard_B2ms",
+                "osDiskSizeGB": 30,
+                "osDiskType": "Managed",
+                "kubeletDiskType": "OS",
+                "vnetSubnetID": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_NetappHandsonVnet_name'), 'PublicSubnet-2')]",
+                "type": "VirtualMachineScaleSets",
+                "availabilityZones": [
+                    "1",
+                    "2",
+                    "3"
+                ],
+                "enableAutoScaling": false,
+                "powerState": {
+                    "code": "Running"
+                },
+                "orchestratorVersion": "1.23.8",
+                "enableNodePublicIP": false,
+                "enableCustomCATrust": false,
+                "nodeLabels": {
+                    "purpose": "test"
+                },
+                "mode": "User",
+                "osType": "Linux",
+                "osSKU": "Ubuntu",
+                "enableFIPS": false
+            }
+        }
+    ]
+}

@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ngrinder-controller
+  namespace: ngrinder
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ngrinder
+      tier: middle
+  template:
+    metadata:
+      labels:
+        app: ngrinder
+        tier: middle
+    spec:
+      containers:
+      - name: ngrinder-controller
+        image: ngrinder/controller:latest
+        resources:
+          requests:
+            cpu: 800m
+        ports:
+        - containerPort: 80
+        - containerPort: 16001
+        - containerPort: 12000
+        - containerPort: 12001
+        - containerPort: 12002
+        - containerPort: 12003
+        - containerPort: 12004
+        - containerPort: 12005
+        - containerPort: 12006
+        - containerPort: 12007
+        - containerPort: 12008
+        - containerPort: 12009
+
+        volumeMounts:
+        - mountPath: /opt/ngrinder-controller
+          name: ngrinder-data-volume
+      volumes:
+      - name: ngrinder-data-volume
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - operator: In
+                key: purpose
+                values:
+                - test

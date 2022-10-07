@@ -1,0 +1,30 @@
+---
+- name: Create a lab environment
+  hosts: localhost
+  gather_facts: false
+  vars:
+    vsphere_host: "xxx.xxx.xxx.xxx"
+    vsphere_user: "administrator@vsphere.local"
+    vsphere_password: "xxxxxxxxxxx"
+    vsphere_datacenter: NetApp-HCI-Datacenter-01 
+    vsphere_folder: uservm
+    guest_template: linux_v1.3  
+      
+  vars_files:
+    - vars/main.yml
+  
+  
+  tasks:
+  - name: create my Linux VM
+    vmware_guest:
+      name: '{{ userid }}'
+      hostname: '{{ vsphere_host }}'
+      username: '{{ vsphere_user }}'
+      password: '{{ vsphere_password }}'
+      validate_certs: false
+      datacenter: '{{ vsphere_datacenter }}'
+      folder: '{{ vsphere_folder  }}'
+      state: poweredon
+      template: '{{  guest_template  }}'
+      customization_spec: '{{ userid }}'
+      wait_for_ip_address: true  
