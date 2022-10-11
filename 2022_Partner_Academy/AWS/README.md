@@ -5,9 +5,9 @@
 ## Hands-on 구성
 ![Image](./images/myplan.png)
 
-- AWS EKS 환경에서 Netapp의 Spot FSxontap 구성을 활용하여 여러가지 어플리케이션을 배포하고 활용하는 예제입니다.
+- AWS EKS 환경에서 Netapp의 Spot by Netapp과 Amazon FSx for NetApp ONTAP 구성을 활용하여 여러가지 어플리케이션을 배포하고 활용하는 예제입니다.
 - Spot Ocean을 활용하여 EKS 환경에서의 컴퓨팅 비용절감에 대해 확인합니다.
-- AWS FSx ontap을 통해 EKS로 배포되는 어플리케이션들의 데이터를 관리하고 사용하는 과정을 보여줍니다. 
+- Amazon FSx for NetApp ONTAP을 통해 EKS로 배포되는 어플리케이션들의 데이터를 관리하고 사용하는 과정을 보여줍니다. 
 
 # 절차
 1. [Create Lab Quickstart Guide](./QuickStart/CreateLabQuickstartGuide.md)

@@ -1,11 +1,11 @@
-# Cloudmanager (connecter) 배포
+# Cloudmanager (connector) 배포
 Cloud Manager를 사용하면 IT 전문가와 클라우드 설계자가 NetApp의 클라우드 솔루션을 사용하여 하이브리드 멀티 클라우드 인프라를 중앙에서 관리할 수 있습니다.
 
 ## 선행조건
 - [Cloud Central](https://cloud.netapp.com/) 계정이 필요합니다. </br>
 계정이 없으신분들은 회원가입을 해주세요 </br> 
 [Sign-in Guide](https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-signing-up.html)
-- connecter는 Cloud Central과 통신하기 위해 인터넷 연결이 필요합니다.</br>
+- connector는 Cloud Central과 통신하기 위해 인터넷 연결이 필요합니다.</br>
 - Cloud Manager는 172.17.0.0/16 및 172.18.0.0/16 범위의 IP 주소가 있는 두 개의 가상 인터페이스(VIP)로 커넥터를 배포합니다. 서브넷 CIDR이 중복되지 않도록 구성해주세요. </br> 
 자세한 확인사항은 [Getting started checklist](https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html) 문서를 확인해주세요.
 
@@ -22,7 +22,7 @@ Cloud Manager를 사용하면 IT 전문가와 클라우드 설계자가 NetApp�
 ![CloudmanagerLoginUI](https://docs.netapp.com/us-en/cloud-manager-setup-admin/media/screenshot-login.png)
 
 ## 자격증명 추가
-Cloudmanager(SaaS)가 Connecter를 배포하기 위한 자격증명을 추가합니다.
+Cloudmanager(SaaS)가 connector를 배포하기 위한 자격증명을 추가합니다.
 
 1. Cloud Manager 콘솔의 오른쪽 상단에서 설정 아이콘을 클릭하고 자격 증명 을 선택 합니다.
 ![Cloud Manager 콘솔의 오른쪽 상단에 있는 설정 아이콘을 보여주는 스크린샷.](https://docs.netapp.com/us-en/cloud-manager-setup-admin/media/screenshot_settings_icon.gif)
@@ -34,9 +34,9 @@ Cloudmanager(SaaS)가 Connecter를 배포하기 위한 자격증명을 추가합
         - RoleARN: PartnerAcademyStack-HandsonCloudmangerRole의 ARN 번호 (Cloudformation 스택의 리소스항목에서 확인 가능합니다.)
     3. 검토 : 새 자격 증명에 대한 세부 정보를 확인하고 **Add** 를 클릭 합니다.
 
-## AWS connecter 생성
+## AWS connector 생성
 1. 처음 작업 환경을 만드는 경우 **작업 환경 추가** 를 클릭하고 화면의 지시를 따릅니다. </br>
-그렇지 않으면 **Connecter를 클릭하고 드롭다운 된 메뉴중 커넥터 추가** 를 선택합니다.
+그렇지 않으면 **connector를 클릭하고 드롭다운 된 메뉴중 커넥터 추가** 를 선택합니다.
 ![헤더의 커넥터 아이콘과 커넥터 추가 작업을 보여주는 스크린샷.](https://docs.netapp.com/ko-kr/cloud-manager-setup-admin/media/screenshot_connector_add.gif)
 
 2. **Amazon Web Services** 를 클라우드 공급자로 선택 하고 **Continue**를 클릭 합니다.
@@ -60,7 +60,7 @@ Cloudmanager(SaaS)가 Connecter를 배포하기 위한 자격증명을 추가합
     3. 인스턴스의 이름을 입력합니다.
         - Connector Instance Name : Hands-on-connector
         - Role Name : Cloud-Manager-Operator-Handson
-        ![AddConnecterAWSDetails](./images/AddConnecterAWSDetails.png)
+        ![AddconnectorAWSDetails](./images/AddconnectorAWSDetails.png)
 
     4. (선택)인스턴스에 사용자 정의 태그(메타데이터)를 추가합니다.
 
@@ -73,7 +73,7 @@ Cloudmanager(SaaS)가 Connecter를 배포하기 위한 자격증명을 추가합
         - subnet : 172.30.0.0/24 (**private subnet을 선택하는 경우 외부와 인터넷 통신이 가능한지 확인이 필요합니다.**)
         - Key pair : Handsonkey
         - Public IP : 기본값을 따릅니다.
-        ![AddConnecterAWSNetwork](./images/AddConnecterAWSNetwork.png)
+        ![AddconnectorAWSNetwork](./images/AddConnecterAWSDetails.png)
 
     8. 보안 그룹 : 새로운 보안 그룹을 생성할 것인지, 인바운드 HTTP, HTTPS, SSH 접근을 허용하는 기존 보안 그룹을 선택할 것인지 선택합니다.
         - Assign a security group: Create a new security group
