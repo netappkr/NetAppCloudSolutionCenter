@@ -7,7 +7,7 @@ Amazon FSx for NetApp ONTAP은 ONTAP의 데이터 액세스 및 관리 기능을
 - 자동으로 확장 및 축소되는 스토리지 용량으로, 증가하는 데이터 집합을 지원합니다.
 - 내장된 스토리지 효율성(storage efficiency) 및 계층화(Tiearing) 기술과 함께, 적은 비용으로 SSD 성능을 활용 할 수 있습니다.
 # 작동방식
-![fsxontap](https://d1.awsstatic.com/FSXN%402x.72d7f1b119ec9438a370775830648c5f1f362db7.png)
+![Amazon FSx for NetApp ONTAP](https://d1.awsstatic.com/FSXN%402x.72d7f1b119ec9438a370775830648c5f1f362db7.png)
 
 # Demo
 <!-- 
