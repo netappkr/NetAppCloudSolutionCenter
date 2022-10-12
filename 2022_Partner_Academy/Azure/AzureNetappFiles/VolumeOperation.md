@@ -223,7 +223,7 @@ fio --directory=/ANF/ANFHandsonVolume --name fio_test_file --direct=1 --rw=randw
 # 다음과정
 데이터를 백업하고 복구하는 방법을 알아봅니다.</br>
 - 다음주제: [Volume Backup and Restore](./VolumeBackupAndRestore.md)
-- 이전주제: [Create Volume](./CreateVolmeinAzure.md)
+- 이전주제: [엘라스틱그룹으로 가져오기](./Elasticgroup/CreateElasticgroup.md)
 
 # 참조
 - [Netapp Doc manage-backups-ontap](https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-manage-backups-ontap.html#adding-a-new-backup-policy)

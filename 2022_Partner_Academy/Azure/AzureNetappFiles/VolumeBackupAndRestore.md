@@ -67,8 +67,7 @@ fio_test_file.11.0  fio_test_file.15.0  fio_test_file.5.0  fio_test_file.9.0
 
 # 다음과정
 AKS에 볼륨을 등록하는 과정을 알아봅니다.</br>
-- 다음주제: [Import Volume to AKS](../Trident/ImportVolumeToAKS.md)
-- 이전주제: [Create Volume](./VolumeOperation.md)
+- 이전주제: [Volume Operation](./VolumeOperation.md)
 
 # 참조
 - [Azure NetApp Files 스냅샷 작동 방식](https://learn.microsoft.com/ko-kr/azure/azure-netapp-files/snapshots-introduction)
