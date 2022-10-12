@@ -29,14 +29,14 @@ Bastion 서버에 볼륨을 마운트 합니다.
 ## 용량 풀, 볼륨 크기 변경
 ### 용량 풀 변경
 1. Capacity pool 메뉴에서 변경할 용량풀을 선택 후 ```º º º``` 버튼을 클릭합니다.
-    - 변경할 용량 풀 : Premium
+    - 변경할 용량 풀 : Handsonpool
 2. 크기변경을 누르고 크기를 변경합니다.
     - 크기 : 5
 ![/ModifyCapacityPools](./Images/ModifyCapacityPools.png)
 3. 확인을 누르고 Azure 콘솔에서 size 변경이 이루어지는지 확인합니다.
 ### 볼륨 크기 변경
 4. Volumes 메뉴에서 변경할 볼륨을 선택 후 ```º º º``` 버튼을 클릭합니다.
-    - 변경할 볼륨 : NginxFileBrowser
+    - 변경할 볼륨 : ANFHandsonVolume
 5. "크기 조정" 버튼을 클릭하여 볼륨 사이즈를 변경합니다.
 - 할당량 : 150
 ![CreateANFonAzure](./Images/ModifyVolumeSize.png)
@@ -74,7 +74,7 @@ root@HandsonBastion-vm:~#
 1. premium 볼륨의 성능을 측정합니다. (bs=4K)
 ```bash
 root@HandsonBastion-vm:~# fio \
-> --directory=/ANF/NginxFileBrowser \
+> --directory=/ANF/ANFHandsonVolume \
 > --name fio_test_file \
 > --direct=1 \
 > --rw=randwrite \
@@ -135,15 +135,15 @@ Run status group 0 (all jobs):
 ```
 
 2. Volumes 메뉴에서 변경할 볼륨을 선택 후 ```º º º``` 버튼을 클릭합니다.
-    - 변경할 볼륨 : NginxFileBrowser
+    - 변경할 볼륨 : ANFHandsonVolume
 5. "풀 변경" 버튼을 클릭하여 볼륨 사이즈를 변경합니다.
-- 풀 : HandsonPool
-![CreateANFonAzure](./Images/ModifyVolumePool.png)
+    - 풀 : HandsonPool
+    ![CreateANFonAzure](./Images/ModifyVolumePool.png)
 
 6. 다시한번 성능을 측정합니다.
 ```bash
-root@HandsonBastion-vm:~# rm -rf /ANF/NginxFileBrowser/fio_test*
-root@HandsonBastion-vm:~# fio --directory=/ANF/NginxFileBrowser --name fio_test_file --direct=1 --rw=randwrite --bs=4K --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap
+root@HandsonBastion-vm:~# rm -rf /ANF/ANFHandsonVolume/fio_test*
+root@HandsonBastion-vm:~# fio --directory=/ANF/ANFHandsonVolume --name fio_test_file --direct=1 --rw=randwrite --bs=4K --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap
 fio_test_file: (g=0): rw=randwrite, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=psync, iodepth=1
 ...bash
 fio-3.16
@@ -203,8 +203,8 @@ Run status group 0 (all jobs):
 
 5. 베스천에서 성능을 측정합니다.
 ```bash
-root@HandsonBastion-vm:~# rm -rf /ANF/NginxFileBrowser/fio_test*
-root@HandsonBastion-vm:~# fio --directory=/ANF/NginxFileBrowser --name fio_test_file --direct=1 --rw=randwrite --bs=4K --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap
+root@HandsonBastion-vm:~# rm -rf /ANF/ANFHandsonVolume/fio_test*
+root@HandsonBastion-vm:~# fio --directory=/ANF/ANFHandsonVolume --name fio_test_file --direct=1 --rw=randwrite --bs=4K --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap
 ```
 
 # 결과 
