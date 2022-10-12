@@ -81,9 +81,8 @@ Cloudmanager(SaaS)가 connector를 배포하기 위한 자격증명을 추가합
         - Https : Source Type Anywhere
         - ssh : Source Type Anywhere
         > ### Tips
-        > 커넥터 VM을 시작하지 않는 한 커넥터로 들어오는 트래픽이 없습니다.  </br>
-        > HTTP 및 HTTPS는 드문 상황에서 사용할 로컬 UI 에 대한 액세스를 제공합니다.  </br>
-        > SSH는 문제 해결을 위해 호스트에 연결해야 하는 경우에만 필요합니다. </br>
+        > - HTTP 및 HTTPS는 드문 상황에서 사용할 로컬 UI 에 대한 액세스를 제공합니다.  </br>
+        > - SSH는 문제 해결을 위해 호스트에 연결해야 하는 경우에만 필요합니다. </br>
 
     9. 검토 : 선택을 검토하여 설정이 올바른지 확인합니다.
     10. Add 를 클릭 합니다.
