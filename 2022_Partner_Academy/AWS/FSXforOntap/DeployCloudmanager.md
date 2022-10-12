@@ -72,8 +72,8 @@ Cloudmanager(SaaS)가 connector를 배포하기 위한 자격증명을 추가합
         - vpc : 172.30.0.0/16
         - subnet : 172.30.0.0/24 (**private subnet을 선택하는 경우 외부와 인터넷 통신이 가능한지 확인이 필요합니다.**)
         - Key pair : Handsonkey
-        - Public IP : 기본값을 따릅니다.
-        ![AddconnectorAWSNetwork](./images/AddConnecterAWSDetails.png)
+        - Public IP : 기본값을 따릅니다. </br>
+        ![AddconnectorAWSNetwork](./images/AddconnectorAWSDetails.png)
 
     8. 보안 그룹 : 새로운 보안 그룹을 생성할 것인지, 인바운드 HTTP, HTTPS, SSH 접근을 허용하는 기존 보안 그룹을 선택할 것인지 선택합니다.
         - Assign a security group: Create a new security group
