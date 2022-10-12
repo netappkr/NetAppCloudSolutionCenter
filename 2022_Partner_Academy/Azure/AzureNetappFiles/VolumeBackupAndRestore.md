@@ -11,15 +11,15 @@ NetApp 스냅샷 복사본은 시스템 장애 또는 데이터 손실 시 복�
 
 # Azure NetApp Files 스냅샷 백업
 1. 볼륨 메뉴에서 볼륨을 선택합니다.
-    - 선택 된 볼륨 : NginxFileBrowser
+    - 선택 된 볼륨 : ANFHandsonVolume
 2. 스냅샷 메뉴에서 "스냅샷 추가"를 클릭하여 스냅샷을 생성합니다.</br>
     - 이름 : maually-<"today yyyy-mm-dd">
     ![CreateANFonAzure](./Images/CreateSnapshot.png)
 3. 베스천 호스트에서 볼륨에 파일을 생성합니다.
 ```bash
-root@HandsonBastion-vm:/ANF/NginxFileBrowser# touch /ANF/NginxFileBrowser/snapshottest.txt
-root@HandsonBastion-vm:/ANF/NginxFileBrowser# echo "Hello Netapp" > /ANF/NginxFileBrowser/snapshottest.txt 
-root@HandsonBastion-vm:/ANF/NginxFileBrowser# cat /ANF/NginxFileBrowser/snapshottest.txt 
+root@HandsonBastion-vm:/ANF/ANFHandsonVolume# touch /ANF/ANFHandsonVolume/snapshottest.txt
+root@HandsonBastion-vm:/ANF/ANFHandsonVolume# echo "Hello Netapp" > /ANF/ANFHandsonVolume/snapshottest.txt 
+root@HandsonBastion-vm:/ANF/ANFHandsonVolume# cat /ANF/ANFHandsonVolume/snapshottest.txt 
 Hello Netapp
 ```
 
@@ -34,9 +34,9 @@ Hello Netapp
 
 6. 베스천 호스트에서 볼륨을 마운트하고 txt 파일을 만들기 전으로 복구되었는지 확인합니다.
 ```bash
-mkdir -p /ANF/NginxFileBrowserRestore
-sudo mount -t nfs -o rw,hard,rsize=262144,wsize=262144,sec=sys,vers=4.1,tcp 172.18.4.4:/NginxFilebrowser-restore /ANF/NginxFileBrowserRestore
-root@HandsonBastion-vm:/ANF/NginxFileBrowserRestore# ls
+mkdir -p /ANF/ANFHandsonVolumeRestore
+sudo mount -t nfs -o rw,hard,rsize=262144,wsize=262144,sec=sys,vers=4.1,tcp 172.18.4.4:/ANFHandsonVolume-restore /ANF/ANFHandsonVolumeRestore
+root@HandsonBastion-vm:/ANF/ANFHandsonVolumeRestore# ls
 fio_test_file.0.0   fio_test_file.12.0  fio_test_file.2.0  fio_test_file.6.0
 fio_test_file.1.0   fio_test_file.13.0  fio_test_file.3.0  fio_test_file.7.0
 fio_test_file.10.0  fio_test_file.14.0  fio_test_file.4.0  fio_test_file.8.0
@@ -53,10 +53,10 @@ fio_test_file.11.0  fio_test_file.15.0  fio_test_file.5.0  fio_test_file.9.0
 1. 볼륨의 스냅샷 메뉴에서 볼륨 되돌리기를 선택합니다.
 ![RTORestore](./Images/RTORestore.png)
 2. 볼륨을 되돌리기전 최종확인 창에 볼륨이름을 입력하고 볼륨을 되돌립니다.
-- 볼륨이름 : NginxFileBrowser
+- 볼륨이름 : ANFHandsonVolume
 3. 베스천에서 txt 파일을 쓰기 전으로 복구되었는지 확인합니다.
 ```bash
-root@HandsonBastion-vm:/ANF/NginxFileBrowser# ls /ANF/NginxFileBrowser
+root@HandsonBastion-vm:/ANF/ANFHandsonVolume# ls /ANF/ANFHandsonVolume
 fio_test_file.0.0   fio_test_file.12.0  fio_test_file.2.0  fio_test_file.6.0
 fio_test_file.1.0   fio_test_file.13.0  fio_test_file.3.0  fio_test_file.7.0
 fio_test_file.10.0  fio_test_file.14.0  fio_test_file.4.0  fio_test_file.8.0
