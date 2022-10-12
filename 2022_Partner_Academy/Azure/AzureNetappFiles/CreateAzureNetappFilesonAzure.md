@@ -44,7 +44,7 @@ Azure Netapp Files를 사용하실 준비가 되었습니다.
 
 # 다음과정
 Azure NetApp Files에 NFS 볼륨을 생성합니다. </br>
-- 다음 주제 : [Azure NetApp Files에 NFS 볼륨 생성](./AzureNetappFiles/CreateVolmeinAzure.md)
+- 다음 주제 : [Azure NetApp Files에 NFS 볼륨 생성](./CreateVolmeinAzure.md)
 - 이전 주제 : [클라우드매니저 배포](./AzureNetappFiles/Deploy_Cloudmanager.md) 
 
 # 참고
