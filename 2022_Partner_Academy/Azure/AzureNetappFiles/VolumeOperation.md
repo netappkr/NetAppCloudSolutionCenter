@@ -17,10 +17,10 @@ Bastion 서버에 볼륨을 마운트 합니다.
 5. Mount 가이드에서 마운트 명령을 복사합니다.
 6. 베스천호스트에 접속하여 마운트 명령을 실행합니다.
     ```bash
-    root@HandsonBastion-vm:~# mkdir -p /ANF/NginxFileBrowser
+    root@HandsonBastion-vm:~# mkdir -p /ANF/ANFHandsonVolume
     ```
     ```bash
-    mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp 172.18.4.4:/NginxFileBrowser /ANF/NginxFileBrowser
+    mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp 172.18.4.4:/ANFHandsonVolume /ANF/ANFHandsonVolume
     ```
     > ### Tips
     > nfs-common 모듈이 설치되어 있음에도 지원하지 않는 프로토콜 문제가 발생한다면 vers=4.1로 변경하거나 버전항목을 삭제 후 마운트를 시도합니다.
