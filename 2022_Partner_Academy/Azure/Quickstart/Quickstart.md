@@ -38,7 +38,7 @@ Hands on Lab 이 생성됩니다.
 
 # 다음과정
 Ocean 연동을 진행합니다.</br>
-- 다음주제: [클라우드매니저 배포](./AzureNetappFiles/Deploy_Cloudmanager.md) 
+- 다음주제: [클라우드매니저 배포](../AzureNetappFiles/Deploy_Cloudmanager.md) 
 
 
 ## 참조
