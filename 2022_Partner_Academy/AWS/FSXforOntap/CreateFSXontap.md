@@ -7,7 +7,7 @@ Cloud Manager에서 FSx for ONTAP 작업 환경을 만들기 전에 다음이 �
 - Cloud Manager에게 FSx for ONTAP 작업 환경을 생성하는 데 필요한 권한을 부여하는 IAM 역할의 ARN입니다. 자세한 내용 은 Cloud Manager에 AWS 자격 증명 추가 를 참조 하십시오.
 - FSx for ONTAP 인스턴스를 생성할 지역 및 VPN 정보.
 
-AWS Management Console에서 이미 FSx for ONTAP 파일 시스템을 생성한 경우 Cloud Manager를 사용하여 이를 검색 할 수 있습니다 .
+AWS Management Console에서 이미 AWS FSx for netapp ONTAP 파일 시스템을 생성한 경우 Cloud Manager를 사용하여 이를 검색 할 수 있습니다 .
 
 ## Cloudmanger를 통해 Amazon FSx for NetApp ONTAP 생성
 1. Cloud Manager에서 새 작업 환경을 추가하고 Amazon Web Services 위치를 선택한 후 다음 을 클릭 합니다.
@@ -42,7 +42,7 @@ CIDR 범위 를 비워 두고 다음 을 클릭 하여 사용 가능한 범위�
     - CIDR 에 10.92.12.0/24를 입력합니다.
     ![image](./images/FloatingIP.png)
 
-7. 유동 IP 주소에 대한 경로가 포함된 경로 테이블을 선택합니다. </br
+7. 유동 IP 주소에 대한 경로가 포함된 경로 테이블을 선택합니다. </br>
 VPC의 서브넷에 대한 라우팅 테이블(기본 라우팅 테이블)이 하나만 있는 경우 Cloud Manager는 해당 라우팅 테이블에 유동 IP 주소를 자동으로 추가합니다. 
     - 모든 라우팅테이블을 선택합니다.
     - 다음 을 클릭하십시오 .
