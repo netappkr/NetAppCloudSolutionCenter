@@ -138,9 +138,8 @@ Cloud Manager가 커넥터를 배포하는 데 사용할 수 있는 Azure AD(Act
 
 # 다음과정
 AzureNetapFiles를 생성합니다.
-- 다음 주제 : [Create Azure  Netapp Files on Azure](./CreateAzureNetappFilesonAzure.md)
-- 추가 주제 : [Create Azure  Netapp Files on cloudmanager](./CreateAzureNetappFiles.md) 
-> 클라우드 매니저에서 한국리전 선택지가 보이지 않는 문제가 있습니다. 추후 업데이트될 예정입니다.
-- 이전 주제 : [Connecting Ocean to AKS](../OceanforAKS/ConnectAnAKSCluster.md)
+- 다음 주제 : [Azure 콘솔에서 Azure Netapp Files 생성](./CreateAzureNetappFilesonAzure.md)
+- 이전 주제 : [Hands on Lab 배포](../Quickstart/Quickstart.md)
+
 # 참고
 - [Create a Connector in Azure from Cloud Manager](https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-azure.html#proxy-server)

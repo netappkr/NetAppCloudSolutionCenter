@@ -6,16 +6,14 @@
 ![test](./Images/myplan.png)
 
 # 절차
-1. [Create Lab Quickstart Guide](./Quickstart/Quickstart.md)
-2. [Connecting Ocean to AKS](./OceanforAKS/ConnectAnAKSCluster.md)
-3. [Deploying Cloud Manager](./AzureNetappFiles/Deploy_Cloudmanager.md) 
-4. [Azure Netapp Files](./AzureNetappFiles/Readme.md) </br>
-  4-1. [Create ANF on Azure](./AzureNetappFiles/CreateAzureNetappFilesonAzure.md) </br>
-  **번외**
-  4-2. [Create ANF on Cloudmanager](./AzureNetappFiles/CreateAzureNetappFiles.md) </br>
-5. [Trident](./Trident/README.md)</br>
-  5-1. [Install Trident on cloudmanager](./Trident/InstallTrident.md)</br>
-  5-2. [Install Trident used tridentctl](./Trident/InstallTridentctl.md)</br>
+1. [Hands on Lab 배포](./Quickstart/Quickstart.md)
+2. [클라우드매니저 배포](./AzureNetappFiles/Deploy_Cloudmanager.md) 
+3. [Azure Netapp Files](./AzureNetappFiles/Readme.md) </br>
+  3-1. [Azure 콘솔에서 Azure Netapp Files 생성](./AzureNetappFiles/CreateAzureNetappFilesonAzure.md) </br>
+4. [Azure NetApp Files에 NFS 볼륨 생성](./AzureNetappFiles/CreateVolmeinAzure.md)
+5. [엘라스틱그룹으로 가져오기](./Elasticgroup/CreateElasticgroup.md)
+6. [트라이던트 생성](./Trident/README.md)</br>
+
 6. [Deploy testapp](./Trident/deploy_testapp.md)
 7. [Workload Migration](./OceanforAKS/WorkloadMigration.md)
 8. [Ocean Features & Concept](https://docs.spot.io/ocean/features/)</br>
