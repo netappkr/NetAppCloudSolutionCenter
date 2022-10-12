@@ -28,6 +28,7 @@ Azure 리소스(예: Scale Set, Application Gateway, Load Balancer, VM)가 적�
 sudo yum -y install unzip 
 sudo yum -y install httpd 
 yum -y install nfs-utils 
+sudo mount -t nfs -o rw,hard,rsize=262144,wsize=262144,sec=sys,vers=4.1,tcp <AzuerNetappFiles 탑재대상IP주소>:/ANFHandsonVolume /var/www/html/
 wget https://netappkr-wyahn-s3.s3.ap-northeast-2.amazonaws.com/public/sneat-1.0.0.zip
 sudo unzip sneat-1.0.0.zip -d /var/www/html/
 sudo systemctl start httpd

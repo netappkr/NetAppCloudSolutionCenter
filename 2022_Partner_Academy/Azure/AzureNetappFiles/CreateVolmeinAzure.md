@@ -35,7 +35,7 @@ Azure NetApp Files에서 볼륨을 만들기 전에 프로비전된 용량에 �
     ![CreateVolumeinAzure](./Images/CreateVolumeinAzure.png)
 4. 프로토콜을 클릭한 후, 다음 작업을 완료합니다.
     - 프로토콜 유형 : NFS
-    - 파일 경로 : NginxFileBrowser
+    - 파일 경로 : ANFHandsonVolume
     - 버전 : NFSv4.1
     - 나머지 옵션은 전부 기본값으로 지정합니다.
     ![CreateVolumeinAzure2](./Images/CreateVolumeinAzure2.png)
@@ -46,6 +46,7 @@ Azure NetApp Files에서 볼륨을 만들기 전에 프로비전된 용량에 �
 - NginxFileBrowser 볼륨이 생성됩니다.
 - Cloudmanager 에서 생성된 볼륨이 확인됩니다.
 ![NginxFileBrowserVolumeViewFromCloudmanager](./Images/NginxFileBrowserVolumeViewFromCloudmanager.png)
+
 # 다음과정
 Azure Netapp files 볼륨 설정에 대해 알아봅니다. </br>
 - 다음 주제 : [Volume Opration](./VolumeOperation.md)
