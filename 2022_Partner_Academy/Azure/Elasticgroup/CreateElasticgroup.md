@@ -48,3 +48,8 @@ http://<로드벨런서IP주소>/sneat-1.0.0/html/index.html
 - 브라우저에 서비스페이지가 잘 보입니다.
 - 2대의 VM이 Spot 타입으로 실행됩니다.
 ![CreateElasticGroupViewVM](./Images/CreateElasticGroupViewVM.png)
+
+# 다음과정
+Azure Netapp files 볼륨 설정에 대해 알아봅니다. </br>
+- [Volume Operation](../AzureNetappFiles/VolumeOperation.md)
+- [Azure NetApp Files에 NFS 볼륨 생성](../AzureNetappFiles/CreateVolmeinAzure.md)
