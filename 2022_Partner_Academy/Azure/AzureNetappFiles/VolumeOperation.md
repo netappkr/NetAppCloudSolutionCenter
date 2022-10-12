@@ -210,8 +210,10 @@ Run status group 0 (all jobs):
 
 5. 베스천에서 성능을 측정합니다.
 ```bash
-root@HandsonBastion-vm:~# rm -rf /ANF/ANFHandsonVolume/fio_test*
-root@HandsonBastion-vm:~# fio --directory=/ANF/ANFHandsonVolume --name fio_test_file --direct=1 --rw=randwrite --bs=4K --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap
+rm -rf /ANF/ANFHandsonVolume/fio_test*
+```
+```bash
+fio --directory=/ANF/ANFHandsonVolume --name fio_test_file --direct=1 --rw=randwrite --bs=4K --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap
 ```
 
 # 결과 
