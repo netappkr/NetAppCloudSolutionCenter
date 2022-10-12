@@ -1,4 +1,4 @@
-# Azure NetApp Files에 대한 NFS 볼륨 만들기
+# Azure NetApp Files에 NFS 볼륨 만들기
 Azure Console에서 논리적인 볼륨을 생성 할 수 있습니다.</br>
 Azure NetApp Files에서 볼륨을 만들기 전에 프로비전된 용량에 대한 풀을 구매하고 설정해야 합니다. </br>
 용량 풀을 설정하려면 NetApp 계정이 있어야 합니다. </br>
@@ -27,7 +27,7 @@ Azure NetApp Files에서 볼륨을 만들기 전에 프로비전된 용량에 �
 1. NetApp 계정의 Azure NetApp Files 관리 블레이드에서 볼륨을 클릭합니다.
 2. "+ 볼륨 추가"를 클릭합니다.
 3. 볼륨 만들기 창에서 다음과 같은 볼륨 정보를 입력합니다.
-    - 볼륨 이름 : NginxFileBrowser
+    - 볼륨 이름 : ANFHandsonVolume
     - 용량 풀 : Premium
     - 할당량 : 100
     - 가상 네트워크 : NetappHandson-Vnet

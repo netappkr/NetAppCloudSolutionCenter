@@ -1,5 +1,6 @@
 # Azure Netapp Files
 AzureNetappFiles에 대해 간략히 소개합니다. 자세한 내용은 [여기](Readme.md)를 참조해주세요.
+
 # Azure NetApp Files 생성
 1. 다음과 같이 cloudshell 에서 Azure NetApp Files에 대해 승인된 구독을 지정합니다.
 ```
@@ -42,11 +43,9 @@ az provider register --namespace Microsoft.NetApp --wait
 Azure Netapp Files를 사용하실 준비가 되었습니다.
 
 # 다음과정
-AKS 와 ANF를 연결합니다. </br>
-- 다음 주제 : [Install Trident useing tridentctl](../Trident/InstallTridentctl.md)
-- 추가 주제 : [Install Trident on Cloudmanager](../Trident/InstallTrident.md)
-> 설치는 가능하나 Cloudmanager에서 한국리전 ANF를 수정하지 못하는 이슈가 있어 SC 및 PV 백앤드 등록과정을 진행할 수 없습니다. 추후 업데이트 예정입니다. 
-- 이전 주제 : [Deploy Cloudmanager](./Deploy_Cloudmanager.md)
+Azure NetApp Files에 NFS 볼륨을 생성합니다. </br>
+- 다음 주제 : [Azure NetApp Files에 NFS 볼륨 생성](./AzureNetappFiles/CreateVolmeinAzure.md)
+- 이전 주제 : [클라우드매니저 배포](./AzureNetappFiles/Deploy_Cloudmanager.md) 
 
 # 참고
 [빠른 시작: Azure NetApp Files 설정 및 NFS 볼륨 만들기](https://learn.microsoft.com/ko-kr/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes?tabs=azure-portal)
