@@ -44,14 +44,14 @@ Cloudmanager(SaaS)가 connector를 배포하기 위한 자격증명을 추가합
     - ["Connector의 네트워킹 요구 사항에 대해 자세히 알아보십시오".](https://docs.netapp.com/ko-kr/cloud-manager-setup-admin/reference-networking-cloud-manager.html)
         * 모든 필요한 환경은 이미 자동생성되었습니다. ( ^ㅅ^👍)
 
-3. 마법사의 단계에 따라 커넥터를 생성합니다.
+3. 콘솔에 제시 된 단계에 따라 커넥터를 생성합니다.
     1. Get Ready : 필요한 것을 검토합니다.
     2. AWS Credentials 정보를 입력합니다.
         - Select the Authentication Method : Assume Role
         - Region : seoul
         - Credentials Name: HandsonCloudmanagerRole</br>
         > ### Tips
-        > 역할 수임 을 선택 하면 커넥터 배포 마법사에서 첫 번째 자격 증명 집합을 생성할 수 있습니다. </br>
+        > 역할을 선택 하면 커넥터 배포 마법사에서 첫 번째 자격 증명 집합을 생성할 수 있습니다. </br>
         > 자격 증명 페이지에서 추가 자격 증명 집합을 만들어야 합니다. </br>
         > 그런 다음 드롭다운 목록의 마법사에서 사용할 수 있습니다. </br>
         > 추가 자격 증명을 추가하는 방법을 알아보세요 . </br>
@@ -73,7 +73,7 @@ Cloudmanager(SaaS)가 connector를 배포하기 위한 자격증명을 추가합
         - subnet : 172.30.0.0/24 (**private subnet을 선택하는 경우 외부와 인터넷 통신이 가능한지 확인이 필요합니다.**)
         - Key pair : Handsonkey
         - Public IP : 기본값을 따릅니다. </br>
-        ![AddconnectorAWSNetwork](./images/AddconnectorAWSDetails.png)
+        ![AddConnectorAWSNetwork](./images/AddConnectorAWSNetwork.png)
 
     8. 보안 그룹 : 새로운 보안 그룹을 생성할 것인지, 인바운드 HTTP, HTTPS, SSH 접근을 허용하는 기존 보안 그룹을 선택할 것인지 선택합니다.
         - Assign a security group: Create a new security group
