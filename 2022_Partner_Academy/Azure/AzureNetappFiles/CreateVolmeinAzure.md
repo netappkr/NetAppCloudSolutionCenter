@@ -43,14 +43,14 @@ Azure NetApp Files에서 볼륨을 만들기 전에 프로비전된 용량에 �
 5. 검토 + 만들기를 클릭하고 볼륨을 생성합니다.
 
 # 결과
-- NginxFileBrowser 볼륨이 생성됩니다.
+- ANFHandsonVolume 볼륨이 생성됩니다.
 - Cloudmanager 에서 생성된 볼륨이 확인됩니다.
 ![NginxFileBrowserVolumeViewFromCloudmanager](./Images/NginxFileBrowserVolumeViewFromCloudmanager.png)
 
 # 다음과정
 Azure Netapp files 볼륨 설정에 대해 알아봅니다. </br>
-- 다음 주제 : [Volume Opration](./VolumeOperation.md)
-- 이전 주제 : [Headroom](../OceanforAKS/Headroom.md)
+- [엘라스틱그룹으로 가져오기](../Elasticgroup/CreateElasticgroup.md)
+- [Azure 콘솔에서 Azure Netapp Files 생성](./CreateAzureNetappFilesonAzure.md)
 
 # 참고
 - [Azure NetApp Files 설정 및 NFS 볼륨 만들기](https://learn.microsoft.com/ko-kr/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes?tabs=azure-portal)
