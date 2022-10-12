@@ -57,7 +57,7 @@ tmpfs                                                 3.9G     0  3.9G   0% /sys
 172.18.4.4:/pvc-ef5a4c3a-c3cd-46e1-be37-d9494b6d11a0  100G  320K  100G   1% /mnt
 /dev/loop3                                             48M   48M     0 100% /snap/snapd/17029
 tmpfs                                                 796M     0  796M   0% /run/user/1000
-172.18.4.4:/NginxFileBrowser                          150G  1.2G  149G   1% /ANF/NginxFileBrowser
+172.18.4.4:/ANFHandsonVolume                          150G  1.2G  149G   1% /ANF/ANFHandsonVolume
 root@HandsonBastion-vm:~# 
 ```
 
@@ -72,6 +72,9 @@ root@HandsonBastion-vm:~#
 > 일반적인 성능측정 시 --bs 값은 8k 또는 어플리케이션에서 요구하는 값으로 지정합니다. 
 
 1. premium 볼륨의 성능을 측정합니다. (bs=4K)
+```bash
+fio --directory=/ANF/ANFHandsonVolume --name fio_test_file --direct=1 --rw=randwrite --bs=4K --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap
+```
 ```bash
 root@HandsonBastion-vm:~# fio \
 > --directory=/ANF/ANFHandsonVolume \
