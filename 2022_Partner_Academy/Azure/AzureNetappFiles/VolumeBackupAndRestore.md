@@ -27,7 +27,7 @@ Hello Netapp
 ![CreateANFonAzure](./Images/createsnapshot2.png)
 
 5. 복원될 볼륨의 정보를 입력하고 볼륨을 생성합니다.</br>
-- 볼륨이름 : NginxFileBrower-Restore
+- 볼륨이름 : ANFHandsonVolume-Restore
 - 용량 풀 : Premium
 - 할당량(GiB) : 100</br>
 ![CreateANFonAzure](./Images/RestoreVolume.png)
