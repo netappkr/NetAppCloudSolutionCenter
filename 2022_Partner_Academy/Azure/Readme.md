@@ -3,7 +3,7 @@
 이 과정에서 이용할 수 있는 솔루션의 기능에 대해 소개합니다.
 
 ## 구성도
-![test](./Images/myplan.png)
+![test](./Images/PartnerAcademy-AzureV2.png)
 
 # 절차
 1. [Hands on Lab 배포](./Quickstart/Quickstart.md)
