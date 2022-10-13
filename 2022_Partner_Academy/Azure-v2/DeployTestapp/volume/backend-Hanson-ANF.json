@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "storageDriverName": "azure-netapp-files",
+    "backendName" : "Handson-ANF",
+    "subscriptionID": "<your subcription ID>",
+    "tenantID": "<your tenant ID>",
+    "clientID": "<your Cloudmanager App ID>",
+    "clientSecret": "<your screat key >",
+    "location": "koreacentral",
+    "virtualNetwork": "NetappHandson-Vnet",
+    "nfsMountOptions": "vers=4.1,proto=tcp,timeo=600",
+    "storage": [
+    {
+        "labels": {
+            "performance": "premium"
+        },
+        "serviceLevel": "Premium"
+    },
+    {
+        "labels": {
+            "performance": "standard"
+        },
+        "serviceLevel": "Standard"
+    }
+]
+}
