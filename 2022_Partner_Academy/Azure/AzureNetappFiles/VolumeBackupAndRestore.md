@@ -66,7 +66,7 @@ fio_test_file.11.0  fio_test_file.15.0  fio_test_file.5.0  fio_test_file.9.0
 스냅샷을 통해 이전 시점으로 볼륨을 복원할 수 있었습니다.
 
 # 다음과정
-AKS에 볼륨을 등록하는 과정을 알아봅니다.</br>
+수고하셨습니다.</br>
 - 이전주제: [Volume Operation](./VolumeOperation.md)
 
 # 참조
