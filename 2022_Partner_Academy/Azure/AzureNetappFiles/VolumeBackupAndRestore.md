@@ -65,6 +65,8 @@ fio_test_file.11.0  fio_test_file.15.0  fio_test_file.5.0  fio_test_file.9.0
 ## 결과
 스냅샷을 통해 이전 시점으로 볼륨을 복원할 수 있었습니다.
 
+# 마무리
+wget://https://netappkr-wyahn-s3.s3.ap-northeast-2.amazonaws.com/public/DeployTestapp/Thankyoufortry.png
 # 다음과정
 수고하셨습니다.</br>
 - 이전주제: [Volume Operation](./VolumeOperation.md)
