@@ -72,7 +72,7 @@ Astra Trident는 또한 NetApp의 Astra를 위한 기본 기술로, 스냅샷, �
     ```
 > ### Tips
 > /opt/ 하위에 test 앱 정의파일이 보이지 않는경우 하기 명령을 실행하여 수동으로 다운로드합니다. </br>
-> aws s3 cp s3://netappkr-wyahn-s3/public/DeployTestapp/ /opt/DeployTestapp --recursive
+> [DeployTestapp.zip](../DeployTestapp.zip)
 
 4. FSx for ontap을 Backend Storage를 등록합니다.</br>
    1. aws console, Cloudmanager, AWSCLI, ontapcli 중 하나의 방법을 선택해 접속정보를 알아냅니다.
