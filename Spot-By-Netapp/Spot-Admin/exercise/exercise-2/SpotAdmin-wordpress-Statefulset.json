@@ -1,0 +1,157 @@
+{
+    "group": {
+      "name": "spotadmin-wordpress-TG-Stateful",
+      "capacity": {
+        "minimum": 1,
+        "maximum": 3,
+        "target": 1,
+        "unit": "instance"
+      },
+      "strategy": {
+        "risk": 100,
+        "onDemandCount": null,
+        "availabilityVsCost": "cheapest",
+        "drainingTimeout": 120,
+        "fallbackToOd": true,
+        "scalingStrategy": {
+          "terminationPolicy": "default"
+        },
+        "persistence": {},
+        "revertToSpot": {
+          "performAt": "always"
+        }
+      },
+      "compute": {
+        "instanceTypes": {
+          "ondemand": "r5.xlarge",
+          "spot": [
+            "r3.xlarge",
+            "r4.xlarge",
+            "r5.xlarge",
+            "r5a.xlarge",
+            "t2.medium",
+            "t3.medium",
+            "t3a.medium",
+            "t2.small",
+            "t3.small",
+            "t3a.small",
+            "r3.large",
+            "r4.large",
+            "r5.large",
+            "r5a.large"
+          ]
+        },
+        "availabilityZones": [
+          {
+            "name": "ap-northeast-2a",
+            "subnetIds": [
+              "subnet-011c17a255dfe187f"
+            ]
+          },
+          {
+            "name": "ap-northeast-2c",
+            "subnetIds": [
+              "subnet-02c59ae848d60cef4"
+            ]
+          },
+          {
+            "name": "ap-northeast-2b",
+            "subnetIds": [
+              "subnet-0510b34405ae6dcb8"
+            ]
+          }
+        ],
+        "product": "Linux/UNIX",
+        "launchSpecification": {
+          "loadBalancerNames": null,
+          "loadBalancersConfig": {
+            "loadBalancers": null
+          },
+          "itf": {
+            "fixedTargetGroups": false,
+            "weightStrategy": "vcpu",
+            "migrationHealthinessThreshold": 50,
+            "loadBalancers": [
+              {
+                "loadBalancerArn": "arn:aws:elasticloadbalancing:ap-northeast-2:037660834288:loadbalancer/app/SpotAdminALB/526f683edfc63587",
+                "listenerRules": [
+                  {
+                    "ruleArn": "arn:aws:elasticloadbalancing:ap-northeast-2:037660834288:listener-rule/app/SpotAdminALB/526f683edfc63587/3cacd25d05c97452/70705f8634cd8983"
+                  }
+                ]
+              }
+            ],
+            "targetGroupConfig": {
+              "vpcId": "vpc-0c3e31e77e0139b2d",
+              "healthCheckIntervalSeconds": 30,
+              "healthCheckPath": "/",
+              "healthCheckPort": "traffic-port",
+              "healthCheckProtocol": "HTTP",
+              "healthCheckTimeoutSeconds": 5,
+              "healthyThresholdCount": 5,
+              "unhealthyThresholdCount": 2,
+              "matcher": {
+                "httpCode": "200"
+              },
+              "port": 80,
+              "protocol": "HTTP",
+              "protocolVersion": "HTTP1"
+            }
+          },
+          "healthCheckType": null,
+          "securityGroupIds": [
+            "sg-051765c770a10a15a",
+            "sg-0122d483d57969375"
+          ],
+          "monitoring": true,
+          "ebsOptimized": false,
+          "imageId": "ami-097de6c1fdd6b0ddd",
+          "iamRole": {
+            "name": null,
+            "arn": "arn:aws:iam::037660834288:instance-profile/ASGStack-wordpressasgInstanceProfile9075E223-h04GR01gIxiP"
+          },
+          "keyPair": "SpotAdminkey",
+          "userData": "IyEvYmluL2Jhc2gKeXVtIC15IHVwZGF0ZQ==",
+          "shutdownScript": null,
+          "networkInterfaces": [
+            {
+              "deviceIndex": 0,
+              "associatePublicIpAddress": false,
+              "deleteOnTermination": true,
+              "associateIpv6Address": false
+            }
+          ],
+          "tags": [
+            {
+              "tagKey": "Name",
+              "tagValue": "ASGStack/wordpress-asg"
+            }
+          ],
+          "tenancy": "default"
+        }
+      },
+      "scaling": {
+        "multipleMetrics": null,
+        "target": [
+          {
+            "policyName": "ALB Req per TG",
+            "namespace": "AWS/ApplicationELB",
+            "metricName": "RequestCountPerTarget",
+            "dimensions": [
+              {
+                "name": "TargetGroup",
+                "value": "targetgroup/spotadmin-wordpress-TG/7c08dc21ee667674"
+              }
+            ],
+            "statistic": "sum",
+            "unit": "none",
+            "target": 10,
+            "cooldown": 180
+          }
+        ]
+      },
+      "scheduling": {},
+      "thirdPartiesIntegration": {},
+      "multai": null
+    }
+  }
