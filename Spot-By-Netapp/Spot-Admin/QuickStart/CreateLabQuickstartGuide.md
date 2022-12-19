@@ -5,7 +5,7 @@ Hands on 환경을 빠르게 생성합니다.
 1. AWS console > Cloudformation 콘솔을 엽니다.
 2. stack 생성 버튼을 선택합니다.
 - StackName: CDKToolkit
-- Template URL: https://netappkr-wyahn-s3.s3.ap-northeast-2.amazonaws.com/public/cdk/CDKToolkit.yml
+- Template URL: https://netappkr-wyahn-s3.s3.ap-northeast-2.amazonaws.com/public/CDKToolkit.yml
 
 ### Parameters
 - Name : CDKToolkit
