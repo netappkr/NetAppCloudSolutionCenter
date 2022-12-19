@@ -1,4 +1,4 @@
-![image.png](../images/spot_by_netapp_logo.png)
+![image.png](./Images/spot_by_netapp_logo.png)
 
 #Spot by Netapp 소개
 ---
