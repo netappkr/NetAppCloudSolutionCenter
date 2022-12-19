@@ -58,7 +58,7 @@ class MergeStack(Stack):
             public_key_material="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAvu2v6lkF59XSY3ch+Df2w/AN10EPXZ3JL2Xbqtsv13xVq9ZuzmUcdCpfa9NyjnyBoaXxymUvQSaeQCFxnjroAySOKVXaR6n6ahWFGQOYlfZHkKYg/N8pTpQht3QXNLoA8lUlrb3lyehQHxtCAhtgmx4BIaBpGM/FLaJqhu1OQ7gz0GBbG1qZOmEyrzcklkvriyPYzEESg3N9w+eM09rWvu3dK+EezAsgeFBlcsfHY5eNRmgp2iPfvz8tNZ3wgsrU/UiZHueqsMmGYS+Njjr461cx2q3EhjjPbYz8+tj3t/taZ/Jf419r9ZhT1JHm8/vUh22B5Xm31LdbMBPGvuUKPQ=="
         )
         user_data = ec2.UserData.for_linux()
-        user_data.add_commands("aws s3 cp s3://netappkr-wyahn-s3/public/DeployTestapp/ /opt/DeployTestapp --recursive")
+        user_data.add_commands("aws s3 cp s3://netappkr-wyahn-s3/public/Spot_Admin/DeployTestapp/ /opt/DeployTestapp --recursive")
         # 서버생성
         ec2.Instance(self, "SpotAdminbastion",
             vpc=vpc,
@@ -189,16 +189,16 @@ class MergeStack(Stack):
                 min_size = 0
         )
         #iam
-        admin_user = iam.User(
-            self, "SpotAdminAdmin",
-            user_name="SpotAdminAdmin", 
-            password=SecretValue.unsafe_plain_text("SpotAdmin123!@#")
-        )
-        admin_user.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name("AdministratorAccess"))
-        #admin_user.addToGroup(IGroup.fromGroupArn("arn:aws:iam::<your aws account id>:group/admin"))
+        # admin_user = iam.User(
+        #    self, "SpotAdmin",
+        #    user_name="SpotAdmin", 
+        #    password=SecretValue.unsafe_plain_text("SpotAdmin123!@#")
+        # )
+        # admin_user.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name("AdministratorAccess"))
+        # admin_user.addToGroup(IGroup.fromGroupArn("arn:aws:iam::<your aws account id>:group/admin"))
         
         # EKS에 iam user등록
-        cluster.aws_auth.add_user_mapping(admin_user, groups=["system:masters"])
+        # cluster.aws_auth.add_user_mapping(admin_user, groups=["system:masters"])
         cluster.aws_auth.add_role_mapping(bastionrole, groups=["system:masters"])
 
         #core.CfnOutput(core,construct_id,value="출력")
