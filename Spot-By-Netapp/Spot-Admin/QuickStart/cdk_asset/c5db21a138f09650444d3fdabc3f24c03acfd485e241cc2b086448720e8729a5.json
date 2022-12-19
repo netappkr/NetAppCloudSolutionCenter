@@ -686,7 +686,7 @@
     "IamInstanceProfile": {
      "Ref": "SpotAdminbastionInstanceProfile8E426AC7"
     },
-    "ImageId": "ami-056e81557c7d105af",
+    "ImageId": "ami-0632d76430fad92e4",
     "InstanceType": "m5.large",
     "KeyName": "SpotAdminkey",
     "SecurityGroupIds": [
@@ -707,7 +707,7 @@
      }
     ],
     "UserData": {
-     "Fn::Base64": "#!/bin/bash\naws s3 cp s3://netappkr-wyahn-s3/public/DeployTestapp/ /opt/DeployTestapp --recursive"
+     "Fn::Base64": "#!/bin/bash\naws s3 cp s3://netappkr-wyahn-s3/public/Spot_Admin/DeployTestapp/ /opt/DeployTestapp --recursive"
     }
    },
    "DependsOn": [
@@ -1566,21 +1566,7 @@
          "Arn"
         ]
        },
-       "\\\",\\\"groups\\\":[\\\"system:masters\\\"]}]\",\"mapUsers\":\"[{\\\"userarn\\\":\\\"",
-       {
-        "Fn::GetAtt": [
-         "SpotAdminAdmin6466C2B9",
-         "Arn"
-        ]
-       },
-       "\\\",\\\"username\\\":\\\"",
-       {
-        "Fn::GetAtt": [
-         "SpotAdminAdmin6466C2B9",
-         "Arn"
-        ]
-       },
-       "\\\",\\\"groups\\\":[\\\"system:masters\\\"]}]\",\"mapAccounts\":\"[]\"}}]"
+       "\\\",\\\"groups\\\":[\\\"system:masters\\\"]}]\",\"mapUsers\":\"[]\",\"mapAccounts\":\"[]\"}}]"
       ]
      ]
     },
@@ -1843,7 +1829,7 @@
        {
         "Ref": "AWS::URLSuffix"
        },
-       "/cdk-hnb659fds-assets-037660834288-ap-northeast-2/439ab247edddbb326993ca9771481aab236203527b508ac47842562c939c4c5b.json"
+       "/cdk-hnb659fds-assets-037660834288-ap-northeast-2/399a4453693ae0e345ec7f15b07730982c30073c8e938e23800991fb5f347e3c.json"
       ]
      ]
     },
@@ -1875,7 +1861,7 @@
        {
         "Ref": "AWS::URLSuffix"
        },
-       "/cdk-hnb659fds-assets-037660834288-ap-northeast-2/040e78d0d0153e287d12a3b955b14d9d25d22500ce0ccada306684889417bfb2.json"
+       "/cdk-hnb659fds-assets-037660834288-ap-northeast-2/f488002cf0ef96c2910d30eaecad8ab36adc7e5c870f7a0cded514ab01845387.json"
       ]
      ]
     },
@@ -2440,36 +2426,10 @@
     "aws:asset:property": "Code"
    }
   },
-  "SpotAdminAdmin6466C2B9": {
-   "Type": "AWS::IAM::User",
-   "Properties": {
-    "LoginProfile": {
-     "Password": "SpotAdmin123!@#"
-    },
-    "ManagedPolicyArns": [
-     {
-      "Fn::Join": [
-       "",
-       [
-        "arn:",
-        {
-         "Ref": "AWS::Partition"
-        },
-        ":iam::aws:policy/AdministratorAccess"
-       ]
-      ]
-     }
-    ],
-    "UserName": "SpotAdminAdmin"
-   },
-   "Metadata": {
-    "aws:cdk:path": "MergeStack/SpotAdminAdmin/Resource"
-   }
-  },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11STW/bMAz9Lb0r2tacevSCofX6ZcRdrwMtM7YWWTIkKkFg+L+PtuM46YnvkY/SE6l7uV7L73dwDCtV7ldGF7LLCdRecOpvh+pedp+tEpud/cw2IouF0SqPhUUacgvaukj4AYXBJb/kkhCc0kDa2Yt4AL/SbAhvQI9AeISTyLw+MFwOTi2hZzwLJidnlhB7rRu0JHJU0Ws6PXoX29HD18QznjLQXqQ2EFiF0+kLvmlIbeUxhF5oaGS3ddO75ji3Zd7tNKcyx2MZvZ3Rn4B+oEPsBURyQYHRtpJdwiSfyMXaC0Sr6o2zO11Ff5nTV2kv0EAgrYyDsgDDFrh04B0lbcv3jo0vXPs51iYLN/xapwOhPWtmfFX/AF/x2GeLV5Rt7IPsNiZyF/ccAxutxXMsxk1heAWrdxhIvLdo05LfZVERD+ugS254cyVW87kLSUzBSvLOGBbl6A9aYaKUi7zeJzTNpgZPfS+2GFz0w9LYgGsWygu6wu+R2jh90/FHM/gdhsHedF1c8R9FYmXFI+1FdqLa2W9r+SB/3P0LWq8829ANyu0U/wMqGvtqOgMAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11T0XKcMAz8lr773Cb3BZTppCRpwhyZvHaM0YF6xmZs+W5uGP69AsJB8uSVtCsvkrmX+7388U1dwk5Xp53BUvYFKX0SnPrbg76X/XunRXq073kq8lga1EUsLdCYW9HBRYI3VRpY82suCcFpVITO3sgj+JXl4/Gi6EERXNRV5B7PDNfGmSXwjBfC7OQjSoi9Ni1YEgXo6JGuD97FbvLwNfEE11yhF5kNpKyGufuKPwkyW3sIYRCoWtkf3Pxdy7nIcu+OyKnc8VgmbzMahIrkglYGbS37hINiDm5unlW0ukmdPWId/W00X6mDAKMCoTZOVaUyfCuXzryWpOv4qkn4zLWfUw381Hsbb3kYCOwHZ8Gb+pvyNU96sbgJ2cYpyD41kVWsuQQ22oinWE7LgfBHWTxCIPHagc0q/i4Lmng+Z6xY8OIqqJe+a5CYkpnknTFMKsCfUUOitYu80d9g2rRRnoZBHCC46Mc9sQHXriHvZINfI3VxfpnTI2bwGMbBflLdXPGzBGJmzSMdRH6lxtnve3l3x7/Ev4C48+wDW5CH+fwPblC1JS4DAAA="
    },
    "Metadata": {
     "aws:cdk:path": "MergeStack/CDKMetadata/Default"

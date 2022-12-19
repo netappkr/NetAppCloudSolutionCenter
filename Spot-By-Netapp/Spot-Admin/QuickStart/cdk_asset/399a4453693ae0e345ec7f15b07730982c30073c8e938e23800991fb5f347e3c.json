@@ -784,7 +784,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zVOTU/DMAz9LbunBpYTxw2JE5qqIXGNvMSU0DRBsQNUVf87STdO78P289uD1nC/wx/urBu74C+wnIiF3KugHVXA6eLQBJwpm5gcma+cfmeDA0WBUzX6pg9NvrQlVaPMwtogMwnDoYFiDcdiR5IjMt1CYXl6j9vNG2X2KarnEq00Ugf/fFUeJ1jOKVCzN+xT8HZu8srWVW1vauXBx0HZwpImk4lTyZYYasdv72q5lnBzV9XP8pHinYZHeNh9svddLlH8RHC+4h+8w7UqHQEAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zVQ207DMAz9Ft5Tw8gXbEg8oanapL1GXmJKaJqg2AGqqv9O0o2nc4l9fJRn0BqeHvCHO+vGLvgrLEdiIXcWtKMKOF0dmoAzZROTI/OV0+9scKAocKxG3/S+ybc2pGqUWVgbZCZh2DdQrOFQ7EhyQKZ7KCwv73HbuVBmn6J6LdFKI/Xhn6/K4wTLKQVq9oZ9Ct7OTd7YuqrtTK08+DgoW1jSZDJxKtkSQ+347V0t1xLu7qr6WT5SfNSw29Uv+GTvu1yi+IngdMM/bzCIbh4BAAA="
    },
    "Metadata": {
     "aws:cdk:path": "MergeStack/@aws-cdk--aws-eks.ClusterResourceProvider/CDKMetadata/Default"

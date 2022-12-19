@@ -330,7 +330,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02Pu47CMBBFv4XeGR6pKAFpGygikGgtxxnY2Ti25LFBUeR/J05YRHUfU9wzGyhLWC3UkwvdtIWhGoYxyAFbhmOsUQdTefegBr0wqqsbBcNPtDqQs+Jws9/+pHr0V/Q85iRIdTCcncF8mrRyhnSf4+yS4FIqZgwMuyxjhn3ULYa9YkxiKi9B3cne3+vS5BGZIbUh2D35YGgaFu2M+489lUnoyMF10iO76DUyfN7JWO82iaoPv84uS9jCevHHRIWPNlCHcJ71BQp+P+8qAQAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02QTa7CMAyEz8I+NT89ASC9DSwqkNhGaeoHpmkixQmoqnJ3mhYQq/E3XszYGyhLWC3UkwvdtIWhGoYR5IAtwyHWqIOpvHtQg14Y1dWNguEvWh3IWbH/t7/zUfXoL+h55CRIdTCcnMG8mrRyhnSfcZ6S4FIqZgwM2ywjwy7qFsNOMSYxmeegrmSv73RpcojMJbUh2D55b2gKFu1c91N7MpPQkYPrpEd20Wtk+J6Ta73dJKo+3JxdlrBej/+4M1Hhow3UIZxmfQFrrE9MKwEAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "MergeStack/@aws-cdk--aws-eks.KubectlProvider/CDKMetadata/Default"
