@@ -83,6 +83,6 @@ Spot Console로 이동 후 Loadbalancers Tab에서 인스턴스 2대가 표시�
 
 ![View_SpotConsole](./Images/View_SpotConsole.png)
 
-# 다음 단계
+# 다음 과정
 Console Action에 대해 알아봅니다.
 - [Elastigroup Instance Action](./2-1-1_ElastigroupInstanceAction.md)
