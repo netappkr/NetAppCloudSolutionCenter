@@ -4,7 +4,7 @@
 # 실습 전
 - Auto Scaling Group이 구성된 AWS 계정이 필요합니다. </br>
 [실습 환경구성](../../QuickStart/CreateLabQuickstartGuide.md)에서 실습전 필요한 환경을 배포합니다.
-- AWS 계정에 연결된 Spot 계정 
+- AWS 계정에 연결된 Spot 계정 </br>
 [AWS 계정을 Spot에 연결합니다.](../exercise-1/ConnectAccount.md)
 
 # Getting start
