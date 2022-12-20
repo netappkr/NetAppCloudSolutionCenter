@@ -24,7 +24,14 @@
     "VpcId": {
      "Ref": "SpotAdminVPCD791DA13"
     },
-    "AvailabilityZone": "ap-northeast-2a",
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
     "CidrBlock": "172.30.0.0/24",
     "MapPublicIpOnLaunch": true,
     "Tags": [
@@ -155,7 +162,14 @@
     "VpcId": {
      "Ref": "SpotAdminVPCD791DA13"
     },
-    "AvailabilityZone": "ap-northeast-2b",
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
     "CidrBlock": "172.30.1.0/24",
     "MapPublicIpOnLaunch": true,
     "Tags": [
@@ -234,99 +248,21 @@
     "aws:cdk:path": "MergeStack/SpotAdmin-VPC/public-subnetSubnet2/DefaultRoute"
    }
   },
-  "SpotAdminVPCpublicsubnetSubnet3Subnet23422C84": {
-   "Type": "AWS::EC2::Subnet",
-   "Properties": {
-    "VpcId": {
-     "Ref": "SpotAdminVPCD791DA13"
-    },
-    "AvailabilityZone": "ap-northeast-2c",
-    "CidrBlock": "172.30.2.0/24",
-    "MapPublicIpOnLaunch": true,
-    "Tags": [
-     {
-      "Key": "aws-cdk:subnet-name",
-      "Value": "public-subnet"
-     },
-     {
-      "Key": "aws-cdk:subnet-type",
-      "Value": "Public"
-     },
-     {
-      "Key": "kubernetes.io/role/elb",
-      "Value": "1"
-     },
-     {
-      "Key": "Name",
-      "Value": "MergeStack/SpotAdmin-VPC/public-subnetSubnet3"
-     }
-    ]
-   },
-   "Metadata": {
-    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/public-subnetSubnet3/Subnet"
-   }
-  },
-  "SpotAdminVPCpublicsubnetSubnet3RouteTable1ADA4384": {
-   "Type": "AWS::EC2::RouteTable",
-   "Properties": {
-    "VpcId": {
-     "Ref": "SpotAdminVPCD791DA13"
-    },
-    "Tags": [
-     {
-      "Key": "kubernetes.io/role/elb",
-      "Value": "1"
-     },
-     {
-      "Key": "Name",
-      "Value": "MergeStack/SpotAdmin-VPC/public-subnetSubnet3"
-     }
-    ]
-   },
-   "Metadata": {
-    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/public-subnetSubnet3/RouteTable"
-   }
-  },
-  "SpotAdminVPCpublicsubnetSubnet3RouteTableAssociation7F38BE9D": {
-   "Type": "AWS::EC2::SubnetRouteTableAssociation",
-   "Properties": {
-    "RouteTableId": {
-     "Ref": "SpotAdminVPCpublicsubnetSubnet3RouteTable1ADA4384"
-    },
-    "SubnetId": {
-     "Ref": "SpotAdminVPCpublicsubnetSubnet3Subnet23422C84"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/public-subnetSubnet3/RouteTableAssociation"
-   }
-  },
-  "SpotAdminVPCpublicsubnetSubnet3DefaultRouteBCE616F6": {
-   "Type": "AWS::EC2::Route",
-   "Properties": {
-    "RouteTableId": {
-     "Ref": "SpotAdminVPCpublicsubnetSubnet3RouteTable1ADA4384"
-    },
-    "DestinationCidrBlock": "0.0.0.0/0",
-    "GatewayId": {
-     "Ref": "SpotAdminVPCIGW8281936E"
-    }
-   },
-   "DependsOn": [
-    "SpotAdminVPCVPCGW5B05B3D8"
-   ],
-   "Metadata": {
-    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/public-subnetSubnet3/DefaultRoute"
-   }
-  },
   "SpotAdminVPCprivatesubnetSubnet1Subnet88243053": {
    "Type": "AWS::EC2::Subnet",
    "Properties": {
     "VpcId": {
      "Ref": "SpotAdminVPCD791DA13"
     },
-    "AvailabilityZone": "ap-northeast-2a",
-    "CidrBlock": "172.30.3.0/24",
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "172.30.2.0/24",
     "MapPublicIpOnLaunch": false,
     "Tags": [
      {
@@ -407,8 +343,15 @@
     "VpcId": {
      "Ref": "SpotAdminVPCD791DA13"
     },
-    "AvailabilityZone": "ap-northeast-2b",
-    "CidrBlock": "172.30.4.0/24",
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "172.30.3.0/24",
     "MapPublicIpOnLaunch": false,
     "Tags": [
      {
@@ -483,88 +426,6 @@
     "aws:cdk:path": "MergeStack/SpotAdmin-VPC/private-subnetSubnet2/DefaultRoute"
    }
   },
-  "SpotAdminVPCprivatesubnetSubnet3SubnetCD27815B": {
-   "Type": "AWS::EC2::Subnet",
-   "Properties": {
-    "VpcId": {
-     "Ref": "SpotAdminVPCD791DA13"
-    },
-    "AvailabilityZone": "ap-northeast-2c",
-    "CidrBlock": "172.30.5.0/24",
-    "MapPublicIpOnLaunch": false,
-    "Tags": [
-     {
-      "Key": "aws-cdk:subnet-name",
-      "Value": "private-subnet"
-     },
-     {
-      "Key": "aws-cdk:subnet-type",
-      "Value": "Private"
-     },
-     {
-      "Key": "kubernetes.io/role/internal-elb",
-      "Value": "1"
-     },
-     {
-      "Key": "Name",
-      "Value": "MergeStack/SpotAdmin-VPC/private-subnetSubnet3"
-     }
-    ]
-   },
-   "Metadata": {
-    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/private-subnetSubnet3/Subnet"
-   }
-  },
-  "SpotAdminVPCprivatesubnetSubnet3RouteTable55A63139": {
-   "Type": "AWS::EC2::RouteTable",
-   "Properties": {
-    "VpcId": {
-     "Ref": "SpotAdminVPCD791DA13"
-    },
-    "Tags": [
-     {
-      "Key": "kubernetes.io/role/internal-elb",
-      "Value": "1"
-     },
-     {
-      "Key": "Name",
-      "Value": "MergeStack/SpotAdmin-VPC/private-subnetSubnet3"
-     }
-    ]
-   },
-   "Metadata": {
-    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/private-subnetSubnet3/RouteTable"
-   }
-  },
-  "SpotAdminVPCprivatesubnetSubnet3RouteTableAssociation9BC60C5C": {
-   "Type": "AWS::EC2::SubnetRouteTableAssociation",
-   "Properties": {
-    "RouteTableId": {
-     "Ref": "SpotAdminVPCprivatesubnetSubnet3RouteTable55A63139"
-    },
-    "SubnetId": {
-     "Ref": "SpotAdminVPCprivatesubnetSubnet3SubnetCD27815B"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/private-subnetSubnet3/RouteTableAssociation"
-   }
-  },
-  "SpotAdminVPCprivatesubnetSubnet3DefaultRoute74099803": {
-   "Type": "AWS::EC2::Route",
-   "Properties": {
-    "RouteTableId": {
-     "Ref": "SpotAdminVPCprivatesubnetSubnet3RouteTable55A63139"
-    },
-    "DestinationCidrBlock": "0.0.0.0/0",
-    "NatGatewayId": {
-     "Ref": "SpotAdminVPCpublicsubnetSubnet1NATGatewayA7F29114"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/private-subnetSubnet3/DefaultRoute"
-   }
-  },
   "SpotAdminVPCIGW8281936E": {
    "Type": "AWS::EC2::InternetGateway",
    "Properties": {
@@ -602,7 +463,17 @@
        "Action": "sts:AssumeRole",
        "Effect": "Allow",
        "Principal": {
-        "Service": "ec2.amazonaws.com"
+        "Service": {
+         "Fn::Join": [
+          "",
+          [
+           "ec2.",
+           {
+            "Ref": "AWS::URLSuffix"
+           }
+          ]
+         ]
+        }
        }
       }
      ],
@@ -682,11 +553,26 @@
   "SpotAdminbastion4A2639D7": {
    "Type": "AWS::EC2::Instance",
    "Properties": {
-    "AvailabilityZone": "ap-northeast-2a",
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
     "IamInstanceProfile": {
      "Ref": "SpotAdminbastionInstanceProfile8E426AC7"
     },
-    "ImageId": "ami-0632d76430fad92e4",
+    "ImageId": {
+     "Fn::FindInMap": [
+      "SpotAdminbastionAmiMap9372FC62",
+      {
+       "Ref": "AWS::Region"
+      },
+      "ami"
+     ]
+    },
     "InstanceType": "m5.large",
     "KeyName": "SpotAdminkey",
     "SecurityGroupIds": [
@@ -775,7 +661,17 @@
        "Action": "sts:AssumeRole",
        "Effect": "Allow",
        "Principal": {
-        "Service": "ec2.amazonaws.com"
+        "Service": {
+         "Fn::Join": [
+          "",
+          [
+           "ec2.",
+           {
+            "Ref": "AWS::URLSuffix"
+           }
+          ]
+         ]
+        }
        }
       }
      ],
@@ -808,7 +704,15 @@
   "wordpressasgLaunchConfig55DEBC0E": {
    "Type": "AWS::AutoScaling::LaunchConfiguration",
    "Properties": {
-    "ImageId": "ami-097de6c1fdd6b0ddd",
+    "ImageId": {
+     "Fn::FindInMap": [
+      "wordpressasgAmiMap6E0E0CD1",
+      {
+       "Ref": "AWS::Region"
+      },
+      "ami"
+     ]
+    },
     "InstanceType": "r5.xlarge",
     "IamInstanceProfile": {
      "Ref": "wordpressasgInstanceProfile9075E223"
@@ -865,9 +769,6 @@
      },
      {
       "Ref": "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC"
-     },
-     {
-      "Ref": "SpotAdminVPCprivatesubnetSubnet3SubnetCD27815B"
      }
     ]
    },
@@ -1013,17 +914,13 @@
      },
      {
       "Ref": "SpotAdminVPCpublicsubnetSubnet2SubnetE7F3709A"
-     },
-     {
-      "Ref": "SpotAdminVPCpublicsubnetSubnet3Subnet23422C84"
      }
     ],
     "Type": "application"
    },
    "DependsOn": [
     "SpotAdminVPCpublicsubnetSubnet1DefaultRoute0998254F",
-    "SpotAdminVPCpublicsubnetSubnet2DefaultRouteDFAEE25B",
-    "SpotAdminVPCpublicsubnetSubnet3DefaultRouteBCE616F6"
+    "SpotAdminVPCpublicsubnetSubnet2DefaultRouteDFAEE25B"
    ],
    "Metadata": {
     "aws:cdk:path": "MergeStack/ALB/Resource"
@@ -1149,7 +1046,11 @@
            {
             "Ref": "AWS::Partition"
            },
-           ":iam::037660834288:root"
+           ":iam::",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":root"
           ]
          ]
         }
@@ -1169,10 +1070,6 @@
     "SpotAdminVPCprivatesubnetSubnet2RouteTable23A8F0A1",
     "SpotAdminVPCprivatesubnetSubnet2RouteTableAssociationEAED4FD9",
     "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC",
-    "SpotAdminVPCprivatesubnetSubnet3DefaultRoute74099803",
-    "SpotAdminVPCprivatesubnetSubnet3RouteTable55A63139",
-    "SpotAdminVPCprivatesubnetSubnet3RouteTableAssociation9BC60C5C",
-    "SpotAdminVPCprivatesubnetSubnet3SubnetCD27815B",
     "SpotAdminVPCpublicsubnetSubnet1DefaultRoute0998254F",
     "SpotAdminVPCpublicsubnetSubnet1EIP82D44B46",
     "SpotAdminVPCpublicsubnetSubnet1NATGatewayA7F29114",
@@ -1183,10 +1080,6 @@
     "SpotAdminVPCpublicsubnetSubnet2RouteTableCF5C18E4",
     "SpotAdminVPCpublicsubnetSubnet2RouteTableAssociation0D9712E2",
     "SpotAdminVPCpublicsubnetSubnet2SubnetE7F3709A",
-    "SpotAdminVPCpublicsubnetSubnet3DefaultRouteBCE616F6",
-    "SpotAdminVPCpublicsubnetSubnet3RouteTable1ADA4384",
-    "SpotAdminVPCpublicsubnetSubnet3RouteTableAssociation7F38BE9D",
-    "SpotAdminVPCpublicsubnetSubnet3Subnet23422C84",
     "SpotAdminVPCD791DA13",
     "SpotAdminVPCVPCGW5B05B3D8"
    ],
@@ -1231,7 +1124,15 @@
            {
             "Ref": "AWS::Partition"
            },
-           ":eks:ap-northeast-2:037660834288:cluster/SpotAdmin-eks"
+           ":eks:",
+           {
+            "Ref": "AWS::Region"
+           },
+           ":",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":cluster/SpotAdmin-eks"
           ]
          ]
         },
@@ -1243,7 +1144,15 @@
            {
             "Ref": "AWS::Partition"
            },
-           ":eks:ap-northeast-2:037660834288:cluster/SpotAdmin-eks/*"
+           ":eks:",
+           {
+            "Ref": "AWS::Region"
+           },
+           ":",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":cluster/SpotAdmin-eks/*"
           ]
          ]
         }
@@ -1263,7 +1172,15 @@
           {
            "Ref": "AWS::Partition"
           },
-          ":eks:ap-northeast-2:037660834288:fargateprofile/SpotAdmin-eks/*"
+          ":eks:",
+          {
+           "Ref": "AWS::Region"
+          },
+          ":",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          ":fargateprofile/SpotAdmin-eks/*"
          ]
         ]
        }
@@ -1304,10 +1221,6 @@
     "SpotAdminVPCprivatesubnetSubnet2RouteTable23A8F0A1",
     "SpotAdminVPCprivatesubnetSubnet2RouteTableAssociationEAED4FD9",
     "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC",
-    "SpotAdminVPCprivatesubnetSubnet3DefaultRoute74099803",
-    "SpotAdminVPCprivatesubnetSubnet3RouteTable55A63139",
-    "SpotAdminVPCprivatesubnetSubnet3RouteTableAssociation9BC60C5C",
-    "SpotAdminVPCprivatesubnetSubnet3SubnetCD27815B",
     "SpotAdminVPCpublicsubnetSubnet1DefaultRoute0998254F",
     "SpotAdminVPCpublicsubnetSubnet1EIP82D44B46",
     "SpotAdminVPCpublicsubnetSubnet1NATGatewayA7F29114",
@@ -1318,10 +1231,6 @@
     "SpotAdminVPCpublicsubnetSubnet2RouteTableCF5C18E4",
     "SpotAdminVPCpublicsubnetSubnet2RouteTableAssociation0D9712E2",
     "SpotAdminVPCpublicsubnetSubnet2SubnetE7F3709A",
-    "SpotAdminVPCpublicsubnetSubnet3DefaultRouteBCE616F6",
-    "SpotAdminVPCpublicsubnetSubnet3RouteTable1ADA4384",
-    "SpotAdminVPCpublicsubnetSubnet3RouteTableAssociation7F38BE9D",
-    "SpotAdminVPCpublicsubnetSubnet3Subnet23422C84",
     "SpotAdminVPCD791DA13",
     "SpotAdminVPCVPCGW5B05B3D8"
    ],
@@ -1356,16 +1265,10 @@
         "Ref": "SpotAdminVPCpublicsubnetSubnet2SubnetE7F3709A"
        },
        {
-        "Ref": "SpotAdminVPCpublicsubnetSubnet3Subnet23422C84"
-       },
-       {
         "Ref": "SpotAdminVPCprivatesubnetSubnet1Subnet88243053"
        },
        {
         "Ref": "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC"
-       },
-       {
-        "Ref": "SpotAdminVPCprivatesubnetSubnet3SubnetCD27815B"
        }
       ],
       "securityGroupIds": [
@@ -1400,10 +1303,6 @@
     "SpotAdminVPCprivatesubnetSubnet2RouteTable23A8F0A1",
     "SpotAdminVPCprivatesubnetSubnet2RouteTableAssociationEAED4FD9",
     "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC",
-    "SpotAdminVPCprivatesubnetSubnet3DefaultRoute74099803",
-    "SpotAdminVPCprivatesubnetSubnet3RouteTable55A63139",
-    "SpotAdminVPCprivatesubnetSubnet3RouteTableAssociation9BC60C5C",
-    "SpotAdminVPCprivatesubnetSubnet3SubnetCD27815B",
     "SpotAdminVPCpublicsubnetSubnet1DefaultRoute0998254F",
     "SpotAdminVPCpublicsubnetSubnet1EIP82D44B46",
     "SpotAdminVPCpublicsubnetSubnet1NATGatewayA7F29114",
@@ -1414,10 +1313,6 @@
     "SpotAdminVPCpublicsubnetSubnet2RouteTableCF5C18E4",
     "SpotAdminVPCpublicsubnetSubnet2RouteTableAssociation0D9712E2",
     "SpotAdminVPCpublicsubnetSubnet2SubnetE7F3709A",
-    "SpotAdminVPCpublicsubnetSubnet3DefaultRouteBCE616F6",
-    "SpotAdminVPCpublicsubnetSubnet3RouteTable1ADA4384",
-    "SpotAdminVPCpublicsubnetSubnet3RouteTableAssociation7F38BE9D",
-    "SpotAdminVPCpublicsubnetSubnet3Subnet23422C84",
     "SpotAdminVPCD791DA13",
     "SpotAdminVPCVPCGW5B05B3D8"
    ],
@@ -1497,7 +1392,11 @@
            {
             "Ref": "AWS::Partition"
            },
-           ":iam::037660834288:root"
+           ":iam::",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":root"
           ]
          ]
         }
@@ -1628,7 +1527,17 @@
        "Action": "sts:AssumeRole",
        "Effect": "Allow",
        "Principal": {
-        "Service": "ec2.amazonaws.com"
+        "Service": {
+         "Fn::Join": [
+          "",
+          [
+           "ec2.",
+           {
+            "Ref": "AWS::URLSuffix"
+           }
+          ]
+         ]
+        }
        }
       }
      ],
@@ -1695,9 +1604,6 @@
      },
      {
       "Ref": "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC"
-     },
-     {
-      "Ref": "SpotAdminVPCprivatesubnetSubnet3SubnetCD27815B"
      }
     ],
     "AmiType": "AL2_x86_64",
@@ -1724,7 +1630,17 @@
        "Action": "sts:AssumeRole",
        "Effect": "Allow",
        "Principal": {
-        "Service": "ec2.amazonaws.com"
+        "Service": {
+         "Fn::Join": [
+          "",
+          [
+           "ec2.",
+           {
+            "Ref": "AWS::URLSuffix"
+           }
+          ]
+         ]
+        }
        }
       }
      ],
@@ -1791,9 +1707,6 @@
      },
      {
       "Ref": "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC"
-     },
-     {
-      "Ref": "SpotAdminVPCprivatesubnetSubnet3SubnetCD27815B"
      }
     ],
     "AmiType": "AL2_x86_64",
@@ -1825,11 +1738,19 @@
      "Fn::Join": [
       "",
       [
-       "https://s3.ap-northeast-2.",
+       "https://s3.",
+       {
+        "Ref": "AWS::Region"
+       },
+       ".",
        {
         "Ref": "AWS::URLSuffix"
        },
-       "/cdk-hnb659fds-assets-037660834288-ap-northeast-2/399a4453693ae0e345ec7f15b07730982c30073c8e938e23800991fb5f347e3c.json"
+       "/",
+       {
+        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+       },
+       "/6eaa5c0712c7e123a080e35a968dc286be41d0ecc71974d07ac1eeba923d469c.json"
       ]
      ]
     },
@@ -1857,11 +1778,19 @@
      "Fn::Join": [
       "",
       [
-       "https://s3.ap-northeast-2.",
+       "https://s3.",
+       {
+        "Ref": "AWS::Region"
+       },
+       ".",
        {
         "Ref": "AWS::URLSuffix"
        },
-       "/cdk-hnb659fds-assets-037660834288-ap-northeast-2/f488002cf0ef96c2910d30eaecad8ab36adc7e5c870f7a0cded514ab01845387.json"
+       "/",
+       {
+        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+       },
+       "/bb4378c572de15a0fa65f039c3c08a0f87095c24c99101a09826a4258b2adaa8.json"
       ]
      ]
     },
@@ -1883,9 +1812,6 @@
      },
      "referencetoMergeStackSpotAdminVPCprivatesubnetSubnet2Subnet26572FE8Ref": {
       "Ref": "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC"
-     },
-     "referencetoMergeStackSpotAdminVPCprivatesubnetSubnet3Subnet11B51AAARef": {
-      "Ref": "SpotAdminVPCprivatesubnetSubnet3SubnetCD27815B"
      },
      "referencetoMergeStackSpotAdmineksED38B798ClusterSecurityGroupId": {
       "Fn::GetAtt": [
@@ -2270,7 +2196,11 @@
        {
         "Ref": "SpotAdmineks61E169F9"
        },
-       "\",\"serviceAccount\":{\"create\":false,\"name\":\"aws-load-balancer-controller\"},\"region\":\"ap-northeast-2\",\"vpcId\":\"",
+       "\",\"serviceAccount\":{\"create\":false,\"name\":\"aws-load-balancer-controller\"},\"region\":\"",
+       {
+        "Ref": "AWS::Region"
+       },
+       "\",\"vpcId\":\"",
        {
         "Ref": "SpotAdminVPCD791DA13"
        },
@@ -2351,7 +2281,9 @@
    "Type": "AWS::Lambda::Function",
    "Properties": {
     "Code": {
-     "S3Bucket": "cdk-hnb659fds-assets-037660834288-ap-northeast-2",
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
      "S3Key": "494e82802f093e633e580188c7937aef9d6ee0ad4a788d58c647e6bea26d2915.zip"
     },
     "Timeout": 900,
@@ -2403,7 +2335,9 @@
    "Type": "AWS::Lambda::Function",
    "Properties": {
     "Code": {
-     "S3Bucket": "cdk-hnb659fds-assets-037660834288-ap-northeast-2",
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
      "S3Key": "a97987a1729ad440a42cac8aa979b932696afb2dc47dec373aad1a333a1cdbfc.zip"
     },
     "Timeout": 900,
@@ -2429,10 +2363,95 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11T0XKcMAz8lr773Cb3BZTppCRpwhyZvHaM0YF6xmZs+W5uGP69AsJB8uSVtCsvkrmX+7388U1dwk5Xp53BUvYFKX0SnPrbg76X/XunRXq073kq8lga1EUsLdCYW9HBRYI3VRpY82suCcFpVITO3sgj+JXl4/Gi6EERXNRV5B7PDNfGmSXwjBfC7OQjSoi9Ni1YEgXo6JGuD97FbvLwNfEE11yhF5kNpKyGufuKPwkyW3sIYRCoWtkf3Pxdy7nIcu+OyKnc8VgmbzMahIrkglYGbS37hINiDm5unlW0ukmdPWId/W00X6mDAKMCoTZOVaUyfCuXzryWpOv4qkn4zLWfUw381Hsbb3kYCOwHZ8Gb+pvyNU96sbgJ2cYpyD41kVWsuQQ22oinWE7LgfBHWTxCIPHagc0q/i4Lmng+Z6xY8OIqqJe+a5CYkpnknTFMKsCfUUOitYu80d9g2rRRnoZBHCC46Mc9sQHXriHvZINfI3VxfpnTI2bwGMbBflLdXPGzBGJmzSMdRH6lxtnve3l3x7/Ev4C48+wDW5CH+fwPblC1JS4DAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11STW+kMAz9Lb1n6G7n1COLVi3bLzRUva5CMOCdkKDEmdEI8d/XQBloT3m233Ne7NxF+33040ae/U6Vx53GIupzkuooOPW3B3UX9R+dEkllPrJEZKHQqPJQGKAxt6KDDQTvstCw5tdc7L1VKAmtuZJH8DvNxuNV0oMkOMuLyByeGK6NU0PgGC+E2clnFBN7bVowJHJQwSFdHpwN3eThe+IJLplEJ1LjSRoFc/cVfxGkpnbg/SBQtlF/sPO7lnORZc5WyKnM8lgmbzMahAxkvZIaTR31MQf5HFzdPMtgVJNYU2Ed3HU036mDAC09odJWloXUfCuXTryWuOv4qkn4zLVfUw3c1Hsbb3noCcwnZ8Gb+rt0NU96sbgJ2cbRR32iA6tYc/ZstBFPoZiWA/5FGqzAk3jrwKQlv8uAIp7PCUsWvNoS6qXvGsS6YCY5qzWTcnAnVBArZQNv9BF0mzTS0TCIA3gb3LynF9l1PAORsBfbbitb/BaoC/Mnnf4zgz9+nPEX1dUg/1AgZtZT58qwrRLHmQwiu1Bjze0+uo9+3vzziDvH9rCF6DCf/wHU0bgNRQMAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "MergeStack/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Mappings": {
+  "SpotAdminbastionAmiMap9372FC62": {
+   "ap-northeast-2": {
+    "ami": "ami-0632d76430fad92e4"
+   },
+   "us-east-1": {
+    "ami": "ami-06ae61f84151ed8cd"
+   },
+   "us-east-2": {
+    "ami": "ami-08b017cdaea47e2c1"
+   },
+   "us-west-1": {
+    "ami": "ami-05a54dcc0c98c8bc6"
+   },
+   "us-west-2": {
+    "ami": "ami-0f650af0664024939"
+   },
+   "ap-northeast-3": {
+    "ami": "ami-05a19c473ced2b2b9"
+   },
+   "ap-southeast-2": {
+    "ami": "ami-01a9e2e12c28937d5"
+   },
+   "ap-northeast-1": {
+    "ami": "ami-02eae9af12de01aae"
+   },
+   "eu-central-1": {
+    "ami": "ami-07afa59ac5b958b39"
+   },
+   "ap-southeast-1": {
+    "ami": "ami-0dafd5bd4bd2655ee"
+   },
+   "eu-west-1": {
+    "ami": "ami-018f740244757a6e3"
+   },
+   "eu-west-2": {
+    "ami": "ami-0103f11e0252ea397"
+   },
+   "eu-west-3": {
+    "ami": "ami-0374f232079b7698c"
+   }
+  },
+  "wordpressasgAmiMap6E0E0CD1": {
+   "ap-northeast-2": {
+    "ami": "ami-097de6c1fdd6b0ddd"
+   },
+   "us-east-1": {
+    "ami": "ami-06ae61f84151ed8cd"
+   },
+   "us-east-2": {
+    "ami": "ami-08b017cdaea47e2c1"
+   },
+   "us-west-1": {
+    "ami": "ami-05a54dcc0c98c8bc6"
+   },
+   "us-west-2": {
+    "ami": "ami-0f650af0664024939"
+   },
+   "ap-northeast-3": {
+    "ami": "ami-05a19c473ced2b2b9"
+   },
+   "ap-southeast-2": {
+    "ami": "ami-01a9e2e12c28937d5"
+   },
+   "ap-northeast-1": {
+    "ami": "ami-02eae9af12de01aae"
+   },
+   "eu-central-1": {
+    "ami": "ami-07afa59ac5b958b39"
+   },
+   "ap-southeast-1": {
+    "ami": "ami-0dafd5bd4bd2655ee"
+   },
+   "eu-west-1": {
+    "ami": "ami-018f740244757a6e3"
+   },
+   "eu-west-2": {
+    "ami": "ami-0103f11e0252ea397"
+   },
+   "eu-west-3": {
+    "ami": "ami-0374f232079b7698c"
    }
   }
  },
@@ -2446,7 +2465,11 @@
       {
        "Ref": "SpotAdmineks61E169F9"
       },
-      " --region ap-northeast-2 --role-arn ",
+      " --region ",
+      {
+       "Ref": "AWS::Region"
+      },
+      " --role-arn ",
       {
        "Fn::GetAtt": [
         "SpotAdmineksMastersRole285C86AD",
@@ -2466,7 +2489,11 @@
       {
        "Ref": "SpotAdmineks61E169F9"
       },
-      " --region ap-northeast-2 --role-arn ",
+      " --region ",
+      {
+       "Ref": "AWS::Region"
+      },
+      " --role-arn ",
       {
        "Fn::GetAtt": [
         "SpotAdmineksMastersRole285C86AD",
@@ -2476,6 +2503,200 @@
      ]
     ]
    }
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-2"
+       ]
+      }
+     ]
+    }
+   ]
   }
  },
  "Parameters": {

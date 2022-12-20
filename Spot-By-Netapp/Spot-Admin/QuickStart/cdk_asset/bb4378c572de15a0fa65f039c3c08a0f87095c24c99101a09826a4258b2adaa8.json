@@ -95,7 +95,9 @@
    "Type": "AWS::Lambda::Function",
    "Properties": {
     "Code": {
-     "S3Bucket": "cdk-hnb659fds-assets-037660834288-ap-northeast-2",
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
      "S3Key": "d01d4b7367b49a3e222279017fe50e41d6b2272d436b2e82038d0036deb2cdcb.zip"
     },
     "Role": {
@@ -129,9 +131,6 @@
       },
       {
        "Ref": "referencetoMergeStackSpotAdminVPCprivatesubnetSubnet2Subnet26572FE8Ref"
-      },
-      {
-       "Ref": "referencetoMergeStackSpotAdminVPCprivatesubnetSubnet3Subnet11B51AAARef"
       }
      ]
     }
@@ -151,7 +150,9 @@
    "Type": "AWS::Lambda::LayerVersion",
    "Properties": {
     "Content": {
-     "S3Bucket": "cdk-hnb659fds-assets-037660834288-ap-northeast-2",
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
      "S3Key": "ba6af152ce7366ad6f9019e5c6719704a92411a2eb6f3bc1cb39dea393ece19e.zip"
     },
     "Description": "/opt/awscli/aws"
@@ -167,7 +168,9 @@
    "Type": "AWS::Lambda::LayerVersion",
    "Properties": {
     "Content": {
-     "S3Bucket": "cdk-hnb659fds-assets-037660834288-ap-northeast-2",
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
      "S3Key": "c6964dbf0c556ec82ce09622e99ad6f6d4e488cdaac0ef9e8492e078ec61ffed.zip"
     },
     "Description": "/opt/kubectl/kubectl and /opt/helm/helm"
@@ -274,7 +277,9 @@
    "Type": "AWS::Lambda::Function",
    "Properties": {
     "Code": {
-     "S3Bucket": "cdk-hnb659fds-assets-037660834288-ap-northeast-2",
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
      "S3Key": "e7c95e1a12d903d913ebdd526c735f1ac58b2024882a5562110221fe685ebe85.zip"
     },
     "Role": {
@@ -309,9 +314,6 @@
       },
       {
        "Ref": "referencetoMergeStackSpotAdminVPCprivatesubnetSubnet2Subnet26572FE8Ref"
-      },
-      {
-       "Ref": "referencetoMergeStackSpotAdminVPCprivatesubnetSubnet3Subnet11B51AAARef"
       }
      ]
     }
@@ -330,11 +332,206 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02QTa7CMAyEz8I+NT89ASC9DSwqkNhGaeoHpmkixQmoqnJ3mhYQq/E3XszYGyhLWC3UkwvdtIWhGoYR5IAtwyHWqIOpvHtQg14Y1dWNguEvWh3IWbH/t7/zUfXoL+h55CRIdTCcnMG8mrRyhnSfcZ6S4FIqZgwM2ywjwy7qFsNOMSYxmeegrmSv73RpcojMJbUh2D55b2gKFu1c91N7MpPQkYPrpEd20Wtk+J6Ta73dJKo+3JxdlrBej/+4M1Hhow3UIZxmfQFrrE9MKwEAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02PPU/DMBCGf0t35wpkYmwjscAQFYnVcpyjHHFsyXemiqL898ZOqTq9Hze8z71AXcPTzly4sv1QOepgXoOecWB4Tx1acW0Mf9RjVM6MXW9gfkveCgWvmm//6D/MhPELI695UWRGmE/BYT4VbYMjO+W4uUVxrQ0zCsMhy5rhmOyAcjSMiyrlp5gz+fNtXbs8ojOkdQSHCzeOyrAaNtx/7FIuyiaWMOqIHFK0yHB/J2Pd2uyb4HuSgt5O8hP8voZXeN79MlEVkxcaEU6bXgFcKu2HNwEAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "MergeStack/@aws-cdk--aws-eks.KubectlProvider/CDKMetadata/Default"
-   }
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-2"
+       ]
+      }
+     ]
+    }
+   ]
   }
  },
  "Outputs": {
@@ -358,9 +555,6 @@
    "Type": "String"
   },
   "referencetoMergeStackSpotAdminVPCprivatesubnetSubnet2Subnet26572FE8Ref": {
-   "Type": "String"
-  },
-  "referencetoMergeStackSpotAdminVPCprivatesubnetSubnet3Subnet11B51AAARef": {
    "Type": "String"
   },
   "referencetoMergeStackSpotAdmineksED38B798ClusterSecurityGroupId": {
