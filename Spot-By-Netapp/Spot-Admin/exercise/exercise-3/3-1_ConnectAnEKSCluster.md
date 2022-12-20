@@ -8,10 +8,10 @@ Ocean은 포드, 컨테이너 및 애플리케이션의 요구 사항을 충족�
 - EKS 클러스터에 적어도 한개 이상의 노드가 필요합니다.
 
 # 기존 EKS 클러스터를 Ocean에 연결
-1. Spot Console의 왼쪽 메뉴에서 Ocean/Cloud Clusters를 클릭하고 Create Cluster를 클릭합니다.
+1. Spot Console의 왼쪽 메뉴에서 Ocean/Cloud Clusters를 클릭하고 Create Cluster를 클릭합니다.</br>
 ![CreateCluster](https://docs.spot.io/ocean/_media/create-cluster.png)
 
-2. Create Ocean Cluster 페이지가 나타나면 "join an Existing"에서 "Migrate Worker Node configuration From EKS worker nodes"을 선택 합니다.
+2. Create Ocean Cluster 페이지가 나타나면 "join an Existing"에서 "Migrate Worker Node configuration From EKS worker nodes"을 선택 합니다.</br>
 ![CreateClusterTemplate](https://docs.spot.io/ocean/_media/from-eks-worker-nodes1.png) 
 <!--![CreateClusterTemplate](./images/CreateOceanClusterTemplate.png)-->
 
@@ -34,9 +34,9 @@ Ocean은 포드, 컨테이너 및 애플리케이션의 요구 사항을 충족�
 ## 2단계: Computing
 Ocean은 EKS 노드 그룹에서 컴퓨팅 구성을 가져와 컴퓨팅 페이지에 표시합니다. 필요한 경우 구성을 확인하거나 변경합니다.
 
-1. Cluster Network 값이 자동으로 입력됩니다. 기존 EKS Network 환경과 동일한지 확인합니다.
+1. Cluster Network 값이 자동으로 입력됩니다. 기존 EKS Network 환경과 동일한지 확인합니다.</br>
 ![Choice_Cluster_Network](./Images/Choice_Cluster_Network.png)
-2. Instance Type에서 Customize Instance Types을 클릭합니다.
+2. Instance Type에서 Customize Instance Types을 클릭합니다.</br>
 ![CustomizeInstanceTypes](./Images/CustomizeInstanceTypes.png)
 3. 클러스터에 허용되는 컴퓨팅 자원과 타입들을 확인 합니다.
 > ### 경고!
@@ -54,7 +54,7 @@ Ocean은 EKS 노드 그룹에서 컴퓨팅 구성을 가져와 컴퓨팅 페이�
 ## 3단계: 연결
 Ocean Controller를 설치하고 Ocean SaaS와 클러스터 간의 연결을 설정합니다.
 
-1. **STEP 1**의 "Generate Token"을 클릭하여 스팟 토큰을 생성합니다.
+1. **STEP 1**의 "Generate Token"을 클릭하여 스팟 토큰을 생성합니다.</br>
 ![GernerateToken1](./Images/GernerateToken1.png)
 2. 토큰이름을 작성 후 GENERATE를 클릭합니다.
 - Token Name : SpotAdmin-eks
@@ -99,14 +99,14 @@ kubectl get pods -n kube-system
 NAME                                                      READY   STATUS    RESTARTS   AGE
 spotinst-kubernetes-cluster-controller-7488c7f7f4-gfd7h   1/1     Running   0          58s
 ```
-6. spot console로 돌아와 **STEP 3**의 "Test Connectivity"를 클릭하여 컨트롤러 기능을 확인합니다. 
+6. spot console로 돌아와 **STEP 3**의 "Test Connectivity"를 클릭하여 컨트롤러 기능을 확인합니다. </br>
 ![CreateCluster2](./images/CreateCluster2.png)</br>
 7. 테스트가 완료될 때까지 약 2~5분 정도 기다립니다.</br>
 ![ok](./images/ok.png)
 8. 다음을 클릭합니다.
 
 ## 4단계: 검토
-1. 구성한 모든 Ocean 설정을 검토합니다.
+1. 구성한 모든 Ocean 설정을 검토합니다.</br>
 ![Review_Create_Cluster](./Images/Review_Create_Cluster.png)
 2. **Create**을 클릭하여 Ocean을 생성합니다.
 

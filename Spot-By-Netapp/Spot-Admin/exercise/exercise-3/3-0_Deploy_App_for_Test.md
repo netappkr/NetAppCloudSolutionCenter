@@ -130,7 +130,7 @@ kubectl get ingress
 NAME              CLASS   HOSTS   ADDRESS                                                      PORTS   AGE
 handson-eks-alb   alb     *       handson-eks-alb-990590669.ap-northeast-2.elb.amazonaws.com   80      3m38s
 ```
-8. 브라우저 접속시 Filebrowser 앱이 보입니다.
+8. 브라우저 접속시 Filebrowser 앱이 보입니다.</br>
 ![filebrowser](./Images/filbrowser.png)
 
 # 다음과정
