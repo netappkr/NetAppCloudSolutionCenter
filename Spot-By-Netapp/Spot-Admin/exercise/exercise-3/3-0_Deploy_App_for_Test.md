@@ -134,8 +134,7 @@ handson-eks-alb   alb     *       handson-eks-alb-990590669.ap-northeast-2.elb.a
 ![filebrowser](./Images/filbrowser.png)
 
 # 다음과정
-Ocean 과 EKS를 연동합니다.</br>
-- 다음주제: [EKS Ocean 연동 ](../OceanforEKS/3-1_ConnectAnEKSCluster.md)
+- 다음 과정 : [EKSCluster 연결](./3-1_ConnectAnEKSCluster.md)
 
 
 # 참고

@@ -68,6 +68,7 @@ hey -n 45000 -q 10 -c 5 http://wp.netappkr.com/wordpress/
 부하가 멈추면 수분 후 인스턴스가 자동 축소되는것이 확인됩니다.
 
 # 다음과정
-
+- 이전 과정 : [ElastiGroup Action](./2-1-1_ElastigroupInstanceAction.md)
+- 다음 과정 : [Elastigroup Intelligent Traffic Flow](./2-3_IntelligentTrafficFlow.md)
 # 참고
 - [predictive-autoscaling](https://docs.spot.io/elastigroup/features/scaling/predictive-autoscaling)

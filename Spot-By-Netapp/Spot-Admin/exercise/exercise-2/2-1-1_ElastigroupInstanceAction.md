@@ -47,7 +47,8 @@ AWS console로 이동 후 대상 tab에서 인스턴스 상태가 draining 인�
 또한 Spot Interruption(강제 회수)이 발생하는 경우 이를 방지하지는 못합니다.
 
 # 다음 과정
-
+- 이전 과정 : [ElastiGroup 생성](./2-1_CreateElasticGroup.md)
+- 다음 과정 : [Elastigroup Auto Scaling](./2-2_ElasticGroupAutoScaling.md)
 
 # 참고
 - [AWS 로드벨런서 연결 유휴시간](https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/application/application-load-balancers.html#connection-idle-timeout)
