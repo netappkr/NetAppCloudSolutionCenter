@@ -6,7 +6,7 @@
 
 ## Getting Start
 1. Elastigroup의 spotadmin-wordpress-TG 콘솔로 이동합니다.
-2. 우측 상단 Action을 드롭다운하고 Edit Configration을 클릭합니다.
+2. 우측 상단 Action을 드롭다운하고 Edit Configration을 클릭합니다.</br>
 ![AutoScaling_EG_console_guide](./Images/AutoScaling_EG_console_guide.png)
 3. Scaling Tab으로 이동 후 Target Scaling Policies를 설정합니다.
 - Policy Name : ALB Req per TG
@@ -14,7 +14,7 @@
 - Metric Name : ALB Request Count Per Target
 - Target Value : 10
 - Cooldwon : 10 Sec
-- Target Group : spotadmin-wordpress-TG
+- Target Group : spotadmin-wordpress-TG</br>
 ![AutoScaling_Add_Target_Scaling_policy](./Images/AutoScaling_Add_Target_Scaling_policy.png)
 
 4. Review Tab으로 이동 후 구성 확인 후 Update 합니다.
@@ -24,10 +24,10 @@
 5. Bastion Host에 접속합니다.
 접속 방법은 [Bastion 접속하기](../../QuickStart/ConnectToBastion.md)를 참고합니다.
 
-6. AWS EC2 Webconsole로 이동합니다. 
+6. AWS EC2 Webconsole로 이동합니다. </br>
 ![AWS_ec2_console_GUI_guide](./Images/AWS_ec2_console_GUI_guide.png)
 7. 좌측 사이드메뉴에서 로드벨런서를 클릭하고 "SpotAdminALB"를 클릭합니다.
-8. 하단에 활성화된 ALB 정보중 DNS 이름을 복사합니다.
+8. 하단에 활성화된 ALB 정보중 DNS 이름을 복사합니다.</br>
 ![Copy_ALB_Info](./Images/Copy_ALB_info.png)
 9. nslookup 명령을 통해 도메인 IP를 알아냅니다. </br>
 ```

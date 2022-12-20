@@ -22,12 +22,12 @@ NAME             READY   UP-TO-DATE   AVAILABLE   AGE
 metrics-server   1/1     1            1           6m
 ```
 ## VNG 생성
-1. Virfual Node Grouops Tab으로 이동합니다.
+1. Virfual Node Grouops Tab으로 이동합니다.</br>
 ![Create_VNG_Ocean_console_Guide](./Images/Create_VNG_Ocean_console_Guide.png)
-2. import configurations form an Auto Scaling Grouop을 선택하고 미리 생성된 AutoScalingGroup을 선택합니다.
+2. import configurations form an Auto Scaling Grouop을 선택하고 미리 생성된 AutoScalingGroup을 선택합니다.</br>
 - Auto Scaling Group : eks-custom-ng </br>
 ![CreateVNG](./Images/CreateVNG.png) </br>
-ASG의 정보를 바탕으로 VNG 작성에 필요한 정보를 가져오게됩니다.
+ASG의 정보를 바탕으로 VNG 작성에 필요한 정보를 가져오게됩니다.</br>
 ![New_Virtual_Node_Group_View](./Images/New_Virtual_Node_Group_View.png)
 
 3. Node Selection 메뉴를 찾아 Label 값을 입력합니다.</br>

@@ -169,7 +169,7 @@ Spot by Netapp을 이용해 Statful 서비스를 구성해 봅니다.
   }
 }
 ```
-6. Elastigroup console로 돌아옵니다.
+6. Elastigroup console로 돌아옵니다.</br>
 ![Go_back_EG_console_guide](./Images/Go_back_EG_console_guide.png)
 7. 우측 상단 Import 버튼을 누르고 Json 을 선택합니다.
 8. 작성한 파일을 업로드합니다. </br>
@@ -185,17 +185,17 @@ Spot by Netapp을 이용해 Statful 서비스를 구성해 봅니다.
 - [X] Maintain Private IP
 ![Stateful_EG_ConfigSet_Console_Guide2](./Images/Stateful_EG_ConfigSet_Console_Guide2.png)
 
-12. Network Tab으로 이동 후 "No Load Balancer"를 클릭합니다.
+12. Network Tab으로 이동 후 "No Load Balancer"를 클릭합니다.</br>
 ![Stateful_EG_ConfigSet_Console_Guide3](./Images/Stateful_EG_ConfigSet_Console_Guide3.png)
-12. Predictive Rebalancing Tab으로 이동 후 다음과 같이 수정합니다.
+12. Predictive Rebalancing Tab으로 이동 후 다음과 같이 수정합니다.</br>
 ![Stateful_EG_ConfigSet_Console_Guide4](./Images/Stateful_EG_ConfigSet_Console_Guide4.png)
 
-13. Scaling Tab으로 이동 후 Target Scaling Policy를 삭제합니다.
+13. Scaling Tab으로 이동 후 Target Scaling Policy를 삭제합니다.</br>
 ![Stateful_EG_ConfigSet_Console_Guide5](./Images/Stateful_EG_ConfigSet_Console_Guide5.png)
 
 14. Review Tab에서 최종 구성을 확인 후 Create를 선택합니다.
 
-15. 잠시 후 새로운 Elastigroup이 생성됩니다.
+15. 잠시 후 새로운 Elastigroup이 생성됩니다.</br>
 ![Stateful_EG_ConfigSet_Console_Guide6](./Images/Stateful_EG_ConfigSet_Console_Guide6.png)
 
 ## 다음 주제

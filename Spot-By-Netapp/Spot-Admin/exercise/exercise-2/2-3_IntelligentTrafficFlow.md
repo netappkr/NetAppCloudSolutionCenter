@@ -7,7 +7,7 @@ ITF(Intelligent Traffic Flow)는 Elastigroup에서 시작한 인스턴스로 들
 
 ## Getting Start
 1. Elastigroup의 spotadmin-wordpress-TG 콘솔로 이동합니다.
-2. 우측 상단 Action을 드롭다운하고 Edit Configration을 클릭합니다.
+2. 우측 상단 Action을 드롭다운하고 Edit Configration을 클릭합니다.</br>
 ![AutoScaling_EG_console_guide](./Images/AutoScaling_EG_console_guide.png)
 3. Network Tab으로 이동 후 ITF를 설정합니다.
 - Select how to manage your incoming traffic: Intelligent Traffic
@@ -22,20 +22,20 @@ ITF(Intelligent Traffic Flow)는 Elastigroup에서 시작한 인스턴스로 들
 - cheapset </br>
 ![Edit_rebalancing_EG_console](./Images/Edit_rebalancing_EG_console.png)
 5. 설정을 검토 후 적용합니다.
-6. 스팟 콘솔 우측 상단의 Actions 버튼을 눌러 드롭다운합니다.
+6. 스팟 콘솔 우측 상단의 Actions 버튼을 눌러 드롭다운합니다.</br>
 ![Add_Instance_EG_console_guide](./Images/Add_Instance_EG_console_guide.png)
 7. 목표값과 최대값을 변경합니다. 
 - Target : 2
 - Maximum : 3 </br>
 ![EG_change_Target_value](./Images/EG_change_Target_value2.png)
-8. 서로다른 vcpu를 가진 인스턴스가 배포되는것을 확인합니다.
+8. 서로다른 vcpu를 가진 인스턴스가 배포되는것을 확인합니다.</br>
 ![Resert_Add_instance_EG_Console2](./Images/Resert_Add_instance_EG_Console2.png)
-9. AWS EC2 Webconsole로 이동합니다. 
+9. AWS EC2 Webconsole로 이동합니다. </br>
 ![AWS_ec2_console_GUI_guide](./Images/AWS_ec2_console_GUI_guide.png)
 10. 좌측 사이드메뉴에서 로드벨런서를 클릭하고 "SpotAdminALB"를 클릭합니다.
-11. 하단의 활성화된 메뉴에서 리스너 Tab을 클릭합니다.
+11. 하단의 활성화된 메뉴에서 리스너 Tab을 클릭합니다.</br>
 ![Copy_ALB_Info](./Images/Copy_ALB_info.png)
-12. 규칙 보기/편집을 선택합니다.
+12. 규칙 보기/편집을 선택합니다.</br>
 ![Copy_ALB_Info](./Images/AWS_ALB_Listener_console_GUI_guide.png)
 
 # 결과
