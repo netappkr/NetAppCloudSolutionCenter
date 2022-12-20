@@ -41,3 +41,7 @@ ITF(Intelligent Traffic Flow)는 Elastigroup에서 시작한 인스턴스로 들
 # 결과
 ALB 가중치 분산 설정이 어떻게 적용되었는지 확인합니다.
 ![Resert_ITF_AWS_Console](./Images/Resert_ITF_AWS_Console.png)
+
+# 다음과정
+- 이전 과정 : [ElastiGroup Auto Scaling](./2-2_ElasticGroupAutoScaling.md)
+- 다음 과정 : [Statful Elastigroup 생성](./2-4_CreateStatfulElastiGroup.md)

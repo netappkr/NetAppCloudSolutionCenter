@@ -199,4 +199,5 @@ Spot by Netapp을 이용해 Statful 서비스를 구성해 봅니다.
 ![Stateful_EG_ConfigSet_Console_Guide6](./Images/Stateful_EG_ConfigSet_Console_Guide6.png)
 
 ## 다음 주제
-- [Stateful Elastigroup Action](./StatefulEGAction.md)
+- 이전 과정 : [ElastiGroup Intelligent Traffic Flow](./2-3_IntelligentTrafficFlow.md)
+- 다음 과정 : [Statful Elastigroup Action](./2-4-1_StatefulEGAction.md)

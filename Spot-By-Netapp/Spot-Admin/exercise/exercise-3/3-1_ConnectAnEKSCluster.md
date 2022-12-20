@@ -115,8 +115,7 @@ Ocean 생성되며 대쉬보드화면이 보입니다.
 
 
 # 다음과정
-Ocean으로 workload migration을 진행합니다.</br>
-- 다음주제: [workload migration ](./3-2_WorkloadMigration.md)
+- 다음주제: [workload migration](./3-2_WorkloadMigration.md)
 - 이전주제: [Test app 배포](../3-0_deploy_testapp.md)
 
 # 참조
