@@ -58,7 +58,13 @@ sudo vim /etc/hosts
 ```
 hey -n 45000 -q 10 -c 5 http://wp.netappkr.com/wordpress/
 ```
-
+> ### !Tips
+> hey 명령이 설치가 안되어 있다면 아래 명령으로 수동 설치 부탁드립니다.
+```
+sudo wget -P /opt/ wget https://hey-release.s3.us-east-2.amazonaws.com/hey_linux_amd64
+sudo mv /opt/hey_linux_amd64 /usr/local/bin/hey
+sudo chmod 755 /usr/local/bin/hey
+```
 > ### Tips
 > 이 Test는 적어도 결과를 보는데 20분 이상의 시간이 필요합니다. 결과를 기다리지 말고 다음 스탭을 진행 후 결과는 로그로 확인하는것을 추천드립니다.
 ![Resert_AutoScaling_instance_EG_Log](./Images/Resert_AutoScaling_instance_EG_Log.png)
