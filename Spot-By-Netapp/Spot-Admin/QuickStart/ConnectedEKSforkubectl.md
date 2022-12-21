@@ -9,13 +9,13 @@ AWS CLI 명령을 이용해 접속에 필요한 정보를 불러올 수 있습�
 1. AWS Cloudformation console로 이동합니다.
 2. Quckstart 가이드에서 생성한 스택을 클릭합니다. ( 스택명은 과정별로 다를 수 있습니다.)
 3. 출력 Tab에서 값을 복사합니다.
-![CloudformationOutput](./images/CloudformationOutput.png)
+![CloudformationOutput](./Images/CloudformationOutput.png)
 
 ### 출력 예시
 ```
 aws eks update-kubeconfig --name SpotAdmin-eks --region ap-northeast-2 --role-arn arn:aws:iam::037660834288:role/EKSStack-SpotAdmineksMastersRole285C86AD-1U0O3CAUYTHRO
 ```
-![CloudformationOutput](./images/CloudformationOutput.png)
+![CloudformationOutput](./Images/CloudformationOutput.png)
 
 4. [Bastion Host에 접속](./ConnectToBastion.md)합니다.
 5. 복사한 출력을 붙혀넣습니다.
