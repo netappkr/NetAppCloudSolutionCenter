@@ -19,15 +19,15 @@ Ocean은 포드, 컨테이너 및 애플리케이션의 요구 사항을 충족�
 ## 1단계: General
 1. 일반 페이지에서 클러스터 이름 및 클러스터 식별자를 입력하고 클러스터가 실행 중인 지역을 클릭합니다.
 2. 클러스터 정보를 입력합니다. 
-- Cluster Name : Hands-on-eks
-- Cluster Identifier : Hands-on-eks
+- Cluster Name : SpotAdmin-eks
+- Cluster Identifier : SpotAdmin-eks
 > ### Tips
 > 가져오는 클러스터의 경우 원래 클러스터와 동일한 이름을 지정하는 것이 좋습니다. 이렇게 하면 각 시스템에서 관련 엔터티를 쉽게 식별할 수 있습니다.
 
 3. "Import Cluster" 메뉴에서 아래와 같이 설정합니다. </br>
 - Import from : EKS node Group
-- EKS Cluster Name : Hands-on-eks
-- Node group : Handson-node-group </br>
+- EKS Cluster Name : SpotAdmin-eks
+- Node group : SpotAdmineksNode </br>
 ![clusterDetails](./images/clusterDetails.png)
 4. 다음을 클릭합니다.
 
