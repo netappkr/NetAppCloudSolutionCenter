@@ -64,6 +64,7 @@ nslookup < 도메인 >
 
 > ### Tips
 > 보안프로그램에서 경고 또는 hosts 파일변조 차단이 걸릴 수 있습니다. 이 경우 Curl 명령을 이용해 결과를 text로 확인 합니다.
+> #### 추가 : PC Network 환경에 따라 Header Option이 무효화 될 수 있습니다.( 예시 보안장비가 있는 사내망에 접속한 PC) BastionHost에서도 curl 명령을 시도할 수 있습니다. 
 > - bash
 > ```bash
 > curl -IL -H "Host:wp.netappkr.com"; http://< IP >/wordpress
