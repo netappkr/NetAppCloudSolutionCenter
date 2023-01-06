@@ -4,13 +4,9 @@ from aws_cdk import (
     aws_ec2 as ec2,
     aws_eks as eks,
     aws_iam as iam,
-    SecretValue,
-    CfnOutput,
-    aws_fsx as fsx,
-    CfnTag
+    SecretValue
 )
 from constructs import Construct
-
 class EKSStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, vpc, keypair, **kwargs) -> None:
@@ -18,7 +14,7 @@ class EKSStack(Stack):
         
         #EKS
         cluster = eks.Cluster(self, "SpotAdmin-eks",
-            version=eks.KubernetesVersion.V1_21,
+            version=eks.KubernetesVersion.V1_24,
             vpc = vpc,
             default_capacity=1,
             default_capacity_instance=ec2.InstanceType.of(ec2.InstanceClass.M5, ec2.InstanceSize.LARGE),
@@ -53,15 +49,15 @@ class EKSStack(Stack):
         )
         role.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name("AdministratorAccess"))
         admin_user = iam.User(
-            self, "SpotAdminAdmin",
-            user_name="SpotAdminAdmin", 
+            self, "SpotAdmin",
+            user_name="SpotAdmin", 
             password=SecretValue.unsafe_plain_text("SpotAdmin123!@#")
         )
         admin_user.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name("AdministratorAccess"))
         #admin_user.addToGroup(IGroup.fromGroupArn("arn:aws:iam::<your aws account id>:group/admin"))
         
         # EKS에 iam user등록
-        cluster.aws_auth.add_user_mapping(admin_user, groups=["system:masters"])
+        # cluster.aws_auth.add_user_mapping(admin_user, groups=["system:masters"])
         cluster.aws_auth.add_role_mapping(role, groups=["system:masters"])
 
         #core.CfnOutput(core,construct_id,value="출력")

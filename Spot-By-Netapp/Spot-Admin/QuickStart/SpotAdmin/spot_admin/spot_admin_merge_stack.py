@@ -6,11 +6,7 @@ from aws_cdk import (
     aws_iam as iam,
     aws_autoscaling as autoscaling,
     aws_elasticloadbalancingv2 as elbv2,
-    Duration,
-    SecretValue,
-    CfnOutput,
-    aws_fsx as fsx,
-    CfnTag
+    Duration
 )
 from constructs import Construct
 
@@ -41,9 +37,21 @@ class MergeStack(Stack):
         )
         bastionrole.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name("AdministratorAccess"))
         ## AMI
-        AMI = ec2.MachineImage.generic_linux(
+        bastionAMI = ec2.MachineImage.generic_linux(
             {
-            "ap-northeast-2": "ami-0632d76430fad92e4"
+            "ap-northeast-2": "ami-039b82a0114f56141",
+            "us-east-1" : "ami-03c2b54163839706d",
+            "us-east-2" : "ami-077d8e2bb58ef66c5",
+            "us-west-1" : "ami-04f35dd27b02595bf",
+            "us-west-2" : "ami-09d4fc91a6e403e67",
+            "ap-northeast-3" : "ami-0fbd03e6702d4e2ec",
+            "ap-southeast-2" : "ami-0c4d10308b868a23a",
+            "ap-northeast-1" : "ami-0199fd9c976b7312f",
+            "eu-central-1" : "ami-0e3769d80ddceb352",
+            "ap-southeast-1" : "ami-0aa4854fdaaee7289",
+            "eu-west-1" : "ami-0bb4e6b6f2ec61013",
+            "eu-west-2" : "ami-0078d7052fb56c251",
+            "eu-west-3" : "ami-06f91bf996d50d2ca"
             }
         )
 
@@ -62,9 +70,9 @@ class MergeStack(Stack):
         # 서버생성
         ec2.Instance(self, "SpotAdminbastion",
             vpc=vpc,
-            instance_type=ec2.InstanceType.of(ec2.InstanceClass.M5, ec2.InstanceSize.LARGE),
+            instance_type=ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE3, ec2.InstanceSize.MEDIUM),
             vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
-            machine_image=AMI,
+            machine_image=bastionAMI,
             role=bastionrole,
             security_group=SecurityGroup,
             key_name="SpotAdminkey",
@@ -79,9 +87,21 @@ class MergeStack(Stack):
         userdata.add_commands(str(userdata_file, 'utf-8'))
 
         ## AMI
-        AMI = ec2.MachineImage.generic_linux(
+        wordpressAMI = ec2.MachineImage.generic_linux(
             {
-            "ap-northeast-2": "ami-097de6c1fdd6b0ddd"
+            "ap-northeast-2": "ami-097de6c1fdd6b0ddd",
+            "us-east-1" : "ami-06ae61f84151ed8cd",
+            "us-east-2" : "ami-08b017cdaea47e2c1",
+            "us-west-1" : "ami-05a54dcc0c98c8bc6",
+            "us-west-2" : "ami-0f650af0664024939",
+            "ap-northeast-3" : "ami-05a19c473ced2b2b9",
+            "ap-southeast-2" : "ami-01a9e2e12c28937d5",
+            "ap-northeast-1" : "ami-02eae9af12de01aae",
+            "eu-central-1" : "ami-07afa59ac5b958b39",
+            "ap-southeast-1" : "ami-0dafd5bd4bd2655ee",
+            "eu-west-1" : "ami-018f740244757a6e3",
+            "eu-west-2" : "ami-0103f11e0252ea397",
+            "eu-west-3" : "ami-0374f232079b7698c"
             }
         )
         asg = autoscaling.AutoScalingGroup(
@@ -89,9 +109,9 @@ class MergeStack(Stack):
             "wordpress-asg",
             vpc=vpc,
             instance_type=ec2.InstanceType.of(
-                ec2.InstanceClass.MEMORY5, ec2.InstanceSize.XLARGE
+                ec2.InstanceClass.BURSTABLE3, ec2.InstanceSize.MEDIUM
             ),
-            machine_image=AMI,
+            machine_image=wordpressAMI,
             key_name=keyPair.key_name,
             vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT),
             user_data=userdata,
@@ -157,14 +177,15 @@ class MergeStack(Stack):
         listener = AppLB.add_listener("Listener", port=80)
         # Adds the autoscaling group's (asg) instance to be registered
         # as targets on port 80
-        listener.add_targets("Target", port=80, targets=[asg], stickiness_cookie_duration=Duration.minutes(5), target_group_name= "spotadmin-wordpress-TG")
+        listener.add_targets("Target", port=80, 
+        targets=[asg], target_group_name= "spotadmin-wordpress-TG")
         # This creates a "0.0.0.0/0" rule to allow every one to access the
         # application
         listener.connections.allow_default_port_from_any_ipv4("Open to the world")
 
         #EKS
         cluster = eks.Cluster(self, "SpotAdmin-eks",
-            version=eks.KubernetesVersion.V1_21,
+            version=eks.KubernetesVersion.V1_24,
             vpc = vpc,
             default_capacity=1,
             default_capacity_instance=ec2.InstanceType.of(ec2.InstanceClass.M5, ec2.InstanceSize.LARGE),

@@ -23,7 +23,19 @@ class ASGStack(Stack):
         ## AMI
         AMI = ec2.MachineImage.generic_linux(
             {
-            "ap-northeast-2": "ami-097de6c1fdd6b0ddd"
+            "ap-northeast-2": "ami-097de6c1fdd6b0ddd",
+            "us-east-1" : "ami-06ae61f84151ed8cd",
+            "us-east-2" : "ami-08b017cdaea47e2c1",
+            "us-west-1" : "ami-05a54dcc0c98c8bc6",
+            "us-west-2" : "ami-0f650af0664024939",
+            "ap-northeast-3" : "ami-05a19c473ced2b2b9",
+            "ap-southeast-2" : "ami-01a9e2e12c28937d5",
+            "ap-northeast-1" : "ami-02eae9af12de01aae",
+            "eu-central-1" : "ami-07afa59ac5b958b39",
+            "ap-southeast-1" : "ami-0dafd5bd4bd2655ee",
+            "eu-west-1" : "ami-018f740244757a6e3",
+            "eu-west-2" : "ami-0103f11e0252ea397",
+            "eu-west-3" : "ami-0374f232079b7698c"
             }
         )
         asg = autoscaling.AutoScalingGroup(
@@ -31,7 +43,7 @@ class ASGStack(Stack):
             "wordpress-asg",
             vpc=vpc,
             instance_type=ec2.InstanceType.of(
-                ec2.InstanceClass.MEMORY5, ec2.InstanceSize.XLARGE
+                ec2.InstanceClass.BURSTABLE3, ec2.InstanceSize.MEDIUM
             ),
             machine_image=AMI,
             key_name=keypair.key_name,
@@ -99,7 +111,9 @@ class ASGStack(Stack):
         listener = AppLB.add_listener("Listener", port=80)
         # Adds the autoscaling group's (asg) instance to be registered
         # as targets on port 80
-        listener.add_targets("Target", port=80, targets=[asg], stickiness_cookie_duration=Duration.minutes(5), target_group_name= "spotadmin-wordpress-TG")
+        listener.add_targets("Target", 
+        port=80, targets=[asg],
+        target_group_name= "spotadmin-wordpress-TG")
         # This creates a "0.0.0.0/0" rule to allow every one to access the
         # application
         listener.connections.allow_default_port_from_any_ipv4("Open to the world")
