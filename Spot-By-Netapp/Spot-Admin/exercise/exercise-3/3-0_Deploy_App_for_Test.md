@@ -1,7 +1,6 @@
-# Hands-on 에 사용할 app을 배포
-Hands-on 에 사용할 app을 배포합니다.
+# Ocean Hands-on 에 사용할 App을 배포
+Ocean Hands-on 에 사용할 app을 배포합니다.
 
-# Getting Start
 1. [BastionHost에 ssh로 접속](../../QuickStart/ConnectToBastion.md)합니다.
 2. [EKS 접속을 위해 kubeconfig 작성](../../QuickStart/ConnectedEKSforkubectl.md)합니다.
 3. bastionhost 서버의 /opt/DeployTestapp/nginx-file-browser 폴더로 이동합니다.
@@ -19,7 +18,9 @@ deployment.apps/nginx-file-bro created
 ingress.networking.k8s.io/handson-eks-alb created
 ```
 > ### 경고! 
-> s3에 저정된 파일을 불러옵니다. 파일이 손상되거나 변경된 경우 다운로드 되지 않거나 설정이 변경될 수 있습니다. 그럴경우 편집기를 열고 해당 파일을 수동으로 작성하세요.
+> s3에 저정된 파일을 불러옵니다. </br>
+> 파일이 손상되거나 변경된 경우 다운로드 되지 않거나 설정이 변경될 수 있습니다.</br>
+> 그럴 경우 편집기를 열고 해당 파일을 수동으로 작성하세요.</br>
 
 ## K8S definition file
 ### service
@@ -133,8 +134,9 @@ handson-eks-alb   alb     *       handson-eks-alb-990590669.ap-northeast-2.elb.a
 8. 브라우저 접속시 Filebrowser 앱이 보입니다.</br>
 ![filebrowser](./Images/filbrowser.png)
 
-# 다음과정
-- 다음 과정 : [EKSCluster 연결](./3-1_ConnectAnEKSCluster.md)
+# 다음 과정
+Ocean 과 EKS를 연동합니다.</br>
+- 다음 과정: [EKS와 Ocean 연동](./3-1_ConnectAnEKSCluster.md)
 
 
 # 참고

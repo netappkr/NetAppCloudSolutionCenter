@@ -6,16 +6,18 @@ Ocean은 클러스터의 인프라 비용을 분석하고 리소스에 광범위
 전체 클러스터의 비용을 보는 대신 비용을 네임스페이스와 각 네임스페이스 내의 개별 워크로드로 분류하고 컨테이너 레이블 및 주석에 따라 필터링할 수 있습니다. 이 정보는 각 워크로드에 대한 컴퓨팅 비용과 스토리지 비용으로 더 세분화된 것을 볼 수 있습니다. </br>
 이를 통해 클라우드 인프라의 비용을 자세히 이해할 수 있으며 클라우드 비용을 관리하기 위한 필수 도구를 제공합니다.
 
-# 작동 원리
+## 작동 원리
 비용 분석을 위해 Ocean은 컴퓨팅 및 스토리지 비용을 소스로 분류하여 계산합니다. Ocean은 클러스터의 모든 워크로드를 고려하고 관리형 인프라 비용은 상대적 가중치에 따라 모든 워크로드에 걸쳐 분할됩니다
 
-# 실습
+## 실습
 1. Cost Analysis Tab으로 이동합니다.
-Namespace 별 리소스 현황이 보여집니다.
-2. 그래프 밑단에 있는 표에서 Namesepce 항목의 ngrinder를 드롭다운합니다.
-namespace의 맴버 별로 % of namespace cost 사용율이 확인됩니다.
+2. Namespace 별 리소스 현황이 보여집니다.
+3. 그래프 밑단에 있는 표에서 Namesepce 항목의 ngrinder를 드롭다운합니다.
+4. namespace의 맴버 별로 % of namespace cost 사용율이 확인됩니다.
 
-# 다음단계
+# 다음 과정
+- 다음 과정: [Right Sizing](./3-7_RightSizing.md)
+- 이전 과정: [저 비용 노드로 되돌리기](./3-5_ReverttoLowerCostNode.md)
 
 # 참조
 [Ocean Cost Analysis](https://docs.spot.io/ocean/features/cost-analysis)
