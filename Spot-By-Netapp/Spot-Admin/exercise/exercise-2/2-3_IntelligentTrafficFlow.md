@@ -40,10 +40,10 @@ ITF는 각 대상 그룹이 보유한 vCPU 수를 기반으로 대상 그룹에 
 - cheapset </br>
 ![Edit_rebalancing_EG_console](./Images/Edit_rebalancing_EG_console.png)
 
-7. Scaling Tab에서 적용된 Policy가 있다면 **X**를 눌러 삭제합니다.
-![ITF_Delete_Scaling_Policy](./Images/ITF_Delete_Scaling_Policy.png)
-8. ReView Tab에서 설정을 검토 후 Update 합니다.
-9. Group 내 모든 인스턴스를 Rollup 합니다.
+8. Scaling Tab으로 이동 후 Target Scaling Policy를 삭제합니다.</br>
+![Stateful_EG_ConfigSet_Console_Guide5](./Images/Stateful_EG_ConfigSet_Console_Guide5.png)
+9. ReView Tab에서 설정을 검토 후 Update 합니다.
+10. Group 내 모든 인스턴스를 Rollup 합니다.
 - [X]Roll My Group
 - Batch Size: 100 
 - Grace Period: 60 </br>
