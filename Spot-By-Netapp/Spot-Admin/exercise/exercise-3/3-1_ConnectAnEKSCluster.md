@@ -144,7 +144,7 @@ Ocean 생성되며 대시보드화면이 보입니다.
 Ocean으로 workload migration을 진행합니다.</br>
 
 - 다음 과정: [workload migration](./3-2_WorkloadMigration.md)
-- 이전 과정: [EKS에 Test app 배포](./3-0_deploy_testapp.md)
+- 이전 과정: [EKS에 Test app 배포](./3-0_Deploy_App_for_Test.md)
 
 # 참조
 
