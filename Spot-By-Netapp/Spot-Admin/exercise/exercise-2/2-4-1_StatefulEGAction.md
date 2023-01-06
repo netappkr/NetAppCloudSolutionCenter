@@ -35,12 +35,12 @@ sudo mv Hello.html /usr/share/nginx/html/Hello.html
 
 7. AWS EC2 console로 이동합니다.
 8. Pravate IP가 일치하는 Stateful 인스턴스를 찾아 마우스 우클릭 버튼을 누릅니다.
-9. 활성화된 메뉴에서 인스턴스 종료(삭제)를 클릭합니다.</br>
+9. 활성화된 메뉴에서 인스턴스 종료(삭제)를 클릭합니다.
 ![Terminate_Instance_AWS_console_Guide](./Images/Terminate_Instance_AWS_console_Guide.png)
-10. 인스턴스 ID를 확인 후 종료(삭제)를 클릭합니다.</br>
+10. 인스턴스 ID를 확인 후 종료(삭제)를 클릭합니다.
 ![Terminate_Instance_AWS_console_Guide2](./Images/Terminate_Instance_AWS_console_Guide2.png)
 
-11. Spot Console로 이동하여 인스턴스가 다시 생성되길 기다립니다.</br>
+11. Spot Console로 이동하여 인스턴스가 다시 생성되길 기다립니다.
 ![View_Stateful_EG](./Images/View_Stateful_EG.png)
 
 12. Bastion Host 서버에 접속합니다.
