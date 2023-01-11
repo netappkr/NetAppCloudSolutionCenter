@@ -194,7 +194,7 @@ NAME       TYPE           CLUSTER-IP     EXTERNAL-IP                            
 ngrinder   LoadBalancer   10.100.139.125   k8s-ngrinder-ngrinder-f6331fdbc5-d5291cec4f3282d2.elb.ap-northeast-2.amazonaws.com   80:30729/TCP,16001:30869/TCP,12000:30484/TCP,12001:31649/TCP,12002:31813/TCP,12003:32007/TCP,12004:30469/TCP,12005:30809/TCP,12006:31784/TCP,12007:31850/TCP,12008:32335/TCP,12009:31423/TCP   87m
 ```
 
-3. 웹브라우저를 열고 EXTERNAL-IP 출력된 도메인으로 접속 시 ngrinder 서비스가 보입니다.
+3. 웹브라우저를 열고 **EXTERNAL-IP 항목의 출력된 도메인**으로 접속 시 ngrinder 서비스가 보입니다.
 
 ### 예시
 
