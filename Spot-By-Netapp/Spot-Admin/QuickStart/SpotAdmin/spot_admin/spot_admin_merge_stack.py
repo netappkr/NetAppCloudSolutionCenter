@@ -21,12 +21,12 @@ class MergeStack(Stack):
             nat_gateways=1,
             subnet_configuration=[
                 ec2.SubnetConfiguration(cidr_mask=24,name="public-subnet",subnet_type=ec2.SubnetType.PUBLIC),
-                ec2.SubnetConfiguration(cidr_mask=24,name="private-subnet",subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT)
+                ec2.SubnetConfiguration(cidr_mask=24,name="private-subnet",subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS)
                 ]
         )
-        # CfnOutput(self,"private-subnet-id-0",value=vpc.select_subnets(subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT).subnet_ids[0])
-        # CfnOutput(self,"private-subnet-id-1",value=vpc.select_subnets(subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT).subnet_ids[1])
-        # CfnOutput(self,"routetable-id",value=vpc.select_subnets(subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT).subnets[0].route_table.route_table_id)
+        # CfnOutput(self,"private-subnet-id-0",value=vpc.select_subnets(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS).subnet_ids[0])
+        # CfnOutput(self,"private-subnet-id-1",value=vpc.select_subnets(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS).subnet_ids[1])
+        # CfnOutput(self,"routetable-id",value=vpc.select_subnets(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS).subnets[0].route_table.route_table_id)
 
         # Hands-on bastion 생성
         bastionrole = iam.Role(
@@ -113,7 +113,7 @@ class MergeStack(Stack):
             ),
             machine_image=wordpressAMI,
             key_name=keyPair.key_name,
-            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT),
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
             user_data=userdata,
         )
 
@@ -205,7 +205,7 @@ class MergeStack(Stack):
                 labels={
                     "purpose": "test"
                 },
-                subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT),
+                subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
                 remote_access=eks.NodegroupRemoteAccess(ssh_key_name=keyPair.key_name),
                 min_size = 0
         )

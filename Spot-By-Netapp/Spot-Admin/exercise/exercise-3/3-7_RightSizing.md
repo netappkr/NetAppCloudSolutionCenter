@@ -12,6 +12,7 @@
 - 크기 조정 제안 및 그래프는 메트릭 수집 시작기준 최소 4일 후 데이터를 표시합니다.
 
 ## Metric server 설치
+설치하지 않은 경우에만 설치합니다.</br>
 1. 다음 명령을 사용하여 지표 서버를 배포합니다.
     ```bash
     kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml

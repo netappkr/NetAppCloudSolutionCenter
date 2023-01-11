@@ -1,0 +1,2698 @@
+{
+ "Resources": {
+  "SpotAdminVPCD791DA13": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "172.30.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "MergeStack/SpotAdmin-VPC"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/Resource"
+   }
+  },
+  "SpotAdminVPCpublicsubnetSubnet1Subnet9E237823": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "SpotAdminVPCD791DA13"
+    },
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "172.30.0.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "public-subnet"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "kubernetes.io/role/elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "MergeStack/SpotAdmin-VPC/public-subnetSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/public-subnetSubnet1/Subnet"
+   }
+  },
+  "SpotAdminVPCpublicsubnetSubnet1RouteTableF7514F1F": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "SpotAdminVPCD791DA13"
+    },
+    "Tags": [
+     {
+      "Key": "kubernetes.io/role/elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "MergeStack/SpotAdmin-VPC/public-subnetSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/public-subnetSubnet1/RouteTable"
+   }
+  },
+  "SpotAdminVPCpublicsubnetSubnet1RouteTableAssociationF35BDFA9": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "SpotAdminVPCpublicsubnetSubnet1RouteTableF7514F1F"
+    },
+    "SubnetId": {
+     "Ref": "SpotAdminVPCpublicsubnetSubnet1Subnet9E237823"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/public-subnetSubnet1/RouteTableAssociation"
+   }
+  },
+  "SpotAdminVPCpublicsubnetSubnet1DefaultRoute0998254F": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "SpotAdminVPCpublicsubnetSubnet1RouteTableF7514F1F"
+    },
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "SpotAdminVPCIGW8281936E"
+    }
+   },
+   "DependsOn": [
+    "SpotAdminVPCVPCGW5B05B3D8"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/public-subnetSubnet1/DefaultRoute"
+   }
+  },
+  "SpotAdminVPCpublicsubnetSubnet1EIP82D44B46": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "kubernetes.io/role/elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "MergeStack/SpotAdmin-VPC/public-subnetSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/public-subnetSubnet1/EIP"
+   }
+  },
+  "SpotAdminVPCpublicsubnetSubnet1NATGatewayA7F29114": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "SubnetId": {
+     "Ref": "SpotAdminVPCpublicsubnetSubnet1Subnet9E237823"
+    },
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "SpotAdminVPCpublicsubnetSubnet1EIP82D44B46",
+      "AllocationId"
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "kubernetes.io/role/elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "MergeStack/SpotAdmin-VPC/public-subnetSubnet1"
+     }
+    ]
+   },
+   "DependsOn": [
+    "SpotAdminVPCpublicsubnetSubnet1DefaultRoute0998254F",
+    "SpotAdminVPCpublicsubnetSubnet1RouteTableAssociationF35BDFA9"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/public-subnetSubnet1/NATGateway"
+   }
+  },
+  "SpotAdminVPCpublicsubnetSubnet2SubnetE7F3709A": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "SpotAdminVPCD791DA13"
+    },
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "172.30.1.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "public-subnet"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "kubernetes.io/role/elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "MergeStack/SpotAdmin-VPC/public-subnetSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/public-subnetSubnet2/Subnet"
+   }
+  },
+  "SpotAdminVPCpublicsubnetSubnet2RouteTableCF5C18E4": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "SpotAdminVPCD791DA13"
+    },
+    "Tags": [
+     {
+      "Key": "kubernetes.io/role/elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "MergeStack/SpotAdmin-VPC/public-subnetSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/public-subnetSubnet2/RouteTable"
+   }
+  },
+  "SpotAdminVPCpublicsubnetSubnet2RouteTableAssociation0D9712E2": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "SpotAdminVPCpublicsubnetSubnet2RouteTableCF5C18E4"
+    },
+    "SubnetId": {
+     "Ref": "SpotAdminVPCpublicsubnetSubnet2SubnetE7F3709A"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/public-subnetSubnet2/RouteTableAssociation"
+   }
+  },
+  "SpotAdminVPCpublicsubnetSubnet2DefaultRouteDFAEE25B": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "SpotAdminVPCpublicsubnetSubnet2RouteTableCF5C18E4"
+    },
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "SpotAdminVPCIGW8281936E"
+    }
+   },
+   "DependsOn": [
+    "SpotAdminVPCVPCGW5B05B3D8"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/public-subnetSubnet2/DefaultRoute"
+   }
+  },
+  "SpotAdminVPCprivatesubnetSubnet1Subnet88243053": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "SpotAdminVPCD791DA13"
+    },
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "172.30.2.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "private-subnet"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "kubernetes.io/role/internal-elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "MergeStack/SpotAdmin-VPC/private-subnetSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/private-subnetSubnet1/Subnet"
+   }
+  },
+  "SpotAdminVPCprivatesubnetSubnet1RouteTableEEF7BBAB": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "SpotAdminVPCD791DA13"
+    },
+    "Tags": [
+     {
+      "Key": "kubernetes.io/role/internal-elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "MergeStack/SpotAdmin-VPC/private-subnetSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/private-subnetSubnet1/RouteTable"
+   }
+  },
+  "SpotAdminVPCprivatesubnetSubnet1RouteTableAssociation745EC4CE": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "SpotAdminVPCprivatesubnetSubnet1RouteTableEEF7BBAB"
+    },
+    "SubnetId": {
+     "Ref": "SpotAdminVPCprivatesubnetSubnet1Subnet88243053"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/private-subnetSubnet1/RouteTableAssociation"
+   }
+  },
+  "SpotAdminVPCprivatesubnetSubnet1DefaultRouteB7F99757": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "SpotAdminVPCprivatesubnetSubnet1RouteTableEEF7BBAB"
+    },
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "SpotAdminVPCpublicsubnetSubnet1NATGatewayA7F29114"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/private-subnetSubnet1/DefaultRoute"
+   }
+  },
+  "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "SpotAdminVPCD791DA13"
+    },
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "172.30.3.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "private-subnet"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "kubernetes.io/role/internal-elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "MergeStack/SpotAdmin-VPC/private-subnetSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/private-subnetSubnet2/Subnet"
+   }
+  },
+  "SpotAdminVPCprivatesubnetSubnet2RouteTable23A8F0A1": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "SpotAdminVPCD791DA13"
+    },
+    "Tags": [
+     {
+      "Key": "kubernetes.io/role/internal-elb",
+      "Value": "1"
+     },
+     {
+      "Key": "Name",
+      "Value": "MergeStack/SpotAdmin-VPC/private-subnetSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/private-subnetSubnet2/RouteTable"
+   }
+  },
+  "SpotAdminVPCprivatesubnetSubnet2RouteTableAssociationEAED4FD9": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "SpotAdminVPCprivatesubnetSubnet2RouteTable23A8F0A1"
+    },
+    "SubnetId": {
+     "Ref": "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/private-subnetSubnet2/RouteTableAssociation"
+   }
+  },
+  "SpotAdminVPCprivatesubnetSubnet2DefaultRoute0083DA1A": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "SpotAdminVPCprivatesubnetSubnet2RouteTable23A8F0A1"
+    },
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "SpotAdminVPCpublicsubnetSubnet1NATGatewayA7F29114"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/private-subnetSubnet2/DefaultRoute"
+   }
+  },
+  "SpotAdminVPCIGW8281936E": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "MergeStack/SpotAdmin-VPC"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/IGW"
+   }
+  },
+  "SpotAdminVPCVPCGW5B05B3D8": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "VpcId": {
+     "Ref": "SpotAdminVPCD791DA13"
+    },
+    "InternetGatewayId": {
+     "Ref": "SpotAdminVPCIGW8281936E"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-VPC/VPCGW"
+   }
+  },
+  "SpotAdminbastionRoleB7304A3D": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ec2.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Description": "Netapp SpotAdmin Hands on bastion Role",
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AdministratorAccess"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdminbastionRole/Resource"
+   }
+  },
+  "SpotAdminbastionSG7295E208": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "MergeStack/SpotAdminbastionSG",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "allow ssh access from the world",
+      "FromPort": 22,
+      "IpProtocol": "tcp",
+      "ToPort": 22
+     }
+    ],
+    "VpcId": {
+     "Ref": "SpotAdminVPCD791DA13"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdminbastionSG/Resource"
+   }
+  },
+  "SpotAdminkey": {
+   "Type": "AWS::EC2::KeyPair",
+   "Properties": {
+    "KeyName": "SpotAdminkey",
+    "PublicKeyMaterial": "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAvu2v6lkF59XSY3ch+Df2w/AN10EPXZ3JL2Xbqtsv13xVq9ZuzmUcdCpfa9NyjnyBoaXxymUvQSaeQCFxnjroAySOKVXaR6n6ahWFGQOYlfZHkKYg/N8pTpQht3QXNLoA8lUlrb3lyehQHxtCAhtgmx4BIaBpGM/FLaJqhu1OQ7gz0GBbG1qZOmEyrzcklkvriyPYzEESg3N9w+eM09rWvu3dK+EezAsgeFBlcsfHY5eNRmgp2iPfvz8tNZ3wgsrU/UiZHueqsMmGYS+Njjr461cx2q3EhjjPbYz8+tj3t/taZ/Jf419r9ZhT1JHm8/vUh22B5Xm31LdbMBPGvuUKPQ=="
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdminkey"
+   }
+  },
+  "SpotAdminbastionInstanceProfile8E426AC7": {
+   "Type": "AWS::IAM::InstanceProfile",
+   "Properties": {
+    "Roles": [
+     {
+      "Ref": "SpotAdminbastionRoleB7304A3D"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdminbastion/InstanceProfile"
+   }
+  },
+  "SpotAdminbastion4A2639D7": {
+   "Type": "AWS::EC2::Instance",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "IamInstanceProfile": {
+     "Ref": "SpotAdminbastionInstanceProfile8E426AC7"
+    },
+    "ImageId": {
+     "Fn::FindInMap": [
+      "SpotAdminbastionAmiMap9372FC62",
+      {
+       "Ref": "AWS::Region"
+      },
+      "ami"
+     ]
+    },
+    "InstanceType": "t3.medium",
+    "KeyName": "SpotAdminkey",
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "SpotAdminbastionSG7295E208",
+       "GroupId"
+      ]
+     }
+    ],
+    "SubnetId": {
+     "Ref": "SpotAdminVPCpublicsubnetSubnet1Subnet9E237823"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "MergeStack/SpotAdminbastion"
+     }
+    ],
+    "UserData": {
+     "Fn::Base64": "#!/bin/bash\naws s3 cp s3://netappkr-wyahn-s3/public/Spot_Admin/DeployTestapp/ /opt/DeployTestapp --recursive"
+    }
+   },
+   "DependsOn": [
+    "SpotAdminbastionRoleB7304A3D"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdminbastion/Resource"
+   }
+  },
+  "wordpressasgInstanceSecurityGroup4FCA6A12": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "MergeStack/wordpress-asg/InstanceSecurityGroup",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "MergeStack/wordpress-asg"
+     }
+    ],
+    "VpcId": {
+     "Ref": "SpotAdminVPCD791DA13"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/wordpress-asg/InstanceSecurityGroup/Resource"
+   }
+  },
+  "wordpressasgInstanceSecurityGroupfromMergeStackAppLBSGDBF479BA8034E58582": {
+   "Type": "AWS::EC2::SecurityGroupIngress",
+   "Properties": {
+    "IpProtocol": "tcp",
+    "Description": "Load balancer to target",
+    "FromPort": 80,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "wordpressasgInstanceSecurityGroup4FCA6A12",
+      "GroupId"
+     ]
+    },
+    "SourceSecurityGroupId": {
+     "Fn::GetAtt": [
+      "AppLBSGBB112E8D",
+      "GroupId"
+     ]
+    },
+    "ToPort": 80
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/wordpress-asg/InstanceSecurityGroup/from MergeStackAppLBSGDBF479BA:80"
+   }
+  },
+  "wordpressasgInstanceRole854645C3": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ec2.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "MergeStack/wordpress-asg"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/wordpress-asg/InstanceRole/Resource"
+   }
+  },
+  "wordpressasgInstanceProfile9075E223": {
+   "Type": "AWS::IAM::InstanceProfile",
+   "Properties": {
+    "Roles": [
+     {
+      "Ref": "wordpressasgInstanceRole854645C3"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/wordpress-asg/InstanceProfile"
+   }
+  },
+  "wordpressasgLaunchConfig55DEBC0E": {
+   "Type": "AWS::AutoScaling::LaunchConfiguration",
+   "Properties": {
+    "ImageId": {
+     "Fn::FindInMap": [
+      "wordpressasgAmiMap6E0E0CD1",
+      {
+       "Ref": "AWS::Region"
+      },
+      "ami"
+     ]
+    },
+    "InstanceType": "t3.medium",
+    "IamInstanceProfile": {
+     "Ref": "wordpressasgInstanceProfile9075E223"
+    },
+    "KeyName": "SpotAdminkey",
+    "SecurityGroups": [
+     {
+      "Fn::GetAtt": [
+       "wordpressasgInstanceSecurityGroup4FCA6A12",
+       "GroupId"
+      ]
+     },
+     {
+      "Fn::GetAtt": [
+       "WordpressSGEC1BBE5E",
+       "GroupId"
+      ]
+     }
+    ],
+    "UserData": {
+     "Fn::Base64": "#!/bin/bash\nyum -y update"
+    }
+   },
+   "DependsOn": [
+    "wordpressasgInstanceRole854645C3"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/wordpress-asg/LaunchConfig"
+   }
+  },
+  "wordpressasgASG661CDBCC": {
+   "Type": "AWS::AutoScaling::AutoScalingGroup",
+   "Properties": {
+    "MaxSize": "1",
+    "MinSize": "1",
+    "LaunchConfigurationName": {
+     "Ref": "wordpressasgLaunchConfig55DEBC0E"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "PropagateAtLaunch": true,
+      "Value": "MergeStack/wordpress-asg"
+     }
+    ],
+    "TargetGroupARNs": [
+     {
+      "Ref": "ALBListenerTargetGroupD5D64FBA"
+     }
+    ],
+    "VPCZoneIdentifier": [
+     {
+      "Ref": "SpotAdminVPCprivatesubnetSubnet1Subnet88243053"
+     },
+     {
+      "Ref": "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC"
+     }
+    ]
+   },
+   "UpdatePolicy": {
+    "AutoScalingScheduledAction": {
+     "IgnoreUnmodifiedGroupSizeProperties": true
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/wordpress-asg/ASG"
+   }
+  },
+  "WordpressSGEC1BBE5E": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "MergeStack/WordpressSG",
+    "GroupName": "Wordpress-SG",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "allow ssh access from the world",
+      "FromPort": 22,
+      "IpProtocol": "tcp",
+      "ToPort": 22
+     },
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "allow http access from the world",
+      "FromPort": 80,
+      "IpProtocol": "tcp",
+      "ToPort": 80
+     },
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "allow https access from the world",
+      "FromPort": 443,
+      "IpProtocol": "tcp",
+      "ToPort": 443
+     },
+     {
+      "CidrIp": {
+       "Fn::GetAtt": [
+        "SpotAdminVPCD791DA13",
+        "CidrBlock"
+       ]
+      },
+      "Description": "allow https access from the world",
+      "FromPort": 443,
+      "IpProtocol": "tcp",
+      "ToPort": 443
+     }
+    ],
+    "VpcId": {
+     "Ref": "SpotAdminVPCD791DA13"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/WordpressSG/Resource"
+   }
+  },
+  "WordpressSGfromMergeStackAppLBSGDBF479BA808537AE08": {
+   "Type": "AWS::EC2::SecurityGroupIngress",
+   "Properties": {
+    "IpProtocol": "tcp",
+    "Description": "Ingress",
+    "FromPort": 80,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "WordpressSGEC1BBE5E",
+      "GroupId"
+     ]
+    },
+    "SourceSecurityGroupId": {
+     "Fn::GetAtt": [
+      "AppLBSGBB112E8D",
+      "GroupId"
+     ]
+    },
+    "ToPort": 80
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/WordpressSG/from MergeStackAppLBSGDBF479BA:80"
+   }
+  },
+  "AppLBSGBB112E8D": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "MergeStack/AppLBSG",
+    "GroupName": "AppLB-SG",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow from anyone on port 80",
+      "FromPort": 80,
+      "IpProtocol": "tcp",
+      "ToPort": 80
+     }
+    ],
+    "VpcId": {
+     "Ref": "SpotAdminVPCD791DA13"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/AppLBSG/Resource"
+   }
+  },
+  "ALBAEE750D2": {
+   "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+   "Properties": {
+    "LoadBalancerAttributes": [
+     {
+      "Key": "deletion_protection.enabled",
+      "Value": "false"
+     }
+    ],
+    "Name": "SpotAdminALB",
+    "Scheme": "internet-facing",
+    "SecurityGroups": [
+     {
+      "Fn::GetAtt": [
+       "AppLBSGBB112E8D",
+       "GroupId"
+      ]
+     }
+    ],
+    "Subnets": [
+     {
+      "Ref": "SpotAdminVPCpublicsubnetSubnet1Subnet9E237823"
+     },
+     {
+      "Ref": "SpotAdminVPCpublicsubnetSubnet2SubnetE7F3709A"
+     }
+    ],
+    "Type": "application"
+   },
+   "DependsOn": [
+    "SpotAdminVPCpublicsubnetSubnet1DefaultRoute0998254F",
+    "SpotAdminVPCpublicsubnetSubnet1RouteTableAssociationF35BDFA9",
+    "SpotAdminVPCpublicsubnetSubnet2DefaultRouteDFAEE25B",
+    "SpotAdminVPCpublicsubnetSubnet2RouteTableAssociation0D9712E2"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/ALB/Resource"
+   }
+  },
+  "ALBListener3B99FF85": {
+   "Type": "AWS::ElasticLoadBalancingV2::Listener",
+   "Properties": {
+    "DefaultActions": [
+     {
+      "TargetGroupArn": {
+       "Ref": "ALBListenerTargetGroupD5D64FBA"
+      },
+      "Type": "forward"
+     }
+    ],
+    "LoadBalancerArn": {
+     "Ref": "ALBAEE750D2"
+    },
+    "Port": 80,
+    "Protocol": "HTTP"
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/ALB/Listener/Resource"
+   }
+  },
+  "ALBListenerTargetGroupD5D64FBA": {
+   "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+   "Properties": {
+    "Name": "spotadmin-wordpress-TG",
+    "Port": 80,
+    "Protocol": "HTTP",
+    "TargetGroupAttributes": [
+     {
+      "Key": "stickiness.enabled",
+      "Value": "false"
+     }
+    ],
+    "TargetType": "instance",
+    "VpcId": {
+     "Ref": "SpotAdminVPCD791DA13"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/ALB/Listener/TargetGroup/Resource"
+   }
+  },
+  "SpotAdmineksRole1C4247C8": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "eks.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonEKSClusterPolicy"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-eks/Role/Resource"
+   }
+  },
+  "SpotAdmineksControlPlaneSecurityGroup8C3706F7": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "EKS Control Plane Security Group",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "SpotAdminVPCD791DA13"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-eks/ControlPlaneSecurityGroup/Resource"
+   }
+  },
+  "SpotAdmineksCreationRole34D26EAE": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":iam::",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":root"
+          ]
+         ]
+        }
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "DependsOn": [
+    "SpotAdminVPCIGW8281936E",
+    "SpotAdminVPCprivatesubnetSubnet1DefaultRouteB7F99757",
+    "SpotAdminVPCprivatesubnetSubnet1RouteTableEEF7BBAB",
+    "SpotAdminVPCprivatesubnetSubnet1RouteTableAssociation745EC4CE",
+    "SpotAdminVPCprivatesubnetSubnet1Subnet88243053",
+    "SpotAdminVPCprivatesubnetSubnet2DefaultRoute0083DA1A",
+    "SpotAdminVPCprivatesubnetSubnet2RouteTable23A8F0A1",
+    "SpotAdminVPCprivatesubnetSubnet2RouteTableAssociationEAED4FD9",
+    "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC",
+    "SpotAdminVPCpublicsubnetSubnet1DefaultRoute0998254F",
+    "SpotAdminVPCpublicsubnetSubnet1EIP82D44B46",
+    "SpotAdminVPCpublicsubnetSubnet1NATGatewayA7F29114",
+    "SpotAdminVPCpublicsubnetSubnet1RouteTableF7514F1F",
+    "SpotAdminVPCpublicsubnetSubnet1RouteTableAssociationF35BDFA9",
+    "SpotAdminVPCpublicsubnetSubnet1Subnet9E237823",
+    "SpotAdminVPCpublicsubnetSubnet2DefaultRouteDFAEE25B",
+    "SpotAdminVPCpublicsubnetSubnet2RouteTableCF5C18E4",
+    "SpotAdminVPCpublicsubnetSubnet2RouteTableAssociation0D9712E2",
+    "SpotAdminVPCpublicsubnetSubnet2SubnetE7F3709A",
+    "SpotAdminVPCD791DA13",
+    "SpotAdminVPCVPCGW5B05B3D8"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-eks/Resource/CreationRole/Resource"
+   }
+  },
+  "SpotAdmineksCreationRoleDefaultPolicy502D3873": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "iam:PassRole",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "SpotAdmineksRole1C4247C8",
+         "Arn"
+        ]
+       }
+      },
+      {
+       "Action": [
+        "eks:CreateCluster",
+        "eks:CreateFargateProfile",
+        "eks:DeleteCluster",
+        "eks:DescribeCluster",
+        "eks:DescribeUpdate",
+        "eks:TagResource",
+        "eks:UntagResource",
+        "eks:UpdateClusterConfig",
+        "eks:UpdateClusterVersion"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":eks:",
+           {
+            "Ref": "AWS::Region"
+           },
+           ":",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":cluster/SpotAdmin-eks"
+          ]
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":eks:",
+           {
+            "Ref": "AWS::Region"
+           },
+           ":",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":cluster/SpotAdmin-eks/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "eks:DeleteFargateProfile",
+        "eks:DescribeFargateProfile"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:",
+          {
+           "Ref": "AWS::Partition"
+          },
+          ":eks:",
+          {
+           "Ref": "AWS::Region"
+          },
+          ":",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          ":fargateprofile/SpotAdmin-eks/*"
+         ]
+        ]
+       }
+      },
+      {
+       "Action": [
+        "ec2:DescribeDhcpOptions",
+        "ec2:DescribeInstances",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeRouteTables",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeVpcs",
+        "iam:CreateServiceLinkedRole",
+        "iam:GetRole",
+        "iam:listAttachedRolePolicies"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "SpotAdmineksCreationRoleDefaultPolicy502D3873",
+    "Roles": [
+     {
+      "Ref": "SpotAdmineksCreationRole34D26EAE"
+     }
+    ]
+   },
+   "DependsOn": [
+    "SpotAdminVPCIGW8281936E",
+    "SpotAdminVPCprivatesubnetSubnet1DefaultRouteB7F99757",
+    "SpotAdminVPCprivatesubnetSubnet1RouteTableEEF7BBAB",
+    "SpotAdminVPCprivatesubnetSubnet1RouteTableAssociation745EC4CE",
+    "SpotAdminVPCprivatesubnetSubnet1Subnet88243053",
+    "SpotAdminVPCprivatesubnetSubnet2DefaultRoute0083DA1A",
+    "SpotAdminVPCprivatesubnetSubnet2RouteTable23A8F0A1",
+    "SpotAdminVPCprivatesubnetSubnet2RouteTableAssociationEAED4FD9",
+    "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC",
+    "SpotAdminVPCpublicsubnetSubnet1DefaultRoute0998254F",
+    "SpotAdminVPCpublicsubnetSubnet1EIP82D44B46",
+    "SpotAdminVPCpublicsubnetSubnet1NATGatewayA7F29114",
+    "SpotAdminVPCpublicsubnetSubnet1RouteTableF7514F1F",
+    "SpotAdminVPCpublicsubnetSubnet1RouteTableAssociationF35BDFA9",
+    "SpotAdminVPCpublicsubnetSubnet1Subnet9E237823",
+    "SpotAdminVPCpublicsubnetSubnet2DefaultRouteDFAEE25B",
+    "SpotAdminVPCpublicsubnetSubnet2RouteTableCF5C18E4",
+    "SpotAdminVPCpublicsubnetSubnet2RouteTableAssociation0D9712E2",
+    "SpotAdminVPCpublicsubnetSubnet2SubnetE7F3709A",
+    "SpotAdminVPCD791DA13",
+    "SpotAdminVPCVPCGW5B05B3D8"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-eks/Resource/CreationRole/DefaultPolicy/Resource"
+   }
+  },
+  "SpotAdmineks61E169F9": {
+   "Type": "Custom::AWSCDK-EKS-Cluster",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "awscdkawseksClusterResourceProviderNestedStackawscdkawseksClusterResourceProviderNestedStackResource9827C454",
+      "Outputs.MergeStackawscdkawseksClusterResourceProviderframeworkonEvent5CE33415Arn"
+     ]
+    },
+    "Config": {
+     "name": "SpotAdmin-eks",
+     "version": "1.24",
+     "roleArn": {
+      "Fn::GetAtt": [
+       "SpotAdmineksRole1C4247C8",
+       "Arn"
+      ]
+     },
+     "resourcesVpcConfig": {
+      "subnetIds": [
+       {
+        "Ref": "SpotAdminVPCpublicsubnetSubnet1Subnet9E237823"
+       },
+       {
+        "Ref": "SpotAdminVPCpublicsubnetSubnet2SubnetE7F3709A"
+       },
+       {
+        "Ref": "SpotAdminVPCprivatesubnetSubnet1Subnet88243053"
+       },
+       {
+        "Ref": "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC"
+       }
+      ],
+      "securityGroupIds": [
+       {
+        "Fn::GetAtt": [
+         "SpotAdmineksControlPlaneSecurityGroup8C3706F7",
+         "GroupId"
+        ]
+       }
+      ],
+      "endpointPublicAccess": true,
+      "endpointPrivateAccess": true
+     }
+    },
+    "AssumeRoleArn": {
+     "Fn::GetAtt": [
+      "SpotAdmineksCreationRole34D26EAE",
+      "Arn"
+     ]
+    },
+    "AttributesRevision": 2
+   },
+   "DependsOn": [
+    "SpotAdmineksCreationRoleDefaultPolicy502D3873",
+    "SpotAdmineksCreationRole34D26EAE",
+    "SpotAdminVPCIGW8281936E",
+    "SpotAdminVPCprivatesubnetSubnet1DefaultRouteB7F99757",
+    "SpotAdminVPCprivatesubnetSubnet1RouteTableEEF7BBAB",
+    "SpotAdminVPCprivatesubnetSubnet1RouteTableAssociation745EC4CE",
+    "SpotAdminVPCprivatesubnetSubnet1Subnet88243053",
+    "SpotAdminVPCprivatesubnetSubnet2DefaultRoute0083DA1A",
+    "SpotAdminVPCprivatesubnetSubnet2RouteTable23A8F0A1",
+    "SpotAdminVPCprivatesubnetSubnet2RouteTableAssociationEAED4FD9",
+    "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC",
+    "SpotAdminVPCpublicsubnetSubnet1DefaultRoute0998254F",
+    "SpotAdminVPCpublicsubnetSubnet1EIP82D44B46",
+    "SpotAdminVPCpublicsubnetSubnet1NATGatewayA7F29114",
+    "SpotAdminVPCpublicsubnetSubnet1RouteTableF7514F1F",
+    "SpotAdminVPCpublicsubnetSubnet1RouteTableAssociationF35BDFA9",
+    "SpotAdminVPCpublicsubnetSubnet1Subnet9E237823",
+    "SpotAdminVPCpublicsubnetSubnet2DefaultRouteDFAEE25B",
+    "SpotAdminVPCpublicsubnetSubnet2RouteTableCF5C18E4",
+    "SpotAdminVPCpublicsubnetSubnet2RouteTableAssociation0D9712E2",
+    "SpotAdminVPCpublicsubnetSubnet2SubnetE7F3709A",
+    "SpotAdminVPCD791DA13",
+    "SpotAdminVPCVPCGW5B05B3D8"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-eks/Resource/Resource/Default"
+   }
+  },
+  "SpotAdmineksKubectlReadyBarrier1A48FC82": {
+   "Type": "AWS::SSM::Parameter",
+   "Properties": {
+    "Type": "String",
+    "Value": "aws:cdk:eks:kubectl-ready"
+   },
+   "DependsOn": [
+    "SpotAdmineksCreationRoleDefaultPolicy502D3873",
+    "SpotAdmineksCreationRole34D26EAE",
+    "SpotAdmineks61E169F9"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-eks/KubectlReadyBarrier"
+   }
+  },
+  "SpotAdmineksClusterSecurityGroupfrom000008050E3DE2B": {
+   "Type": "AWS::EC2::SecurityGroupIngress",
+   "Properties": {
+    "IpProtocol": "tcp",
+    "CidrIp": "0.0.0.0/0",
+    "Description": "allow http access from the world",
+    "FromPort": 80,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "SpotAdmineks61E169F9",
+      "ClusterSecurityGroupId"
+     ]
+    },
+    "ToPort": 80
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-eks/ClusterSecurityGroup/from 0.0.0.0_0:80"
+   }
+  },
+  "SpotAdmineksClusterSecurityGroupfrom00000443B959DFC4": {
+   "Type": "AWS::EC2::SecurityGroupIngress",
+   "Properties": {
+    "IpProtocol": "tcp",
+    "CidrIp": "0.0.0.0/0",
+    "Description": "allow https access from the world",
+    "FromPort": 443,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "SpotAdmineks61E169F9",
+      "ClusterSecurityGroupId"
+     ]
+    },
+    "ToPort": 443
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-eks/ClusterSecurityGroup/from 0.0.0.0_0:443"
+   }
+  },
+  "SpotAdmineksMastersRole285C86AD": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":iam::",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":root"
+          ]
+         ]
+        }
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-eks/MastersRole/Resource"
+   }
+  },
+  "SpotAdmineksAwsAuthmanifestCC45B684": {
+   "Type": "Custom::AWSCDK-EKS-KubernetesResource",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "awscdkawseksKubectlProviderNestedStackawscdkawseksKubectlProviderNestedStackResourceA7AEBA6B",
+      "Outputs.MergeStackawscdkawseksKubectlProviderframeworkonEventE9430538Arn"
+     ]
+    },
+    "Manifest": {
+     "Fn::Join": [
+      "",
+      [
+       "[{\"apiVersion\":\"v1\",\"kind\":\"ConfigMap\",\"metadata\":{\"name\":\"aws-auth\",\"namespace\":\"kube-system\",\"labels\":{\"aws.cdk.eks/prune-c8625541b37d25612a08d989030d1df34c3ad06913\":\"\"}},\"data\":{\"mapRoles\":\"[{\\\"rolearn\\\":\\\"",
+       {
+        "Fn::GetAtt": [
+         "SpotAdmineksMastersRole285C86AD",
+         "Arn"
+        ]
+       },
+       "\\\",\\\"username\\\":\\\"",
+       {
+        "Fn::GetAtt": [
+         "SpotAdmineksMastersRole285C86AD",
+         "Arn"
+        ]
+       },
+       "\\\",\\\"groups\\\":[\\\"system:masters\\\"]},{\\\"rolearn\\\":\\\"",
+       {
+        "Fn::GetAtt": [
+         "SpotAdmineksNodegroupDefaultCapacityNodeGroupRole82180BB7",
+         "Arn"
+        ]
+       },
+       "\\\",\\\"username\\\":\\\"system:node:{{EC2PrivateDNSName}}\\\",\\\"groups\\\":[\\\"system:bootstrappers\\\",\\\"system:nodes\\\"]},{\\\"rolearn\\\":\\\"",
+       {
+        "Fn::GetAtt": [
+         "SpotAdmineksNodegroupcustomnodegroupNodeGroupRoleB830EEA8",
+         "Arn"
+        ]
+       },
+       "\\\",\\\"username\\\":\\\"system:node:{{EC2PrivateDNSName}}\\\",\\\"groups\\\":[\\\"system:bootstrappers\\\",\\\"system:nodes\\\"]},{\\\"rolearn\\\":\\\"",
+       {
+        "Fn::GetAtt": [
+         "SpotAdminbastionRoleB7304A3D",
+         "Arn"
+        ]
+       },
+       "\\\",\\\"username\\\":\\\"",
+       {
+        "Fn::GetAtt": [
+         "SpotAdminbastionRoleB7304A3D",
+         "Arn"
+        ]
+       },
+       "\\\",\\\"groups\\\":[\\\"system:masters\\\"]}]\",\"mapUsers\":\"[]\",\"mapAccounts\":\"[]\"}}]"
+      ]
+     ]
+    },
+    "ClusterName": {
+     "Ref": "SpotAdmineks61E169F9"
+    },
+    "RoleArn": {
+     "Fn::GetAtt": [
+      "SpotAdmineksCreationRole34D26EAE",
+      "Arn"
+     ]
+    },
+    "PruneLabel": "aws.cdk.eks/prune-c8625541b37d25612a08d989030d1df34c3ad06913",
+    "Overwrite": true
+   },
+   "DependsOn": [
+    "SpotAdmineksKubectlReadyBarrier1A48FC82"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-eks/AwsAuth/manifest/Resource/Default"
+   }
+  },
+  "SpotAdmineksOpenIdConnectProvider2802A4FF": {
+   "Type": "Custom::AWSCDKOpenIdConnectProvider",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderHandlerF2C543E0",
+      "Arn"
+     ]
+    },
+    "ClientIDList": [
+     "sts.amazonaws.com"
+    ],
+    "Url": {
+     "Fn::GetAtt": [
+      "SpotAdmineks61E169F9",
+      "OpenIdConnectIssuerUrl"
+     ]
+    },
+    "CodeHash": "2f66f19d22493bb970ab7d0e10dab28b63e97d1ad344b1ed6dd9696c15c05a6c"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-eks/OpenIdConnectProvider/Resource/Default"
+   }
+  },
+  "SpotAdmineksNodegroupDefaultCapacityNodeGroupRole82180BB7": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ec2.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonEKSWorkerNodePolicy"
+       ]
+      ]
+     },
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonEKS_CNI_Policy"
+       ]
+      ]
+     },
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-eks/NodegroupDefaultCapacity/NodeGroupRole/Resource"
+   }
+  },
+  "SpotAdmineksNodegroupDefaultCapacity64ABF7A3": {
+   "Type": "AWS::EKS::Nodegroup",
+   "Properties": {
+    "ClusterName": {
+     "Ref": "SpotAdmineks61E169F9"
+    },
+    "NodeRole": {
+     "Fn::GetAtt": [
+      "SpotAdmineksNodegroupDefaultCapacityNodeGroupRole82180BB7",
+      "Arn"
+     ]
+    },
+    "Subnets": [
+     {
+      "Ref": "SpotAdminVPCprivatesubnetSubnet1Subnet88243053"
+     },
+     {
+      "Ref": "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC"
+     }
+    ],
+    "AmiType": "AL2_x86_64",
+    "ForceUpdateEnabled": true,
+    "InstanceTypes": [
+     "m5.large"
+    ],
+    "ScalingConfig": {
+     "DesiredSize": 1,
+     "MaxSize": 1,
+     "MinSize": 1
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-eks/NodegroupDefaultCapacity/Resource"
+   }
+  },
+  "SpotAdmineksNodegroupcustomnodegroupNodeGroupRoleB830EEA8": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ec2.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonEKSWorkerNodePolicy"
+       ]
+      ]
+     },
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonEKS_CNI_Policy"
+       ]
+      ]
+     },
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-eks/Nodegroupcustom-node-group/NodeGroupRole/Resource"
+   }
+  },
+  "SpotAdmineksNodegroupcustomnodegroup907B95C2": {
+   "Type": "AWS::EKS::Nodegroup",
+   "Properties": {
+    "ClusterName": {
+     "Ref": "SpotAdmineks61E169F9"
+    },
+    "NodeRole": {
+     "Fn::GetAtt": [
+      "SpotAdmineksNodegroupcustomnodegroupNodeGroupRoleB830EEA8",
+      "Arn"
+     ]
+    },
+    "Subnets": [
+     {
+      "Ref": "SpotAdminVPCprivatesubnetSubnet1Subnet88243053"
+     },
+     {
+      "Ref": "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC"
+     }
+    ],
+    "AmiType": "AL2_x86_64",
+    "ForceUpdateEnabled": true,
+    "InstanceTypes": [
+     "m5.large"
+    ],
+    "Labels": {
+     "purpose": "test"
+    },
+    "NodegroupName": "custom-ng",
+    "RemoteAccess": {
+     "Ec2SshKey": "SpotAdminkey"
+    },
+    "ScalingConfig": {
+     "DesiredSize": 1,
+     "MaxSize": 1,
+     "MinSize": 0
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/SpotAdmin-eks/Nodegroupcustom-node-group/Resource"
+   }
+  },
+  "awscdkawseksClusterResourceProviderNestedStackawscdkawseksClusterResourceProviderNestedStackResource9827C454": {
+   "Type": "AWS::CloudFormation::Stack",
+   "Properties": {
+    "TemplateURL": {
+     "Fn::Join": [
+      "",
+      [
+       "https://s3.",
+       {
+        "Ref": "AWS::Region"
+       },
+       ".",
+       {
+        "Ref": "AWS::URLSuffix"
+       },
+       "/",
+       {
+        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+       },
+       "/a63d761c16bff689e4e59b35fa275a2a55ead7df2fe29b6da15b1ec9bfddd9d2.json"
+      ]
+     ]
+    },
+    "Parameters": {
+     "referencetoMergeStackSpotAdmineksCreationRole84817F6BArn": {
+      "Fn::GetAtt": [
+       "SpotAdmineksCreationRole34D26EAE",
+       "Arn"
+      ]
+     }
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/@aws-cdk--aws-eks.ClusterResourceProvider.NestedStack/@aws-cdk--aws-eks.ClusterResourceProvider.NestedStackResource",
+    "aws:asset:path": "MergeStackawscdkawseksClusterResourceProvider9D3399FE.nested.template.json",
+    "aws:asset:property": "TemplateURL"
+   }
+  },
+  "awscdkawseksKubectlProviderNestedStackawscdkawseksKubectlProviderNestedStackResourceA7AEBA6B": {
+   "Type": "AWS::CloudFormation::Stack",
+   "Properties": {
+    "TemplateURL": {
+     "Fn::Join": [
+      "",
+      [
+       "https://s3.",
+       {
+        "Ref": "AWS::Region"
+       },
+       ".",
+       {
+        "Ref": "AWS::URLSuffix"
+       },
+       "/",
+       {
+        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+       },
+       "/0cd054544745b9066b6b6d36ef546c2a1c4cacdae4919ce20e77922626b30f9d.json"
+      ]
+     ]
+    },
+    "Parameters": {
+     "referencetoMergeStackSpotAdmineksED38B798Arn": {
+      "Fn::GetAtt": [
+       "SpotAdmineks61E169F9",
+       "Arn"
+      ]
+     },
+     "referencetoMergeStackSpotAdmineksCreationRole84817F6BArn": {
+      "Fn::GetAtt": [
+       "SpotAdmineksCreationRole34D26EAE",
+       "Arn"
+      ]
+     },
+     "referencetoMergeStackSpotAdminVPCprivatesubnetSubnet1Subnet49FCC594Ref": {
+      "Ref": "SpotAdminVPCprivatesubnetSubnet1Subnet88243053"
+     },
+     "referencetoMergeStackSpotAdminVPCprivatesubnetSubnet2Subnet26572FE8Ref": {
+      "Ref": "SpotAdminVPCprivatesubnetSubnet2SubnetCBC46ECC"
+     },
+     "referencetoMergeStackSpotAdmineksED38B798ClusterSecurityGroupId": {
+      "Fn::GetAtt": [
+       "SpotAdmineks61E169F9",
+       "ClusterSecurityGroupId"
+      ]
+     }
+    }
+   },
+   "DependsOn": [
+    "SpotAdminVPCprivatesubnetSubnet1DefaultRouteB7F99757",
+    "SpotAdminVPCprivatesubnetSubnet1RouteTableAssociation745EC4CE",
+    "SpotAdminVPCprivatesubnetSubnet2DefaultRoute0083DA1A",
+    "SpotAdminVPCprivatesubnetSubnet2RouteTableAssociationEAED4FD9"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/@aws-cdk--aws-eks.KubectlProvider.NestedStack/@aws-cdk--aws-eks.KubectlProvider.NestedStackResource",
+    "aws:asset:path": "MergeStackawscdkawseksKubectlProviderCD06B333.nested.template.json",
+    "aws:asset:property": "TemplateURL"
+   }
+  },
+  "MergeStackSpotAdmineksAB686966AlbControlleralbsaConditionJsonF59DCC6B": {
+   "Type": "Custom::AWSCDKCfnJson",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "AWSCDKCfnUtilsProviderCustomResourceProviderHandlerCF82AA57",
+      "Arn"
+     ]
+    },
+    "Value": {
+     "Fn::Join": [
+      "",
+      [
+       "{\"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           ":oidc-provider/",
+           {
+            "Ref": "SpotAdmineksOpenIdConnectProvider2802A4FF"
+           }
+          ]
+         }
+        ]
+       },
+       ":aud\":\"sts.amazonaws.com\",\"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           ":oidc-provider/",
+           {
+            "Ref": "SpotAdmineksOpenIdConnectProvider2802A4FF"
+           }
+          ]
+         }
+        ]
+       },
+       ":sub\":\"system:serviceaccount:kube-system:aws-load-balancer-controller\"}"
+      ]
+     ]
+    }
+   },
+   "DependsOn": [
+    "SpotAdmineksNodegroupcustomnodegroupNodeGroupRoleB830EEA8",
+    "SpotAdmineksNodegroupcustomnodegroup907B95C2",
+    "SpotAdmineksNodegroupDefaultCapacityNodeGroupRole82180BB7",
+    "SpotAdmineksNodegroupDefaultCapacity64ABF7A3"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/MergeStackSpotAdmineksAB686966-AlbController/alb-sa/ConditionJson/Resource/Default"
+   }
+  },
+  "MergeStackSpotAdmineksAB686966AlbControlleralbsaRoleEC68B7AB": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRoleWithWebIdentity",
+       "Condition": {
+        "StringEquals": {
+         "Fn::GetAtt": [
+          "MergeStackSpotAdmineksAB686966AlbControlleralbsaConditionJsonF59DCC6B",
+          "Value"
+         ]
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "Federated": {
+         "Ref": "SpotAdmineksOpenIdConnectProvider2802A4FF"
+        }
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "DependsOn": [
+    "SpotAdmineksNodegroupcustomnodegroupNodeGroupRoleB830EEA8",
+    "SpotAdmineksNodegroupcustomnodegroup907B95C2",
+    "SpotAdmineksNodegroupDefaultCapacityNodeGroupRole82180BB7",
+    "SpotAdmineksNodegroupDefaultCapacity64ABF7A3"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/MergeStackSpotAdmineksAB686966-AlbController/alb-sa/Role/Resource"
+   }
+  },
+  "MergeStackSpotAdmineksAB686966AlbControlleralbsaRoleDefaultPolicyB6B80BB4": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "iam:CreateServiceLinkedRole",
+       "Condition": {
+        "StringEquals": {
+         "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
+        }
+       },
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "acm:DescribeCertificate",
+        "acm:ListCertificates",
+        "cognito-idp:DescribeUserPoolClient",
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:CreateSecurityGroup",
+        "ec2:DescribeAccountAttributes",
+        "ec2:DescribeAddresses",
+        "ec2:DescribeAvailabilityZones",
+        "ec2:DescribeCoipPools",
+        "ec2:DescribeInstances",
+        "ec2:DescribeInternetGateways",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeTags",
+        "ec2:DescribeVpcPeeringConnections",
+        "ec2:DescribeVpcs",
+        "ec2:GetCoipPoolUsage",
+        "ec2:RevokeSecurityGroupIngress",
+        "elasticloadbalancing:AddListenerCertificates",
+        "elasticloadbalancing:CreateListener",
+        "elasticloadbalancing:CreateRule",
+        "elasticloadbalancing:DeleteListener",
+        "elasticloadbalancing:DeleteRule",
+        "elasticloadbalancing:DescribeListenerCertificates",
+        "elasticloadbalancing:DescribeListeners",
+        "elasticloadbalancing:DescribeLoadBalancerAttributes",
+        "elasticloadbalancing:DescribeLoadBalancers",
+        "elasticloadbalancing:DescribeRules",
+        "elasticloadbalancing:DescribeSSLPolicies",
+        "elasticloadbalancing:DescribeTags",
+        "elasticloadbalancing:DescribeTargetGroupAttributes",
+        "elasticloadbalancing:DescribeTargetGroups",
+        "elasticloadbalancing:DescribeTargetHealth",
+        "elasticloadbalancing:ModifyListener",
+        "elasticloadbalancing:ModifyRule",
+        "elasticloadbalancing:RemoveListenerCertificates",
+        "elasticloadbalancing:SetWebAcl",
+        "iam:GetServerCertificate",
+        "iam:ListServerCertificates",
+        "shield:CreateProtection",
+        "shield:DeleteProtection",
+        "shield:DescribeProtection",
+        "shield:GetSubscriptionState",
+        "waf-regional:AssociateWebACL",
+        "waf-regional:DisassociateWebACL",
+        "waf-regional:GetWebACL",
+        "waf-regional:GetWebACLForResource",
+        "wafv2:AssociateWebACL",
+        "wafv2:DisassociateWebACL",
+        "wafv2:GetWebACL",
+        "wafv2:GetWebACLForResource"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": "ec2:CreateTags",
+       "Condition": {
+        "StringEquals": {
+         "ec2:CreateAction": "CreateSecurityGroup"
+        },
+        "Null": {
+         "aws:RequestTag/elbv2.k8s.aws/cluster": "false"
+        }
+       },
+       "Effect": "Allow",
+       "Resource": "arn:aws:ec2:*:*:security-group/*"
+      },
+      {
+       "Action": [
+        "ec2:CreateTags",
+        "ec2:DeleteTags"
+       ],
+       "Condition": {
+        "Null": {
+         "aws:RequestTag/elbv2.k8s.aws/cluster": "true",
+         "aws:ResourceTag/elbv2.k8s.aws/cluster": "false"
+        }
+       },
+       "Effect": "Allow",
+       "Resource": "arn:aws:ec2:*:*:security-group/*"
+      },
+      {
+       "Action": [
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:DeleteSecurityGroup",
+        "ec2:RevokeSecurityGroupIngress",
+        "elasticloadbalancing:DeleteLoadBalancer",
+        "elasticloadbalancing:DeleteTargetGroup",
+        "elasticloadbalancing:ModifyLoadBalancerAttributes",
+        "elasticloadbalancing:ModifyTargetGroup",
+        "elasticloadbalancing:ModifyTargetGroupAttributes",
+        "elasticloadbalancing:SetIpAddressType",
+        "elasticloadbalancing:SetSecurityGroups",
+        "elasticloadbalancing:SetSubnets"
+       ],
+       "Condition": {
+        "Null": {
+         "aws:ResourceTag/elbv2.k8s.aws/cluster": "false"
+        }
+       },
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "elasticloadbalancing:CreateLoadBalancer",
+        "elasticloadbalancing:CreateTargetGroup"
+       ],
+       "Condition": {
+        "Null": {
+         "aws:RequestTag/elbv2.k8s.aws/cluster": "false"
+        }
+       },
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "elasticloadbalancing:AddTags",
+        "elasticloadbalancing:RemoveTags"
+       ],
+       "Condition": {
+        "Null": {
+         "aws:RequestTag/elbv2.k8s.aws/cluster": "true",
+         "aws:ResourceTag/elbv2.k8s.aws/cluster": "false"
+        }
+       },
+       "Effect": "Allow",
+       "Resource": [
+        "arn:aws:elasticloadbalancing:*:*:loadbalancer/app/*/*",
+        "arn:aws:elasticloadbalancing:*:*:loadbalancer/net/*/*",
+        "arn:aws:elasticloadbalancing:*:*:targetgroup/*/*"
+       ]
+      },
+      {
+       "Action": [
+        "elasticloadbalancing:AddTags",
+        "elasticloadbalancing:RemoveTags"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        "arn:aws:elasticloadbalancing:*:*:listener-rule/app/*/*/*",
+        "arn:aws:elasticloadbalancing:*:*:listener-rule/net/*/*/*",
+        "arn:aws:elasticloadbalancing:*:*:listener/app/*/*/*",
+        "arn:aws:elasticloadbalancing:*:*:listener/net/*/*/*"
+       ]
+      },
+      {
+       "Action": [
+        "elasticloadbalancing:DeregisterTargets",
+        "elasticloadbalancing:RegisterTargets"
+       ],
+       "Effect": "Allow",
+       "Resource": "arn:aws:elasticloadbalancing:*:*:targetgroup/*/*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "MergeStackSpotAdmineksAB686966AlbControlleralbsaRoleDefaultPolicyB6B80BB4",
+    "Roles": [
+     {
+      "Ref": "MergeStackSpotAdmineksAB686966AlbControlleralbsaRoleEC68B7AB"
+     }
+    ]
+   },
+   "DependsOn": [
+    "SpotAdmineksNodegroupcustomnodegroupNodeGroupRoleB830EEA8",
+    "SpotAdmineksNodegroupcustomnodegroup907B95C2",
+    "SpotAdmineksNodegroupDefaultCapacityNodeGroupRole82180BB7",
+    "SpotAdmineksNodegroupDefaultCapacity64ABF7A3"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/MergeStackSpotAdmineksAB686966-AlbController/alb-sa/Role/DefaultPolicy/Resource"
+   }
+  },
+  "MergeStackSpotAdmineksAB686966AlbControlleralbsamanifestalbsaServiceAccountResource571138CE": {
+   "Type": "Custom::AWSCDK-EKS-KubernetesResource",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "awscdkawseksKubectlProviderNestedStackawscdkawseksKubectlProviderNestedStackResourceA7AEBA6B",
+      "Outputs.MergeStackawscdkawseksKubectlProviderframeworkonEventE9430538Arn"
+     ]
+    },
+    "Manifest": {
+     "Fn::Join": [
+      "",
+      [
+       "[{\"apiVersion\":\"v1\",\"kind\":\"ServiceAccount\",\"metadata\":{\"name\":\"aws-load-balancer-controller\",\"namespace\":\"kube-system\",\"labels\":{\"aws.cdk.eks/prune-c88f148a9e4ffa83068fee8b7e27719711d87a2d12\":\"\",\"app.kubernetes.io/name\":\"aws-load-balancer-controller\"},\"annotations\":{\"eks.amazonaws.com/role-arn\":\"",
+       {
+        "Fn::GetAtt": [
+         "MergeStackSpotAdmineksAB686966AlbControlleralbsaRoleEC68B7AB",
+         "Arn"
+        ]
+       },
+       "\"}}}]"
+      ]
+     ]
+    },
+    "ClusterName": {
+     "Ref": "SpotAdmineks61E169F9"
+    },
+    "RoleArn": {
+     "Fn::GetAtt": [
+      "SpotAdmineksCreationRole34D26EAE",
+      "Arn"
+     ]
+    },
+    "PruneLabel": "aws.cdk.eks/prune-c88f148a9e4ffa83068fee8b7e27719711d87a2d12"
+   },
+   "DependsOn": [
+    "SpotAdmineksKubectlReadyBarrier1A48FC82",
+    "SpotAdmineksNodegroupcustomnodegroupNodeGroupRoleB830EEA8",
+    "SpotAdmineksNodegroupcustomnodegroup907B95C2",
+    "SpotAdmineksNodegroupDefaultCapacityNodeGroupRole82180BB7",
+    "SpotAdmineksNodegroupDefaultCapacity64ABF7A3"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/MergeStackSpotAdmineksAB686966-AlbController/alb-sa/manifest-alb-saServiceAccountResource/Resource/Default"
+   }
+  },
+  "MergeStackSpotAdmineksAB686966AlbController466FE683": {
+   "Type": "Custom::AWSCDK-EKS-HelmChart",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "awscdkawseksKubectlProviderNestedStackawscdkawseksKubectlProviderNestedStackResourceA7AEBA6B",
+      "Outputs.MergeStackawscdkawseksKubectlProviderframeworkonEventE9430538Arn"
+     ]
+    },
+    "ClusterName": {
+     "Ref": "SpotAdmineks61E169F9"
+    },
+    "RoleArn": {
+     "Fn::GetAtt": [
+      "SpotAdmineksCreationRole34D26EAE",
+      "Arn"
+     ]
+    },
+    "Release": "aws-load-balancer-controller",
+    "Chart": "aws-load-balancer-controller",
+    "Version": "1.4.1",
+    "Wait": true,
+    "Timeout": "900s",
+    "Values": {
+     "Fn::Join": [
+      "",
+      [
+       "{\"clusterName\":\"",
+       {
+        "Ref": "SpotAdmineks61E169F9"
+       },
+       "\",\"serviceAccount\":{\"create\":false,\"name\":\"aws-load-balancer-controller\"},\"region\":\"",
+       {
+        "Ref": "AWS::Region"
+       },
+       "\",\"vpcId\":\"",
+       {
+        "Ref": "SpotAdminVPCD791DA13"
+       },
+       "\",\"image\":{\"repository\":\"602401143452.dkr.ecr.us-west-2.amazonaws.com/amazon/aws-load-balancer-controller\",\"tag\":\"v2.4.1\"}}"
+      ]
+     ]
+    },
+    "Namespace": "kube-system",
+    "Repository": "https://aws.github.io/eks-charts",
+    "CreateNamespace": true
+   },
+   "DependsOn": [
+    "MergeStackSpotAdmineksAB686966AlbControlleralbsaConditionJsonF59DCC6B",
+    "MergeStackSpotAdmineksAB686966AlbControlleralbsamanifestalbsaServiceAccountResource571138CE",
+    "MergeStackSpotAdmineksAB686966AlbControlleralbsaRoleDefaultPolicyB6B80BB4",
+    "MergeStackSpotAdmineksAB686966AlbControlleralbsaRoleEC68B7AB",
+    "SpotAdmineksAwsAuthmanifestCC45B684",
+    "SpotAdmineksKubectlReadyBarrier1A48FC82",
+    "SpotAdmineksNodegroupcustomnodegroupNodeGroupRoleB830EEA8",
+    "SpotAdmineksNodegroupcustomnodegroup907B95C2",
+    "SpotAdmineksNodegroupDefaultCapacityNodeGroupRole82180BB7",
+    "SpotAdmineksNodegroupDefaultCapacity64ABF7A3",
+    "SpotAdmineksOpenIdConnectProvider2802A4FF"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/MergeStackSpotAdmineksAB686966-AlbController/Resource/Resource/Default"
+   }
+  },
+  "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderRole517FED65": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Version": "2012-10-17",
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ]
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Sub": "arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+     }
+    ],
+    "Policies": [
+     {
+      "PolicyName": "Inline",
+      "PolicyDocument": {
+       "Version": "2012-10-17",
+       "Statement": [
+        {
+         "Effect": "Allow",
+         "Resource": "*",
+         "Action": [
+          "iam:CreateOpenIDConnectProvider",
+          "iam:DeleteOpenIDConnectProvider",
+          "iam:UpdateOpenIDConnectProviderThumbprint",
+          "iam:AddClientIDToOpenIDConnectProvider",
+          "iam:RemoveClientIDFromOpenIDConnectProvider"
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Role"
+   }
+  },
+  "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderHandlerF2C543E0": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "2f66f19d22493bb970ab7d0e10dab28b63e97d1ad344b1ed6dd9696c15c05a6c.zip"
+    },
+    "Timeout": 900,
+    "MemorySize": 128,
+    "Handler": "__entrypoint__.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderRole517FED65",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs16.x"
+   },
+   "DependsOn": [
+    "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderRole517FED65"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Handler",
+    "aws:asset:path": "asset.2f66f19d22493bb970ab7d0e10dab28b63e97d1ad344b1ed6dd9696c15c05a6c",
+    "aws:asset:property": "Code"
+   }
+  },
+  "AWSCDKCfnUtilsProviderCustomResourceProviderRoleFE0EE867": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Version": "2012-10-17",
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ]
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Sub": "arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/AWSCDKCfnUtilsProviderCustomResourceProvider/Role"
+   }
+  },
+  "AWSCDKCfnUtilsProviderCustomResourceProviderHandlerCF82AA57": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "6c469f35da6ab121a965268d959faff91c021ab5d46ac363f98648bef832377d.zip"
+    },
+    "Timeout": 900,
+    "MemorySize": 128,
+    "Handler": "__entrypoint__.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "AWSCDKCfnUtilsProviderCustomResourceProviderRoleFE0EE867",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs14.x"
+   },
+   "DependsOn": [
+    "AWSCDKCfnUtilsProviderCustomResourceProviderRoleFE0EE867"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/AWSCDKCfnUtilsProviderCustomResourceProvider/Handler",
+    "aws:asset:path": "asset.6c469f35da6ab121a965268d959faff91c021ab5d46ac363f98648bef832377d",
+    "aws:asset:property": "Code"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/11STW+kMAz9Lb1n2G5XPfTIolXL9gsNVa+rEAy4ExKUODMaIf77GigD7SnP9nvOi52b6PYuur6SJ79T5WGnsYj6nKQ6CE7960HdRP17p0RSmfcsEVkoNKo8FAZozK1obwPBmyw0rPk1F3tvFUpCay7kEfxJs/F4kXQvCU7yLDKHR4Zr49QQOMYLYXbyGcXEXpsWDIkcVHBI53tnQzd5+J54hHMm0YnUeJJGwdx9xV8EqakdeD8IlG3U7+38ruVcZJmzFXIqszyWyduMBiEDWa+kRlNHfcxBPgcXN08yGNUk1lRYB3cZzXfqIEBLT6i0lWUhNd/KpSOvJe46vmoSPnHt91QDN/XexlseegLzyVnwpv4mXc2TXixuQrZx8FGf6MAq1pw8G23EYyim5YB/lgYr8CReOzBpye8yoIjnc8SSBS+2hHrpuwaxLphJzmrNpBzcERXEStnAG30A3SaNdDQMYg/eBjfv6Vl2Hc9AJOzFttvKFr8G6sL8Saf/zOCvH2f8RXUxyD8UiJn11LkybKvEcSaDyM7UWPPjV/TzOrq7+vCIO8f+sIVoP5//AUXOJO1GAwAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "MergeStack/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Mappings": {
+  "SpotAdminbastionAmiMap9372FC62": {
+   "ap-northeast-2": {
+    "ami": "ami-039b82a0114f56141"
+   },
+   "us-east-1": {
+    "ami": "ami-03c2b54163839706d"
+   },
+   "us-east-2": {
+    "ami": "ami-077d8e2bb58ef66c5"
+   },
+   "us-west-1": {
+    "ami": "ami-04f35dd27b02595bf"
+   },
+   "us-west-2": {
+    "ami": "ami-09d4fc91a6e403e67"
+   },
+   "ap-northeast-3": {
+    "ami": "ami-0fbd03e6702d4e2ec"
+   },
+   "ap-southeast-2": {
+    "ami": "ami-0c4d10308b868a23a"
+   },
+   "ap-northeast-1": {
+    "ami": "ami-0199fd9c976b7312f"
+   },
+   "eu-central-1": {
+    "ami": "ami-0e3769d80ddceb352"
+   },
+   "ap-southeast-1": {
+    "ami": "ami-0aa4854fdaaee7289"
+   },
+   "eu-west-1": {
+    "ami": "ami-0bb4e6b6f2ec61013"
+   },
+   "eu-west-2": {
+    "ami": "ami-0078d7052fb56c251"
+   },
+   "eu-west-3": {
+    "ami": "ami-06f91bf996d50d2ca"
+   }
+  },
+  "wordpressasgAmiMap6E0E0CD1": {
+   "ap-northeast-2": {
+    "ami": "ami-097de6c1fdd6b0ddd"
+   },
+   "us-east-1": {
+    "ami": "ami-06ae61f84151ed8cd"
+   },
+   "us-east-2": {
+    "ami": "ami-08b017cdaea47e2c1"
+   },
+   "us-west-1": {
+    "ami": "ami-05a54dcc0c98c8bc6"
+   },
+   "us-west-2": {
+    "ami": "ami-0f650af0664024939"
+   },
+   "ap-northeast-3": {
+    "ami": "ami-05a19c473ced2b2b9"
+   },
+   "ap-southeast-2": {
+    "ami": "ami-01a9e2e12c28937d5"
+   },
+   "ap-northeast-1": {
+    "ami": "ami-02eae9af12de01aae"
+   },
+   "eu-central-1": {
+    "ami": "ami-07afa59ac5b958b39"
+   },
+   "ap-southeast-1": {
+    "ami": "ami-0dafd5bd4bd2655ee"
+   },
+   "eu-west-1": {
+    "ami": "ami-018f740244757a6e3"
+   },
+   "eu-west-2": {
+    "ami": "ami-0103f11e0252ea397"
+   },
+   "eu-west-3": {
+    "ami": "ami-0374f232079b7698c"
+   }
+  }
+ },
+ "Outputs": {
+  "SpotAdmineksConfigCommand30EFD3C7": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "aws eks update-kubeconfig --name ",
+      {
+       "Ref": "SpotAdmineks61E169F9"
+      },
+      " --region ",
+      {
+       "Ref": "AWS::Region"
+      },
+      " --role-arn ",
+      {
+       "Fn::GetAtt": [
+        "SpotAdmineksMastersRole285C86AD",
+        "Arn"
+       ]
+      }
+     ]
+    ]
+   }
+  },
+  "SpotAdmineksGetTokenCommandEA385D74": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "aws eks get-token --cluster-name ",
+      {
+       "Ref": "SpotAdmineks61E169F9"
+      },
+      " --region ",
+      {
+       "Ref": "AWS::Region"
+      },
+      " --role-arn ",
+      {
+       "Fn::GetAtt": [
+        "SpotAdmineksMastersRole285C86AD",
+        "Arn"
+       ]
+      }
+     ]
+    ]
+   }
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-2"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

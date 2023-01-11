@@ -61,7 +61,7 @@ ssh  -i handsonkey.pem ec2-user@<"bastion server ip">
 ---
 ---
 ---
-
+# 부록
 ## AWS Image Builder  
 
 이미지 빌더를 통해 Hand on 에 필요한 패키지 서비스등을 설치 합니다.

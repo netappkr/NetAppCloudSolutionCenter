@@ -7,12 +7,18 @@ Ocean은 클러스터의 인프라 비용을 분석하고 리소스에 광범위
 이를 통해 클라우드 인프라의 비용을 자세히 이해할 수 있으며 클라우드 비용을 관리하기 위한 필수 도구를 제공합니다.
 
 ## 작동 원리
-비용 분석을 위해 Ocean은 컴퓨팅 및 스토리지 비용을 소스로 분류하여 계산합니다. Ocean은 클러스터의 모든 워크로드를 고려하고 관리형 인프라 비용은 상대적 가중치에 따라 모든 워크로드에 걸쳐 분할됩니다
+비용 분석을 위해 Ocean은 컴퓨팅 및 스토리지 비용을 소스로 분류하여 계산합니다. Ocean은 클러스터의 모든 워크로드를 고려하고 관리형 인프라 비용은 상대적 가중치에 따라 모든 워크로드에 걸쳐 분할됩니다.
 
 ## 실습
-1. Cost Analysis Tab으로 이동합니다.
+1. Cost Analysis Tab으로 이동합니다.</br>
+![OceanCA_GUI_guide](./Images/OceanCA_GUI_guide.png)
+
 2. Namespace 별 리소스 현황이 보여집니다.
+![OceanCA_GUI_guide2](./Images/OceanCA_GUI_guide2.png)
+
 3. 그래프 밑단에 있는 표에서 Namesepce 항목의 ngrinder를 드롭다운합니다.
+![OceanCA_GUI_guide](./Images/OceanCA_GUI_guide2.png)
+
 4. namespace의 맴버 별로 % of namespace cost 사용율이 확인됩니다.
 
 # 다음 과정

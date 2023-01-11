@@ -29,7 +29,7 @@ class EKSStack(Stack):
         cluster.add_nodegroup_capacity("custom-node-group",
             instance_types=[
                 ec2.InstanceType("m5.large")],
-                subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT),
+                subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
                 nodegroup_name = "custom-ng",
                 desired_size = 1,
                 labels={

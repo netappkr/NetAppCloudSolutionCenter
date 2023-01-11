@@ -47,7 +47,7 @@ class ASGStack(Stack):
             ),
             machine_image=AMI,
             key_name=keypair.key_name,
-            vpc_subnets=ec2.SubnetSelection(subnet_type=SubnetType.PRIVATE_WITH_NAT),
+            vpc_subnets=ec2.SubnetSelection(subnet_type=SubnetType.PRIVATE_WITH_EGRESS),
             user_data=userdata,
         )
 
