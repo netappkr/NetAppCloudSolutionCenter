@@ -24,8 +24,8 @@ sudo su -
 
 1. KeyPair Download
 
-- [handsonkey.pem](../keypair/handsonkey.pem)
-- [handsonkey.pub](../keypair/handsonkey.pub)
+- [handsonkey.pem](./keypair/handsonkey.pem)
+- [handsonkey.pub](./keypair/handsonkey.pub)
 
 2. 사용하고 계신 ssh tool을 이용해 서버에 접속합니다.
 
