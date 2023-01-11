@@ -209,7 +209,7 @@ http://k8s-ngrinder-nlb-230f20aba713a42c.elb.ap-northeast-2.amazonaws.com
 ![ngrinderlogin](./Images/nGrinder.png)
 
 5. 오른쪽 상단 admin 을 드롭다운 하여 "에이전트 관리" 를 선택합니다. </br>
-![nGrinder_console_Gudie](./Images/nGrinder_console_Gudie.png) </br>
+![nGrinder_console_Gudie](./Images/nGrinder_console_Gudie.png) </br></br>
 수분 후 agent 한개가 구동되는것이 확인됩니다.</br>
 ![ngrinder-agent](./Images/nGrinder-agent.png)
 
