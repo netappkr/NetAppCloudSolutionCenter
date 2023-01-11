@@ -1,6 +1,13 @@
-# ElastiGroup AutoScaling 실습
+# ElastiGroup AutoScaling
 
-엘라스틱 그룹의 대상 조정 정책 및 예측 자동 조정 기능을 실습합니다.
+Elastigroup의 예측 자동 확장은 확장 정책 정의 프로세스를 간소화하고 피크 시간을 식별하며 사전에 올바른 용량을 보장하기 위해 자동 확장합니다. </br>
+기계 학습 알고리즘은 애플리케이션의 향후 로드를 예측하고 최대 트래픽을 수용하기 위해 클러스터를 사전에 확장합니다.
+
+## 실습 목표
+
+엘라스틱 그룹의 대상 조정 정책 및 자동 조정 기능을 실습합니다.</br>
+안타깝게도 Predictive Autoscaling은 Action까지의 시간이 많이 소요됨으로 실습에서 제외하였습니다. </br>
+참고 문서를 확인하시여 추 후에라도 Predictive Autoscaling 기능을 확인해보시기 바랍니다.
 
 ## Target Scaling Policies and Predictive Autoscaling
 

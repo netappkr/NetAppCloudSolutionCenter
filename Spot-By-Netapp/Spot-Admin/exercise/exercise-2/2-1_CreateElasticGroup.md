@@ -1,15 +1,20 @@
-# 실습 설명 
+# ElastiGroup
+
+Elastigroup은 AWS, Azure 또는 GCP에서 실행되는 확장형 애플리케이션을 위한 클라우드 인프라를 단순화 및 자동화하여 운영 팀이 인프라 관리의 부담을 덜어줍니다. </br>
+Elastigroup은 리소스 사용량을 지속적으로 분석하고 가장 저렴한 컴퓨팅 옵션을 사용하여 리소스 수요를 충족하고 가용성을 보장하기 위해 컴퓨팅 리소스를 최적화하는 자동 확장할 수 있습니다.
+
+## 실습 목표
 
 이미 AWS에 구성된 Auto Scaling Group과 Elastic Load Balancer 설정을 엘라스틱 그룹으로 가져오는 방법에 대해 실습합니다.
 
-# 실습 전
+## 실습 전
 
 - Auto Scaling Group이 구성된 AWS 계정이 필요합니다. </br>
 [실습 환경구성](../../QuickStart/CreateLabQuickstartGuide.md)에서 실습전 필요한 환경을 배포합니다.
 - AWS 계정에 연결된 Spot 계정 </br>
 [AWS 계정을 Spot에 연결합니다.](../exercise-1/ConnectAccount.md)
 
-# ElastiGroup으로 가져오기
+## ElastiGroup으로 가져오기
 
 1. "Import"를 드롭다운하고 "AWS Load Balancer"를 클릭합니다.</br>
 ![image](./Images/Choice_Import_Type.png)
@@ -152,7 +157,7 @@ nslookup < 도메인 >
 12. 업데이트를 클릭합니다.</br>
 수분 후 기존 서버가 삭제됩니다.
 
-# 결과
+## 결과
 AWS Auto Scaling Group 자원을 Elastigroup으로 가져왔습니다.
 
 - 브라우저를 새로고침하거나 Curl 명령을 통해 질의 시 서비스 상태에 변화가 없습니다.

@@ -5,6 +5,10 @@ Revert to Lower-Cost Node는 **클러스터 노드중 축소 대상이 아닌 �
 
 더 자세한 내용은 [revert-to-lower-cost-node](https://docs.spot.io/ocean/features/revert-to-lower-cost-node?id=revert-to-lower-cost-node) 에서 확인 할 수 있습니다.
 
+## 실습 목표
+
+Revert to Lower-Cost Node 동작이 일어나도록 구성해보고 동작과정을 관찰합니다.
+
 ## 실습
 
 설정된 VNG에 2개의 2xlarge 타입만 실행되며 cpu 및 메모리 사용량이 50%가 넘지 않도록 설정합니다.

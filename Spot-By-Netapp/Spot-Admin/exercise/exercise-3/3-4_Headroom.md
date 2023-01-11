@@ -6,16 +6,19 @@
 
 Ocean은 최상의 비용 대비 성능 균형을 제공하기 위해 헤드룸을 동적으로 최적으로 관리합니다. 또는 헤드룸을 수동으로 구성하여 모든 사용 사례를 지원할 수 있습니다.
 
-# 작동 원리
+## Headroom Action
 
 Ocean은 클러스터에 예약되지 않은 워크로드(포드 또는 작업)가 있는지 지속적으로 확인합니다. </br>
 예약되지 않은 워크로드가 발견되면 Ocean은 이를 기존 인프라에 배치하는 것을 시뮬레이션합니다. </br>
-Ocean은 컴퓨팅 리소스를 미리 저장했기 때문에(즉, 여유 공간이 생성됨) 컨테이너 오케스트레이터는 이러한 리소스를 사용하고 이러한 노드에서 예약되지 않은 워크로드를 즉시 예약할 수 있습니다. </br>
-워크로드 확장에 헤드룸이 사용되면 Ocean은 다음 서비스 확장에 대비하여 헤드룸 양의 균형을 맞추기 위해 더 많은 인프라를 프로비저닝할 것입니다. </br>
-헤드룸은 자동 또는 수동의 두 가지 메커니즘 중 하나를 사용하여 구성할 수 있습니다. </br>
+Ocean은 컴퓨팅 리소스를 확보 했기 때문에(즉, 여유 공간이 생성됨) 컨테이너 오케스트레이터는 워크로드를 즉시 예약할 수 있습니다. </br>
+워크로드 확장에 헤드룸이 사용되면 Ocean은 다음 서비스 확장에 대비하여 헤드룸 양의 균형을 맞추기 위해 더 많은 인프라를 프로비저닝 합니다. </br>
+Headroom 설정은 자동으로 크기를 적용하거나 고정적으로 설정하도록 구성할 수 있습니다. </br>
 ![DescribeHeadroom](./Images/DescribeHeadroom.png)
 
-# 헤드룸 실습
+## 실습 목표
+Ocean에서 Headroom을 설정 해보고 작동 방식과 활용방법에 대해 실습합니다.
+
+## Headroom 실습
 
 1. 클러스터 수정을 선택합니다.</br>
 ![HeadroomGuide](./Images/HeadroomGuide.png)
@@ -103,7 +106,7 @@ kubectl apply -f /opt/DeployTestapp/ngrinder/ngrinder-agent.yaml
 kubectl scale --replicas=2 deployment ngrinder-agent -n ngrinder
 ```
 
-# 결과
+## 결과
 
 - 노드에 해드룸항목이 표시되는것이 보입니다.</br>
 ![SetHeadroom](./Images/SetHeadroom.png)

@@ -2,10 +2,15 @@
 Eco는 클라우드 약정 구매 및 배포를 위한 자동화 및 최적화 솔루션입니다. </br>
 Eco는 유연성, 시장 규모, 과거 및 예상 사용량을 고려하여 예약 인스턴스와 저축 계획의 이상적인 조합을 식별하여 비용 절감을 극대화하는 동시에 미래의 요구 사항에 대해 최대한의 유연성을 제공합니다.
 
+## 실습목표
+
+Eco서비스를 연동하는 과정을 알아봅니다.
+
 ## 시작하기 전에..
 
 기본리전은 버지니아로 설정되어 있습니다. 스택 수행 시 IAM Role 과 Policy 가 생성됩니다. </br>
 이 실습에서는 원하시는 리전으로 이동 후 수행하지만 버지니아 리전에서 작업하는것을 권장합니다.</br>
+
 > ### AWS Region
 > All actions in this procedure should be made in the US-East-1 (Northern Virginia) AWS region. (This includes generating the CUR file into a bucket in us-east-1.) If there is a problem doing this, please contact Support.
 

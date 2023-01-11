@@ -1,8 +1,15 @@
-# StatfulElastiGroup
+# Statful ElastiGroup
 
-Spot by Netapp을 이용해 Statful 서비스를 구성해 봅니다.
+Spot 노드는 일시적이며 AWS에 의해 언제든지 중단될 수 있습니다. </br>
+상태 비저장 애플리케이션에서는 문제가 되지 않지만 수평으로 쉽게 확장할 수 있도록 설계되었기 때문에 상태 저장 애플리케이션에서는 어려울 수 있습니다. </br>
+상태 저장이 필요한 애플리케이션도 ElastiGroup에서 실행할 수 있습니다. </br>
+루트 볼륨, 데이터 볼륨 및 네트워크 인터페이스에 대한 지속성을 제공하는 동시에 스팟 노드를 활용하여 비용을 절감합니다.
 
-## Getting Start
+## 실습 목표
+
+Spot by Netapp에서 Statful ElastiGroup을 구성하는 방법에 대해 알아봅니다.
+
+## Statful ElastiGroup 실습
 
 1. Elastigroup console로 이동합니다.
 2. Spotadmin-wordpress-TG를 클릭합니다.
@@ -54,3 +61,7 @@ Spot by Netapp을 이용해 Statful 서비스를 구성해 봅니다.
 
 - 이전 과정 : [ElastiGroup Intelligent Traffic Flow](./2-3_IntelligentTrafficFlow.md)
 - 다음 과정 : [Statful Elastigroup Action](./2-4-1_StatefulEGAction.md)
+
+# 참조
+
+- [Create a Stateful Elastigroup](https://docs.spot.io/elastigroup/tutorials/elastigroup-tasks/create-a-stateful-elastigroup-from-scratch?id=create-a-stateful-elastigroup-from-scratch)

@@ -1,9 +1,9 @@
-# 실습 설명
+## 실습 목표
 
 사용자를 대신하여 Spoy by Netapp 솔루션이 클라우드 자원을 관리할 수 있도록 설정해야 합니다.</br>
 Spot Console을 통해 Spot 계정을 등록하고 Cloud service Provider accounts를 연결하기 위한 절차를 설명합니다.
 
-# Spot organization 생성
+## Spot organization 생성
 
 Spot Console과 Cloud Provider Accounts와 연결하기 위해서는 Spot Console 계정이 필요합니다.</br>
 다음 링크(<https://console.spotinst.com/>)로 이동하여 다음의 절차를 수행합니다.</br>
@@ -16,7 +16,7 @@ Company(회사) 항목 입력 시, 지정한 회사 이름이 조직(Organizatio
 후, 봇 방지와 동의에 체크하여 가입을 진행합니다.</br>
 ![CreateOrg](./Images/Checkyourinbox.png)
 
-# Account 연결
+## Account 연결
 
 Cloudformation 템플릿 또는 사용자가 직접 role을 생성하여 Spot by netapp 서비스를 연동합니다.</br>
 권장하는 연동 방법은 자동으로 하는 방법이지만 </br>

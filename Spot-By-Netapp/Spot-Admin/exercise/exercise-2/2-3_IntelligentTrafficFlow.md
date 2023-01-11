@@ -1,12 +1,14 @@
+
+
 # ElastiGroup Intelligent Traffic Flow
-
-ElastiGroup의 ITF를 실습합니다.
-
-## Intelligent Traffic Flow
 
 ITF(Intelligent Traffic Flow)는 Elastigroup에서 시작한 인스턴스로 들어오는 트래픽 분포를 최적화하는 기능입니다. </br>
 ITF는 각 대상 그룹이 보유한 vCPU 수를 기반으로 대상 그룹에 대한 트래픽 분포를 실시간으로 관리합니다. </br>
 ( ALB 가중치 분산 기능을 활용합니다. )
+
+## 실습 목표
+
+ElastiGroup의 ITF를 구성해보고 Group 내 컴퓨팅 자원의 변화에 따른 트레픽 변경되는지 확인합니다.
 
 > ### 경고!
 > - ITF의 경우 Sticky session 설정을 지원하지 않습니다. </br>
