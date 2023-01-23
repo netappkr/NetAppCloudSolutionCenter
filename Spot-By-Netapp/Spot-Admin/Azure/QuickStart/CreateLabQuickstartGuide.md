@@ -47,7 +47,7 @@ Registering is still on-going. You can monitor using 'az provider show -n Micros
 
 > ### Tips
 > Azure Resourc Manager를 통한 배포는 구독, 테넌트 환경에 따라 배포가 실패할 수 있습니다. </br>
-> 문제해결이 필요한 경우 실패한 작업정보항목을 확인합니다. </br>
+> 문제해결이 필요한 경우 **실패한 작업 정보** 항목을 확인합니다. </br>
 > 문제를 해결한 경우 리소스 그룹의 모든 리소스를 삭제 후 재시도 하시기 바랍니다.
 
 # 결과
