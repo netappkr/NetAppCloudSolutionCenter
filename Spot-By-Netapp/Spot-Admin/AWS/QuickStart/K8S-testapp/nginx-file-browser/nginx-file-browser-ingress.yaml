@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/group.name: nginx
+    alb.ingress.kubernetes.io/load-balancer-name: spotadmin-eks-alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/tags: Name=spotadmin-eks-alb,owner=handsonadmin
+    alb.ingress.kubernetes.io/target-type: instance
+  name: spotadmin-eks-alb
+  namespace: default
+  labels:
+    purpose: handson
+spec:
+  ingressClassName: alb
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: spotadmin-eks-alb
+            port:
+              number: 80
+        path: /
+        pathType: Prefix

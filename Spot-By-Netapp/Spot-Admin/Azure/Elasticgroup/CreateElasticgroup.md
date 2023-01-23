@@ -1,4 +1,4 @@
-# Azure 자원을 Elasticgroup으로 가져오기
+# 기존 Azure 리소스 가져오기
 온디멘드 VM으로 동작하는 리소스들을 Elasticgroup에 가져올 수 있습니다.
 
 # 전제조건

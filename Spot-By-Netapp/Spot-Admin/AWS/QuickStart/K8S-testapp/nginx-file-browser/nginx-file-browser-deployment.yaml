@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-file-bro
+    alb: spotadmin-eks-alb
+    purpose: handson
+  name: nginx-file-bro
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-file-bro
+  template:
+    metadata:
+      labels:
+        app: nginx-file-bro
+        alb: spotadmin-eks-alb
+    spec:
+      containers:
+      - image: docker.io/mohamnag/nginx-file-browser:latest
+        name: nginx-file-browser
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - operator: In
+                key: purpose
+                values:
+                - test

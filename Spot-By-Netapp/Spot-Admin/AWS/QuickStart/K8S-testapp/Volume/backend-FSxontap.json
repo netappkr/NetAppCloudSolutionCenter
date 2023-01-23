@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "storageDriverName": "ontap-nas",
+    "backendName": "Hands-on-fsx",
+    "managementLIF": "<your managed-ip or domain>",
+    "dataLIF": "<your dataLIF-ip or domain>",
+    "svm": "svm_HandsonFSx",
+    "username": "fsxadmin",
+    "password": "Netapp1!"
+}

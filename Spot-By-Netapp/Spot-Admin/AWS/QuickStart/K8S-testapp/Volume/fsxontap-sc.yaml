@@ -1,0 +1,10 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: fsxontap-nas
+provisioner: csi.trident.netapp.io
+reclaimPolicy: "Delete"
+volumeBindingMode: "Immediate"
+parameters:
+  backendType: "ontap-nas"
+  provisioningType: "thin"
