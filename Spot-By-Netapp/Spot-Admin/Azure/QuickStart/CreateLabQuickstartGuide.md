@@ -23,15 +23,16 @@ Registering is still on-going. You can monitor using 'az provider show -n Micros
 
 1. 리소스 그룹을 생성합니다.
 
-### Tips!
-해당 가이드는 리소스 중복이 없다는 가정하에 생성되었습니다. 동일 테넌트와 구독에서 여러명이 동시에 시도하시는 경우 Prefix에 이름 이니셜을 넣어주시기 바랍니다.
+> ### Tips!
+> 해당 가이드는 리소스 중복이 없다는 가정하에 생성되었습니다. </br>
+> 동일 테넌트와 구독에서 여러명이 동시에 시도하시는 경우 Prefix에 이름 이니셜을 넣어주시기 바랍니다.
 
-- 이름: SpotAdmin-RG
+- 이름: 이니셜-SpotAdmin-RG
 - 위치: Korea Central</br>
 ![createRG](./Images/createRG.png)
 
-2. 사용자 지정 템플릿 배포를 검색하여 클릭합니다.
-3. 탬플릿 선택, "편집기에서 사용자 고유 탬플릿을 빌드합니다."를 선택합니다.</br>
+2. **사용자 지정 템플릿 배포**를 검색하여 클릭합니다.
+3. **탬플릿 선택** > **"편집기에서 사용자 고유 탬플릿을 빌드합니다."**를 선택합니다.</br>
 
 [Spot_Admin.json](./ARM/Spot_Admin.json)
 
