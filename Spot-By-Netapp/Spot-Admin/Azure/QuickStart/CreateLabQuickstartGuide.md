@@ -36,12 +36,13 @@ Registering is still on-going. You can monitor using 'az provider show -n Micros
 4. 준비된 Spot_Admin 템플릿을 클릭하고 상단의 **Copy** 이미지를 클릭합니다.
 - [Spot_Admin.json](./ARM/Spot_Admin.json)
 
-4. 파라미터를 확인합니다. 명시되지 않은값은 모두 기본값으로 지정합니다.
+5. 파라미터를 확인합니다. 명시되지 않은값은 모두 기본값으로 지정합니다.
 
 - 구독: '<준비해온 구독을 선택합니다.>',
 - 리소스그룹: "생성한 리소스 그룹"
 - Prefix : "SpotAdmin" </br>
-```해당 가이드는 리소스 중복이 없다는 가정하에 생성되었습니다. 동일 테넌트와 구독에서 여러명이 동시에 시도하시는 경우 Prefix에 이름 이니셜을 넣어주시기 바랍니다.```</br>
+```해당 가이드는 리소스 중복이 없다는 가정하에 생성되었습니다.```</br>
+``` 동일 테넌트와 구독에서 여러명이 동시에 시도하시는 경우 Prefix에 이름 이니셜을 넣어주시기 바랍니다.```</br>
 ![template](./Images/templete.png)
 
 > ### Tips
