@@ -33,8 +33,8 @@ Registering is still on-going. You can monitor using 'az provider show -n Micros
 
 2. **사용자 지정 템플릿 배포**를 검색하여 클릭합니다.
 3. **탬플릿 선택** > **편집기에서 사용자 고유 탬플릿을 빌드합니다** 를 선택합니다.</br>
-
-[Spot_Admin.json](./ARM/Spot_Admin.json)
+4. 준비된 Spot_Admin 템플릿을 복사합니다.
+- [Spot_Admin.json](./ARM/Spot_Admin.json)
 
 4. 파라미터를 확인합니다. 명시되지 않은값은 모두 기본값으로 지정합니다.
 
