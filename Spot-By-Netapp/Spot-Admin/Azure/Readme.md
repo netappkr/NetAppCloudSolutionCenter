@@ -18,3 +18,5 @@ Azure Resource Manager Templeate을 이용하여 실습환경을 배포합니다
 
 ## 구성도
 ![SpotAzureAdmin](./Images/SpotAzureAdmin.png)
+
+
