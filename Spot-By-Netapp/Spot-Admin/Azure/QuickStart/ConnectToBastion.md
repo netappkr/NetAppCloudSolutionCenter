@@ -13,12 +13,23 @@ Handson Bastion 서버에 다음 중 하나의 방법을 이용해 접속합니�
 
 - [handsonkey.pem](./keypair/handsonkey.pem)
 - [handsonkey.pub](./keypair/handsonkey.pub)
-
+- [Web download link](https://netappkr-wyahn-s3.s3.ap-northeast-2.amazonaws.com/public/Key/handsonkey.pem)
 2. 사용하고 계신 ssh tool을 이용해 서버에 접속합니다.
 
 ```bash
 ssh  -i handsonkey.pem ec2-user@<"bastion server ip">
 ```
+## Bastion Host에서 Vnet내 VM 접속
+Hands on에 구성된 모든 VM의 pem키는 동일하게 구성되어 있습니다. </br>
+다른 VM에 접속 시 아래 명령을 통해 키를 다운로드 받습니다.
+```
+wget https://netappkr-wyahn-s3.s3.ap-northeast-2.amazonaws.com/public/Key/handsonkey.pem
+```
+
+---
+---
+---
+# 번외
 ## Azure Bation Host 활용
 
 Azure Bastion 서비스를 사용하면 VM에서 공용 IP를 사용할 필요 없이 Azure Portal에서 직접 접근할 수 있습니다. </br>
