@@ -48,7 +48,7 @@ Azure NetApp Files에서 볼륨을 만들기 전에 프로비전된 용량에 �
 
 ## 다음 과정
 Azure Netapp files 볼륨 설정에 대해 알아봅니다. </br>
-- 다음 과정 : [Volume Operation](./1-2_Create_Volme_on_Azure.md)
+- 다음 과정 : [Volume Operation](./1-3_Volume_Operation.md)
 - 이전 과정 : [Azure 콘솔에서 Azure Netapp Files 생성](./1-1_Create_Azure_Netapp_Files_on_Azure.md)
 
 # 참고
