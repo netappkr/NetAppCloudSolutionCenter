@@ -31,8 +31,9 @@ Ocean은 포드, 컨테이너 및 애플리케이션의 요구 사항을 충족�
 > 이미 생성된 토큰의 비밀키를 알고 있다면 중복으로 사용할 수 있습니다. </br>
 
 6. **STEP 3**의 스크립트를 복사합니다.
-7. [Bastion-VM에 접속](../../QuickStart/ConnectToBastion.md)합니다. </br>
-8. Bastion Host 쉘에 복사한 스크립트를 붙여넣고 Enter를 눌러 실행합니다.
+7. [Bastion-VM에 접속](../../QuickStart/ConnectToBastion.md)합니다. </br
+8. Aks로 접속합니다. 자세한 내용은 [Kubectl로 AKS에 접속하기](../../QuickStart/Connected_AKS_used_kubectl.md)를 참조 해주세요.
+9. Bastion Host 쉘에 복사한 스크립트를 붙여넣고 Enter를 눌러 실행합니다.
 ### 예시
 ```bash
 #!/usr/bin/env bash
@@ -54,7 +55,7 @@ clusterrolebinding.rbac.authorization.k8s.io/spotinst-kubernetes-cluster-control
 deployment.apps/spotinst-kubernetes-cluster-controller created
 ```
 
-9. ```kubectl get pods -n kube-system``` 명령을 통해 배포한 Ocean Controller가 **READY 1/1** 상태가 되었는지 확인합니다.
+10. ```kubectl get pods -n kube-system``` 명령을 통해 배포한 Ocean Controller가 **READY 1/1** 상태가 되었는지 확인합니다.
 ```
 wooyoung [ ~ ]$ kubectl get pods -n kube-system 
 NAME                                                     READY   STATUS    RESTARTS   AGE
@@ -62,8 +63,8 @@ spotinst-kubernetes-cluster-controller-f58d9d4f8-z2qsz   1/1     Running   0    
 kubectl get pods -n kube-system spotinst-kubernetes-cluster-controller-f58d9d4f8-z2qsz 
 ```
 
-10. **STEP 4**에 스크립트를 복사합니다.
-11. Bastion Host 쉘에서 스크립트를 실행합니다. 
+11. **STEP 4**에 스크립트를 복사합니다.
+12. Bastion Host 쉘에서 스크립트를 실행합니다. 
 ### 예시
 ```bash
 curl -fsSL https://spotinst-public.s3.amazonaws.com/integrations/kubernetes/aks/spot-aks-connector/init.sh | \
@@ -73,15 +74,15 @@ bash -s acd-4ed2c385
 2022-09-20T13:42:08.312Z applying
 job.batch/get-waagent-data created
 ```
-12. ```kubectl get job -n kube-system``` 명령의 출력을 통해 **COMPLETIONS 1/1** 상태를 확인합니다.
+13. ```kubectl get job -n kube-system``` 명령의 출력을 통해 **COMPLETIONS 1/1** 상태를 확인합니다.
 ```
 wooyoung [ ~ ]$ kubectl get job -n kube-system
 NAME               COMPLETIONS   DURATION   AGE
 get-waagent-data   1/1           18s        18s
 ```
 
-13. **다음**을 클릭합니다.
-14. 로그인 항목에서 퍼블릭키를 입력합니다. </br>
+14. **다음**을 클릭합니다.
+15. 로그인 항목에서 퍼블릭키를 입력합니다. </br>
 나머지 값은 자동으로 입력됩니다. </br>
 ```
 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAvu2v6lkF59XSY3ch+Df2w/AN10EPXZ3JL2Xbqtsv13xVq9ZuzmUcdCpfa9NyjnyBoaXxymUvQSaeQCFxnjroAySOKVXaR6n6ahWFGQOYlfZHkKYg/N8pTpQht3QXNLoA8lUlrb3lyehQHxtCAhtgmx4BIaBpGM/FLaJqhu1OQ7gz0GBbG1qZOmEyrzcklkvriyPYzEESg3N9w+eM09rWvu3dK+EezAsgeFBlcsfHY5eNRmgp2iPfvz8tNZ3wgsrU/UiZHueqsMmGYS+Njjr461cx2q3EhjjPbYz8+tj3t/taZ/Jf419r9ZhT1JHm8/vUh22B5Xm31LdbMBPGvuUKPQ==
