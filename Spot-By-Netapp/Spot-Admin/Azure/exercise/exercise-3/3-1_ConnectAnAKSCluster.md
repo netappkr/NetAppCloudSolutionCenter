@@ -31,7 +31,7 @@ Ocean은 포드, 컨테이너 및 애플리케이션의 요구 사항을 충족�
 > 이미 생성된 토큰의 비밀키를 알고 있다면 중복으로 사용할 수 있습니다. </br>
 
 6. **STEP 3**의 스크립트를 복사합니다.
-7. [Bastion-VM에 접속](../../QuickStart/ConnectToBastion.md)합니다. </br
+7. [Bastion-VM에 접속](../../QuickStart/ConnectToBastion.md)합니다. </br>
 8. Aks로 접속합니다. 자세한 내용은 [Kubectl로 AKS에 접속하기](../../QuickStart/Connected_AKS_used_kubectl.md)를 참조 해주세요.
 9. Bastion Host 쉘에 복사한 스크립트를 붙여넣고 Enter를 눌러 실행합니다.
 ### 예시
