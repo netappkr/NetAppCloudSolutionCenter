@@ -28,7 +28,7 @@ Hands on 환경을 빠르게 생성합니다.
 ## Partner Academy Stack 배포
 1. Partner Academy Stack을 생성합니다.
 - StackName: PartnerAcademyStack </br>
-- Template URL: https://netappkr-wyahn-s3.s3.ap-northeast-2.amazonaws.com/public/cdk/PartnerAcademyStack.template.json
+- Template URL: https://netappkr-wyahn-s3.s3.ap-northeast-2.amazonaws.com/public/2022_Partner_Academy/cdk/PartnerAcademyStack.template.json
 ### Parameters
 - 모두 기본값
 2. 체크박스를 모두 활성화 후 스택을 생성합니다.
