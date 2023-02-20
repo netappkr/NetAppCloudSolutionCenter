@@ -67,7 +67,7 @@ Spot Admin 과정 실습을 위한 Hands on 환경을 빠르게 생성합니다.
 1. Merge Stack을 생성합니다.
 
 - StackName: MergeStack </br>
-- Template URL: <https://netappkr-wyahn-s3.s3.ap-northeast-2.amazonaws.com/public/Spot_Admin/cdk/MergeStack.template.json>
+- Template URL: <https://netappkr-wyahn-s3.s3.ap-northeast-2.amazonaws.com/public/fsxn_cdk/MergeStack.template.json>
 
 ### Merge Stack Parameters
 
