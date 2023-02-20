@@ -70,16 +70,21 @@ Spot Admin 과정 실습을 위한 Hands on 환경을 빠르게 생성합니다.
 - Template URL: <https://netappkr-wyahn-s3.s3.ap-northeast-2.amazonaws.com/public/fsxn_cdk/MergeStack.template.json>
 
 ### Merge Stack Parameters
+메인 스택을 생성합니다.
+- 스택 이름: 자유 ( 원하시는 스택이름 )
+- prefix : 자유 ( 원하시는 prefix 이름)</br></br>
+![image](./Images/main_stack_deploy.png)
 
-모든 항목을 이미 입력된 기본값으로 설정합니다.
+2. 스택 옵션 </br>
+**모두 이미 입력된 기본값으로 설정하고 다음을 클릭합니다.**
 
-2. 모든 체크박스를 체크 후 스택을 생성합니다.
+3. 모든 체크박스를 체크 후 스택을 생성합니다.
 
 - [X] AWS CloudFormation이 사용자 지정 이름으로 IAM 리소스를 생성할 수 있음을 인정합니다.
 - [X] AWS CloudFormation에 다음 기능이 필요할 수 있음을 인정합니다. CAPABILITY_AUTO_EXPAND
 
 > 생성완료까지 걸리는 예상 시간 </br>
-> ✨  Total time: 2492.66s
+> ✨  Total time: 3592.66s
 
 # 결과
 
