@@ -92,9 +92,13 @@ Spot Admin 과정 실습을 위한 Hands on 환경을 빠르게 생성합니다.
 그림과 같이 2개의 메인스택과 2개의 서브스택이 배포되고 Hands-on 환경이 생성됩니다.</br>
 ![image](./Images/stackview.png)
 
-# 다음과정
-
-- 다음과정: [exe-1_Spot by netapp 과 AWS Account를 연결합니다.](../exercise/exercise-1/1-1_ConnectAccount.md)
+# 추가 과정
+배포된 스택에서 할 수 있는 동작들의 예시는 2022_partner_academy에서 찾아 보실 수 있습니다.
+하지만 스택이 다르기에 가이드에 나오는 오브젝트 이름이나 위치가 다를 수 있습니다.
+**이 스택은 빠른 환경 배포용으로만 사용하시는 것을 권장드립니다.**
+- [Bation 서버 접속 방법](./Connect_To_Bastion.md)
+- [Kubectl을 활용하여 EKS 접속](./Connected_EKS_for_kubectl.md)
+- [Cloudmanager 배포 및 설정](./Getting_start_FSxN/DeployCloudmanager.md)
 
 # 참고문서
 
