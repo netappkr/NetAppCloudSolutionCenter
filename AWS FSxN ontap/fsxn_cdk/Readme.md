@@ -1,118 +1,106 @@
-# AWS CDK 란?
----
-<img width="80%" height="80%" src="https://docs.aws.amazon.com/ko_kr/cdk/v2/guide/images/AppStacks.png"> 
-AWS CDK를 사용하면 프로그래밍 언어의 뛰어난 표현력으로 클라우드에서 안정적이고 확장 가능하며 비용 효율적인 애플리케이션을 구축할 수 있습니다. 
-이 접근 방식은 다음과 같은 많은 이점을 제공합니다.
+# 빠른배포
 
-- AWS 리소스에 대해 합리적이고 안전한 기본값을 자동으로 제공하는 상위 수준 구성으로 빌드하여 더 적은 코드로 더 많은 인프라를 정의합니다.
+Spot Admin 과정 실습을 위한 Hands on 환경을 빠르게 생성합니다. </br>
+자동으로 생성되는 구성은 아래와 같습니다. </br>
+![Architecture](./Images/Architecture.png)
 
-- 매개변수, 조건부, 루프, 구성 및 상속과 같은 프로그래밍 관용구를 사용하여 AWS 및 기타 업체에서 제공하는 빌딩 블록에서 시스템 설계를 모델링합니다.
+## 전제조건
 
-- 인프라, 애플리케이션 코드 및 구성을 모두 한 곳에 배치하여 모든 이정표에서 완전한 클라우드 배포 가능 시스템을 확보하십시오.
+단일 계정 다중 리전을 지원합니다.
 
-- 코드 검토, 단위 테스트, 소스 제어와 같은 소프트웨어 엔지니어링 방식을 사용하여 인프라를 더욱 강력하게 만드십시오.
+### 지원되는 리전
 
-- AWS 리소스를 함께(스택 간에도) 연결하고 간단한 의도 지향 API를 사용하여 권한을 부여하십시오.
+- "ap-northeast-2"
+- "us-east-1"
+- "us-east-2"
+- "us-west-1"
+- "us-west-2"
+- "ap-northeast-3"
+- "ap-southeast-2"
+- "ap-northeast-1"
+- "eu-central-1"
+- "ap-southeast-1"
+- "eu-west-1"
+- "eu-west-2"
+- "eu-west-3"
 
-- 기존 AWS CloudFormation 템플릿을 가져와 리소스에 CDK API를 제공합니다.
+## CDKToolkit 배포
 
-- AWS CloudFormation의 강력한 기능을 사용하여 오류 시 롤백과 함께 인프라 배포를 예측 가능하고 반복적으로 수행하십시오.
+1. AWS console > Cloudformation 콘솔을 엽니다.
+2. stack 생성 버튼을 선택합니다.
 
-- 조직 내 팀 또는 일반 대중과도 인프라 설계 패턴을 쉽게 공유할 수 있습니다.
+- StackName: CDKToolkit
+- Template URL: <https://netappkr-wyahn-s3.s3.ap-northeast-2.amazonaws.com/public/CDKToolkit.yml>
 
-AWS CDK는 TypeScript, JavaScript, Python, Java, C#/.Net 및 Go를 지원합니다. 
-개발자는 이러한 지원 프로그래밍 언어 중 하나를 사용하여 Constructs 로 알려진 재사용 가능한 클라우드 구성 요소를 정의할 수 있습니다 . 
-이를 스택 및 앱 으로 함께 구성합니다 .
+### CDKToolkit Stack Parameters
 
-# AWS CDK 환경구성
+- Name : CDKToolkit
+- FileAssetsBucketKmsKeyId : AWS_MANAGED_KEY
+- PublicAccessBlockConfiguration : true
+- Qualifier : hnb659fds </br>
+<img width="80%" height="80%" src="./Images/cdktoolkit.png">
 
-## CDK python 사전조건
----
-- [Node.js 설치](https://nodejs.org/en/download/)
-- AWS CLI 설치
-- AWS CDK Toolkit 설치
-- Python 3.6 이상
-- 필요한 패키지
-```python
-python -m ensurepip --upgrade
-python -m pip install --upgrade pip
-python -m pip install --upgrade virtualenv
-```
-- [자격증명](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html)
+3. 전부 기본값으로 진행 후 다음을 눌러 스택생성 페이지까지 이동합니다.
+4. 체크박스를 모두 활성화 후 스택을 생성합니다.
 
-## 설치
----
-1. npm install -g aws-cdk 
-  > 참고: 윈도우 client에서 실행하고 있다면 스크립트 보안설정을 해제해야만 정상적으로 작동합니다.</br>
-  > [about_Execution_Policies](https://docs.microsoft.com/ko-kr/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2)
-  ```powershell
-  PS C:\Users\wyahn\OneDrive\자료\11. Netapp\파트너서밋준비> cdk --version
-  cdk : 이 시스템에서 스크립트를 실행할 수 없으므로 C:\Users\wyahn\AppData\Roaming\npm\cdk.ps1 파일을 로드할 수 없습니다. 자세한 내용은 about_Execution_Policies(https://go.microsoft.com/fwlink/?LinkID=135170)를 참조하십시오.
-  위치 줄:1 문자:1
-  + cdk --version
-  + ~~~
-      + CategoryInfo          : 보안 오류: (:) [], PSSecurityException
-      + FullyQualifiedErrorId : UnauthorizedAccess
-  PS C:\Users\wyahn\OneDrive\자료\11. Netapp\PartnerSumit> Get-ExecutionPolicy
-  Restricted
-  PS C:\Users\wyahn\OneDrive\자료\11. Netapp\PartnerSumit> Set-ExecutionPolicy -ExecutionPolicy Remotesigned
-  PS C:\Users\wyahn\OneDrive\자료\11. Netapp\PartnerSumit> cdk --version
-  2.33.0 (build 859272d)
-  ```
+- [X] AWS CloudFormation이 사용자 지정 이름으로 IAM 리소스를 생성할 수 있음을 인정합니다.
 
-2. python -m venv .venv
-3. cdk init app --language python
-4. cdk bootstrap aws://<AWSAccountNumber>/ap-northeast-2
+5. 스택이 완전히 배포되기까지 기다립니다.
 
-    ```powershell
-    Initializing a new git repository...
-    'git'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
-    배치 파일이 아닙니다.
-    Unable to initialize git repository for your project.
-    Please run 'python -m venv .venv'!
-    Executing Creating virtualenv...
-    ✅ All done!
+6. Stack 세부정보 화면에서 리소스 탭을 클릭하고 s3를 검색하여 버킷을 확인하고 링크를 클릭하여 s3버킷으로 이동합니다. </br>
+![find-s3](./Images/find-s3.png)
 
-    PS C:\Users\wyahn\OneDrive\자료\11. Netapp\PartnerSumit> python -m venv .venv
-    PS C:\Users\wyahn\OneDrive\자료\11. Netapp\PartnerSumit> cdk bootstrap aws://<번호는 비밀>/ap-northeast-2                                                                         ⏳  Bootstrapping environment aws://037660834288/ap-northeast-2...
-    Trusted accounts for deployment: (none)
-    Trusted accounts for lookup: (none)
-    Using default execution policy of 'arn:aws:iam::aws:policy/AdministratorAccess'. Pass '--cloudformation-execution-policies' to customize.
-    CDKToolkit: creating CloudFormation changeset...
-    CDKToolkit | 0/6 | 오후 4:19:29 | UPDATE_IN_PROGRESS   | AWS::CloudFormation::Stack | CDKToolkit User Initiated
-    CDKToolkit | 0/6 | 오후 4:19:34 | UPDATE_IN_PROGRESS   | AWS::SSM::Parameter   | CdkBootstrapVersion 
-    CDKToolkit | 0/6 | 오후 4:19:35 | UPDATE_IN_PROGRESS   | AWS::ECR::Repository  | ContainerAssetsRepository 
-    CDKToolkit | 1/6 | 오후 4:19:36 | UPDATE_COMPLETE      | AWS::SSM::Parameter   | CdkBootstrapVersion
-    CDKToolkit | 2/6 | 오후 4:19:38 | UPDATE_COMPLETE      | AWS::ECR::Repository  | ContainerAssetsRepository
-    CDKToolkit | 3/6 | 오후 4:19:57 | UPDATE_COMPLETE_CLEA | AWS::CloudFormation::Stack | CDKToolkit 
-    CDKToolkit | 4/6 | 오후 4:19:57 | UPDATE_COMPLETE      | AWS::CloudFormation::Stack | CDKToolkit 
-    ✅  Environment aws://<번호는 비밀>/ap-northeast-2 bootstrapped.
+7. CDKToolkit 스택에서 생성된 s3에 파일을 업로드합니다.
 
-    PS C:\Users\wyahn\OneDrive\자료\11. Netapp\PartnerSumit> 
-    ```
+- 그림과 같이 cdkasset.zip 파일의 압축을 풀고 하위 파일들을 모두 업로드합니다.</br>
+  압축파일 : [cdkasset](./cdk_asset.zip)
 
-## CDK Python 코드 작성
-[CDK Python example](https://github.com/aws-samples/aws-cdk-examples)
+- 압축파일 해제 후 s3에 파일을 업로드합니다. </br>
+  s3 burketname : cdk-hnb659fds-assets-<"your aws account id">-ap-northeast-2 </br>
+  <img width="80%" height="80%" src="./Images/s3view.png">
 
-## CDK asset download
-```
-aws s3 cp s3://cdk-hnb659fds-assets-037660834288-ap-northeast-2/* ./
-```
+## Merge Stack 배포
 
-## CDK Cheat Sheet
-#### CKD deploy
-- cdk deploy --require-approval never
-- cdk deploy 스택이름 --require-approval never
-- cdk deploy --all
-#### CDK destory
-- cdk destroy --all --force
+> ### 경고!
+> 반드시 CDKToolkit Stack에서 생성된 S3 버킷에 첨부된 파일이 모두 업로드된 상태에서 진행되어야 합니다.
 
-#### CDK stack list
-- cdk list
-#### CDK config review
-- cdk diff
+1. Merge Stack을 생성합니다.
 
-# 참고자료
-- [CDK guide](https://docs.aws.amazon.com/ko_kr/cdk/v2/guide/home.html)
-- [about_Execution_Policies](https://docs.microsoft.com/ko-kr/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2)
-- [CDK Python example](https://github.com/aws-samples/aws-cdk-examples)
+- StackName: MergeStack </br>
+- Template URL: <https://netappkr-wyahn-s3.s3.ap-northeast-2.amazonaws.com/public/fsxn_cdk/MergeStack.template.json>
+
+### Merge Stack Parameters
+메인 스택을 생성합니다.
+- 스택 이름: 자유 ( 원하시는 스택이름 )
+- prefix : 자유 ( 원하시는 prefix 이름)</br></br>
+![image](./Images/main_stack_deploy.png)
+
+2. 스택 옵션 </br>
+**모두 이미 입력된 기본값으로 설정하고 다음을 클릭합니다.**
+
+3. Stack 검토 </br>
+모든 체크박스를 체크 후 스택을 생성합니다.
+
+- [X] AWS CloudFormation이 사용자 지정 이름으로 IAM 리소스를 생성할 수 있음을 인정합니다.
+- [X] AWS CloudFormation에 다음 기능이 필요할 수 있음을 인정합니다. CAPABILITY_AUTO_EXPAND
+
+> 생성완료까지 걸리는 예상 시간 </br>
+> ✨  Total time: 3592.66s
+
+# 결과
+
+그림과 같이 2개의 메인스택과 2개의 서브스택이 배포되고 Hands-on 환경이 생성됩니다.</br>
+![image](./Images/stackview.png)
+
+# 추가 과정
+배포된 스택에서 할 수 있는 동작들의 예시는 2022_partner_academy에서 찾아 보실 수 있습니다.
+하지만 스택이 다르기에 가이드에 나오는 오브젝트 이름이나 위치가 다를 수 있습니다.
+**이 스택은 빠른 환경 배포용으로만 사용하시는 것을 권장드립니다.**
+- [Bation 서버 접속 방법](./Connect_To_Bastion.md)
+- [Kubectl을 활용하여 EKS 접속](./Connected_EKS_for_kubectl.md)
+- [Cloudmanager 배포 및 설정](./Getting_start_FSxN/DeployCloudmanager.md)
+
+# 참고문서
+
+- [CDKv2 doc](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html)
+- [CDkv2 python](https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_eks/CfnAddon.html)
