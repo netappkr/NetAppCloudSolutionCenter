@@ -11,23 +11,22 @@ from fsxn_cdk.merge_stack import MergeStack
 # 리전 선택 최종 빌드 땐 주석처리
 env_netappkr = cdk.Environment(account="037660834288", region="ap-northeast-2")
 # env_netapp_apac = cdk.Environment(account="169544784679", region="ap-northeast-2")
-# env_netapp_bespin = cdk.Environment(account="716551662146", region="ap-northeast-2")
 app = cdk.App()
 # # test 를 위한 분할 스택
-# NWStack = NetworkStack(app, "NetworkStack", env=env_netapp_bespin)
-# BlueXP = BlueXPReqStack(app, "BlueXPReqStack", env=env_netapp_bespin)
-# Bastion = BastionStack(app, "BastionStack", vpc=NWStack.vpc, env=env_netapp_bespin)
+# NWStack = NetworkStack(app, "NetworkStack", env=env_netappkr)
+# BlueXP = BlueXPReqStack(app, "BlueXPReqStack", env=env_netappkr)
+# Bastion = BastionStack(app, "BastionStack", vpc=NWStack.vpc, env=env_netappkr)
 # Bastion.add_dependency(NWStack)
 
 # # AutoScalingGroup = ASGStack(app, "ASGStack", vpc=NWStack.vpc, keypair=Bastion.keyPair, env=env_netappkr)
 # # AutoScalingGroup.add_dependency(Bastion)
 
-# ElasticKubernetesService = EKSStack(app, "EKSStack", vpc=NWStack.vpc, keypair=Bastion.keyPair, env=env_netapp_bespin)
+# ElasticKubernetesService = EKSStack(app, "EKSStack", vpc=NWStack.vpc, keypair=Bastion.keyPair, env=env_netappkr)
 # ElasticKubernetesService.add_dependency(Bastion)
 
-# fsxN = FSxNStack(app,"FSxNStack",vpc=NWStack.vpc, env=env_netapp_bespin)
+# fsxN = FSxNStack(app,"FSxNStack",vpc=NWStack.vpc, env=env_netappkr)
 # ElasticKubernetesService.add_dependency(Bastion)
 # 최종
-# FSxNAdmin = MergeStack(app, "MergeStack", env=env_netapp_bespin)
+# FSxNAdmin = MergeStack(app, "MergeStack", env=env_netappkr)
 FSxNAdmin = MergeStack(app, "MergeStack")
 app.synth()
