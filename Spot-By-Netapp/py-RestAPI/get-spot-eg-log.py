@@ -1,7 +1,7 @@
 import requests
 import json
 import argparse
-from datetime import datetime
+from datetime import datetime, timedelta
 import time
 
 parser = argparse.ArgumentParser(description="eg group-id,token,fromData,toData,severity 입력 자세한 내용은 spot api 문서에 eg 로그 조회 참조")
@@ -21,12 +21,15 @@ to_timestamp = time.mktime(datetime.strptime(args.toDay,'%Y-%m-%d').timetuple())
 date_diff = toDay - fromDay
 
 # API req
-for i in range(date_diff.days):
+for i in range(1,date_diff.days+1):
+    NextDay = fromDay + timedelta(i)
+    NextDay_timestamp = time.mktime(NextDay.timetuple())
+    
     url1 = 'https://api.spotinst.io/aws/ec2/group/'+args.group_id+'/logs'
     headers = {'Authorization': 'Bearer '+args.token,'Content-Type':'json'}
     params = {'accountId':args.account_id,
-            'fromDate': int(from_timestamp*1000),
-            'toDate': int(to_timestamp*1000),
+            'fromDate': int(NextDay_timestamp-86400)*1000,
+            'toDate': int(NextDay_timestamp*1000),
             'severity':args.level
             }
     #data1 = {'example':'example'}
@@ -39,6 +42,7 @@ for i in range(date_diff.days):
     # print(response.headers)
     # print(response.content)
     
-    f = open(args.group_id +'_'+args.fromDay+'_'+args.toDay+'log.json',mode='w')
+    f = open(args.group_id +'_'+ (NextDay - timedelta(1)).strftime('%Y-%m-%d') +'_'+ NextDay.strftime('%Y-%m-%d') +'log.json',mode='w')
     f.write(json.dumps(response.json()))
     f.close
+
