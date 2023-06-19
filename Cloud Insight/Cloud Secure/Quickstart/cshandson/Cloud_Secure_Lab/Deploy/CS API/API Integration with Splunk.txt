@@ -1,0 +1,29 @@
+Many companies mistakenly think anti-virus is enough to protect against ransomware attacks. 
+But cyber criminals will find a way to bypass this.
+Attackers could be former employees who already have the right access to the data, 
+which can be sold to competitors or published.
+ 
+Konnichiwa, my name is Lisa Lewis. I am a Cloud Insights Specialist at NetApp.
+I am here to introduce our product, NetApp Cloud Insights, which can help you fight against ransomware attacks and insider threats.
+ 
+A feature of NetApp Cloud Insights called Cloud Secure, 
+monitors who is accessing what files, when, and how in real-time.
+ 
+In the event of a ransomware attack, Cloud Secure quickly detects the attack,
+alerts the administrator, takes a snapshot, and blocks the attack in real-time on storage level, using ONTAP's unique feature.
+ 
+Cloud Secure displays which user was attacked, their business department, and contact information, so the user can be immediately contacted to take quick action.
+ 
+Detailed user activities are retained for 13 months.
+with Cloud Secure API, a graphical dashboard can easily visualize the insider threats
+such as
+ 
+ Deleting lots of files OR 
+ Unauthorized file access OR
+ Data theft 
+ 
+Cloud Secure offers a 30-day free trial. Please contact me for more information!
+ 
+Let NetApp Cloud Insights help you fight ransomware attacks and data breaches today!
+Thank you and arrigatogozaimasu.
+ 

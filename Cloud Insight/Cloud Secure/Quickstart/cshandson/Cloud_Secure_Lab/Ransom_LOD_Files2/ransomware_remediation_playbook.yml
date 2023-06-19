@@ -1,0 +1,135 @@
+---
+##[PLAY] Remediate from a Ransomware attack on a ONTAP System
+# Ensure that the NetApp Ansible collection is deployed by running ansible-galaxy collection install netapp.ontap
+- hosts: localhost
+  collections:
+    - netapp.ontap
+  gather_facts: no
+  vars:
+    file: ransomware_remediation_plan.yml
+  vars_files:
+  - "{{ file }}"
+
+  tasks:
+  - name: Unmount SMB shares
+    na_ontap_cifs:
+      state: absent
+      share_name: "{{ item.share_name }}"
+      vserver: "{{ item.svm_name }}"
+      hostname: "{{ netapp_hostname }}"
+      username: "{{ netapp_account }}"
+      password: "{{ netapp_password }}"
+      https: true
+      validate_certs: false
+    with_items:
+      "{{ cifs_shares_unmount }}"
+    when: cifs_shares_unmount != None
+
+  - name: Unmount volume from global namespace
+    na_ontap_volume:
+      state: present
+      name: "{{ item.volume_name }}"
+      junction_path: ''
+      vserver: "{{ item.svm_name }}"
+      hostname: "{{ netapp_hostname }}"
+      username: "{{ netapp_account }}"
+      password: "{{ netapp_password }}"
+      https: true
+      validate_certs: false
+    with_items:
+      "{{ volume_unmount_namespace }}"
+    when: volume_unmount_namespace != None
+
+  - name: Clone volume from snapshot
+    na_ontap_volume_clone:
+      state: present
+      parent_volume: "{{ item.source_volume }}"
+      name: "{{ item.clone_name }}"
+      junction_path: "{{ item.clone_junction_path }}"
+      space_reserve: none
+      parent_snapshot: "{{ item.snapshot_name }}"
+      split: true
+      vserver: "{{ item.source_svm }}"
+      hostname: "{{ netapp_hostname }}"
+      username: "{{ netapp_account }}"
+      password: "{{ netapp_password }}"
+      https: true
+      validate_certs: false
+    with_items:
+      "{{ clone_volume }}"
+    when: clone_volume != None
+
+  - name: Wait for clone split
+    wait_for:
+      timeout: 30
+
+  - name: Mount SMB shares from cloned volume
+    na_ontap_cifs:
+      state: present
+      share_name: "{{ item.share_name }}"
+      path: "{{ item.share_path }}"
+      vserver: "{{ item.svm_name }}"
+      hostname: "{{ netapp_hostname }}"
+      username: "{{ netapp_account }}"
+      password: "{{ netapp_password }}"
+      https: true
+      validate_certs: false
+    with_items:
+      "{{ cifs_shares_mount }}"
+    when: cifs_shares_mount != None
+
+  - name: Unmap SAN LUNs
+    na_ontap_lun_map:
+      state: absent
+      initiator_group_name: "{{ item.lun_ig }}"
+      path: "/vol/{{ item.volume_name }}/{{ item.lun_name }}"
+      vserver: "{{ item.svm_name }}"
+      hostname: "{{ netapp_hostname }}"
+      username: "{{ netapp_account }}"
+      password: "{{ netapp_password }}"
+      https: true
+      validate_certs: false
+    with_items:
+      "{{ san_unmap_luns }}"
+    when: san_unmap_luns != None
+
+  - name: Offline SAN LUNs
+    na_ontap_command:
+      hostname: "{{ netapp_hostname }}"
+      username: "{{ netapp_account }}"
+      password: "{{ netapp_password }}"
+      command: ['lun','modify','-vserver',"{{ item.svm_name }}",'-path',"/vol/{{ item.volume_name }}/{{ item.lun_name }}",'-state','offline']
+      https: true
+      validate_certs: false
+    with_items:
+      "{{ san_offline_luns }}"
+    when: san_offline_luns != None
+
+  - name: Map cloned SAN LUNs
+    na_ontap_lun_map:
+      state: present
+      initiator_group_name: "{{ item.lun_ig }}"
+      path: "/vol/{{ item.volume_name }}/{{ item.lun_name }}"
+      lun_id: "{{ item.lun_mapid }}"
+      vserver: "{{ item.svm_name }}"
+      hostname: "{{ netapp_hostname }}"
+      username: "{{ netapp_account }}"
+      password: "{{ netapp_password }}"
+      https: true
+      validate_certs: false
+    with_items:
+      "{{ san_map_luns }}"
+    when: san_map_luns != None
+
+  - name: Rehost compromised volume
+    na_ontap_command:
+      hostname: "{{ netapp_hostname }}"
+      username: "{{ netapp_account }}"
+      password: "{{ netapp_password }}"
+      command: ['vol','rehost','-vserver',"{{ item.source_svm }}",'-volume',"{{ item.volume_name }}",'-destination-vserver',"{{ item.destination_svm }}"]
+      https: true
+      validate_certs: false
+    with_items:
+      "{{ volume_svm_rehost }}"
+    when: volume_svm_rehost != None
+

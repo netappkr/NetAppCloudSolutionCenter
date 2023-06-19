@@ -1,0 +1,11 @@
+# vars
+    ansible_python_interpreter: /usr/bin/python3
+    aggregate_name: aggr1
+    cluster_mgmt_ip: ＜＜ファイルシステムの管理エンドポイント IPアドレスを入力＞＞
+    cluster_username: fsxadmin
+    cluster_password: ＜＜fsxadminのパスワードを入力＞＞
+    nfs_svm_name: ＜＜ストレージ仮想マシンのSVM名を入力＞＞
+    svm_nfs_ip: ＜＜ストレージ仮想マシンのNFS IPアドレスを入力＞＞
+    nfs_volume_name: ansi_nfsvol01
+    nfs_volume_size: 3
+    nfs_mount_dir: "/home/ec2-user/mnttest"

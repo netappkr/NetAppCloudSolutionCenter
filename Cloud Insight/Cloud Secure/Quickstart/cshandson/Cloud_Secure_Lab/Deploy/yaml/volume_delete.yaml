@@ -1,0 +1,31 @@
+- name: ONTAP SVM NFS Volume Delete
+  hosts: ansitest01
+  gather_facts: no
+  become: yes
+  vars_files:
+    vars.yaml
+  tasks:
+    - name: unmount nfs volume
+      ansible.posix.mount:
+        path: "{{ nfs_mount_dir }}"
+        src: "{{ svm_nfs_ip }}:/{{ nfs_volume_name }}"
+        fstype: nfs
+        opts: _netdev
+        state: absent
+
+    - name: delete directory
+      ansible.builtin.file: path="{{ nfs_mount_dir }}" state=absent owner=ec2-user group=ec2-user mode=775
+
+    - name: delete volume
+      na_ontap_volume:
+        state          : absent
+        validate_certs : no
+        https          : yes
+        hostname: "{{ cluster_mgmt_ip }}"
+        username: "{{ cluster_username }}"
+        password: "{{ cluster_password }}"
+        vserver: "{{ nfs_svm_name }}"
+        name: "{{ nfs_volume_name }}"
+        aggregate_name: "{{ aggregate_name }}"
+      delegate_to: localhost
+EOF

@@ -1,0 +1,75 @@
+- name: ONTAP SVM NFS Volume Create
+  hosts: ansitest01
+  gather_facts: no
+  become: yes
+  vars_files:
+    vars.yaml
+  tasks:
+    - name: make volume.
+      na_ontap_volume:
+        state          : present
+        validate_certs : no
+        https          : yes
+        hostname: "{{ cluster_mgmt_ip }}"
+        username: "{{ cluster_username }}"
+        password: "{{ cluster_password }}"
+        vserver: "{{ nfs_svm_name }}"
+        name: "{{ nfs_volume_name }}"
+        size: "{{ nfs_volume_size  }}"
+        size_unit: gb
+        space_guarantee: none
+        aggregate_name: "{{ aggregate_name }}"
+        volume_security_style: unix
+        type: rw
+        is_online: yes
+        junction_path: "/{{ nfs_volume_name }}"
+        snapshot_policy: none
+      delegate_to: localhost
+
+    - name: directory create
+      ansible.builtin.file: path="{{ nfs_mount_dir }}" state=directory owner=ec2-user group=ec2-user mode=775
+
+    - name: vm mount disk
+      ansible.posix.mount:
+        path: "{{ nfs_mount_dir }}"
+        src: "{{ svm_nfs_ip }}:/{{ nfs_volume_name }}"
+        fstype: nfs
+        opts: _netdev
+        state: mounted
+
+    - name: directory modify
+      ansible.builtin.file: path="{{ nfs_mount_dir }}" state=directory owner=ec2-user group=ec2-user mode=775
+EOF
+$ cat <<EOF > ~/work/volume_delete.yaml
+- name: ONTAP SVM NFS Volume Delete
+  hosts: ansitest01
+  gather_facts: no
+  become: yes
+  vars_files:
+    vars.yaml
+  tasks:
+    - name: unmount nfs volume
+      ansible.posix.mount:
+        path: "{{ nfs_mount_dir }}"
+        src: "{{ svm_nfs_ip }}:/{{ nfs_volume_name }}"
+        fstype: nfs
+        opts: _netdev
+        state: absent
+
+    - name: delete directory
+      ansible.builtin.file: path="{{ nfs_mount_dir }}" state=absent owner=ec2-user group=ec2-user mode=775
+
+    - name: delete volume
+      na_ontap_volume:
+        state          : absent
+        validate_certs : no
+        https          : yes
+        hostname: "{{ cluster_mgmt_ip }}"
+        username: "{{ cluster_username }}"
+        password: "{{ cluster_password }}"
+        vserver: "{{ nfs_svm_name }}"
+        name: "{{ nfs_volume_name }}"
+        aggregate_name: "{{ aggregate_name }}"
+      delegate_to: localhost
+EOF
+$
