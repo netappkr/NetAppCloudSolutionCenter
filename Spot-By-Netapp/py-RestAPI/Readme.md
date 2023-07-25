@@ -16,9 +16,25 @@ python get-spot-eg-log.py -gid <group id> -aid <account id> -token <Bear token> 
 ```
 
 ```bash
-python get-spot-eg-log.py --hlep
+python get-spot-eg-log.py --help
 usage: get-spot-eg-log.py [-h] [-gid GROUP_ID] [-aid ACCOUNT_ID] [-token TOKEN] [-fromDay FROMDAY] [-toDay TODAY] [-level LEVEL]
-get-spot-eg-log.py: error: unrecognized arguments: --hlep
+
+eg group-id,token,fromData,toData,severity 입력 자세한 내용은 spot api 문서에 eg 로그 조회 참조
+
+options:
+  -h, --help            show this help message and exit
+  -gid GROUP_ID, --group-id GROUP_ID
+                        Elastigroup id
+  -aid ACCOUNT_ID, --account-id ACCOUNT_ID
+                        Account id
+  -token TOKEN, --token TOKEN
+                        bear token
+  -fromDay FROMDAY, --fromDay FROMDAY
+                        startDay 'yyyy-mm-dd' example 2023-03-14
+  -toDay TODAY, --toDay TODAY
+                        endDay 'yyyy-mm-dd' example 2023-03-14
+  -level LEVEL, --level LEVEL
+                        severity default is ALL / you can only insert ALl,INFO,DEBUG,ERROR
 ```
 ### 명령어 예시
 ```

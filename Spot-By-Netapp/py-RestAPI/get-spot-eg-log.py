@@ -8,8 +8,8 @@ parser = argparse.ArgumentParser(description="eg group-id,token,fromData,toData,
 parser.add_argument("-gid","--group-id", type=str, help="Elastigroup id")
 parser.add_argument("-aid","--account-id", type=str, help="Account id")
 parser.add_argument("-token","--token", type=str, help="bear token")
-parser.add_argument("-fromDay","--fromDay", type=str, help="startDay '%Y-%m-%d' example 2023-03-14")
-parser.add_argument("-toDay","--toDay", type=str, help="endDay '%Y-%m-%d' example 2023-03-14")
+parser.add_argument("-fromDay","--fromDay", type=str, help="startDay 'yyyy-mm-dd' example 2023-03-14")
+parser.add_argument("-toDay","--toDay", type=str, help="endDay 'yyyy-mm-dd' example 2023-03-14")
 parser.add_argument("-level","--level", type=str, help="severity default is ALL / you can only insert ALl,INFO,DEBUG,ERROR", default='ALL')
 
 args= parser.parse_args()
