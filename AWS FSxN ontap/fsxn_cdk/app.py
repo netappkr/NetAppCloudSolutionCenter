@@ -9,7 +9,7 @@ import aws_cdk as cdk
 # from fsxn_cdk.BlueXP_req import BlueXPReqStack
 from fsxn_cdk.merge_stack import MergeStack
 # 리전 선택 최종 빌드 땐 주석처리
-env_netappkr = cdk.Environment(account="037660834288", region="ap-northeast-2")
+# env_netappkr = cdk.Environment(account="037660834288", region="ap-northeast-2")
 # env_netapp_apac = cdk.Environment(account="169544784679", region="ap-northeast-2")
 app = cdk.App()
 # # test 를 위한 분할 스택
