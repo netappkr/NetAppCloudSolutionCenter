@@ -17,7 +17,7 @@ class FSxNStack(NestedStack):
         # prefix = CfnParameter(self, "prefix", type="String", default="netapp",description="this parm use prefix or id in cfn. please input only english and all in lower case")
         ad_dns_ips = AD.attr_dns_ip_addresses
         ad_domain_name = AD.name
-        ad_file_system_administrators_group = prefix
+        ad_file_system_administrators_group = prefix.value_as_string
         ad_organizational_unit_distinguished_name = Fn.join(delimiter="", list_of_values=["OU=Computers,OU=",prefix.value_as_string,"DC=",prefix.value_as_string,"DC=com"])
         ad_user_name = "Administrator"
         ad_password = "Netapp1!"
