@@ -13,8 +13,11 @@ class ADStack(NestedStack):
         #prefix = CfnParameter(self, "prefix", type="String", default=prefix.value_as_string, description="this parm use prefix or id in cfn. please input only english and all in lower case")
         self.cfn_microsoft_AD  = directoryservice.CfnMicrosoftAD(self, "MSAD",
             name=Fn.join(delimiter=".", list_of_values=[prefix.value_as_string, "com"]),
-            vpc_settings=directoryservice.CfnSimpleAD.VpcSettingsProperty(
-                subnet_ids=vpc.select_subnets(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS).subnet_ids,
+            vpc_settings=directoryservice.CfnMicrosoftAD.VpcSettingsProperty(
+                subnet_ids=[
+                    vpc.select_subnets(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS).subnet_ids[0],
+                    vpc.select_subnets(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS).subnet_ids[1]
+                ],
                 vpc_id=vpc.vpc_id
             ),
             create_alias=False,
@@ -25,6 +28,6 @@ class ADStack(NestedStack):
         )
 
         #cfnoutput
-        CfnOutput(self, "cfn_microsoft_aD .attr_dns_ip_addresses", value=Fn.join(delimiter=",",list_of_values=self.cfn_simple_AD.attr_dns_ip_addresses))
-        CfnOutput(self, "cfn_microsoft_aD .name", value=self.cfn_microsoft_AD.name)
-        #CfnOutput(self, "ServiceAccountIamRole", value=self.cfn_simple_AD.role.role_arn)
+        CfnOutput(self, "cfn_microsoft_AD .attr_dns_ip_addresses", value=Fn.join(delimiter=",",list_of_values=self.cfn_microsoft_AD.attr_dns_ip_addresses))
+        CfnOutput(self, "cfn_microsoft_AD .name", value=self.cfn_microsoft_AD.name)
+        #CfnOutput(self, "ServiceAccountIamRole", value=self.cfn_microsoft_AD.role.role_arn)
