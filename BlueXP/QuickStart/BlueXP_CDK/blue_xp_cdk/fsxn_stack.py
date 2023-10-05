@@ -1,6 +1,6 @@
 from optparse import Values
 from aws_cdk import (
-    Stack,
+    NestedStack,
     aws_ec2 as ec2,
     aws_fsx as fsx,
     CfnTag,
@@ -10,7 +10,7 @@ from aws_cdk import (
 from constructs import Construct
 
 
-class FSxNStack(Stack):
+class FSxNStack(NestedStack):
     def __init__(self, scope: Construct, id: str, vpc, AD, prefix, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
         # parameter
@@ -49,20 +49,20 @@ class FSxNStack(Stack):
                                             )
         )
         # SVM
-        self.cfn_storage_virtual_machine = fsx.CfnStorageVirtualMachine(self, "CfnStorageVirtualMachine",
-            file_system_id=self.cfn_file_system.attr_id,
-            name=Fn.join(delimiter="_", list_of_values=[prefix.value_as_string, "svm"]),
-            active_directory_configuration=fsx.CfnStorageVirtualMachine.ActiveDirectoryConfigurationProperty(
-                net_bios_name="FSxN",
-                self_managed_active_directory_configuration=fsx.CfnFileSystem.SelfManagedActiveDirectoryConfigurationProperty(
-                    dns_ips=ad_dns_ips,
-                    domain_name=ad_domain_name,
-                    #file_system_administrators_group=ad_file_system_administrators_group,
-                    organizational_unit_distinguished_name=ad_organizational_unit_distinguished_name,
-                    password=ad_password,
-                    user_name=ad_user_name
-                )
-            ),
-            root_volume_security_style="ntfs",
-            svm_admin_password="Netapp1!"
-        )
+        #self.cfn_storage_virtual_machine = fsx.CfnStorageVirtualMachine(self, "CfnStorageVirtualMachine",
+        #    file_system_id=self.cfn_file_system.attr_id,
+        #    name=Fn.join(delimiter="_", list_of_values=[prefix.value_as_string, "svm"]),
+        #    active_directory_configuration=fsx.CfnStorageVirtualMachine.ActiveDirectoryConfigurationProperty(
+        #        net_bios_name="FSxN",
+        #        self_managed_active_directory_configuration=fsx.CfnFileSystem.SelfManagedActiveDirectoryConfigurationProperty(
+        #            dns_ips=["172.30.0.100"],
+        #            domain_name="wyahn.com",
+        #            #file_system_administrators_group=ad_file_system_administrators_group,
+        #            #organizational_unit_distinguished_name=ad_organizational_unit_distinguished_name,
+        #            password="Netapp1!",
+        #            user_name="Administrator"
+        #        )
+        #    ),
+        #    root_volume_security_style="ntfs",
+        #    svm_admin_password="Netapp1!"
+        #)

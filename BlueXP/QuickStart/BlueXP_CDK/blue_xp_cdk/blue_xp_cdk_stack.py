@@ -1,5 +1,5 @@
 from blue_xp_cdk.NW_stack import NetworkStack
-from blue_xp_cdk.simple_ad_stack import ADStack
+from blue_xp_cdk.MSAD_stack import ADStack
 from blue_xp_cdk.bastion_stack import BastionStack
 #from blue_xp_cdk.EKS_stack import EKSStack
 from blue_xp_cdk.fsxn_stack import FSxNStack
@@ -37,7 +37,7 @@ class BlueXpCdkStack(Stack):
         Tags.of(bastionhost).add("creator", creator.value_as_string)
         bastionhost.add_dependency(NW)
 
-        FSxN = FSxNStack(self, "FSxNStack", vpc=NW.vpc, AD=AD.cfn_simple_AD , prefix=prefix)
+        FSxN = FSxNStack(self, "FSxNStack", vpc=NW.vpc, AD=AD.cfn_microsoft_AD , prefix=prefix)
         Tags.of(FSxN).add("creator", creator.value_as_string)
         FSxN.add_dependency(AD)
         

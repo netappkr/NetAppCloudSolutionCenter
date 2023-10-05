@@ -16,7 +16,6 @@ aws s3 cp s3://cdk-hnb659fds-assets-037660834288-ap-northeast-2/* ./
 ```
 
 ## CDK Cheat Sheet
-#### CKD deploy
 ```powershell 
 aws configure list-profiles
 ```
@@ -29,6 +28,7 @@ cds-user-01
 - ```cdk deploy --require-approval never --profile cds-user-01```
 - ```cdk deploy {스택이름} --require-approval never --profile cds-user-01```
 - ```cdk deploy --all --profile cds-user-01 --parameters prefix=test```
+- ```cdk synth --profile cds-user-01 --parameters prefix=test --parameters creator=wyahn```
 #### CDK destory
 - ```cdk destroy --all --force --profile cds-user-01```
 
