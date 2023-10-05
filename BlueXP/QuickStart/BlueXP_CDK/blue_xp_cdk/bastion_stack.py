@@ -1,6 +1,6 @@
 from optparse import Values
 from aws_cdk import (
-    Stack,
+    NestedStack,
     aws_ec2 as ec2,
     aws_iam as iam,
     CfnParameter,
@@ -9,25 +9,24 @@ from aws_cdk import (
 from constructs import Construct
 
 
-class ADStack(Stack):
+class BastionStack(NestedStack):
 
-    def __init__(self, scope: Construct, construct_id: str, vpc, **kwargs) -> None:
+    def __init__(self, scope: Construct, construct_id: str, vpc, prefix, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
         # parameter
-        prefix = CfnParameter(self, "prefix", type="String", default="netapp",
-                              description="this parm use prefix or id in cfn. please input only english and all in lower case")
+        #prefix = CfnParameter(self, "prefix", type="String", default=prefix.value_as_string, description="this parm use prefix or id in cfn. please input only english and all in lower case")
 
-        # Hands-on ad 생성
-        self.adrole = iam.Role(
-            self, "adRole",
+        # Hands-on bastion 생성
+        self.bastionrole = iam.Role(
+            self, "bastionRole",
             role_name=Fn.join(delimiter="_", list_of_values=[
-                              prefix.value_as_string, "adRole"]),
+                              prefix.value_as_string, "bastionRole"]),
             assumed_by=iam.ServicePrincipal("ec2.amazonaws.com"),
             # custom description if desired
-            description="ec2 Role for simple AD"
+            description="ec2 Role for simple Bastion"
         )
-        self.adrole.add_managed_policy(
+        self.bastionrole.add_managed_policy(
             iam.ManagedPolicy.from_aws_managed_policy_name("AdministratorAccess"))
         # AMI
         AMI = ec2.MachineImage.generic_linux(
@@ -49,8 +48,8 @@ class ADStack(Stack):
         )
 
         # 보안그룹
-        SecurityGroup = ec2.SecurityGroup(self, "adSG", security_group_name=Fn.join(delimiter="_", list_of_values=[
-                              prefix.value_as_string, "ad_sg"]),vpc=vpc)
+        SecurityGroup = ec2.SecurityGroup(self, "bastionSG", security_group_name=Fn.join(delimiter="_", list_of_values=[
+                              prefix.value_as_string, "bastion_sg"]),vpc=vpc)
         SecurityGroup.add_ingress_rule(ec2.Peer.any_ipv4(), ec2.Port.tcp(
             22), "allow ssh access from the world")
 
@@ -62,14 +61,14 @@ class ADStack(Stack):
         
                                      )
         # init sh 
-        userdata_file = open("./ad.sh", "rb").read()
+        userdata_file = open("./bastion.sh", "rb").read()
         # Creates a userdata object for Linux hosts
         userdata = ec2.UserData.for_linux()
         # Adds one or more commands to the userdata object.
         userdata.add_commands(str(userdata_file, 'utf-8'))
 
         # 서버생성
-        ec2.Instance(self, "ad",
+        ec2.Instance(self, "bastion",
                      vpc=vpc,
                      instance_type=ec2.InstanceType.of(
                          ec2.InstanceClass.T3, ec2.InstanceSize.MEDIUM),
@@ -82,7 +81,7 @@ class ADStack(Stack):
                          virtualization=ec2.AmazonLinuxVirt.HVM,
                          storage=ec2.AmazonLinuxStorage.GENERAL_PURPOSE
                      ),
-                     role=self.adrole,
+                     role=self.bastionrole,
                      security_group=SecurityGroup,
                      key_name=Fn.join(delimiter="_", list_of_values=[
                          prefix.value_as_string, "key"]),

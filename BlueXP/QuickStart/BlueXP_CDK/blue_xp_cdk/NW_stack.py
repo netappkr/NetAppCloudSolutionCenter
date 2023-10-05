@@ -1,6 +1,6 @@
 from optparse import Values
 from aws_cdk import (
-    Stack,
+    NestedStack,
     aws_ec2 as ec2,
     CfnTag,
     CfnParameter,
@@ -9,9 +9,9 @@ from aws_cdk import (
 from constructs import Construct
 
 
-class NetworkStack(Stack):
+class NetworkStack(NestedStack):
 
-    def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
+    def __init__(self, scope: Construct, construct_id: str, prefix, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
         # parameter
         prefix = CfnParameter(self, "prefix", type="String", default="netapp",

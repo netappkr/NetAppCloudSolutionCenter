@@ -13,7 +13,7 @@ class BlueXPReqStack(NestedStack):
         super().__init__(scope, construct_id, **kwargs)
 
         # Parameter
-        #prefix = CfnParameter(self, "prefix", type="String", default="netapp",description="this parm use prefix or id in cfn. please input only english and all in lower case")
+        #prefix = CfnParameter(self, "prefix", type="String", default=prefix.value_as_string, description="this parm use prefix or id in cfn. please input only english and all in lower case")
         #CloudmanagerRole 생성
         role = iam.Role(self, "BlueXP_Role",
                         role_name=Fn.join(delimiter="_", list_of_values=[
