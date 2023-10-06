@@ -67,12 +67,12 @@ class FSxNStack(NestedStack):
             svm_admin_password="Netapp1!"
         )
         #volume
-        self.cfn_volume = fsx.CfnVolume(self, "MyCfnVolume",
+        self.cfn_volume = fsx.CfnVolume(self, "CifsVolume",
             name=Fn.join(delimiter="_", list_of_values=[prefix.value_as_string, "volume"]),
             #backup_id="backupId",
             ontap_configuration=fsx.CfnVolume.OntapConfigurationProperty(
                 size_in_megabytes="102400",
-                storage_virtual_machine_id=self.cfn_storage_virtual_machine.id,
+                storage_virtual_machine_id=self.cfn_storage_virtual_machine.attr_uuid,
 
                 # the properties below are optional
                 copy_tags_to_backups=prefix.value_as_string,
