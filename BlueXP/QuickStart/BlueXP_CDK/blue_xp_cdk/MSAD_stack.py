@@ -26,8 +26,7 @@ class ADStack(NestedStack):
             password="Netapp1!",
             short_name=prefix.value_as_string
         )
-
         #cfnoutput
-        CfnOutput(self, "cfn_microsoft_AD .attr_dns_ip_addresses", value=Fn.join(delimiter=",",list_of_values=self.cfn_microsoft_AD.attr_dns_ip_addresses))
-        CfnOutput(self, "cfn_microsoft_AD .name", value=self.cfn_microsoft_AD.name)
+        CfnOutput(self, "cfn_microsoft_AD.attr_dns_ip_addresses", value=Fn.join(delimiter=",",list_of_values=self.cfn_microsoft_AD.attr_dns_ip_addresses))
+        CfnOutput(self, "cfn_microsoft_AD.name", value=self.cfn_microsoft_AD.name)
         #CfnOutput(self, "ServiceAccountIamRole", value=self.cfn_microsoft_AD.role.role_arn)
