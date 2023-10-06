@@ -41,6 +41,14 @@ cds-user-01
 --output( ) 옵션을 추가하면 -o합성된 템플릿을 가 아닌 다른 디렉토리에 쓸 수 있습니다 cdk.out.
 ```cdk synth --output=~/templates```
 
+### nosynth test
+CDK version 2.99.1 버그가 있는것으로 보임
+https://github.com/aws/aws-cdk/discussions/27426
+s3에 업로드된 템플릿을 수동으로 수정하고 sythn 하지 않고 배포해야됨.
+(버그가 맞다면 고쳐줘요 AWS!)
+```cdk --app cdk.out deploy --profile cds-user-01 --parameters prefix=wyahn --parameters creator=wooyoung``` 
+
+
 # 참고자료
 - [CDK guide](https://docs.aws.amazon.com/ko_kr/cdk/v2/guide/home.html)
 - [about_Execution_Policies](https://docs.microsoft.com/ko-kr/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2)
