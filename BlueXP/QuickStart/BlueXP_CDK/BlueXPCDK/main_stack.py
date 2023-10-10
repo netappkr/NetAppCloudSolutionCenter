@@ -1,9 +1,9 @@
-from blue_xp_cdk.NW_stack import NetworkStack
-from blue_xp_cdk.MSAD_stack import ADStack
-from blue_xp_cdk.bastion_stack import BastionStack
-#from blue_xp_cdk.EKS_stack import EKSStack
-from blue_xp_cdk.fsxn_stack import FSxNStack
-from blue_xp_cdk.BlueXP_req import BlueXPReqStack
+from BlueXPCDK.NW_stack import NetworkStack
+from BlueXPCDK.MSAD_stack import ADStack
+from BlueXPCDK.bastion_stack import BastionStack
+#from BlueXPCDK.EKS_stack import EKSStack
+from BlueXPCDK.fsxn_stack import FSxNStack
+from BlueXPCDK.BlueXP_req import BlueXPReqStack
 from aws_cdk import (
     Stack,
     CfnParameter,
@@ -12,7 +12,7 @@ from aws_cdk import (
 )
 from constructs import Construct
 
-class BlueXpCdkStack(Stack):
+class mainStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
