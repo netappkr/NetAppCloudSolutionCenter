@@ -48,6 +48,9 @@ s3에 업로드된 템플릿을 수동으로 수정하고 sythn 하지 않고 �
 (버그가 맞다면 고쳐줘요 AWS!)
 ```cdk --app cdk.out deploy --profile cds-user-01 --parameters prefix=wyahn --parameters creator=wooyoung``` 
 
+## 주의
+사내PC는 s3에서 Download는 되지만 Upload가 정책으로 막혀있어 CDK를 사용한 Deploy가 불가능합니다.
+
 
 # 참고자료
 - [CDK guide](https://docs.aws.amazon.com/ko_kr/cdk/v2/guide/home.html)
