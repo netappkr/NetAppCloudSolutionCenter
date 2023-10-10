@@ -4,7 +4,8 @@
 1. [BluxXP](https://bluexp.netapp.com/)에 접속 합니다.
 2. 오른쪽 상단의 ```Get Started``` 를 눌러 로그인 화면으로 넘어갑니다.
 로그인되어 있는 상태라면 ID/PW를 물어보는 화면이 나오지 않습니다.
-3. 로그인 화면 하단 ```Sign up``` 을 클
+3. 로그인 화면 하단 ```Sign up``` 을 클릭합니다.
 ![login](image.png)
-
+4. 필요항목을 넣고 회원가입하여 계정을 생성합니다.
 ![Alt text](image-1.png)
+
