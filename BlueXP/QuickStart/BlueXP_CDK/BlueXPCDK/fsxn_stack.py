@@ -50,7 +50,7 @@ class FSxNStack(NestedStack):
         )
         # SVM
         self.cfn_storage_virtual_machine = fsx.CfnStorageVirtualMachine(self, "CfnStorageVirtualMachine",
-            file_system_id=self.cfn_file_system.attr_id,
+            file_system_id=Fn.select(1,Fn.split('/',self.cfn_file_system.attr_resource_arn)),
             name=Fn.join(delimiter="_", list_of_values=[prefix.value_as_string, "svm"]),
             active_directory_configuration=fsx.CfnStorageVirtualMachine.ActiveDirectoryConfigurationProperty(
                 net_bios_name="FSxN",
