@@ -37,9 +37,9 @@ class mainStack(Stack):
         Tags.of(bastionhost).add("creator", creator.value_as_string)
         bastionhost.add_dependency(NW)
 
-        #FSxN = FSxNStack(self, "FSxNStack", vpc=NW.vpc, AD=AD.cfn_microsoft_AD , prefix=prefix)
-        #Tags.of(FSxN).add("creator", creator.value_as_string)
-        #FSxN.add_dependency(AD)
+        FSxN = FSxNStack(self, "FSxNStack", vpc=NW.vpc, AD=AD.cfn_microsoft_AD , prefix=prefix)
+        Tags.of(FSxN).add("creator", creator.value_as_string)
+        FSxN.add_dependency(AD)
         
 
 

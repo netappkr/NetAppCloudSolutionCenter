@@ -5,6 +5,7 @@ from aws_cdk import (
     aws_fsx as fsx,
     CfnTag,
     CfnParameter,
+    CfnOutput,
     Fn
 )
 from constructs import Construct
@@ -15,10 +16,13 @@ class FSxNStack(NestedStack):
         super().__init__(scope, id, **kwargs)
         # parameter
         # prefix = CfnParameter(self, "prefix", type="String", default="netapp",description="this parm use prefix or id in cfn. please input only english and all in lower case")
-        ad_dns_ips = AD.attr_dns_ip_addresses
+        #ad_dns_ips=AD.attr_dns_ip_addresses
+        ad_dns_ips=Fn.split(",", Fn.import_value("dnsipaddress"))
+        testoutput2=Fn.to_json_string(["172.30.3.12","172.30.4.170"])
+        #CfnOutput(self, "testoutput2.attr_dns_ip_addresses", value=testoutput2)
         ad_domain_name = AD.name
         ad_file_system_administrators_group = prefix.value_as_string
-        ad_organizational_unit_distinguished_name = Fn.join(delimiter="", list_of_values=["OU=Computers,OU=",prefix.value_as_string,"DC=",prefix.value_as_string,"DC=com"])
+        ad_organizational_unit_distinguished_name = Fn.join(delimiter="", list_of_values=["OU=Computers,OU=",prefix.value_as_string,"DC=",prefix.value_as_string,"DC=.com"])
         ad_user_name = "Administrator"
         ad_password = "Netapp1!"
         # FSXontap
@@ -29,7 +33,7 @@ class FSxNStack(NestedStack):
                                             storage_capacity=1024,
                                             tags=[CfnTag(
                                                 key="Name",
-                                                value=Fn.join(delimiter="_", list_of_values=[
+                                                value=Fn.join(delimiter="-", list_of_values=[
                                                     prefix.value_as_string, "FSxN"])
                                             )],
                                             ontap_configuration=fsx.CfnFileSystem.OntapConfigurationProperty(
@@ -51,7 +55,7 @@ class FSxNStack(NestedStack):
         # SVM
         self.cfn_storage_virtual_machine = fsx.CfnStorageVirtualMachine(self, "CfnStorageVirtualMachine",
             file_system_id=Fn.select(1,Fn.split('/',self.cfn_file_system.attr_resource_arn)),
-            name=Fn.join(delimiter="_", list_of_values=[prefix.value_as_string, "svm"]),
+            name=Fn.join(delimiter="-", list_of_values=[prefix.value_as_string, "svm"]),
             active_directory_configuration=fsx.CfnStorageVirtualMachine.ActiveDirectoryConfigurationProperty(
                 net_bios_name="FSxN",
                 self_managed_active_directory_configuration=fsx.CfnStorageVirtualMachine.SelfManagedActiveDirectoryConfigurationProperty(
@@ -63,61 +67,65 @@ class FSxNStack(NestedStack):
                     user_name=ad_user_name
                 )
             ),
-            root_volume_security_style="ntfs",
+            root_volume_security_style="NTFS",
             svm_admin_password="Netapp1!"
         )
-        #volume
-        self.cfn_volume = fsx.CfnVolume(self, "CifsVolume",
-            name=Fn.join(delimiter="_", list_of_values=[prefix.value_as_string, "volume"]),
-            #backup_id="backupId",
-            ontap_configuration=fsx.CfnVolume.OntapConfigurationProperty(
-                size_in_megabytes="102400",
-                storage_virtual_machine_id=self.cfn_storage_virtual_machine.attr_uuid,
+        CfnOutput(self, "adorginfo", value=self.cfn_storage_virtual_machine.attr_storage_virtual_machine_id)
+        CfnOutput(self, "svmid", value=ad_organizational_unit_distinguished_name)
+        # #volume
+        # self.cfn_volume = fsx.CfnVolume(self, "CifsVolume",
+        #     name=Fn.join(delimiter="_", list_of_values=[prefix.value_as_string, "volume"]),
 
-                # the properties below are optional
-                copy_tags_to_backups=prefix.value_as_string,
-                junction_path=prefix.value_as_string,
-                ontap_volume_type="RW",
-                security_style="NTFS",
-                # snaplock_configuration=fsx.CfnVolume.SnaplockConfigurationProperty(
-                #     snaplock_type="snaplockType",
+        #     # the properties below are optional
+        #     #backup_id="backupId",
+        #     ontap_configuration=fsx.CfnVolume.OntapConfigurationProperty(
+        #         size_in_megabytes="1024",
+        #         storage_virtual_machine_id=self.cfn_storage_virtual_machine.attr_storage_virtual_machine_id,
 
-                #     # the properties below are optional
-                #     audit_log_volume="auditLogVolume",
-                #     autocommit_period=fsx.CfnVolume.AutocommitPeriodProperty(
-                #         type="type",
+        #         # the properties below are optional
+        #         copy_tags_to_backups=prefix.value_as_string,
+        #         junction_path=Fn.join(delimiter="", list_of_values=["/",prefix.value_as_string]),
+        #         ontap_volume_type="RW",
+        #         security_style="NTFS",
+        #         # snaplock_configuration=fsx.CfnVolume.SnaplockConfigurationProperty(
+        #         #     snaplock_type="snaplockType",
 
-                #         # the properties below are optional
-                #         value=123
-                #     ),
-                #     privileged_delete="privilegedDelete",
-                #     retention_period=fsx.CfnVolume.SnaplockRetentionPeriodProperty(
-                #         default_retention=fsx.CfnVolume.RetentionPeriodProperty(
-                #             type="type",
+        #         #     # the properties below are optional
+        #         #     audit_log_volume="auditLogVolume",
+        #         #     autocommit_period=fsx.CfnVolume.AutocommitPeriodProperty(
+        #         #         type="type",
 
-                #             # the properties below are optional
-                #             value=123
-                #         ),
-                #         maximum_retention=fsx.CfnVolume.RetentionPeriodProperty(
-                #             type="type",
+        #         #         # the properties below are optional
+        #         #         value=123
+        #         #     ),
+        #         #     privileged_delete="privilegedDelete",
+        #         #     retention_period=fsx.CfnVolume.SnaplockRetentionPeriodProperty(
+        #         #         default_retention=fsx.CfnVolume.RetentionPeriodProperty(
+        #         #             type="type",
 
-                #             # the properties below are optional
-                #             value=123
-                #         ),
-                #         minimum_retention=fsx.CfnVolume.RetentionPeriodProperty(
-                #             type="type",
+        #         #             # the properties below are optional
+        #         #             value=123
+        #         #         ),
+        #         #         maximum_retention=fsx.CfnVolume.RetentionPeriodProperty(
+        #         #             type="type",
 
-                #             # the properties below are optional
-                #             value=123
-                #         )
-                #     ),
-                #     volume_append_mode_enabled="volumeAppendModeEnabled"
-                # ),
-                snapshot_policy="none",
-                storage_efficiency_enabled="true",
-                tiering_policy=fsx.CfnVolume.TieringPolicyProperty(
-                    cooling_period=2,
-                    name="SNAPSHOT_ONLY"
-                )
-            )
-        )
+        #         #             # the properties below are optional
+        #         #             value=123
+        #         #         ),
+        #         #         minimum_retention=fsx.CfnVolume.RetentionPeriodProperty(
+        #         #             type="type",
+
+        #         #             # the properties below are optional
+        #         #             value=123
+        #         #         )
+        #         #     ),
+        #         #     volume_append_mode_enabled="volumeAppendModeEnabled"
+        #         # ),
+        #         snapshot_policy=None,
+        #         storage_efficiency_enabled="True",
+        #         tiering_policy=fsx.CfnVolume.TieringPolicyProperty(
+        #             cooling_period=2,
+        #             name="SNAPSHOT_ONLY"
+        #         )
+        #     )
+        # )

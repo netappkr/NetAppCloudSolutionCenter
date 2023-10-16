@@ -20,7 +20,7 @@ class BlueXPReqStack(NestedStack):
                               prefix.value_as_string, "BlueXP_Role"]),
             assumed_by=iam.AccountPrincipal("952013314444"),
             # custom description if desired
-            description="Netapp Pertner Summit Hands on Cloudmanager Role"
+            description="Netapp Hands on BlueXP Role"
         )
         # Pollicy 문서
         policy_document = iam.PolicyDocument.from_json(
