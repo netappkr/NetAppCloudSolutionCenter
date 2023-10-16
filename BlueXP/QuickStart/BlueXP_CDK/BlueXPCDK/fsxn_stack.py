@@ -24,7 +24,7 @@ class FSxNStack(NestedStack):
         ad_user_name = "Administrator"
         ad_password = "Netapp1!"
 
-        CfnOutput(self, "adorginfo", value=self.cfn_storage_virtual_machine.attr_storage_virtual_machine_id)
+        CfnOutput(self, "adorginfo", value=ad_organizational_unit_distinguished_name)
         # FSXontap
         self.cfn_file_system = fsx.CfnFileSystem(self, "fsx",
                                             file_system_type="ONTAP",
@@ -70,8 +70,8 @@ class FSxNStack(NestedStack):
             root_volume_security_style="NTFS",
             svm_admin_password="Netapp1!"
         )
-
-        CfnOutput(self, "svmid", value=ad_organizational_unit_distinguished_name)
+        CfnOutput(self, "svmid", value=self.cfn_storage_virtual_machine.attr_storage_virtual_machine_id)
+        
         # #volume
         # self.cfn_volume = fsx.CfnVolume(self, "CifsVolume",
         #     name=Fn.join(delimiter="_", list_of_values=[prefix.value_as_string, "volume"]),
