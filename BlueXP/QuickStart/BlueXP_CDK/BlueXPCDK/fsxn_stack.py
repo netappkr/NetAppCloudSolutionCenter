@@ -18,13 +18,13 @@ class FSxNStack(NestedStack):
         # prefix = CfnParameter(self, "prefix", type="String", default="netapp",description="this parm use prefix or id in cfn. please input only english and all in lower case")
         #ad_dns_ips=AD.attr_dns_ip_addresses
         ad_dns_ips=Fn.split(",", Fn.import_value("dnsipaddress"))
-        testoutput2=Fn.to_json_string(["172.30.3.12","172.30.4.170"])
-        #CfnOutput(self, "testoutput2.attr_dns_ip_addresses", value=testoutput2)
         ad_domain_name = AD.name
         ad_file_system_administrators_group = prefix.value_as_string
         ad_organizational_unit_distinguished_name = Fn.join(delimiter="", list_of_values=["OU=Computers,OU=",prefix.value_as_string,"DC=",prefix.value_as_string,"DC=.com"])
         ad_user_name = "Administrator"
         ad_password = "Netapp1!"
+
+        CfnOutput(self, "adorginfo", value=self.cfn_storage_virtual_machine.attr_storage_virtual_machine_id)
         # FSXontap
         self.cfn_file_system = fsx.CfnFileSystem(self, "fsx",
                                             file_system_type="ONTAP",
@@ -70,7 +70,7 @@ class FSxNStack(NestedStack):
             root_volume_security_style="NTFS",
             svm_admin_password="Netapp1!"
         )
-        CfnOutput(self, "adorginfo", value=self.cfn_storage_virtual_machine.attr_storage_virtual_machine_id)
+
         CfnOutput(self, "svmid", value=ad_organizational_unit_distinguished_name)
         # #volume
         # self.cfn_volume = fsx.CfnVolume(self, "CifsVolume",
