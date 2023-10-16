@@ -19,7 +19,7 @@ class NetworkStack(NestedStack):
 
         # VPC
         self.vpc = ec2.Vpc(self, "VPC",
-                           vpc_name=Fn.join(delimiter="_", list_of_values=[
+                           vpc_name=Fn.join(delimiter="-", list_of_values=[
                                             prefix.value_as_string, "vpc"]),
                            cidr="172.30.0.0/16",
                            nat_gateways=1,

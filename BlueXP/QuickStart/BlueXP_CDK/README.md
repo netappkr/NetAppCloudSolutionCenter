@@ -40,7 +40,10 @@ cds-user-01
 ### CDK 출력 디렉터리 지정
 --output( ) 옵션을 추가하면 -o합성된 템플릿을 가 아닌 다른 디렉토리에 쓸 수 있습니다 cdk.out.
 ```cdk synth --output=~/templates```
-
+### CDK version update
+```
+npm install -g aws-cdk@latest
+```
 ### nosynth test
 CDK version 2.99.1 버그가 있는것으로 보임
 https://github.com/aws/aws-cdk/discussions/27426
