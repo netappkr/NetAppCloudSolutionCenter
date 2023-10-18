@@ -12,7 +12,7 @@ from constructs import Construct
 
 
 class FSxNStack(NestedStack):
-    def __init__(self, scope: Construct, id: str, vpc, AD, prefix, **kwargs) -> None:
+    def __init__(self, scope: Construct, id: str, vpc, AD, defaultsg, prefix, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
         # parameter
         # prefix = CfnParameter(self, "prefix", type="String", default="netapp",description="this parm use prefix or id in cfn. please input only english and all in lower case")
@@ -20,8 +20,14 @@ class FSxNStack(NestedStack):
         ad_dns_ips=Fn.split(",", Fn.import_value("dnsipaddress"))
         ad_domain_name = AD.name
         ad_file_system_administrators_group = prefix.value_as_string
+<<<<<<< HEAD
         ad_organizational_unit_distinguished_name = Fn.join(delimiter="", list_of_values=["OU=Computers,OU=",prefix.value_as_string,",DC=",prefix.value_as_string,"DC=.com"])
         ad_user_name = "Administrator"
+=======
+        ad_organizational_unit_distinguished_name = Fn.join(delimiter="", list_of_values=["OU=Computers,OU=",prefix.value_as_string,",DC=",prefix.value_as_string,",DC=com"])
+        ## example : OU=Computers,OU=wyahn,DC=wyahn,DC=com
+        ad_user_name = "Admin"
+>>>>>>> 3b74f0d0f1cc7e09a275464bb798306eb17cb0ec
         ad_password = "Netapp1!"
 
         CfnOutput(self, "adorginfo", value=ad_organizational_unit_distinguished_name)
@@ -31,6 +37,7 @@ class FSxNStack(NestedStack):
                                             subnet_ids=[vpc.select_subnets(
                                                 subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS).subnet_ids[0]],
                                             storage_capacity=1024,
+                                            security_group_ids=[defaultsg.security_group_id],
                                             tags=[CfnTag(
                                                 key="Name",
                                                 value=Fn.join(delimiter="-", list_of_values=[

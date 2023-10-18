@@ -9,3 +9,6 @@
 4. 필요항목을 넣고 회원가입하여 계정을 생성합니다.
 <img src=image-1.png alt="Girl in a jacket" width="500">
 
+# 다음
+- [BlueXP ]()
+

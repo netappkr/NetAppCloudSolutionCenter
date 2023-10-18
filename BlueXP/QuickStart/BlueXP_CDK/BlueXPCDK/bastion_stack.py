@@ -11,7 +11,7 @@ from constructs import Construct
 
 class BastionStack(NestedStack):
 
-    def __init__(self, scope: Construct, construct_id: str, vpc, prefix, **kwargs) -> None:
+    def __init__(self, scope: Construct, construct_id: str, vpc, defaultsg, prefix, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
         # parameter
@@ -57,6 +57,8 @@ class BastionStack(NestedStack):
         self.keyPair = ec2.CfnKeyPair(self, "Adminkey",
                                       key_name=Fn.join(delimiter="_", list_of_values=[
                                           prefix.value_as_string, "key"]),
+                                      #key_type="ED25519",
+                                      #Note that ED25519 keys are not supported for Windows instances. If the PublicKeyMaterial property is specified, the KeyType property is ignored, and the key type is inferred from the PublicKeyMaterial value. Default: rsa Default: - “rsa”
                                       public_key_material="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAvu2v6lkF59XSY3ch+Df2w/AN10EPXZ3JL2Xbqtsv13xVq9ZuzmUcdCpfa9NyjnyBoaXxymUvQSaeQCFxnjroAySOKVXaR6n6ahWFGQOYlfZHkKYg/N8pTpQht3QXNLoA8lUlrb3lyehQHxtCAhtgmx4BIaBpGM/FLaJqhu1OQ7gz0GBbG1qZOmEyrzcklkvriyPYzEESg3N9w+eM09rWvu3dK+EezAsgeFBlcsfHY5eNRmgp2iPfvz8tNZ3wgsrU/UiZHueqsMmGYS+Njjr461cx2q3EhjjPbYz8+tj3t/taZ/Jf419r9ZhT1JHm8/vUh22B5Xm31LdbMBPGvuUKPQ=="
         
                                      )
