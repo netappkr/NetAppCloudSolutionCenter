@@ -74,60 +74,60 @@ class FSxNStack(NestedStack):
         )
         CfnOutput(self, "svmid", value=self.cfn_storage_virtual_machine.attr_storage_virtual_machine_id)
         
-        # #volume
-        # self.cfn_volume = fsx.CfnVolume(self, "CifsVolume",
-        #     name=Fn.join(delimiter="_", list_of_values=[prefix.value_as_string, "volume"]),
+        #volume
+        self.cfn_volume = fsx.CfnVolume(self, "CifsVolume",
+            name=Fn.join(delimiter="_", list_of_values=[prefix.value_as_string, "volume"]),
+            volume_type="ONTAP",
+            # the properties below are optional
+            #backup_id="backupId",
+            ontap_configuration=fsx.CfnVolume.OntapConfigurationProperty(
+                size_in_megabytes="10240",
+                storage_virtual_machine_id=self.cfn_storage_virtual_machine.attr_storage_virtual_machine_id,
 
-        #     # the properties below are optional
-        #     #backup_id="backupId",
-        #     ontap_configuration=fsx.CfnVolume.OntapConfigurationProperty(
-        #         size_in_megabytes="1024",
-        #         storage_virtual_machine_id=self.cfn_storage_virtual_machine.attr_storage_virtual_machine_id,
+                # the properties below are optional
+                # copy_tags_to_backups=prefix.value_as_string,
+                junction_path=Fn.join(delimiter="", list_of_values=["/",prefix.value_as_string]),
+                ontap_volume_type="RW",
+                security_style="NTFS",
+                # snaplock_configuration=fsx.CfnVolume.SnaplockConfigurationProperty(
+                #     snaplock_type="snaplockType",
 
-        #         # the properties below are optional
-        #         copy_tags_to_backups=prefix.value_as_string,
-        #         junction_path=Fn.join(delimiter="", list_of_values=["/",prefix.value_as_string]),
-        #         ontap_volume_type="RW",
-        #         security_style="NTFS",
-        #         # snaplock_configuration=fsx.CfnVolume.SnaplockConfigurationProperty(
-        #         #     snaplock_type="snaplockType",
+                #     # the properties below are optional
+                #     audit_log_volume="auditLogVolume",
+                #     autocommit_period=fsx.CfnVolume.AutocommitPeriodProperty(
+                #         type="type",
 
-        #         #     # the properties below are optional
-        #         #     audit_log_volume="auditLogVolume",
-        #         #     autocommit_period=fsx.CfnVolume.AutocommitPeriodProperty(
-        #         #         type="type",
+                #         # the properties below are optional
+                #         value=123
+                #     ),
+                #     privileged_delete="privilegedDelete",
+                #     retention_period=fsx.CfnVolume.SnaplockRetentionPeriodProperty(
+                #         default_retention=fsx.CfnVolume.RetentionPeriodProperty(
+                #             type="type",
 
-        #         #         # the properties below are optional
-        #         #         value=123
-        #         #     ),
-        #         #     privileged_delete="privilegedDelete",
-        #         #     retention_period=fsx.CfnVolume.SnaplockRetentionPeriodProperty(
-        #         #         default_retention=fsx.CfnVolume.RetentionPeriodProperty(
-        #         #             type="type",
+                #             # the properties below are optional
+                #             value=123
+                #         ),
+                #         maximum_retention=fsx.CfnVolume.RetentionPeriodProperty(
+                #             type="type",
 
-        #         #             # the properties below are optional
-        #         #             value=123
-        #         #         ),
-        #         #         maximum_retention=fsx.CfnVolume.RetentionPeriodProperty(
-        #         #             type="type",
+                #             # the properties below are optional
+                #             value=123
+                #         ),
+                #         minimum_retention=fsx.CfnVolume.RetentionPeriodProperty(
+                #             type="type",
 
-        #         #             # the properties below are optional
-        #         #             value=123
-        #         #         ),
-        #         #         minimum_retention=fsx.CfnVolume.RetentionPeriodProperty(
-        #         #             type="type",
-
-        #         #             # the properties below are optional
-        #         #             value=123
-        #         #         )
-        #         #     ),
-        #         #     volume_append_mode_enabled="volumeAppendModeEnabled"
-        #         # ),
-        #         snapshot_policy=None,
-        #         storage_efficiency_enabled="True",
-        #         tiering_policy=fsx.CfnVolume.TieringPolicyProperty(
-        #             cooling_period=2,
-        #             name="SNAPSHOT_ONLY"
-        #         )
-        #     )
-        # )
+                #             # the properties below are optional
+                #             value=123
+                #         )
+                #     ),
+                #     volume_append_mode_enabled="volumeAppendModeEnabled"
+                # ),
+                snapshot_policy=None,
+                storage_efficiency_enabled="True",
+                tiering_policy=fsx.CfnVolume.TieringPolicyProperty(
+                    cooling_period=2,
+                    name="SNAPSHOT_ONLY"
+                )
+            )
+        )
