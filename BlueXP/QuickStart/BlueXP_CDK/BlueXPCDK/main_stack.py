@@ -33,11 +33,11 @@ class mainStack(Stack):
         Tags.of(AD).add("creator", creator.value_as_string)
         AD.add_dependency(NW)
 
-        bastionhost = BastionStack(self, "BastionStack", vpc=NW.vpc, prefix=prefix)
+        bastionhost = BastionStack(self, "BastionStack", vpc=NW.vpc, defaultsg=NW.defaultsg, prefix=prefix)
         Tags.of(bastionhost).add("creator", creator.value_as_string)
         bastionhost.add_dependency(NW)
 
-        FSxN = FSxNStack(self, "FSxNStack", vpc=NW.vpc, AD=AD.cfn_microsoft_AD , prefix=prefix)
+        FSxN = FSxNStack(self, "FSxNStack", vpc=NW.vpc, AD=AD.cfn_microsoft_AD, defaultsg=NW.defaultsg, prefix=prefix)
         Tags.of(FSxN).add("creator", creator.value_as_string)
         FSxN.add_dependency(AD)
         
