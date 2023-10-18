@@ -20,14 +20,9 @@ class FSxNStack(NestedStack):
         ad_dns_ips=Fn.split(",", Fn.import_value("dnsipaddress"))
         ad_domain_name = AD.name
         ad_file_system_administrators_group = prefix.value_as_string
-<<<<<<< HEAD
-        ad_organizational_unit_distinguished_name = Fn.join(delimiter="", list_of_values=["OU=Computers,OU=",prefix.value_as_string,",DC=",prefix.value_as_string,"DC=.com"])
-        ad_user_name = "Administrator"
-=======
         ad_organizational_unit_distinguished_name = Fn.join(delimiter="", list_of_values=["OU=Computers,OU=",prefix.value_as_string,",DC=",prefix.value_as_string,",DC=com"])
         ## example : OU=Computers,OU=wyahn,DC=wyahn,DC=com
         ad_user_name = "Admin"
->>>>>>> 3b74f0d0f1cc7e09a275464bb798306eb17cb0ec
         ad_password = "Netapp1!"
 
         CfnOutput(self, "adorginfo", value=ad_organizational_unit_distinguished_name)
@@ -59,25 +54,25 @@ class FSxNStack(NestedStack):
                                                 throughput_capacity=128
                                             )
         )
-        # # SVM
-        # self.cfn_storage_virtual_machine = fsx.CfnStorageVirtualMachine(self, "CfnStorageVirtualMachine",
-        #     file_system_id=Fn.select(1,Fn.split('/',self.cfn_file_system.attr_resource_arn)),
-        #     name=Fn.join(delimiter="-", list_of_values=[prefix.value_as_string, "svm"]),
-        #     active_directory_configuration=fsx.CfnStorageVirtualMachine.ActiveDirectoryConfigurationProperty(
-        #         net_bios_name="FSxN",
-        #         self_managed_active_directory_configuration=fsx.CfnStorageVirtualMachine.SelfManagedActiveDirectoryConfigurationProperty(
-        #             dns_ips=ad_dns_ips,
-        #             domain_name=ad_domain_name,
-        #             file_system_administrators_group=ad_file_system_administrators_group,
-        #             organizational_unit_distinguished_name=ad_organizational_unit_distinguished_name,
-        #             password=ad_password,
-        #             user_name=ad_user_name
-        #         )
-        #     ),
-        #     root_volume_security_style="NTFS",
-        #     svm_admin_password="Netapp1!"
-        # )
-        # CfnOutput(self, "svmid", value=self.cfn_storage_virtual_machine.attr_storage_virtual_machine_id)
+        # SVM
+        self.cfn_storage_virtual_machine = fsx.CfnStorageVirtualMachine(self, "CfnStorageVirtualMachine",
+            file_system_id=Fn.select(1,Fn.split('/',self.cfn_file_system.attr_resource_arn)),
+            name=Fn.join(delimiter="-", list_of_values=[prefix.value_as_string, "svm"]),
+            active_directory_configuration=fsx.CfnStorageVirtualMachine.ActiveDirectoryConfigurationProperty(
+                net_bios_name="FSxN",
+                self_managed_active_directory_configuration=fsx.CfnStorageVirtualMachine.SelfManagedActiveDirectoryConfigurationProperty(
+                    dns_ips=ad_dns_ips,
+                    domain_name=ad_domain_name,
+                    #file_system_administrators_group=ad_file_system_administrators_group,
+                    organizational_unit_distinguished_name=ad_organizational_unit_distinguished_name,
+                    password=ad_password,
+                    user_name=ad_user_name
+                )
+            ),
+            root_volume_security_style="NTFS",
+            svm_admin_password="Netapp1!"
+        )
+        CfnOutput(self, "svmid", value=self.cfn_storage_virtual_machine.attr_storage_virtual_machine_id)
         
         # #volume
         # self.cfn_volume = fsx.CfnVolume(self, "CifsVolume",
