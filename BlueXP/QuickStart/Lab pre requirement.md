@@ -5,6 +5,15 @@
 NetApp BlueXP 계정이 필요합니다. 
 [계정이 없으면 여기에서 BlueXP 계정에 가입하세요.](https://bluexp.netapp.com/)
 
+1. [BluxXP](https://bluexp.netapp.com/)에 접속 합니다.
+2. 오른쪽 상단의 ```Get Started``` 를 눌러 로그인 화면으로 넘어갑니다.
+로그인되어 있는 상태라면 ID/PW를 물어보는 화면이 나오지 않습니다.
+3. 로그인 화면 하단 ```Sign up``` 을 클릭합니다.
+<img src=./Images/image.png alt="Girl in a jacket" width="500">
+4. 필요항목을 넣고 회원가입하여 계정을 생성합니다.
+<img src=./Images/image-1.png alt="Girl in a jacket" width="500">
+
+
 ## AWS 구독 
 AWS에서 Cloud Volumes ONTAP 배포를 시작하기 전에 활성 AWS 구독이 있어야 합니다.AWS를 구독하고 있지 않다면 여기에서 계정을 등록하세요. 
 이 계정은 무료 등급에 있어서는 안 되므로 PAYGO 계정을 권장합니다.
