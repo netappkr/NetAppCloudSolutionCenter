@@ -2,6 +2,7 @@
 BlueXP™는 온프레미스 및 클라우드 환경 전반에서 스토리지 및 데이터 서비스를 위한 통합된 경험을 제공합니다. 
 AIOps의 강력한 성능과 더불어 유연한 소비 조건과 오늘날의 클라우드 중심 환경에 필요한 통합 보호 기능을 통해 운영 간소화를 실현합니다.
 
+# Introducing BlueXP
 <iframe width="1280" height="720" src="https://www.youtube.com/embed/JI44xhuGGA4" title="Introducing NetApp BlueXP in 60 seconds or less" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## BlueXP 라이선스는 무료입니다.
@@ -15,6 +16,8 @@ OnPrem 또는 Cloud에 배포하여 BlueXP를 활용해보세요
 - [BlueXP를 통해 Data 보호기능을 설정, 관리하는 방법을 알아봅니다.]()
 - [BlueXP에서 EKS에 볼륨을 연결하는 방법을 알아봅니다.]()
 
- 
+## Demo
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/d8Tga4Oj3y8" title="NetApp BlueXP DEMO" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 # 참조
 - [BlueXP Q&A](https://docs.netapp.com/ko-kr/bluexp-classification/faq-cloud-compliance.html)
