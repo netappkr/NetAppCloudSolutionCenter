@@ -3,7 +3,7 @@ BlueXP™는 온프레미스 및 클라우드 환경 전반에서 스토리지 �
 AIOps의 강력한 성능과 더불어 유연한 소비 조건과 오늘날의 클라우드 중심 환경에 필요한 통합 보호 기능을 통해 운영 간소화를 실현합니다.
 
 # Introducing BlueXP
-https://youtu.be/0Krwl9AC7Eg
+https://youtu.be/JI44xhuGGA4
 
 ## BlueXP 라이선스는 무료입니다.
 BlueXP를 사용하는 소프트웨어 라이선스는 무료입니다.
