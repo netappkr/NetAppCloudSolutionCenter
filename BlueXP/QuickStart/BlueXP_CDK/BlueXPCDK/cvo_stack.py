@@ -12,7 +12,7 @@ class CVOStack(NestedStack):
     def __init__(self, scope: Construct, construct_id: str, vpc, defaultsg, prefix, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
         #prefix = CfnParameter(self, "prefix", type="String", default=prefix.value_as_string, description="this parm use prefix or id in cfn. please input only english and all in lower case")
-        template = cfn_inc.CfnInclude(self, "cvo-single", template_file="aws-cvo-single.json"
+        template = cfn_inc.CfnInclude(self, "cvo-single", template_file="aws-cvo-single.json",
                                       parameters={
                                           "AMI": "",
                                           "AllocatePublicIP": True,

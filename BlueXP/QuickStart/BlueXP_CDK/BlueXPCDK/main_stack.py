@@ -4,6 +4,7 @@ from BlueXPCDK.bastion_stack import BastionStack
 #from BlueXPCDK.EKS_stack import EKSStack
 from BlueXPCDK.fsxn_stack import FSxNStack
 from BlueXPCDK.BlueXP_req import BlueXPReqStack
+#from BlueXPCDK.cvo_stack import CVOStack
 from aws_cdk import (
     Stack,
     CfnParameter,
