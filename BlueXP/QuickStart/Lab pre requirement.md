@@ -23,16 +23,16 @@ BlueXP Console에서 Cloud Volumes ONTAP을 배포하려면 사용자가 AWS Mar
 
 1. 인터넷 브라우저를 통해 AWS 관리 콘솔에 로그인합니다.
 2. [AWS Marketplace](https://aws.amazon.com/marketplace/search/results?page=1&searchTerms=netapp+cloud+volumes+ontap) (동일한 세션 자격 증명을 공유하는 동일한 브라우저) 에서 NetApp Cloud Volumes ONTAP 솔루션을 방문하십시오 . "AWS용 Cloud Volumes ONTAP"(정확한 이름)을 선택합니다.
-![AWS Marketplace 1](https://bluexp.netapp.com/hubfs/Screenshot%2030.bmp)
+![AWS Marketplace 1](./Images/Screenshot%2030.bmp)
 
 3. 상단의 '구독 계속'을 클릭하세요.
-![AWS Marketplace 2](https://bluexp.netapp.com/hubfs/Screenshot%2031.bmp)
+![AWS Marketplace 2](./Images/Screenshot%2031.bmp)
 
 4. "약관 동의"를 클릭하세요.
-![AWS Marketplace 3](https://bluexp.netapp.com/hubfs/Screenshot%2032.bmp)
+![AWS Marketplace 3](./Images/Screenshot%2032.bmp)
 
 5. 구독 확인을 확인하고 브라우저 탭/창을 닫습니다. 
-![AWS Marketplace 4](https://bluexp.netapp.com/hubfs/Screenshot%2033.bmp)
+![AWS Marketplace 4](./Images/Screenshot%2033.bmp)
 
 
 ## 지원되는 AWS 지역 
