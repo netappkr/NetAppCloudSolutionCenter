@@ -34,7 +34,7 @@
 - FileAssetsBucketKmsKeyId : AWS_MANAGED_KEY
 - PublicAccessBlockConfiguration : true
 - Qualifier : hnb659fds </br>
-<img width="80%" height="80%" src="./Images/cdktoolkit.png">
+<img width="80%" height="80%" src="./Images/DeployStackImage/cdktoolkit.png">
 
 3. 전부 기본값으로 진행 후 다음을 눌러 스택생성 페이지까지 이동합니다.
 4. 체크박스를 모두 활성화 후 스택을 생성합니다.
@@ -44,7 +44,7 @@
 5. 스택이 완전히 배포되기까지 기다립니다.
 
 6. Stack 세부정보 화면에서 리소스 탭을 클릭하고 s3를 검색하여 버킷을 확인하고 링크를 클릭하여 s3버킷으로 이동합니다. </br>
-![find-s3](./Images/find-s3.png)
+![find-s3](./Images/DeployStackImage/find-s3.png)
 
 7. CDKToolkit 스택에서 생성된 s3에 파일을 업로드합니다.
 
@@ -53,7 +53,7 @@
 
 - 압축파일 해제 후 s3에 파일을 업로드합니다. </br>
   s3 burketname : cdk-hnb659fds-assets-<"your aws account id">-ap-northeast-2 </br>
-  <img width="80%" height="80%" src="./Images/s3view.png">
+  <img width="80%" height="80%" src="./Images/DeployStackImage/s3view.png">
 
 ## Merge Stack 배포
 
@@ -80,7 +80,7 @@
 # 결과
 
 그림과 같이 2개의 메인스택과 2개의 서브스택이 배포되고 Hands-on 환경이 생성됩니다.</br>
-![image](./Images/stackview.png)
+![image](./Images/DeployStackImage/stackview.png)
 
 # 다음과정
 
