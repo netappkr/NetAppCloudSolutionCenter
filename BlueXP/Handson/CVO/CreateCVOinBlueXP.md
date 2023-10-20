@@ -51,7 +51,6 @@ aws ```gp2```나 ```gp3``` type의 볼륨이 아닌 ```st1``` type을 사용하�
   b. Cloudformation service에서 ```ADStack```으로 시작되는 Stack을 찾습니다. </br>
   c. Output Tab에 출력된 값을 복사합니다. </br>
 ![Alt text](./Images/CreateCVOinBlueXP-14.png)  </br>
-
   d. 복사한 값을 알맞게 입력합니다.</br>
 ![Alt text](./Images/CreateCVOinBlueXP-15.png)
 
