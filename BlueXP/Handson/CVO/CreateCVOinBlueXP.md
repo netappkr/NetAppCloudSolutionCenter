@@ -65,7 +65,7 @@ HDD로 배포하여 비용을 절약 루트를 선택한 경우 __HDD로 배포�
 ![Alt text](./Images/CreateCVOinBlueXP-16.png)
 </details>
 <details>
-    <summary>추가 옵션 (생략가능): HDD로 배포하여 비용을 절약</summary>
+    <summary>옵션 (생략가능): HDD로 배포하여 비용을 절약</summary>
 
 16. Create Volume - Usage Profile Disk Type & Tiering Policy </br>
 ![Alt text](./Images/CreateCVOinBlueXP-16-1.png)
