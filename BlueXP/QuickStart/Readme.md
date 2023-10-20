@@ -1,7 +1,7 @@
 # BlueXP Handson 환경 배포
 
 ## Pre requirement
-- [Lab prerequirement](./Lab%20prerequirement.md)
+- [Lab prerequirement](./LabPreRequirement.md)
 
 ### 지원되는 리전
 
