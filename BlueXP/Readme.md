@@ -13,6 +13,7 @@ OnPrem 또는 Cloud에 배포하여 BlueXP를 활용해보세요
 시작하기 전에 [사전 요구사항](./QuickStart/Lab%20prerequirement.md)을 확인 후 수행하세요.
 - [Hands on 환경을 구성합니다.](./QuickStart/Readme.md)
 - [BlueXP connector를 배포하는 방법을 알아봅니다.](./Handson/CreateBlueXPConnector/Readme.md)
+- [BlueXP에서 Cloud Volume Ontap을 배포합니다.](./Handson/CVO/Readme.md)
 - [AWS FSx Netapp for Ontap 과 BlueXP를 연동하는 방법을 알아봅니다.]()
 - [BlueXP를 통해 Data 보호기능을 설정, 관리하는 방법을 알아봅니다.]()
 - [BlueXP에서 EKS에 볼륨을 연결하는 방법을 알아봅니다.]()
