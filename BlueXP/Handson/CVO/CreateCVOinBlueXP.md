@@ -59,7 +59,7 @@ aws ```gp2```나 ```gp3``` type의 볼륨이 아닌 ```st1``` type을 사용하�
     <summary>추가 옵션 (생략가능): HDD로 배포하여 비용을 절약</summary>
 
 16. Create Volume - Usage Profile Disk Type & Tiering Policy </br>
-![Alt text](./Images/CreateCVOinBlueXP-18.png)
+![Alt text](./Images/CreateCVOinBlueXP-16-1.png)
 </details>
 
 
