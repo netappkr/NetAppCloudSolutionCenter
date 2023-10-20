@@ -49,6 +49,9 @@ aws ```gp2```나 ```gp3``` type의 볼륨이 아닌 ```st1``` type을 사용하�
 ![Alt text](./Images/CreateCVOinBlueXP-14.png)  </br>
 ![Alt text](./Images/CreateCVOinBlueXP-15.png)
 
+기본 루트로 진행하신 경우 __POC용 표준 배포__ 를 클릭하세요  </br>
+HDD로 배포하여 비용을 절약 루트를 선택한 경우 __HDD로 배포하여 비용을 절약__ 을 클릭하세요  </br>
+
 <details>
     <summary>POC용 표준 배포</summary>
 
