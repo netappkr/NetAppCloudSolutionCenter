@@ -37,25 +37,5 @@ BlueXP Console에서 Cloud Volumes ONTAP을 배포하려면 사용자가 AWS Mar
 # 참조
 - [step by step guide to setting up cloud volumes ontap on aws](https://bluexp.netapp.com/blog/a-step-by-step-guide-to-setting-up-cloud-volumes-ontap-on-aws)
 
-## 지원되는 AWS 지역 
-Cloud Volumes ONTAP 서비스는 [여기](https://bluexp.netapp.com/cloud-volumes-global-regions)에 나열된 AWS 지역 에서 사용할 수 있습니다.
-
-## AWS Key pair or Iam Role 
-NetApp BlueXP에서 BlueXP 콘솔을 배포하려면 BlueXP 콘솔 어플라이언스가 배포되는 지역 내에서 유효한 AWS 키 쌍을 사용할 수 있어야 합니다.
-AWS 구독 내에 키 페어가 존재하지 않는 경우 아래 설명된 단계를 진행하기 전에 이를 생성해야 합니다.
-__실습에서는 Cloudformation을 이용해 필요한 권한을 생성합니다.__
-
-## BlueXP 콘솔 네트워킹 고려 사항 
-BlueXP 콘솔을 사용하는 웹 브라우저 클라이언트 시스템은 다음 끝점에 액세스할 수 있습니다.
-- https://cloudmanager.cloud.netapp.com
-- https://auth0.com
-- https://cdn.auth0.com
-- https://netapp-cloud- account.auth0.com
-- https://services.cloud.netapp.com
-- https://widget.intercom.io
-
-__실습에서는 필요한 네트워크 환경을 Cloudformation을 통해 구성합니다.__
-BlueXP Console 및 Cloud Volumes ONTAP에 대한 자세한 제품 개요 문서는 [NetApp BlueXP Console 및 Cloud Volumes ONTAP 개요](https://docs.netapp.com/us-en/occm/concept_overview.html#cloud-manager) 에서 확인할 수 있습니다.
-
 
 
