@@ -14,7 +14,7 @@ BlueXP에서 Plublic Cloud에 자원들을 제어하기위한 권한이 필요�
 ![AddAwsCredential](./Images/AddAwsCredential-3.png)
 7. BlueXP 콘솔에서 필요한 값을 입력합니다.
 - Credentials name : Cloudformaion output 참조
-- Role ARN : Cloudformaion output 참조
+- Role ARN : Cloudformaion output 참조</br>
 ![AddAwsCredential](./Images/AddAwsCredential-4.png)
 8. Next > Add 를 눌러 Role을 추가합니다.
 
