@@ -1,9 +1,9 @@
 # 사전 요구사항
 이 섹션에서는 BlueXP 및 Cloud Volumes ONTAP 배포 전에 이해하고 해결해야 하는 주요 설계 고려 사항을 강조합니다.
 
-## NetApp BlueXP 계정
-NetApp BlueXP 계정이 필요합니다. 
-[계정이 없으면 여기에서 BlueXP 계정에 가입하세요.](https://bluexp.netapp.com/)
+## NetApp BlueXP 계정 생성
+NetApp BlueXP 계정이 필요합니다.</br>
+계정이 없는 경우 BlueXP 계정을 생성합니다.
 
 1. [BluxXP](https://bluexp.netapp.com/)에 접속 합니다.
 2. 오른쪽 상단의 ```Get Started``` 를 눌러 로그인 화면으로 넘어갑니다.
