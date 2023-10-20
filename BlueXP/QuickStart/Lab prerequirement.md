@@ -34,6 +34,10 @@ BlueXP Console에서 Cloud Volumes ONTAP을 배포하려면 사용자가 AWS Mar
 5. 구독 확인을 확인하고 브라우저 탭/창을 닫습니다. 
 ![AWS Marketplace 4](./Images/Screenshot%2033.bmp)
 
+## 실습
+- [Main](../Handson/readme.md)
+
+
 # 참조
 - [step by step guide to setting up cloud volumes ontap on aws](https://bluexp.netapp.com/blog/a-step-by-step-guide-to-setting-up-cloud-volumes-ontap-on-aws)
 

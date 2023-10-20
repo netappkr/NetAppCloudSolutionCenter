@@ -10,7 +10,12 @@ BlueXP를 사용하는 소프트웨어 라이선스는 무료입니다.
 OnPrem 또는 Cloud에 배포하여 BlueXP를 활용해보세요
 
 ## BlueXP Hands on
+BlueXP의 기능에 대해 체험해 볼 수 있는 Hands on Guide 입니다.
+이 Hands on은 AWS 환경에 배포됨으로 비용이 발생합니다.
+실습이 끝난 후 자원을 꼭 삭제 하세요.
+
 시작하기 전에 [사전 요구사항](./QuickStart/Lab%20prerequirement.md)을 확인 후 수행하세요.
+
 - [Hands on 환경을 구성합니다.](./QuickStart/Readme.md)
 - [BlueXP connector를 배포하는 방법을 알아봅니다.](./Handson/CreateBlueXPConnector/Readme.md)
 - [BlueXP에서 Cloud Volume Ontap을 배포합니다.](./Handson/CVO/Readme.md)
