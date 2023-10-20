@@ -25,8 +25,8 @@ BlueXP를 통해 Demo에 사용할 CVO를 손쉽게 배포할 수 있습니다.
 
 <!-- summary 아래 한칸 공백 두고 내용 삽입 -->
 ## HDD 볼륨을 배포하여 유지비 절약
-aws ```gp2```나 ```gp3``` type의 볼륨이 아닌 ```st1``` type을 사용하도록 설정합니다.
-이 경우 Tiring 기능을 선택할 수 없습니다.
+aws ```gp2```나 ```gp3``` type의 볼륨이 아닌 ```st1``` type을 사용하도록 설정합니다. </br>
+이 경우 Tiring 기능을 선택할 수 없습니다. </br>
 8. Preconfigured Packages </br>
 ![Alt text](./Images/CreateCVOinBlueXP-7-1.png)
 9. IAM Role </br>
@@ -43,9 +43,10 @@ aws ```gp2```나 ```gp3``` type의 볼륨이 아닌 ```st1``` type을 사용하�
 
 9. volume </br>
 ![Alt text](./Images/CreateCVOinBlueXP-13.png)
+
 10. CIFS Setup </br>
-Cloudformation > ADStack
-![Alt text](./Images/CreateCVOinBlueXP-14.png)
+0
+![Alt text](./Images/CreateCVOinBlueXP-14.png)  </br>
 ![Alt text](./Images/CreateCVOinBlueXP-15.png)
 
 <details>
