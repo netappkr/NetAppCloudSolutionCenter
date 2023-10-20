@@ -1,8 +1,7 @@
 # BlueXP Handson 환경 배포
 
-## 전제조건
-
-단일 계정 다중 리전을 지원합니다.
+## Pre requirement
+- [Lab prerequirement](./Lab%20prerequirement.md)
 
 ### 지원되는 리전
 
@@ -20,7 +19,7 @@
 - "eu-west-2"
 - "eu-west-3"
 
-## CDKToolkit 배포
+## CDK Asset 배포
 
 1. AWS console > Cloudformation 콘솔을 엽니다.
 2. stack 생성 버튼을 선택합니다.

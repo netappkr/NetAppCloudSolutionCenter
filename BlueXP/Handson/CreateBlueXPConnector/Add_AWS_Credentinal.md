@@ -1,6 +1,9 @@
 # BlueXP에 AWS Credentinal 추가
 BlueXP에서 Plublic Cloud에 자원들을 제어하기위한 권한이 필요합니다.
 
+## Pre requirement
+- [QuickStart/Readme.md](../../QuickStart/Readme.md)
+
 ## BlueXP에 AWS Credentinal 추가
 1. 톱니바귀 모양의 아이콘을 클릭합니다.
 ![AddAwsCredential](./Images/AddAwsCredential-1.png)

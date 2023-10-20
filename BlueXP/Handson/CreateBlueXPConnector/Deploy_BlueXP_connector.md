@@ -1,13 +1,8 @@
 # BlueXP connector 배포
 connector를 배포해야만 BlueXP의 다양한 기능들을 활용 할 수 있습니다.
 
-## 선행조건
-- [Cloud Central](https://cloud.netapp.com/) 계정이 필요합니다. </br>
-계정이 없으신분들은 회원가입을 해주세요 </br> 
-[Sign-in Guide](https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-signing-up.html)
-- connecter는 Cloud Central과 통신하기 위해 인터넷 연결이 필요합니다.</br>
-- Cloud Manager는 172.17.0.0/16 및 172.18.0.0/16 범위의 IP 주소가 있는 두 개의 가상 인터페이스(VIP)로 커넥터를 배포합니다. 서브넷 CIDR이 중복되지 않도록 구성해주세요. </br> 
-자세한 확인사항은 [Getting started checklist](https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-checklist-cm.html) 문서를 확인해주세요.
+## Pre requirement
+- [Add_AWS_Credentinal](./Add_AWS_Credentinal.md)
 
 ## BlueXP에서 Connector 배포
 1. 웹 브라우저를 열고 [BlueXP](https://consolebluexp.netapp.com)로 이동합니다 .
