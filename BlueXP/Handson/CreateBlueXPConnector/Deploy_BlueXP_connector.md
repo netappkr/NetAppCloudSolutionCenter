@@ -64,10 +64,9 @@ connector를 배포해야만 BlueXP의 다양한 기능들을 활용 할 수 있
 프로세스가 완료될 때까지 페이지에 머물러 있어야 합니다.</br>
 커넥터를 생성한 동일한 AWS 계정에 Amazon S3 버킷이 있는 경우 캔버스에 Amazon S3 작업 환경이 자동으로 표시됩니다.
 
-# 다음과정
-Netapp Cloudmanager를 이용해 AWS FSXontap을 등록합니다.</br>
-- 다음주제: [Create AWS FSx for ontap](../FSXforOntap/CreateFSXontap.md)
-- 이전주제: [Hands on 환경을 생성합니다.](../QuickStart/CreateLabQuickstartGuide.md)
+## 실습 : BlueXP 배포
+- Step 1 : [Add_AWS_Credentinal](./Add_AWS_Credentinal.md)
+- Step 2 : [Deploy_BlueXP_connector](./Deploy_BlueXP_connector.md)
 
 
 # 참조
