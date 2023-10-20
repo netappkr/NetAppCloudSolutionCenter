@@ -10,8 +10,9 @@ BlueXP를 사용하는 소프트웨어 라이선스는 무료입니다.
 OnPrem 또는 Cloud에 배포하여 BlueXP를 활용해보세요
 
 ## BlueXP Hands on
-시작하기 전에 [사전 요구사항](./QuickStart/Lab%20pre%20requirement.md)을 확인 후 수행하세요.
-- [BlueXP를 사용하기위해 Cloudmanager를 생성하는 방법에 대해 알아봅니다.]()
+시작하기 전에 [사전 요구사항](./QuickStart/Lab%20prerequirement.md)을 확인 후 수행하세요.
+- [deploy Hands on enviroment](./QuickStart/Readme.md)
+- [Create BlueXP connector](./Handson/CreateBlueXPConnector/Readme.md)
 - [스토리지와 BlueXP를 연동하는 법을 실습합니다.]()
 - [BlueXP를 통해 Data 보호기능을 설정, 관리하는 방법을 알아봅니다.]()
 - [BlueXP에서 EKS에 볼륨을 연결하는 방법을 알아봅니다.]()
