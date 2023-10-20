@@ -21,7 +21,7 @@ BlueXP를 통해 Demo에 사용할 CVO를 손쉽게 배포할 수 있습니다.
 
 > __Tips__
 <details>
-    <summary>HDD로 배포</summary>
+    <summary>추가 옵션 (생략가능): HDD로 배포하여 비용을 절약</summary>
 
 <!-- summary 아래 한칸 공백 두고 내용 삽입 -->
 ## HDD 볼륨을 배포하여 유지비 절약
@@ -55,7 +55,7 @@ Cloudformation > ADStack
 ![Alt text](./Images/CreateCVOinBlueXP-16.png)
 </details>
 <details>
-    <summary>HDD로 배포</summary>
+    <summary>추가 옵션 (생략가능): HDD로 배포하여 비용을 절약</summary>
 
 16. Create Volume - Usage Profile Disk Type & Tiering Policy </br>
 ![Alt text](./Images/CreateCVOinBlueXP-18.png)
