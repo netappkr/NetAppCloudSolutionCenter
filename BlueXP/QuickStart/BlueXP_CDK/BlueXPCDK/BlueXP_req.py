@@ -3,6 +3,7 @@ from aws_cdk import (
     NestedStack,
     aws_iam as iam,
     CfnParameter,
+    CfnOutput,
     Fn
 )
 from constructs import Construct
@@ -372,3 +373,6 @@ class BlueXPReqStack(NestedStack):
         # Role 에 Policy 부여
         role.attach_inline_policy(BlueXP_Policy)
         role.attach_inline_policy(OCCMFSx)
+
+        CfnOutput(self, "BlueXPRoleArn", value=role.role_arn)
+        CfnOutput(self, "BluxXP.CredentinalName", value=Fn.join(delimiter="_", list_of_values=[self.account,role.role_name]))

@@ -55,21 +55,20 @@
   s3 burketname : cdk-hnb659fds-assets-<"your aws account id">-ap-northeast-2 </br>
   <img width="80%" height="80%" src="./Images/DeployStackImage/s3view.png">
 
-## Merge Stack 배포
+## Main Stack 배포
 
 > ### 경고!
 > 반드시 CDKToolkit Stack에서 생성된 S3 버킷에 첨부된 파일이 모두 업로드된 상태에서 진행되어야 합니다.
 
 1. Main Stack을 생성합니다.
 
-- StackName: MergeStack </br>
+- StackName: MainStack </br>
 - Template URL: <https://netappkr-wyahn-s3.s3.ap-northeast-2.amazonaws.com/public/Spot_Admin/cdk/MergeStack.template.json>
 
-### Merge Stack Parameters
-
+2. Main Stack Parameters
 모든 항목을 이미 입력된 기본값으로 설정합니다.
 
-2. 모든 체크박스를 체크 후 스택을 생성합니다.
+3. 모든 체크박스를 체크 후 스택을 생성합니다.
 
 - [X] AWS CloudFormation이 사용자 지정 이름으로 IAM 리소스를 생성할 수 있음을 인정합니다.
 - [X] AWS CloudFormation에 다음 기능이 필요할 수 있음을 인정합니다. CAPABILITY_AUTO_EXPAND
