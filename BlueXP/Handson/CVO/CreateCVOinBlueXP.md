@@ -19,7 +19,7 @@ BlueXP를 통해 Demo에 사용할 CVO를 손쉽게 배포할 수 있습니다.
 8. Preconfigured Packages </br>
 ![Alt text](./Images/CreateCVOinBlueXP-7.png)
 
-__Tips__
+> __Tips__
 <details>
     <summary>HDD로 배포</summary>
 
@@ -41,9 +41,9 @@ aws ```gp2```나 ```gp3``` type의 볼륨이 아닌 ```st1``` type을 사용하�
 ![Alt text](./Images/CreateCVOinBlueXP-12.png)
 </details>
 
-14. volume </br>
+9. volume </br>
 ![Alt text](./Images/CreateCVOinBlueXP-13.png)
-15. CIFS Setup </br>
+10. CIFS Setup </br>
 Cloudformation > ADStack
 ![Alt text](./Images/CreateCVOinBlueXP-14.png)
 ![Alt text](./Images/CreateCVOinBlueXP-15.png)
@@ -51,7 +51,7 @@ Cloudformation > ADStack
 <details>
     <summary>POC용 표준 배포</summary>
 
-16. Create Volume - Usage Profile Disk Type & Tiering Policy </br>
+11. Create Volume - Usage Profile Disk Type & Tiering Policy </br>
 ![Alt text](./Images/CreateCVOinBlueXP-16.png)
 </details>
 <details>
