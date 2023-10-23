@@ -4,11 +4,11 @@ BlueXP는 API를 통한 제어가 가능합니다. 인증에 JWT Token을 사용
 
 ## Service Account 생성
 1. NetApp Cloud Central에 로그인 후 [BlueXP web console](https://cloudmanager.netapp.com/)에 접속합니다.
-2. ```Account``` > ```Manage Account```
+2. ```Account``` > ```Manage Account```</br>
 ![Alt text](./Images/Readme-0.png.png)
-3. ```Members``` Tab
+3. ```Members``` Tab</br>
 ![Alt text](./Images/Readme-1.png.png)
-4. ```Create Service Account```
+4. ```Create Service Account```</br>
 ![Alt text](./Images/Readme-2.png.png)
 5. ```sa_client_id```, ```sa_secret_key```를 복사한 후 ```Notepad```을 열고 ```BlueXP_Auth.tfvars``` 파일을 생성합니다.
 cloudmanager_sa_secret_key = "복사한 sa_secret_key"
