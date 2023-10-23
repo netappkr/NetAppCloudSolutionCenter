@@ -1,3 +1,5 @@
+# 사용중인 Terraform code
+[repo netappkr_AWSCDK](https://github.com/netappkr/netappkr_AWSCDK)
 
 # Terraform cheat sheet
 적용 전 확인
