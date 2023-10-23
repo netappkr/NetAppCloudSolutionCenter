@@ -23,6 +23,6 @@ BlueXP는 Ontap System을 등록하여 사용할 수 있습니다. FSxN도 예�
 7. insert your password</br>
 ![Alt text](./Images/GetStartedwithBlueXPForFsxN-6.png)
 
-# 이게 답니다.
-손쉽게 BlueXP를 통해 FSxN을 제어할 수 있습니다.
+## 실습
+- [Get started with BlueXP classification for Amazon FSx for ONTAP](./GetStartedwithBlueXPForFsxN.md)
 
