@@ -5,7 +5,7 @@ FSx for ONTAP은 기본 AWS 서비스의 단순성, 민첩성, 보안 및 확장
 ## What is FSxN?
 [![Alt text](./Images/readme-0.png)](https://youtu.be/2MefyahWOq4)
 
-### Resources
+### Amazon Fsx for Netapp ontap에 대해 더 자세히 알아보기
 - [Getting Started - Introduction to Amazon FSx for NetApp ONTAP and demo](https://www.youtube.com/watch?v=JcKsOUYoJYA)
 - [Deep dive on Amazon FSx for NetApp ONTAP](https://www.youtube.com/watch?v=V7iwoZHDNGs)
 - [Amazon FSx for NetApp ONTAP product page](https://aws.amazon.com/fsx/netapp-ontap/)
