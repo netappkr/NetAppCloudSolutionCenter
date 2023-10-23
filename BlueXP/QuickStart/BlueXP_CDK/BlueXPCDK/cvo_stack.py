@@ -17,7 +17,15 @@ class CVOStack(NestedStack):
                                           "AMI": "",
                                           "AllocatePublicIP": True,
                                           "BootMediaType": "io1",
-                                          "CoreMediaType": defaultsg
+                                          "CoreMediaType": defaultsg,
+                                          "DeploymentType" : "singlenode",
+                                          "InstanceType" : "m5.xlarge",
+                                          "KeyPair" : "",
+                                          "PlatformSerialNumber" : "",
+                                          "RootMediaType" : "",
+                                          "SubnetId" : vpc.select_subnets(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS).subnet_ids[0],
+                                          "Tenancy": "default",
+                                          "VpcId" : vpc.id
                                       }
                                       )
         #cfnoutput
