@@ -15,7 +15,9 @@ BlueXP는 API를 통한 제어가 가능합니다. 인증에 JWT Token을 사용
 cloudmanager_sa_secret_key = "복사한 sa_secret_key"
 cloudmanager_sa_client_id = "복사한 sa_client_id"
 ```
-외부에 id와 key 값이 유출되지 않도록 관리해야 합니다.
+
+> ### 경고
+> 외부에 id와 key 값이 유출되지 않도록 관리해야 합니다.
 
 ## Refresh Token 생성
 NetApp Cloud Central에 로그인 후 여기서 [refresh_token](https://services.cloud.netapp.com/refresh-token)을 생성합니다.
