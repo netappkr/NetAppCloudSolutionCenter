@@ -17,7 +17,7 @@ BlueXP는 Ontap System을 등록하여 사용할 수 있습니다. FSxN도 예�
 5. we can see the fsxn on canvas</br>
 ![Alt text](./Images/GetStartedwithBlueXPForFsxN-4.png)
 
-6. click the FSxN and enter Workgin Enviroment</br>
+6. click the FSxN and ```Enter Workgin Enviroment```</br>
 ![Alt text](./Images/GetStartedwithBlueXPForFsxN-5.png)
 
 7. insert your password</br>
