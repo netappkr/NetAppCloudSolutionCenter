@@ -73,3 +73,9 @@ HDD로 배포하여 비용을 절약 루트를 선택한 경우 __HDD로 배포�
 
 17. Review & Apporve </br>
 ![Alt text](./Images/CreateCVOinBlueXP-17.png)
+
+## 실습 : CVO
+- Step 1 : [Add_AWS_Credentinal](./Add_AWS_Credentinal.md)
+- Step 2 : [Deploy_BlueXP_connector](./Deploy_BlueXP_connector.md)
+
+# 참조
