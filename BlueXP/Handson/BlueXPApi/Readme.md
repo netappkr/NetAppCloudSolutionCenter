@@ -11,9 +11,10 @@ BlueXP는 API를 통한 제어가 가능합니다. 인증에 JWT Token을 사용
 4. ```Create Service Account```</br>
 ![Alt text](./Images/Readme-2.png)
 5. ```sa_client_id```, ```sa_secret_key```를 복사한 후 ```Notepad```을 열고 ```BlueXP_Auth.tfvars``` 파일을 생성합니다.
+```yaml
 cloudmanager_sa_secret_key = "복사한 sa_secret_key"
 cloudmanager_sa_client_id = "복사한 sa_client_id"
-
+```
 외부에 id와 key 값이 유출되지 않도록 관리해야 합니다.
 
 ## Refresh Token 생성
