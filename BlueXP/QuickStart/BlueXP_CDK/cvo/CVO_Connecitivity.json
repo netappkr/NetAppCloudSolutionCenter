@@ -1,0 +1,510 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "NetApp Connectivity probe for ONTAP Cloud CloudFormation Template for launching a single node cluster from OnCommand Cloud Manager",
+    "Parameters": {
+        "VpcId": {
+            "Type": "AWS::EC2::VPC::Id",
+            "Description": "ID of an existing Virtual Private Cloud (VPC)."
+        },
+        "CustomNetAppSecurityGroup": {
+            "Type": "String",
+            "Description": "Security Group in your Virtual Private Cloud (VPC) to use for firewall protection.",
+            "Default": ""
+        },
+        "SubnetId": {
+            "Type": "AWS::EC2::Subnet::Id",
+            "Description": "Subnet for node."
+        },
+        "InstanceType": {
+            "Type": "String",
+            "Description": "Size of VM."
+        },
+        "AmazonLinuxAmiId": {
+            "Type": "String",
+            "Description": "Amazon Linux AMI ID",
+            "Default": ""
+        }
+    },
+    "Mappings": {
+        "UserDataMap": {
+            "ProbeUserData": {
+                "ProbeUserData": [
+                    "#!/usr/bin/python",
+                    "",
+                    "from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer",
+                    "from SocketServer import ThreadingMixIn",
+                    "from threading import Thread",
+                    "import urlparse",
+                    "import threading",
+                    "import argparse",
+                    "import re",
+                    "import urllib2",
+                    "import socket",
+                    "import fcntl",
+                    "import struct",
+                    "import cgi",
+                    "import os",
+                    "from subprocess import Popen, PIPE, call",
+                    "",
+                    "class LocalData(object):",
+                    "  records = {}",
+                    "",
+                    "class Handler(BaseHTTPRequestHandler):",
+                    "",
+                    "   def do_GET(self):",
+                    "       if None != re.search('/api/connectivity/reach', self.path):",
+                    "           query = urlparse.urlparse(self.path).query",
+                    "           if not query:",
+                    "               self.send_response(200)",
+                    "               self.send_header('Content-Type', 'application/json')",
+                    "               self.end_headers()",
+                    "               self.wfile.write('successfully reached primary probe')",
+                    "               return",
+                    "           query_components = dict(qc.split('=') for qc in query.split('&'))",
+                    "           port = query_components.get('port', None)",
+                    "           dest = query_components.get('dest', None)",
+                    "           if (port == None) or (dest == None):",
+                    "               self.send_response(400)",
+                    "               return",
+                    "           else:",
+                    "               s = socket.socket()",
+                    "               try:",
+                    "                   print('invoking reach api to {0} on port {1}'.format(dest, port))",
+                    "                   addr = get_ip_address('eth1')",
+                    "                   s.bind((addr, 0))",
+                    "                   res = s.connect_ex((dest, int(port)))",
+                    "                   if res == 0:",
+                    "                      self.send_response(200)",
+                    "                      self.send_header('Content-Type', 'application/json')",
+                    "                      self.end_headers()",
+                    "                      self.wfile.write('Primary probe successfully reached secondary probe [{0}:{1}]'.format(dest, port))",
+                    "                   else:",
+                    "                      self.send_response(400)",
+                    "                      self.send_header('Content-Type', 'application/json')",
+                    "                      self.end_headers()",
+                    "                      self.wfile.write('Primary probe failed reaching secondary probe')",
+                    "               except Exception as e:",
+                    "                   self.send_response(400)",
+                    "                   self.send_header('Content-Type', 'application/json')",
+                    "                   self.end_headers()",
+                    "                   self.wfile.write('Primary probe failed reaching secondary probe')",
+                    "                   print('General error: '+str(e))",
+                    "               finally:",
+                    "                   s.close()",
+                    "               return",
+                    "       elif None != re.search('/api/connectivity/occm/reach', self.path):",
+                    "           query = urlparse.urlparse(self.path).query",
+                    "           if not query:",
+                    "               self.send_response(400)",
+                    "               self.send_header('Content-Type', 'application/json')",
+                    "               self.end_headers()",
+                    "               self.wfile.write('Missing occm host info')",
+                    "               return",
+                    "           query_components = dict(qc.split('=') for qc in query.split('&'))",
+                    "           port = query_components.get('port', '80')",
+                    "           dest = query_components.get('dest', None)",
+                    "           if dest == None:",
+                    "               self.send_response(400)",
+                    "               self.send_header('Content-Type', 'application/json')",
+                    "               self.end_headers()",
+                    "               self.wfile.write('Missing occm host info')",
+                    "               return",
+                    "           else:",
+                    "               try:",
+                    "                   print('invoking reach occm api to {0} on port {1}'.format(dest, port))",
+                    "                   urllib2.urlopen('http://{0}:{1}/occm/api/occm/system/about'.format(dest, port), timeout = 4).read()",
+                    "                   self.send_response(200)",
+                    "                   self.send_header('Content-Type', 'application/json')",
+                    "                   self.end_headers()",
+                    "                   self.wfile.write('Primary probe successfully reached occm on {0}:{1}'.format(dest, port))",
+                    "               except Exception as e:",
+                    "                   self.send_response(400)",
+                    "                   self.send_header('Content-Type', 'application/json')",
+                    "                   self.end_headers()",
+                    "                   self.wfile.write('Primary probe failed reaching occm')",
+                    "                   print('Error: '+str(e))",
+                    "               return",
+                    "       elif None != re.search('/api/connectivity/mediator/reachaws', self.path):",
+                    "           query = urlparse.urlparse(self.path).query",
+                    "           region = 'us-east-1'",
+                    "           if query:",
+                    "               query_components = dict(qc.split('=') for qc in query.split('&'))",
+                    "               newRegion = query_components.get('region', None)",
+                    "               proxy = query_components.get('proxy', None)",
+                    "               port = query_components.get('port', None)",
+                    "               user = query_components.get('user', None)",
+                    "               pswd = query_components.get('pswd', None)",
+                    "               if proxy != None and port != None:",
+                    "                   print('using proxy http://' + proxy + ':' + port + ' for aws connectivity check')",
+                    "                   creds = '' if user == None or pswd == None else user + ':' + pswd + '@'",
+                    "                   os.environ['HTTPS_PROXY'] = 'http://{0}{1}:{2}'.format(creds, proxy, port)",
+                    "               if newRegion != None:",
+                    "                   print('Using region ' + newRegion)",
+                    "                   region = newRegion",
+                    "           try:",
+                    "               print('invoking cli request to aws')",
+                    "               os.environ['AWS_ACCESS_KEY_ID'] = '1'",
+                    "               os.environ['AWS_SECRET_ACCESS_KEY'] = '1'",
+                    "               os.environ['AWS_DEFAULT_REGION'] = region",
+                    "               cmd = 'timeout 4 aws ec2 describe-regions'",
+                    "               p = Popen(cmd, shell=True, stderr=PIPE, stdout=PIPE)",
+                    "               stdout, stderr = p.communicate()",
+                    "               if None != re.search('AuthFailure', stderr):",
+                    "                   self.send_response(200)",
+                    "                   self.send_header('Content-Type', 'application/json')",
+                    "                   self.end_headers()",
+                    "                   self.wfile.write('Probe successfully reached aws')",
+                    "                   print('Success')",
+                    "               else:",
+                    "                   self.send_response(400)",
+                    "                   self.send_header('Content-Type', 'application/json')",
+                    "                   self.end_headers()",
+                    "                   self.wfile.write('Probe failed reaching aws')",
+                    "                   print('Failure')",
+                    "           except Exception as e:",
+                    "                   self.send_response(400)",
+                    "                   self.send_header('Content-Type', 'application/json')",
+                    "                   self.end_headers()",
+                    "                   self.wfile.write('Probe failed reaching AWS')",
+                    "                   print('General error: '+str(e))",
+                    "       elif None != re.search('/api/connectivity/s3/reach', self.path):",
+                    "           query = urlparse.urlparse(self.path).query",
+                    "           region = 'us-east-1'",
+                    "           if query:",
+                    "               query_components = dict(qc.split('=') for qc in query.split('&'))",
+                    "               newRegion = query_components.get('newRegion', None)",
+                    "               proxy = query_components.get('proxy', None)",
+                    "               port = query_components.get('port', None)",
+                    "               user = query_components.get('user', None)",
+                    "               pswd = query_components.get('pswd', None)",
+                    "               if proxy != None and port != None:",
+                    "                   print('using proxy http://' + proxy + ':' + port + ' for aws connectivity check')",
+                    "                   creds = '' if user == None or pswd == None else user + ':' + pswd + '@'",
+                    "                   os.environ['HTTPS_PROXY'] = 'http://{0}{1}:{2}'.format(creds, proxy, port)",
+                    "               if newRegion != None:",
+                    "                   print('Using region ' + newRegion)",
+                    "                   region = newRegion",
+                    "           try:",
+                    "               print('invoking cli request to aws')",
+                    "               os.environ['AWS_ACCESS_KEY_ID'] = '1'",
+                    "               os.environ['AWS_SECRET_ACCESS_KEY'] = '1'",
+                    "               os.environ['AWS_DEFAULT_REGION'] = region",
+                    "               cmd = 'timeout 4 aws s3 ls'",
+                    "               p = Popen(cmd, shell=True, stderr=PIPE, stdout=PIPE)",
+                    "               stdout, stderr = p.communicate()",
+                    "               if None != re.search('InvalidAccessKeyId', stderr):",
+                    "                   self.send_response(200)",
+                    "                   self.send_header('Content-Type', 'application/json')",
+                    "                   self.end_headers()",
+                    "                   self.wfile.write('Successfully reached S3')",
+                    "                   print('Success')",
+                    "               else:",
+                    "                   self.send_response(400)",
+                    "                   self.send_header('Content-Type', 'application/json')",
+                    "                   self.end_headers()",
+                    "                   self.wfile.write('Failed reaching s3, in region ' + region + '. A connection is required because you chose a tiered storage configuration. The best way to provide that connection is by creating a VPC Endpoint to the S3 service.' + ' error: ' + repr(stderr))",
+                    "                   print('Failure')",
+                    "           except Exception as e:",
+                    "                   self.send_response(400)",
+                    "                   self.send_header('Content-Type', 'application/json')",
+                    "                   self.end_headers()",
+                    "                   self.wfile.write('Failed reaching S3 with error: ' + str(e))",
+                    "                   print('General error: '+str(e))",
+                    "       else:",
+                    "           self.send_response(400)",
+                    "           self.send_header('Content-Type', 'application/json')",
+                    "           self.end_headers()",
+                    "           self.wfile.write('BAD URL')",
+                    "       return",
+                    "",
+                    "class ThreadingHTTPServer(ThreadingMixIn, HTTPServer):",
+                    "   pass",
+                    "",
+                    "def serve_on_port(ip,port):",
+                    "   try:",
+                    "      server = ThreadingHTTPServer((ip,port), Handler)",
+                    "      server.serve_forever()",
+                    "   except Exception as e:",
+                    "      print(str(e) + ' port: ' + str(port))",
+                    "",
+                    "def get_ip_address(ifname):",
+                    "   s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)",
+                    "   return socket.inet_ntoa(fcntl.ioctl(",
+                    "   s.fileno(),",
+                    "   0x8915,  # SIOCGIFADDR",
+                    "   struct.pack('256s', ifname[:15])",
+                    "       )[20:24])",
+                    "",
+                    "ip = get_ip_address('eth0')",
+                    "ip1 = 0",
+                    "try:",
+                    "   ip1 = get_ip_address('eth1')",
+                    "except Exception as e:",
+                    "   ip1 = ip",
+                    "",
+                    "# external security group ports",
+                    "Thread(target=serve_on_port, args=[ip,139]).start()",
+                    "Thread(target=serve_on_port, args=[ip,161]).start()",
+                    "Thread(target=serve_on_port, args=[ip,162]).start()",
+                    "Thread(target=serve_on_port, args=[ip,443]).start()",
+                    "Thread(target=serve_on_port, args=[ip,445]).start()",
+                    "Thread(target=serve_on_port, args=[ip,635]).start()",
+                    "Thread(target=serve_on_port, args=[ip,749]).start()",
+                    "Thread(target=serve_on_port, args=[ip,2049]).start()",
+                    "Thread(target=serve_on_port, args=[ip,3000]).start()",
+                    "Thread(target=serve_on_port, args=[ip,3260]).start()",
+                    "Thread(target=serve_on_port, args=[ip,4045]).start()",
+                    "Thread(target=serve_on_port, args=[ip,4046]).start()",
+                    "Thread(target=serve_on_port, args=[ip,10000]).start()",
+                    "# internal security group ports",
+                    "Thread(target=serve_on_port, args=[ip1,11104]).start()",
+                    "Thread(target=serve_on_port, args=[ip1,11105]).start()",
+                    "if ip1 != ip:",
+                    "   Thread(target=serve_on_port, args=[ip1,3260]).start()",
+                    "# dummy port server",
+                    "ThreadingHTTPServer((ip,6666), Handler).serve_forever()",
+                    "\n"
+                ]
+            }
+        },
+        "AmazonLinuxAmis": {
+            "us-east-1": { "AmazonLinuxAmi": "ami-03d0e0155d2925d9d" },
+            "us-east-2": { "AmazonLinuxAmi": "ami-04c5a651189aa0ce1" },
+            "us-west-1": { "AmazonLinuxAmi": "ami-0b292d89c7093f261" },
+            "us-west-2": { "AmazonLinuxAmi": "ami-0f2cac3566b12dcb6" },
+            "ca-central-1": { "AmazonLinuxAmi": "ami-04f34b6a4817c6e39" },
+            "eu-west-1": { "AmazonLinuxAmi": "ami-059399d57cad8ba21" },
+            "eu-west-2": { "AmazonLinuxAmi": "ami-02f0f523bc5474860" },
+            "eu-west-3": { "AmazonLinuxAmi": "ami-0ba7b34077af0eb29" },
+            "eu-north-1": { "AmazonLinuxAmi" : "ami-0ff6ca6959839ce14"},
+            "eu-central-1": { "AmazonLinuxAmi": "ami-0362034fa7f34c196" },
+            "ap-northeast-1": { "AmazonLinuxAmi": "ami-0c69ede00d9c03341" },
+            "ap-northeast-2": { "AmazonLinuxAmi": "ami-0b14dae3d6d2141ae" },
+            "ap-southeast-1": { "AmazonLinuxAmi": "ami-037e4e84a6ac31196" },
+            "ap-southeast-2": { "AmazonLinuxAmi": "ami-0bc258cbf76626baa" },
+            "ap-south-1": { "AmazonLinuxAmi": "ami-0ad9bb6393689f009" },
+            "sa-east-1": { "AmazonLinuxAmi": "ami-0bcde0b6ad62b3089" },
+            "ap-east-1": { "AmazonLinuxAmi": "ami-0404785395c9051ae" },
+            "us-gov-west-1": { "AmazonLinuxAmi": "ami-0d69056c" },
+            "us-gov-east-1": { "AmazonLinuxAmi": "ami-08d28ae9445e17761" },
+            "me-south-1": { "AmazonLinuxAmi": "ami-0ba6c4fcbd9fd40ae" },
+            "af-south-1": { "AmazonLinuxAmi": "ami-0f7055330435907ca" },
+            "eu-south-1": { "AmazonLinuxAmi": "ami-00a01fdb482db23d0" }
+        }
+    },
+    "Conditions": {
+        "NoCustomSG": { "Fn::Equals": [{ "Ref": "CustomNetAppSecurityGroup" }, ""] },
+        "NoAmiID": { "Fn::Equals": [{ "Ref": "AmazonLinuxAmiId" }, ""] }
+    },
+    "Resources": {
+        "NetAppSecurityGroup": {
+            "Condition": "NoCustomSG",
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+                "GroupDescription": "ONTAP Cloud Firewall Rules",
+                "VpcId": { "Ref": "VpcId" },
+                "SecurityGroupEgress": [{
+                    "ToPort": -1,
+                    "IpProtocol": "icmp",
+                    "CidrIp": "0.0.0.0/0",
+                    "FromPort": -1
+                },
+                    {
+                        "FromPort": 0,
+                        "ToPort": 65535,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "0.0.0.0/0"
+                    },
+                    {
+                        "FromPort": 0,
+                        "ToPort": 65535,
+                        "IpProtocol": "udp",
+                        "CidrIp": "0.0.0.0/0"
+                    }
+                ],
+                "SecurityGroupIngress": [{
+                    "ToPort": -1,
+                    "IpProtocol": "icmp",
+                    "CidrIp": "0.0.0.0/0",
+                    "FromPort": -1
+                },
+                    {
+                        "ToPort": 22,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 22
+                    },
+                    {
+                        "ToPort": 80,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 80
+                    },
+                    {
+                        "ToPort": 111,
+                        "IpProtocol": "udp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 111
+                    },
+                    {
+                        "ToPort": 111,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 111
+                    },
+                    {
+                        "ToPort": 139,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 139
+                    },
+                    {
+                        "ToPort": 162,
+                        "IpProtocol": "udp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 161
+                    },
+                    {
+                        "ToPort": 162,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 161
+                    },
+                    {
+                        "ToPort": 443,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 443
+                    },
+                    {
+                        "ToPort": 445,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 445
+                    },
+                    {
+                        "ToPort": 635,
+                        "IpProtocol": "udp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 635
+                    },
+                    {
+                        "ToPort": 635,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 635
+                    },
+                    {
+                        "ToPort": 749,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 749
+                    },
+                    {
+                        "ToPort": 2049,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 2049
+                    },
+                    {
+                        "ToPort": 2049,
+                        "IpProtocol": "udp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 2049
+                    },
+                    {
+                        "ToPort": 3260,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 3260
+                    },
+                    {
+                        "ToPort": 4046,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 4045
+                    },
+                    {
+                        "ToPort": 4046,
+                        "IpProtocol": "udp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 4045
+                    },
+                    {
+                        "ToPort": 10000,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 10000
+                    },
+                    {
+                        "ToPort": 11105,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 11104
+                    }
+                ]
+            }
+        },
+        "DotInstance": {
+            "Type": "AWS::EC2::Instance",
+            "Properties": {
+                "ImageId": { "Fn::If": ["NoAmiID", { "Fn::FindInMap": ["AmazonLinuxAmis", { "Ref": "AWS::Region" }, "AmazonLinuxAmi"] }, { "Ref": "AmazonLinuxAmiId" }] },
+                "InstanceType": { "Ref": "InstanceType" },
+                "NetworkInterfaces": [{
+                    "Description": "Interface for Cluster Management, Inter-Cluster Communication, and Data",
+                    "SubnetId": { "Ref": "SubnetId" },
+                    "GroupSet": {
+                        "Fn::If": ["NoCustomSG", [{ "Ref": "NetAppSecurityGroup" }],
+                            [{ "Ref": "CustomNetAppSecurityGroup" }]
+                        ]
+                    },
+                    "DeleteOnTermination": "true",
+                    "DeviceIndex": "0"
+                },
+                    {
+                        "Description": "Interface for Cluster Management, Inter-Cluster Communication, and Data",
+                        "SubnetId": { "Ref": "SubnetId" },
+                        "GroupSet": {
+                            "Fn::If": ["NoCustomSG", [{ "Ref": "NetAppSecurityGroup" }],
+                                [{ "Ref": "CustomNetAppSecurityGroup" }]
+                            ]
+                        },
+                        "DeleteOnTermination": "true",
+                        "DeviceIndex": "1"
+                    }
+                ],
+                "Tags": [{
+                    "Key": "Name",
+                    "Value": { "Fn::Join": ["", [{ "Ref": "AWS::StackName" }, "-Probe-Node"]] }
+                }, {
+                    "Key": "WorkingEnvironment",
+                    "Value": "None"
+                }],
+                "UserData": {
+                    "Fn::Base64": {
+                        "Fn::Join": [
+                            "\n",
+                            {
+                                "Fn::FindInMap": [
+                                    "UserDataMap",
+                                    "ProbeUserData",
+                                    "ProbeUserData"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "Outputs": {
+        "ProbeInstanceID": {
+            "Value": { "Ref": "DotInstance" },
+            "Description": "Instance ID of probe."
+        },
+        "ProbeIP": {
+            "Value": { "Fn::GetAtt": ["DotInstance", "PrivateIp"] },
+            "Description": "IP of probe."
+        }
+    }
+}

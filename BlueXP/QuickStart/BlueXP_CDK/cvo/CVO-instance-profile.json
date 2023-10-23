@@ -1,0 +1,128 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "ONTAP Cloud CloudFormation Template for creating IAM Role for Buckets.",
+    "Parameters": {
+        "FabricPoolBucketName": {
+            "Type": "String",
+            "Description": "Name of the S3 Bucket to use for FabricPools."
+        },
+        "S3ARN": {
+            "Type": "String",
+            "Description": "ARN of the S3 service (e.g. arn:aws-us-gov:s3).",
+            "Default": "arn:aws:s3"
+        },
+        "EC2Endpoint": {
+            "Type": "String",
+            "Description": "Endpoint of the EC2 service (e.g. ec2.amazonaws.com).",
+            "Default": "ec2.amazonaws.com"
+        }
+    },
+    "Resources": {
+        "IamInstanceRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties":  {
+                "AssumeRolePolicyDocument": {
+                     "Version": "2012-10-17",
+                     "Statement": [ {
+                         "Effect": "Allow",
+                         "Principal": {
+                             "Service": [ {"Ref": "EC2Endpoint"} ]
+                         },
+                         "Action": [ "sts:AssumeRole" ]
+                     } ]
+                },
+                "Path": "/",
+                "Policies": [ {
+                    "PolicyName": "ontapcloud-instance-policy",
+                    "PolicyDocument": {
+                        "Version": "2012-10-17",
+                        "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Action": "s3:ListAllMyBuckets",
+                            "Resource": { "Fn::Join": [ "",
+                                [{"Ref": "S3ARN"}, ":::", "*"]
+                            ] }
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "s3:ListBucket",
+                                "s3:GetBucketLocation"
+                            ],
+                            "Resource": { "Fn::Join": [ "",
+                                [{"Ref": "S3ARN"}, ":::", {"Ref": "FabricPoolBucketName"}]
+                            ] }
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "s3:GetObject",
+                                "s3:PutObject",
+                                "s3:DeleteObject"
+                            ],
+                            "Resource": { "Fn::Join": [ "",
+                                [{"Ref": "S3ARN"}, ":::", {"Ref": "FabricPoolBucketName"}, "/*"]
+                            ] }
+                        }
+						]
+                    }
+                },
+				{
+					"PolicyName": "ontapcloud-instance-policy-netapp-backup",
+                    "PolicyDocument": {
+                        "Version": "2012-10-17",
+                        "Statement": [
+						{
+                            "Effect": "Allow",
+                            "Action": [
+                                "s3:ListBucket",
+                                "s3:GetBucketLocation"
+                            ],
+                            "Resource": { "Fn::Join": [ "",
+                                [{"Ref": "S3ARN"}, ":::", "netapp-backup", "*"]
+                            ] }
+                        },
+						{
+                            "Effect": "Allow",
+                            "Action": [
+                                "s3:GetObject",
+                                "s3:PutObject",
+                                "s3:DeleteObject",
+                                "s3:ListAllMyBuckets",
+                                "s3:PutObjectTagging",
+                                "s3:GetObjectTagging",
+                                "s3:RestoreObject",
+                                "s3:GetBucketObjectLockConfiguration",
+                                "s3:GetObjectRetention",
+                                "s3:PutBucketObjectLockConfiguration",
+                                "s3:PutObjectRetention"
+                            ],
+                            "Resource": { "Fn::Join": [ "",
+                                [{"Ref": "S3ARN"}, ":::", "netapp-backup*", "/*"]
+                            ] }
+                        }
+						]
+				}
+				}				
+				]
+            }
+        },
+        "IamInstanceProfile": {
+            "Type": "AWS::IAM::InstanceProfile",
+            "Properties": {
+                "Path": "/",
+                "Roles": [ {
+                    "Ref": "IamInstanceRole"
+                } ]
+            }
+        }
+    },
+    "Outputs" : {
+        "IamInstanceProfileId" : {
+            "Value" : { "Ref": "IamInstanceProfile" },
+            "Description" : "Physical ID of IAM Instance Profile"
+        }
+    }
+}
+

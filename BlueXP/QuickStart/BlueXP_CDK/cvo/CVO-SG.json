@@ -1,0 +1,267 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "NetApp ONTAP Cloud for AWS CloudFormation Template for creating External Security Group for Cloud Manager",
+    "Parameters": {
+        "VpcId": {
+            "Type": "AWS::EC2::VPC::Id",
+            "Description": "ID of an existing Virtual Private Cloud (VPC)."
+        }
+    },
+    "Resources": {
+        "NetAppExternalSecurityGroup" : {
+	    "Type" : "AWS::EC2::SecurityGroup",
+	    "Properties" : {
+                "GroupDescription" : "ONTAP Cloud firewall rules for management and data interface",
+	        "VpcId" : {"Ref" : "VpcId"},
+                "SecurityGroupIngress": [
+                    {
+                        "FromPort": -1,
+                        "ToPort": -1,
+                        "IpProtocol": "icmp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 22,
+                        "ToPort": 22,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 80,
+                        "ToPort": 80,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 111,
+                        "ToPort": 111,
+                        "IpProtocol": "udp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 111,
+                        "ToPort": 111,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 139,
+                        "ToPort": 139,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 161,
+                        "ToPort": 162,
+                        "IpProtocol": "udp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 161,
+                        "ToPort": 162,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 443,
+                        "ToPort": 443,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 445,
+                        "ToPort": 445,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 635,
+                        "ToPort": 635,
+                        "IpProtocol": "udp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 635,
+                        "ToPort": 635,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 749,
+                        "ToPort": 749,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 2049,
+                        "ToPort": 2049,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 2049,
+                        "ToPort": 2049,
+                        "IpProtocol": "udp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 3260,
+                        "ToPort": 3260,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 4045,
+                        "ToPort": 4046,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 4045,
+                        "ToPort": 4046,
+                        "IpProtocol": "udp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 10000,
+                        "ToPort": 10000,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 11104,
+                        "ToPort": 11105,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+					{
+                        "FromPort": -1,
+                        "ToPort": -1,
+                        "IpProtocol": "icmp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 22,
+                        "ToPort": 22,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 80,
+                        "ToPort": 80,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 111,
+                        "ToPort": 111,
+                        "IpProtocol": "udp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 111,
+                        "ToPort": 111,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 139,
+                        "ToPort": 139,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 161,
+                        "ToPort": 162,
+                        "IpProtocol": "udp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 161,
+                        "ToPort": 162,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 443,
+                        "ToPort": 443,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 445,
+                        "ToPort": 445,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 635,
+                        "ToPort": 635,
+                        "IpProtocol": "udp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 635,
+                        "ToPort": 635,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 749,
+                        "ToPort": 749,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 2049,
+                        "ToPort": 2049,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 2049,
+                        "ToPort": 2049,
+                        "IpProtocol": "udp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 3260,
+                        "ToPort": 3260,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 4045,
+                        "ToPort": 4046,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 4045,
+                        "ToPort": 4046,
+                        "IpProtocol": "udp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 10000,
+                        "ToPort": 10000,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    },
+                    {
+                        "FromPort": 11104,
+                        "ToPort": 11105,
+                        "IpProtocol": "tcp",
+                        "CidrIp": "172.30.0.0/16"
+                    }
+                ]
+            }
+        }
+    },
+    "Outputs" : {
+        "ExternalSecurityGroup": {
+            "Value": {"Ref":  "NetAppExternalSecurityGroup"},
+            "Description": "External Security Group for NetApp ONTAP Cloud"
+        }
+    }
+}

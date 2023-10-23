@@ -101,11 +101,6 @@
             "Default": "",
             "AllowedValues": ["", "ssd", "hdd"]
         },
-        "MaximumMTU":{
-            "Type": "String",
-            "Description": "Maximum transmission unit (largest packet or frame size) for this deployment",
-            "Default": ""
-        },
         "AvailabilityZone": {
             "Type": "String",
             "Description": "Availability Zone of the ONTAP Instance",
@@ -115,6 +110,18 @@
             "Type": "String",
             "Description": "Size of the ONTAP Core disk in GB. If a valid value is provided or for FSx, EBS volume of this size will be created and attached.",
             "Default": "530"
+        },
+        "NVLogMediaType":{
+            "Type": "String",
+            "Description": "Media used for NVlogs or Journaling.",
+            "Default": "persistent-disk",
+            "AllowedValues": ["persistent-disk", "ephemeral-disk", "ephemeral-memory"]
+        },
+        "EnableExternalCache": {
+            "Type": "String",
+            "Description": "Enable External Cache for ONTAP?",
+            "AllowedValues": ["true", "false"],
+            "Default": "true"
         }
     },
     "Conditions": {
@@ -126,9 +133,11 @@
         "EncWithKey": {"Fn::And": [{"Fn::Equals" : [{"Ref" : "EncryptRoot"}, "true"]}, {"Fn::Not": [{"Fn::Equals" : [{"Ref" : "EncryptionKmsKey"}, ""]}]}]},
         "IsFsx" : { "Fn::Equals" : [ { "Ref" : "Consumer" }, "fsx" ] },
         "IsCvo" : { "Fn::Equals" : [ { "Ref" : "Consumer" }, "" ] },
+        "IsSidl" : { "Fn::Equals" : [ { "Ref" : "NVLogMediaType" }, "persistent-disk" ] },
+        "IsCvoSidl": { "Fn::And": [ { "Condition": "IsCvo" }, { "Condition": "IsSidl" } ] },
         "HasConsumer": {"Fn::Not": [{"Fn::Equals":[{"Ref": "Consumer"}, ""]}]},
         "HasStorageType": {"Fn::Not": [{"Fn::Equals":[{"Ref":"StorageType"}, ""]}]},
-        "HasMTU": {"Fn::Not": [{"Fn::Equals":[{"Ref": "MaximumMTU"},""]}]},
+        "DisableExternalCache" : { "Fn::Equals" : [ { "Ref" : "EnableExternalCache" }, "false" ] },
         "CreateCoreDiskResource": {
             "Fn::Or": [
                 {"Condition": "IsFsx"},
@@ -161,7 +170,7 @@
                            {"Fn::If" : [ "IsFsx", {"Key": "FSx.FileSystemId", "Value" : {"Ref": "FileSystemId"}},
                                                   {"Ref": "AWS::NoValue"} ] } ]
             }
-       },
+        },
        "NodeCoreDisk" : {
             "Type" : "AWS::EC2::Volume",
             "Condition" : "CreateCoreDiskResource",
@@ -174,8 +183,8 @@
                 "Iops": { "Fn::If": [ "IsPIOPSCoreMedia", "1000", { "Ref": "AWS::NoValue"}]},
                 "Encrypted" : { "Ref": "EncryptRoot" },
                 "KmsKeyId": { "Fn::If" : [ "EncWithKey", { "Ref": "EncryptionKmsKey"}, { "Ref": "AWS::NoValue"}]},
-                "Tags": [ {"Fn::If" : [ "IsFsx", {"Key": "FSx.FileSystemId", "Value" : {"Ref": "FileSystemId"}},
-                                                 {"Ref": "AWS::NoValue"} ] } ]
+                "Tags" : [ {"Fn::If" : [ "IsFsx", {"Key": "FSx.FileSystemId", "Value" : {"Ref": "FileSystemId"}},
+                                                  {"Ref": "AWS::NoValue"} ] } ]
             }
         },
         "DotInstance": {
@@ -192,14 +201,15 @@
                     {"Key": "Name", "Value": {"Ref": "InstanceName"}},
                     {"Key": "WorkingEnvironment", "Value": {"Ref": "AWS::StackName"}},
                     {"Fn::If" : [ "IsFsx", {"Key": "FSx.FileSystemId", "Value" : {"Ref": "FileSystemId"}},
-                                           {"Ref": "AWS::NoValue"} ] }
+                                                  {"Ref": "AWS::NoValue"} ] }
                 ],
+                "PropagateTagsToVolumeOnCreation": "true",
                 "EbsOptimized": "true",
                 "Tenancy" : { "Ref": "Tenancy" },
                 "BlockDeviceMappings": [
                     {"DeviceName": "/dev/sda1",
                      "Ebs": { "Fn::If": ["IsPIOPSBootMedia",
-                            {"VolumeType": { "Ref" : "BootMediaType" }, "Iops": "1250", "DeleteOnTermination": "false",
+                            {"VolumeType": { "Ref" : "BootMediaType" }, "Iops": { "Fn::If": ["IsCvoSidl", "2350", "1250"] }, "DeleteOnTermination": "false",
                              "Encrypted": {"Ref": "EncryptRoot"}, "KmsKeyId": { "Fn::If": ["EncWithKey", {"Ref": "EncryptionKmsKey"}, {"Ref": "AWS::NoValue"}]}},
                             {"VolumeType": { "Ref" : "BootMediaType" }, "DeleteOnTermination": "false",
                              "Encrypted": {"Ref": "EncryptRoot"}, "KmsKeyId": { "Fn::If": ["EncWithKey", {"Ref": "EncryptionKmsKey"}, {"Ref": "AWS::NoValue"}]}}]
@@ -221,8 +231,10 @@
                     "deployment_type=", { "Ref" : "DeploymentType" }, "\n",
                     {"Fn::If": ["HasConsumer", {"Fn::Join": ["", ["consumer=", {"Ref" : "Consumer"}, "\n"]]}, ""]},
                     {"Fn::If": ["HasStorageType", {"Fn::Join": ["", ["storage_type=", {"Ref" : "StorageType"}, "\n"]]}, ""]},
-                    {"Fn::If": ["HasMTU", {"Fn::Join": ["", ["maximum_mtu=", {"Ref" : "MaximumMTU"}, "\n"]]}, ""]},
-                    {"Fn::If": ["CreateCoreDiskResource", {"Fn::Join": ["", ["core_volume=", {"Ref": "NodeCoreDisk"}, "\n"]]}, ""]}
+                    {"Fn::If": ["CreateCoreDiskResource", {"Fn::Join": ["", ["core_volume=", {"Ref": "NodeCoreDisk"}, "\n"]]}, ""]},
+                    "nvlog_media_type=", {"Fn::If": ["IsFsx", "ephemeral-disk", {"Ref": "NVLogMediaType"}]}, "\n",
+                    {"Fn::If": ["IsFsx", {"Fn::Join": ["", ["fsx_fs_id=", {"Ref":"FileSystemId"}, "\n"]]}, ""]},
+                    {"Fn::If": ["DisableExternalCache", {"Fn::Join": ["", ["enable_external_cache=false", "\n"]]}, ""]}
                 ]]}},
                 "Volumes" : [
                     {"Fn::If": ["CreateCoreDiskResource", { "Device" : "/dev/xvdf", "VolumeId" : { "Ref" : "NodeCoreDisk" } }, {"Ref" : "AWS::NoValue"}]}
