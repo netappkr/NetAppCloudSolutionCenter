@@ -34,9 +34,12 @@ BlueXP를 사용하면 클러스터간 복잡한 절자를 거치지 않고 손�
 ![Alt text](./Images/Set_SnapMirror-8.png)
 
 11. BlueXP Replication 관리
+설정이 완료되는데 수분이 소요됩니다.</br> 
+각 단계 별 진행 절차를 모니터링하려면 [BlueXP Timeline](https://cloudmanager.netapp.com/timeline)을 확인하세요
+![Alt text](./Images/Set_SnapMirror-9.png)
 
 ### 선택 과제
 각 시스템에 접속하여 Snapmirror 설정이 어떻게 적용되어 있는지 확인합니다.
 
-[Bastion 서버 접속]() 합니다.
+
 
