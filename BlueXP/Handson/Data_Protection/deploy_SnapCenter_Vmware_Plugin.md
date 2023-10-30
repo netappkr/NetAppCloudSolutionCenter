@@ -8,9 +8,9 @@
 # Getting Start
 1. 
 ![Alt text](./Images/deploy_SnapCenter_Vmware_Plugin-0.png)
-2.
+2. 
 ![Alt text](./Images/deploy_SnapCenter_Vmware_Plugin-1.png)
-3.
+3. 
 ![Alt text](./Images/deploy_SnapCenter_Vmware_Plugin-2.png)
 # 참조
 - [VMware vSphere 4.9용 SnapCenter 플러그인](https://docs.netapp.com/us-en/sc-plugin-vmware-vsphere/scpivs44_quick_start_overview.html)
