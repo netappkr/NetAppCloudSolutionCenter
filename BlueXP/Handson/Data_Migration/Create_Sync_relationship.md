@@ -23,8 +23,8 @@
 9. Dash Board
 ![Alt text](./Images/Create_Sync_relationship-10.png)
 10. Download Data Broker Logs
-![Alt text](image.png)
-![Alt text](image-1.png)
+![Alt text](./Images/Create_Sync_relationship-11.png)
+![Alt text](./Images/Create_Sync_relationship-12.png)
 11. 압축 해제 후 ```./log/relationships.log```를 확인합니다.
 ```log
 [2023-10-30T08:30:56.382] [INFO] [TRANSFERRER] [2] [42969] [653f69a9e7e0bc8451729e38] STARTING copy from: {"s3":{"bucket":"cdk-hnb659fds-assets-169544784679-ap-northeast-2","tags":[],"provider":"s3","path":"","region":"ap-northeast-2","encryption":{"protocol":"AES256"},"privateLink":"https://bucket.vpce-0dc93ae53ce8eb832-pb4fyfqf.s3.ap-northeast-2.vpce.amazonaws.com"}} to: {"local":{"path":"mnt/653f69a9e7e0bc8451729e38/dc358571-7260-477a-b1a3-ffc38a980efd_trg"}} entry: {"path":"7db451b6aecf53c4bb36320beb3f8cec7e6d529a6b31744611035f3376a17012.json","type":"FILE","size":1731,"mtimeSec":1697431442,"atimeSec":1697431442,"mode":33206,"uid":0,"gid":0,"tempEntryName":".7db451b6aecf53c4bb36320beb3f8cec7e6d529a6b31744611035f3376a17012.json_ygIcezP_netapp"}

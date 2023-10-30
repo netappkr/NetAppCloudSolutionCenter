@@ -4,9 +4,16 @@
 
 ## report 보기
 1. Create report and view report
-![Alt text](image-11.png)
-2. File Size
-파일들의 크기 분포를 확인합니다.
-![Alt text](image-12.png)
-3. Access Time
-파일들이 
+![Alt text](./Images/Sync_report-0.png)
+2. File Size <br>
+파일들의 크기 분포를 확인합니다. <br>
+![Alt text](./Images/Sync_report-1.png)
+3. Access Time <br>
+파일들의 마지막 읽기 시간 분포를 확인합니다. <br>
+![Alt text](./Images/Sync_report-2.png)
+4. Change Time <br>
+파일들의 마지막 변경 시간에 대한 분포를 확인합니다.( change permission등) <br>
+![Alt text](./Images/Sync_report-3.png)
+5. Modfiy Time <br>
+파일들의 마지막 수정 시간에 대한 분포를 확인합니다. <br>
+![Alt text](./Images/Sync_report-4.png)
