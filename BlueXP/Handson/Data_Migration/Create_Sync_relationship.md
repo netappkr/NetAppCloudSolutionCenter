@@ -27,7 +27,8 @@
 11. 잠시 후 다운로드가 완료됩니다. </br>
 ![Alt text](./Images/Create_Sync_relationship-12.png)
 
-11. 압축 해제 후 ```./log/relationships.log```를 확인합니다.
+11. 압축 해제 후 ```./log/relationships.log```를 확인합니다. </br>
+log 에서 file 별 수행 이력을 확인할 수 있습니다. </br>
 ```log
 [2023-10-30T08:30:56.382] [INFO] [TRANSFERRER] [2] [42969] [653f69a9e7e0bc8451729e38] STARTING copy from: {"s3":{"bucket":"cdk-hnb659fds-assets-169544784679-ap-northeast-2","tags":[],"provider":"s3","path":"","region":"ap-northeast-2","encryption":{"protocol":"AES256"},"privateLink":"https://bucket.vpce-0dc93ae53ce8eb832-pb4fyfqf.s3.ap-northeast-2.vpce.amazonaws.com"}} to: {"local":{"path":"mnt/653f69a9e7e0bc8451729e38/dc358571-7260-477a-b1a3-ffc38a980efd_trg"}} entry: {"path":"7db451b6aecf53c4bb36320beb3f8cec7e6d529a6b31744611035f3376a17012.json","type":"FILE","size":1731,"mtimeSec":1697431442,"atimeSec":1697431442,"mode":33206,"uid":0,"gid":0,"tempEntryName":".7db451b6aecf53c4bb36320beb3f8cec7e6d529a6b31744611035f3376a17012.json_ygIcezP_netapp"}
 [2023-10-30T08:30:56.392] [INFO] [TRANSFERRER] [2] [42969] [653f69a9e7e0bc8451729e38] STARTING copy from: {"s3":{"bucket":"cdk-hnb659fds-assets-169544784679-ap-northeast-2","tags":[],"provider":"s3","path":"","region":"ap-northeast-2","encryption":{"protocol":"AES256"},"privateLink":"https://bucket.vpce-0dc93ae53ce8eb832-pb4fyfqf.s3.ap-northeast-2.vpce.amazonaws.com"}} to: {"local":{"path":"mnt/653f69a9e7e0bc8451729e38/dc358571-7260-477a-b1a3-ffc38a980efd_trg"}} entry: {"path":"d489f612088502b02b7e9ef3f33fe2a01c83ccf7f4c367e415b7e75dff34bb36.json","type":"FILE","size":1853,"mtimeSec":1697441963,"atimeSec":1697441963,"mode":33206,"uid":0,"gid":0,"tempEntryName":".d489f612088502b02b7e9ef3f33fe2a01c83ccf7f4c367e415b7e75dff34bb36.json_KHJGNuJ_netapp"}
