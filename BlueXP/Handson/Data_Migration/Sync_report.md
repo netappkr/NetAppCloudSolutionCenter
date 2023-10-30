@@ -17,3 +17,8 @@
 5. Modfiy Time <br>
 파일들의 마지막 수정 시간에 대한 분포를 확인합니다. <br>
 ![Alt text](./Images/Sync_report-4.png)
+
+## 실습 : BlueXP에서 AWS s3 데이터를 CVO로 가져오기
+- Step 1 : [Create_Data_Broker](./Create_Data_Broker.md)
+- Step 2 : [Deploy_BlueXP_connector](./Create_Sync_relationship.md)
+- Step 3 : [Sync_report](./Sync_report.md)
