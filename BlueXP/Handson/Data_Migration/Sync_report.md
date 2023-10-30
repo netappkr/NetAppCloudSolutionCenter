@@ -1,4 +1,4 @@
-## 구성을 조정하기 위한 보고서 생성 및 보기
+# config 수정을 위한 보고서 생성 및 보기
 각 보고서는 동기화 관계의 경로에 대한 추가 정보를 제공합니다. 
 예를 들어, 파일 시스템에 대한 보고서에는 디렉터리 및 파일 수, 파일 크기 분포, 디렉터리의 깊이와 너비 등이 표시됩니다.
 
@@ -17,6 +17,8 @@
 5. Modfiy Time <br>
 파일들의 마지막 수정 시간에 대한 분포를 확인합니다. <br>
 ![Alt text](./Images/Sync_report-4.png)
+
+6. 작업 완료 후 보고 시 ```relationships.log```와 함께 전달 하여 원본 저장소와 대상 저장소의 파일을 확인합니다.
 
 ## 실습 : BlueXP에서 AWS s3 데이터를 CVO로 가져오기
 - Step 1 : [Create_Data_Broker](./Create_Data_Broker.md)
