@@ -62,7 +62,7 @@
 1. Main Stack을 생성합니다.
 
 - StackName: MainStack </br>
-- Template URL: <https://netappkr-wyahn-s3.s3.ap-northeast-2.amazonaws.com/public/Spot_Admin/cdk/MergeStack.template.json>
+- Template URL: s3://netappkr-wyahn-s3/public/BlueXP/mainstack.template.json
 
 2. Main Stack Parameters
 모든 항목을 이미 입력된 기본값으로 설정합니다.
