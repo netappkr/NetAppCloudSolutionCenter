@@ -8,8 +8,7 @@ Data Efficencies, SnapMirror 등 Netapp Ontap의 강력한 기능을 Cloud 환�
 ![CvoArchitechureMultiAzHa](./Images/Readme-1.png)
 
 ## 실습 : BlueXP에서 Cloud Volume Ontap 배포
-- [Create CVO in BlueXP](./CreateCVOinBlueXP.md)
-- []()
+- [Create CVO in BlueXP](./Create_CVO_in_BlueXP.md)
 
 # 참조
 - [Cloud Volumes ONTAP에 대해 알아보기](https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/concept-overview-cvo.html)
