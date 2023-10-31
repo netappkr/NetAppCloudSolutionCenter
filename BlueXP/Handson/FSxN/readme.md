@@ -10,5 +10,9 @@ FSx for ONTAP은 기본 AWS 서비스의 단순성, 민첩성, 보안 및 확장
 - [Deep dive on Amazon FSx for NetApp ONTAP](https://www.youtube.com/watch?v=V7iwoZHDNGs)
 - [Amazon FSx for NetApp ONTAP product page](https://aws.amazon.com/fsx/netapp-ontap/)
 
+## 실습
+- [Discover_FSxN](./Discover_FSxN.md)
+- [Create_Volume](./Create_Volume.md)
+
 # 참조
 - [amazon-fsx-workshop](https://github.com/aws-samples/amazon-fsx-workshop/tree/master/netapp-ontap/01-access-workshop-environment)

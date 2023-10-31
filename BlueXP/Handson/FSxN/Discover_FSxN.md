@@ -1,4 +1,4 @@
-# Get started with BlueXP classification for Amazon FSx for ONTAP
+# Discover_FSxN
 BlueXP는 Ontap System을 등록하여 사용할 수 있습니다. FSxN도 예외는 아닙니다.
 
 ## Quick start
@@ -24,5 +24,6 @@ BlueXP는 Ontap System을 등록하여 사용할 수 있습니다. FSxN도 예�
 ![Alt text](./Images/GetStartedwithBlueXPForFsxN-6.png)
 
 ## 실습
-- [Get started with BlueXP classification for Amazon FSx for ONTAP](./GetStartedwithBlueXPForFsxN.md)
+- [Discover_FSxN](./Discover_FSxN.md)
+- [Create_Volume](./Create_Volume.md)
 
