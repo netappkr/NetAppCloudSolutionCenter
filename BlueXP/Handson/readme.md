@@ -7,10 +7,10 @@ BlueXP의 기능에 대해 체험해 볼 수 있는 Hands on Guide 입니다.
 ![Alt text](./Images/readme-0.png)
 
 ## Prerequirement 
-[사전 요구사항](./QuickStart/Lab%20prerequirement.md)을 확인 후 다음 단계를 수행하세요.
+[사전 요구사항](../QuickStart/Lab_Pre_Requirement.md)을 확인 후 다음 단계를 수행하세요.
 
 ## Getting Start
-- [Hands on 환경을 구성합니다.](./QuickStart/Readme.md)
+- [Hands on 환경을 구성합니다.](../QuickStart/Readme.md)
 - [BlueXP connector를 배포하는 방법을 알아봅니다.](./Handson/CreateBlueXPConnector/Readme.md)
 - [BlueXP에서 Cloud Volume Ontap을 배포합니다.](./Handson/CVO/Readme.md)
 - [AWS FSx Netapp for Ontap 과 BlueXP를 연동하는 방법을 알아봅니다.]()
