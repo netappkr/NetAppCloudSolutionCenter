@@ -88,9 +88,10 @@
 그림과 같이 2개의 메인스택과 2개의 서브스택이 배포되고 Hands-on 환경이 생성됩니다.</br>
 ![Alt text](./Images/DeployStackImage/Deploy_Stack-5.png)
 
-# 다음과정
-
-- 다음과정: [exe-1_Spot by netapp 과 AWS Account를 연결합니다.](../exercise/exercise-1/1-1_ConnectAccount.md)
+## 실습
+- [Readme](./readme.md)
+- [Lab_Pre_Requirement](./Lab_Pre_Requirement.md)
+- [Deploy_Stack](./Deploy_Stack.md)
 
 # 참고문서
 

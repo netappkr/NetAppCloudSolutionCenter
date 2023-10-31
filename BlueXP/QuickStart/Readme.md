@@ -10,6 +10,7 @@ Cloudformation을 이용해 Hands on을 생성합니다.
 - Role : BlueXP 기능 수행에 대한 AWS 리소스 제어 권한 부여
 
 ## 실습
+- [Readme](./readme.md)
 - [Lab_Pre_Requirement](./Lab_Pre_Requirement.md)
 - [Deploy_Stack](./Deploy_Stack.md)
 
