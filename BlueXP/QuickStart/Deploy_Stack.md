@@ -61,7 +61,8 @@ StackName 항목은 자유입니다 규칙 :[A-Z,a-z,-]
 - [Lab_Pre_Requirement](./Lab_Pre_Requirement.md)
 - [Deploy_Stack](./Deploy_Stack.md)
 
-# 참고문서
-
+# 참조
 - [CDKv2 doc](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html)
 - [CDkv2 python](https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_eks/CfnAddon.html)
+- [Quick link](https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/cfn-console-create-stacks-quick-create-links.html)
+- [CDK source](https://github.com/netappkr/netappkr_AWSCDK/tree/main/BlueXP_CDK)
