@@ -1,6 +1,6 @@
 # Cloud Sync 
-
-## 
+두 저장소 간 동기화 관계를 설정합니다.
+## Sync Relationship
 1. Define Sync Relationship </br>
 ![Alt text](./Images/Create_Sync_relationship-0.png)
 2. Select a Data Broker Group </br>
