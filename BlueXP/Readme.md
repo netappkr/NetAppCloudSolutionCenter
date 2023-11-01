@@ -6,9 +6,9 @@ AIOps의 강력한 성능과 더불어 유연한 소비 조건과 오늘날의 �
 [![Alt text](./Image/introducing.png)](https://youtu.be/JI44xhuGGA4)
 
 ## BlueXP 라이선스는 무료입니다.
-BlueXP를 사용하는 소프트웨어 라이선스는 무료입니다.
-OnPrem 또는 Cloud에 배포하여 BlueXP를 활용해보세요
-
+BlueXP(cloudmanager)를 사용하는 소프트웨어 라이선스는 무료입니다.</br>
+OnPrem 또는 Cloud에 BlueXP connector를 배포하여 BlueXP를 활용해보세요.</br>
+비용에 관련된 자세한 내용은 [BlueXP pricing](https://bluexp.netapp.com/pricing) 확인하세요.
 ## BlueXP Hands on
 BlueXP의 기능에 대해 체험해 볼 수 있는 Hands on Guide 입니다. </br>
 이 Hands on은 AWS 환경에 배포됨으로 비용이 발생합니다. </br>
@@ -23,3 +23,4 @@ BlueXP의 기능에 대해 체험해 볼 수 있는 Hands on Guide 입니다. </
 # 참조
 - [BlueXP Q&A](https://docs.netapp.com/ko-kr/bluexp-classification/faq-cloud-compliance.html)
 - [youtube BlueXP](https://www.youtube.com/@NetAppBlueXP/featured)
+- [BlueXP pricing](https://bluexp.netapp.com/pricing)
