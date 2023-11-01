@@ -4,7 +4,6 @@
 - [Lab prerequirement](./Lab_Pre_Requirement.md)
 
 ### 지원되는 리전
-
 - "ap-northeast-2"
 - "us-east-1"
 - "us-east-2"
@@ -19,6 +18,14 @@
 - "eu-west-2"
 - "eu-west-3"
 
+### 한국 리전 빠른 배포
+|-|-|
+|region| Launch template with a new VPC |
+| "ap-northeast-2" |[![Alt text](./Images/DeployStackImage/Deploy_Stack-6.png)](https://ap-northeast-2.console.aws.amazon.com/cloudformation/home?region=ap-northeast-2#/stacks/create/review
+   ?templateURL=https://netappkr-wyahn-s3.s3.ap-northeast-2.amazonaws.com/public/BlueXP/mainstack.template.json
+   &stackName=BlueXP-handson
+   &param_creator=netapp
+   &param_prefix=netapp)
 ## Cloudformation을 통해 배포
 
 1. [cloudformation](https://ap-northeast-2.console.aws.amazon.com/cloudformation/home) 에 접속합니다.
