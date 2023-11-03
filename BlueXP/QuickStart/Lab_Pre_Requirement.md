@@ -35,9 +35,12 @@ BlueXP Console에서 Cloud Volumes ONTAP을 배포하려면 사용자가 AWS Mar
 ![AWS Marketplace 4](./Images/Lab_Pre_Requirement-5.bmp)
 
 ## 실습
-- [Readme](./readme.md)
-- [Lab_Pre_Requirement](./Lab_Pre_Requirement.md)
-- [Deploy_Stack](./Deploy_Stack.md)
+- info : [Read me](./Readme.md)
+- Step1 : [Lab_Pre_Requirement](./Lab_Pre_Requirement.md)
+- Step2 : [Deploy_Stack](./Deploy_Stack.md)
+
+# Next
+[![Next.png](./Images/Next.png)](./Lab_Pre_Requirement.md)
 
 # 참조
 - [step by step guide to setting up cloud volumes ontap on aws](https://bluexp.netapp.com/blog/a-step-by-step-guide-to-setting-up-cloud-volumes-ontap-on-aws)

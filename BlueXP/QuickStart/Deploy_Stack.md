@@ -57,9 +57,12 @@ StackName 항목은 자유입니다 규칙 :[A-Z,a-z,-]
 ![Alt text](./Images/DeployStackImage/Deploy_Stack-5.png)
 
 ## 실습
-- [Readme](./readme.md)
-- [Lab_Pre_Requirement](./Lab_Pre_Requirement.md)
-- [Deploy_Stack](./Deploy_Stack.md)
+- info : [Read me](./Readme.md)
+- Step1 : [Lab_Pre_Requirement](./Lab_Pre_Requirement.md)
+- Step2 : [Deploy_Stack](./Deploy_Stack.md)
+
+# Next
+[![Next.png](./Images/Next.png)](../Handson/BlueXP_Connector/Readme.md)
 
 # 참조
 - [CDKv2 doc](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html)

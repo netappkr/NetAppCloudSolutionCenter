@@ -22,6 +22,10 @@ BlueXP에서 Plublic Cloud에 자원들을 제어하기위한 권한이 필요�
 8. Next > Add 를 눌러 Role을 추가합니다.
 
 
-## 실습 : BlueXP 배포
+## 실습 : BlueXP Connector 배포
+- Info : [Read me](./Readme.md)
 - Step 1 : [Add_AWS_Credentinal](./Add_AWS_Credentinal.md)
 - Step 2 : [Deploy_BlueXP_connector](./Deploy_BlueXP_connector.md)
+
+# Next
+[![Next.png](./Images/Next.png)](./Deploy_BlueXP_connector.md)

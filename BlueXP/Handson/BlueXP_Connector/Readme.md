@@ -29,8 +29,12 @@ Standard 모드에서 BlueXP를 사용하는 경우 BlueXP의 다음 기능과 �
 ![diagram-standard-mode.png](https://docs.netapp.com/us-en/bluexp-setup-admin/media/diagram-standard-mode.png)
 
 ## 실습 : BlueXP 배포
+- Info : [Read me](./Readme.md)
 - Step 1 : [Add_AWS_Credentinal](./Add_AWS_Credentinal.md)
 - Step 2 : [Deploy_BlueXP_connector](./Deploy_BlueXP_connector.md)
+
+# Next
+[![Next.png](./Images/Next.png)](./Add_AWS_Credentinal.md)
 
 # 참조
 - [concept BlueXP connectors](https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html)

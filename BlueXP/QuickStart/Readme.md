@@ -10,10 +10,12 @@ Cloudformation을 이용해 Hands on을 생성합니다.
 - Role : BlueXP 기능 수행에 대한 AWS 리소스 제어 권한 부여
 
 ## 실습
-- [Readme](./readme.md)
-- [Lab_Pre_Requirement](./Lab_Pre_Requirement.md)
-- [Deploy_Stack](./Deploy_Stack.md)
+- info : [Read me](./Readme.md)
+- Step1 : [Lab_Pre_Requirement](./Lab_Pre_Requirement.md)
+- Step2 : [Deploy_Stack](./Deploy_Stack.md)
 
+# Next
+[![Next.png](./Images/Next.png)](./)
 
 # 참고
 - [Cloudformation Template 생성](https://github.com/netappkr/netappkr_AWSCDK/tree/main/BlueXP_CDK)
