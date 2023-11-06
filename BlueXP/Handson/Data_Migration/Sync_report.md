@@ -21,6 +21,10 @@
 6. 작업 완료 후 보고 시 ```relationships.log```와 함께 전달 하여 원본 저장소와 대상 저장소의 파일을 확인합니다.
 
 ## 실습 : BlueXP에서 AWS s3 데이터를 CVO로 가져오기
+- Info : [Read me](./Readme.md)
 - Step 1 : [Create_Data_Broker](./Create_Data_Broker.md)
 - Step 2 : [Deploy_BlueXP_connector](./Create_Sync_relationship.md)
 - Step 3 : [Sync_report](./Sync_report.md)
+
+# Next
+[![Next.png](./Images/Next.png)](./Create_Data_Broker.md)

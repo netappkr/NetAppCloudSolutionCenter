@@ -52,3 +52,11 @@ sudo mount -t cifs -o user='admin',password='Netapp1!' //172.30.3.30/fsx_cifs_sh
 Filesystem                    Size  Used Avail Use% Mounted on
 //172.30.3.30/fsx_cifs_share  190T  190T  852G 100% /storage/fsxn/cifs/fsx_cifs_share
 ```
+
+## 실습
+- Info : [Read me](./Readme.md)
+- Step 1 : [Discover_FSxN](./Discover_FSxN.md)
+- Step 2 : [Create_Volume](./Create_Volume.md)
+
+# Next
+[![Next.png](./Images/Next.png)](../Data_Migration/Readme.md)

@@ -1,5 +1,6 @@
 # BlueXP를 통해 Cloud Volume Ontap 생성
 BlueXP를 통해 Demo에 사용할 CVO를 손쉽게 배포할 수 있습니다.
+이 실습에서는 Multi AZ가 아닌 Single AZ를 선택하여 배포합니다.
 
 ## Quick Start
 1. __Add Working Enviroment__ </br>
@@ -74,8 +75,11 @@ HDD로 배포하여 비용을 절약 루트를 선택한 경우 __HDD로 배포�
 17. Review & Apporve </br>
 ![Alt text](./Images/CreateCVOinBlueXP-17.png)
 
-## 실습 : CVO
-- Step 1 : [Add_AWS_Credentinal](./Add_AWS_Credentinal.md)
-- Step 2 : [Deploy_BlueXP_connector](./Deploy_BlueXP_connector.md)
+## 실습 : BlueXP에서 Cloud Volume Ontap을 AWS에 배포
+- Info : [Read me](./Readme.md)
+- [Create CVO in BlueXP](./Create_CVO_in_BlueXP.md)
+
+# Next
+[![Next.png](./Images/Next.png)](../FSxN/Readme.md)
 
 # 참조

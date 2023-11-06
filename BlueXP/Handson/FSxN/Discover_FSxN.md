@@ -24,6 +24,10 @@ BlueXP는 Ontap System을 등록하여 사용할 수 있습니다. FSxN도 예�
 ![Alt text](./Images/GetStartedwithBlueXPForFsxN-6.png)
 
 ## 실습
-- [Discover_FSxN](./Discover_FSxN.md)
-- [Create_Volume](./Create_Volume.md)
+- Info : [Read me](./Readme.md)
+- Step 1 : [Discover_FSxN](./Discover_FSxN.md)
+- Step 2 : [Create_Volume](./Create_Volume.md)
+
+# Next
+[![Next.png](./Images/Next.png)](./Create_Volume.md)
 

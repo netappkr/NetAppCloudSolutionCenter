@@ -17,9 +17,14 @@ BlueXP 복사 및 동기화 사용과 관련된 비용에는 리소스 요금과
 > 지속적인 동기화가 아닌 one time 작업을 고려하신다면 무료 라이선스를 적극 활용하세요
 
 ## 실습 : BlueXP에서 AWS s3 데이터를 CVO로 가져오기
+- Info : [Read me](./Readme.md)
 - Step 1 : [Create_Data_Broker](./Create_Data_Broker.md)
 - Step 2 : [Deploy_BlueXP_connector](./Create_Sync_relationship.md)
 - Step 3 : [Sync_report](./Sync_report.md)
+
+# Next
+[![Next.png](./Images/Next.png)](./Create_Data_Broker.md)
+
 
 # 참고
 - [copy and sync FAQ](https://docs.netapp.com/us-en/bluexp-copy-sync/faq.html#getting-started)

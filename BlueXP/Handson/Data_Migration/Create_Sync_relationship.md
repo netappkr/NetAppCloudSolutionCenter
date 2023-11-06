@@ -63,9 +63,13 @@ drwxr-xr-x 3 root root    18 Oct 30 08:39 ..
 
 ```
 ## 실습 : BlueXP에서 AWS s3 데이터를 CVO로 가져오기
+- Info : [Read me](./Readme.md)
 - Step 1 : [Create_Data_Broker](./Create_Data_Broker.md)
 - Step 2 : [Deploy_BlueXP_connector](./Create_Sync_relationship.md)
 - Step 3 : [Sync_report](./Sync_report.md)
+
+# Next
+[![Next.png](./Images/Next.png)](./Sync_report.md)
 
 # 참고
 - [Sync relationship option](https://docs.netapp.com/us-en/bluexp-copy-sync/task-creating-relationships.html#create-other-types-of-sync-relationships)

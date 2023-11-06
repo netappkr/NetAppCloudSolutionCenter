@@ -24,6 +24,10 @@ BlueXP 에서 Cloud sync 서비스를 이용하여 Data를 migration 합니다.
 ![Alt text](./Images/Create_Data_Broker-7.png)
 
 ## 실습 : BlueXP에서 AWS s3 데이터를 CVO로 가져오기
+- Info : [Read me](./Readme.md)
 - Step 1 : [Create_Data_Broker](./Create_Data_Broker.md)
 - Step 2 : [Deploy_BlueXP_connector](./Create_Sync_relationship.md)
 - Step 3 : [Sync_report](./Sync_report.md)
+
+# Next
+[![Next.png](./Images/Next.png)](./Create_Sync_relationship.md)
