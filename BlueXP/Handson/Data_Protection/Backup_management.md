@@ -28,5 +28,14 @@ BlueXP에 등록된 모든 클러스터의 백업을 집계하여 나타냅니�
 8. 7번의 작업이 완료되면 Volume Tab에서 3-2-1 정책이 적용된 상태를 확인 할 수 있습니다. </br>
 ![Alt text](./Images/Backup_management-11.png)
 
+## 실습 : BlueXP Data Protection 기능 살펴보기
+- Step 1 : [Set_SnapMirror](./Set_SnapMirror.md)
+- Step 2 : [Backup_management](./Backup_management.md)
+- Step 3 : [Backup_reporting](./Backup_reporting.md)
+
+# Next
+[![Next.png](./Images/Next.png)](../Data_Protection/Backup_management.md)
+
+
 # 참조
 - [backup-schedules](https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-cloud-backup-policies.html#backup-schedules)
