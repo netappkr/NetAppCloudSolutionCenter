@@ -21,6 +21,5 @@ BlueXP의 기능에 대해 체험해 볼 수 있는 Hands on Guide 입니다.
 ## BlueXP feature
 - [BlueXP에서 데이터 보호 설정](./Data_Protection/Readme.md)
 - [BlueXP에서 Data Migration을 수행합니다.](./Data_Migration/Readme.md)
-- []()
-- [BlueXP에서 거버넌스 및 개인 정보 보호를 위해 데이터를 관리하는 방법을 알아봅니다.]()
+- [(coming soon)BlueXP에서 거버넌스 및 개인 정보 보호를 위해 데이터를 관리하는 방법을 알아봅니다.]()
 
