@@ -7,5 +7,13 @@ BlueXP 백업 및 복구 보고서 탭에서 백업 인벤토리 보고서를 �
 3. Backup inventory report details
 ![Alt text](./Images/Backup_reporting-2.png)
 
+## 실습 : BlueXP Data Protection 기능 살펴보기
+- Step 1 : [Set_SnapMirror](./Set_SnapMirror.md)
+- Step 2 : [Backup_management](./Backup_management.md)
+- Step 3 : [Backup_reporting](./Backup_reporting.md)
+
+# Next
+[![Next.png](./Images/Next.png)](./Backup_reporting.md)
+
 # 참조
 - [bluexp-backup-recovery/task-report-inventory](https://docs.netapp.com/us-en/bluexp-backup-recovery/task-report-inventory.html)

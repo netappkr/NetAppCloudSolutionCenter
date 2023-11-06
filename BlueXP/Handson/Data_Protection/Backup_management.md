@@ -34,7 +34,7 @@ BlueXP에 등록된 모든 클러스터의 백업을 집계하여 나타냅니�
 - Step 3 : [Backup_reporting](./Backup_reporting.md)
 
 # Next
-[![Next.png](./Images/Next.png)](../Data_Protection/Backup_reporting.md)
+[![Next.png](./Images/Next.png)](./Backup_reporting.md)
 
 
 # 참조
