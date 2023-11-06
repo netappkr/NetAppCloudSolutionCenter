@@ -15,7 +15,7 @@ Cloudformation을 이용해 Hands on을 생성합니다.
 - Step2 : [Deploy_Stack](./Deploy_Stack.md)
 
 # Next
-[![Next.png](./Images/Next.png)](./)
+[![Next.png](./Images/Next.png)](./Lab_Pre_Requirement.md)
 
 # 참고
 - [Cloudformation Template 생성](https://github.com/netappkr/netappkr_AWSCDK/tree/main/BlueXP_CDK)
