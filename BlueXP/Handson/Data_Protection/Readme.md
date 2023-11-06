@@ -24,6 +24,8 @@ NetApp SnapCenter 소프트웨어는 NetApp ONTAP 스토리지 시스템에 저�
 - Step 2 ( hands on comming soon ) : [Application_bakcup](./Application_bakcup.md)
 - Step 3 : [Backup_reporting](./Backup_reporting.md)
 
+# Next
+[![Next.png](./Images/Next.png)](../Data_Protection/Set_SnapMirror.md)
 
 ## 참고
 - [bluexp-data-protection-using-snapx-solutions](https://bluexp.netapp.com/blog/cvo-blg-bluexp-data-protection-using-snapx-solutions)
