@@ -16,7 +16,7 @@ NetApp BlueXP 계정이 필요합니다.</br>
 
 ## AWS 구독 
 AWS에서 Cloud Volumes ONTAP 배포를 시작하기 전에 활성 AWS 구독이 있어야 합니다.AWS를 구독하고 있지 않다면 여기에서 계정을 등록하세요. 
-이 계정은 무료 등급에 있어서는 안 되므로 PAYGO 계정을 권장합니다.
+이 계정에서 무료 자원을 사용할 수 없음으로 PAYGO 계정을 권장합니다.
 
 ### AWS Marketplace Subscription
 BlueXP Console에서 Cloud Volumes ONTAP을 배포하려면 사용자가 AWS Marketplace 내에서 Cloud Volumes ONTAP을 구독해야 합니다. 이 단계는 AWS EULA 약관을 수락하고 확인하기 위해 한 번만 필요합니다.

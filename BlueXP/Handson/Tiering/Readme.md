@@ -57,3 +57,7 @@ BlueXP는 S3 버킷을 생성할 때 다음 기본 설정을 사용합니다.
 냉각 스캔을 통해 데이터 블록이 냉각됩니다. 이 과정에서 사용되지 않은 블록의 블록 온도는 다음으로 낮은 값으로 이동(냉각)됩니다. 기본 냉각 시간은 볼륨 계층화 정책에 따라 다릅니다.
 - Auto: 31일
 - Snapshot Only: 2일
+
+
+## 참조
+- [BlueXP tiering technical FAQ](https://docs.netapp.com/us-en/bluexp-tiering/faq-cloud-tiering.html#bluexp-tiering-service)
