@@ -109,3 +109,26 @@ python .\AIQUM_python_script.py -eventID=20189 -eventName='Inodes Nearly Full' -
 python .\AIQUM_python_script.py -eventID='30797' -eventName='Error EMS received' -eventSeverity='warning' -eventSourceID='1' -eventSourceName='CVO' -eventSourceType='CLUSTER' -eventState='NEW' -eventArgs='ems-parameters=[percent_full_blocks=80, percent_full_inodes=90, app=ErrorEMSAlert7, vserver_uuid=924a8797-999a-11ee-a416-15bdde6a2aef, object_type=volume, name=vol2],ems-severity=error'
 ```
 
+4. 스크립트 출력을 확인합니다.
+AIQUM의 리눅스 설치 판의 경우 스크립트 실행 로그는 여기서 확인 할 수 있습니다.
+```bash
+cat /var/log/ocum/ocum-script.log
+```
+```log
+### your input data ###
+Namespace(eventArgs='ems-trigger-condition=monitor.volume.nearlyFull: Volume vol3@vserver:924a8797-999a-11ee-a416-15bdde6a2aef is nearly full (using or reserving 1% of space and 97% of inodes). This message occurs when one or more file systems are nearly full, typically indicating at least 95% full. The space usage is computed based on the active file system size and is computed by subtracting the value of the "Snapshot Reserve" field from the value of the "Used" field of the "volume show-space" command.,ems-remidial-action=Create space by increasing the volume or aggregate sizes, or by deleting data or deleting Snapshot(R) copies. To increase a volume\'s size, use the "volume size" command. To delete a volume\'s Snapshot(R) copies, use the "volume snapshot delete" command. To increase an aggregate\'s size, add disks by using the "storage aggregate add-disks" command. Aggregate Snapshot(R) copies are deleted automatically when the aggregate is full.,ems-parameters=[object_type=Volume, app=, percent_full_inodes=97, name=vol3, percent_full_blocks=1, vserver_uuid=@vserver:924a8797-999a-11ee-a416-15bdde6a2aef],ems-severity=error', eventID='60016', eventName='Error EMS received', eventSeverity='warning', eventSourceID='1', eventSourceName='CVO', eventSourceType='CLUSTER', eventState='NEW', test=None)
+### Error EMS received eventArgs ###
+{
+   "name": "vol3",
+   "vserver_uuid": "@vserver:924a8797-999a-11ee-a416-15bdde6a2aef",
+   "app": "",
+   "object_type": "Volume",
+   "percent_full_blocks": "1",
+   "percent_full_inodes": "97"
+}
+{u'records': [{u'vserver': u'svm_CVO', u'volume': u'vol3', u'files_maximum_possible': 249030, u'files_used': 31260, u'files': 32000}], u'num_records': 1}
+### Increase Volume Inode Values ###
+{u'cli_output': u'Volume modify successful on volume vol3 of Vserver svm_CVO.\n', u'num_records': 1}
+
+```
+
