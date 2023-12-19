@@ -62,7 +62,7 @@ def PutClustersInfoList(filename) :
 def IncreaseVolumeInodeValues(eventName,eventArgs,ClusterAuth,resource):
     if eventName == "Inodes Full":
         if int(float(eventArgs["dfInodesPercent"])) > int(float(eventArgs["inodesFull"])) :
-            inodeTotal= int(math.ceil(eventArgs["dfInodesUsed"]*1.66))
+            inodeTotal= int(math.ceil(float(eventArgs["dfInodesUsed"])*1.66))
             url = "http://"+ClusterAuth["ip"]+'/api/private/cli/volume'
             if resource.content:
                 result=json.loads(resource.content)
@@ -82,7 +82,7 @@ def IncreaseVolumeInodeValues(eventName,eventArgs,ClusterAuth,resource):
 
     elif eventName == "Inodes Nearly Full":
         if int(float(eventArgs["dfInodesPercent"])) > int(float(eventArgs["inodesFull"])) :
-            inodeTotal= int(math.ceil(eventArgs["dfInodesUsed"]*1.66))
+            inodeTotal= int(math.ceil(float(eventArgs["dfInodesUsed"])*1.66))
             url = "http://"+ClusterAuth["ip"]+'/api/private/cli/volume'
             if resource.content:
                 result=json.loads(resource.content)
