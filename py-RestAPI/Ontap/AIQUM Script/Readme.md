@@ -14,17 +14,16 @@
 ```bash
 pip install -r requirements.txt
 ```
-### AIQUM에 아래 패키지들을 수동 설치합니다.
+### 외부 인터넷이 안되는 경우 AIQUM에 아래 패키지들을 수동 설치합니다.
 
 ```
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python3
-import requests
-import argparse
-import datetime as dt
-import json
-import base64
-import math
+import requests #<- 필요
+import argparse #<- 일반적으로 기본 패키지 포함되어 잇음
+import json #<- 일반적으로 기본 패키지에 포함되어 있음
+import base64 #<- 일반적으로 기본 패키지에 포함되어 있음
+import math #<- 일반적으로 기본 패키지에 포함되어 있음
 from requests.auth import HTTPBasicAuth
 ```
 ### Tips 
