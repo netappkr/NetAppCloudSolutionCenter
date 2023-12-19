@@ -1,0 +1,14 @@
+{
+    "CVO" : {
+        "name" : "CVO",
+        "ip": "172.30.0.186",
+        "ID": "admin",
+        "PW": "Netapp1!"
+    },
+    "FAS8040" :{
+        "name":"FAS8040",
+        "ip": "192.168.0.10",
+        "ID": "admin",
+        "PW": "Netapp1!"
+    }
+}
