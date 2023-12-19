@@ -63,7 +63,7 @@ def IncreaseVolumeInodeValues(eventName,eventArgs,ClusterAuth,resource):
     if eventName == "Inodes Full":
         if int(float(eventArgs["dfInodesPercent"])) > int(float(eventArgs["inodesFull"])) :
             inodeTotal= int(math.ceil(float(eventArgs["dfInodesUsed"])*1.66))
-            url = "http://"+ClusterAuth["ip"]+'/api/private/cli/volume'
+            url = "https://"+ClusterAuth["ip"]+'/api/private/cli/volume'
             if resource.content:
                 result=json.loads(resource.content)
                 
@@ -76,14 +76,24 @@ def IncreaseVolumeInodeValues(eventName,eventArgs,ClusterAuth,resource):
                 "files" : inodeTotal
             }
             response=requests.patch(url,auth=HTTPBasicAuth(ClusterAuth["ID"], ClusterAuth["PW"]),params=params,data=json.dumps(data),verify=False)
+            if response.status_code == 200:
+                print("### Increase Volume Inode Values ###")
+                print(json.loads(response.content))
+                return response
+            else:
+                print("### Increase Volume Inode Values ###")
+                print(response.request)
+                print(response.status_code)
+                print(response.url)
+                print(response.content)
+                exit()
 
-            return response
                 
 
     elif eventName == "Inodes Nearly Full":
         if int(float(eventArgs["dfInodesPercent"])) > int(float(eventArgs["inodesFull"])) :
             inodeTotal= int(math.ceil(float(eventArgs["dfInodesUsed"])*1.66))
-            url = "http://"+ClusterAuth["ip"]+'/api/private/cli/volume'
+            url = "https://"+ClusterAuth["ip"]+'/api/private/cli/volume'
             if resource.content:
                 result=json.loads(resource.content)
                 
@@ -96,8 +106,17 @@ def IncreaseVolumeInodeValues(eventName,eventArgs,ClusterAuth,resource):
                 "files" : inodeTotal
             }
             response=requests.patch(url,auth=HTTPBasicAuth(ClusterAuth["ID"], ClusterAuth["PW"]),params=params,data=json.dumps(data),verify=False)
-
-            return response
+            if response.status_code == 200:
+                print("### Increase Volume Inode Values ###")
+                print(json.loads(response.content))
+                return response
+            else:
+                print("### Increase Volume Inode Values ###")
+                print(response.request)
+                print(response.status_code)
+                print(response.url)
+                print(response.content)
+                exit()
 
     elif eventName == "Alert EMS received":
         if int(float(eventArgs["percent_full_inodes"])) > 60 :
@@ -125,11 +144,13 @@ def IncreaseVolumeInodeValues(eventName,eventArgs,ClusterAuth,resource):
             if response.status_code == 200:
                 print("### Increase Volume Inode Values ###")
                 print(json.loads(response.content))
+                return response
             else:
                 print("### Increase Volume Inode Values ###")
                 print(response.status_code)
                 print(json.loads(response.content))
-            return response
+                exit()
+            
 
 
     elif eventName == "Error EMS received":
@@ -144,6 +165,7 @@ def IncreaseVolumeInodeValues(eventName,eventArgs,ClusterAuth,resource):
             else:
                 print("### Increase Volume Inode Values")
                 print(json.loads(files.content))
+                exit()
 
             inodeTotal= int(math.ceil(files["records"][0]["files_used"]*1.66))
             url = "https://"+ClusterAuth["ip"]+'/api/private/cli/volume'
@@ -167,6 +189,7 @@ def IncreaseVolumeInodeValues(eventName,eventArgs,ClusterAuth,resource):
 
     else:
         print("you need devolop "+eventName)
+        exit()
 
 
 def GetClusterAuth(clustername):
@@ -195,7 +218,7 @@ def GetVolumeResourceInfo(umurl="https://localhost",umid="umadmin",umpasswd="Net
         print(response.status_code)
         print(response.url)
         print(response.content)
-        return response
+        exit()
         
 def GetVolumefiles(ClusterAuth,volname="*",svmname="*"):
     url = "https://"+ClusterAuth["ip"]+"/api/private/cli/volume"
@@ -230,16 +253,28 @@ def GetClusterResourceInfo(umurl,umid,umpasswd,clustername):
     
 def GetClusterName(querytype,resource):
     if querytype == "VOLUME":
-        if resource.content:
-            result=json.loads(resource.content)
+        result=json.loads(resource.content)
+        if result["records"][0]["cluster"]["name"]:
             return result["records"][0]["cluster"]["name"]
+        else :
+            print("### Get Cluster Name ###")
+            print("[Error] plsea check the response data")
+            print(result)
+            exit()
+            
     elif querytype == "CLUSTER":
-        if resource.content:
-            result=json.loads(resource.content)
+        result=json.loads(resource.content)
+        if result["records"][0]["name"]:
             return result["records"][0]["name"]
+        else:
+            print("### Get Cluster Name ###")
+            print("[Error] plsea check the response data")
+            print(result)
+            exit()
     else:
+        print("### Get Cluster Name ###")
         print(" you need devolp the "+querytype+" case")
-        return 0
+        exit()
     
 def ParsingEmsparameters(eventArgs):
     start_index = eventArgs.find("ems-parameters")
@@ -290,11 +325,17 @@ elif args.eventName == "Error EMS received":
     resource=GetVolumeResourceInfo(UMAuth["url"],UMAuth["username"],UMAuth["password"],eventArgs["name"],"*",args.eventSourceName)
 else:
     print("### "+args.eventName+" eventArgs ###")
-    print(args.eventArgs)
+    eventArgs=ParsingEmsparameters(args.eventArgs)
+    # 결과 출력
+    print(json.dumps(eventArgs,indent=3))
+    print(args.eventName + "is not defind")
+    exit()
 
 ## 파일에서 clusterlist 가져오기
 # clusterlist = PutClustersInfoList(clusterlist.json)
 target_cluster = GetClusterName("VOLUME",resource)
 ClusterAuth = GetClusterAuth(target_cluster)
 result =IncreaseVolumeInodeValues(args.eventName,eventArgs,ClusterAuth,resource)
+print("###")
+print(result)
 
