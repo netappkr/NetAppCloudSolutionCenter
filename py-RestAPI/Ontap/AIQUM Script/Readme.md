@@ -6,8 +6,11 @@
 ## Pre requirement
 이 스크립트를 사용하려면 AIQUM 서버에 ```python3``` 와 필수 ```Python package```들이 설치되어 있어야 합니다.
 또한 환경변수 항목을 적절한 항목으로 수정하세요.
-
-- python3
+### Python 설치 확인
+```bash
+python --version
+Python 3.9.1
+```
 ### AIQUM이 외부 인터넷이 가능한 경우
 아래 명령으로 필수 패키지를 설치 합니다.
 
@@ -26,10 +29,16 @@ import base64 #<- 일반적으로 기본 패키지에 포함되어 있음
 import math #<- 일반적으로 기본 패키지에 포함되어 있음
 from requests.auth import HTTPBasicAuth
 ```
-### Tips 
-[인터넷이 안되는곳에서 파이썬 패키지 설치하기! (pip download)](https://stricky.tistory.com/92)
+> ### Tips 
+> - [인터넷이 안되는곳에서 파이썬 패키지 설치하기! (pip download)](https://stricky.tistory.com/92)
 
-
+> ### Tips
+> Centos8 설치환경에서 파이선이 설치되어 있음에도 ocum-script.log 파일 message에서 ```cannot run program "python"``` 에러가 발견된 경우 아래 명령으로 심볼릭 링크를 생성합니다.
+> ``` Error while executing the script for EventId : 10687 : cannot run program "python" (in directory "/opt/netapp/ocum/scriptplugin"): error=2 No such file or directory```
+> ```bash
+> update-alternatives --config python
+> alternatives --set python /usr/bin/python3
+> ```
 ## 스크립트 사용법
 1. 스크립트 파일을 열고 환경 변수 항목을 수정합니다.
 
@@ -108,7 +117,6 @@ python .\AIQUM_python_script.py -eventID=20189 -eventName='Inodes Nearly Full' -
 ```
 python .\AIQUM_python_script.py -eventID='30797' -eventName='Error EMS received' -eventSeverity='warning' -eventSourceID='1' -eventSourceName='CVO' -eventSourceType='CLUSTER' -eventState='NEW' -eventArgs='ems-parameters=[percent_full_blocks=80, percent_full_inodes=90, app=ErrorEMSAlert7, vserver_uuid=924a8797-999a-11ee-a416-15bdde6a2aef, object_type=volume, name=vol2],ems-severity=error'
 ```
-
 4. 스크립트 출력을 확인합니다.
 AIQUM의 리눅스 설치 판의 경우 스크립트 실행 로그는 여기서 확인 할 수 있습니다.
 ```bash
@@ -131,4 +139,3 @@ Namespace(eventArgs='ems-trigger-condition=monitor.volume.nearlyFull: Volume vol
 {u'cli_output': u'Volume modify successful on volume vol3 of Vserver svm_CVO.\n', u'num_records': 1}
 
 ```
-
