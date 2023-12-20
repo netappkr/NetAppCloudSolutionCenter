@@ -87,11 +87,16 @@ def IncreaseVolumeInodeValues(eventName,eventArgs,ClusterAuth,resource):
                 print(response.url)
                 print(response.content)
                 exit()
+        else:
+            print("### IncreaseVolumeInodeValues ###")
+            print(" Inode persent value is "+int(float(eventArgs["dfInodesPercent"])))
+            print(" AIQUM Set Inode alert persent value is "+int(float(eventArgs["inodesFull"])))
+            exit()
 
                 
 
     elif eventName == "Inodes Nearly Full":
-        if int(float(eventArgs["dfInodesPercent"])) > int(float(eventArgs["inodesFull"])) :
+        if int(float(eventArgs["dfInodesPercent"])) > int(float(eventArgs["inodesNearlyFull"])) :
             inodeTotal= int(math.ceil(float(eventArgs["dfInodesUsed"])*1.66))
             url = "https://"+ClusterAuth["ip"]+'/api/private/cli/volume'
             if resource.content:
@@ -117,6 +122,11 @@ def IncreaseVolumeInodeValues(eventName,eventArgs,ClusterAuth,resource):
                 print(response.url)
                 print(response.content)
                 exit()
+        else:
+            print("### IncreaseVolumeInodeValues ###")
+            print(" Inode persent value is "+int(float(eventArgs["dfInodesPercent"])))
+            print(" AIQUM Set Inode alert persent value is "+int(float(eventArgs["inodesNearlyFull"])))
+            exit()
 
     elif eventName == "Alert EMS received":
         if int(float(eventArgs["percent_full_inodes"])) > 60 :
