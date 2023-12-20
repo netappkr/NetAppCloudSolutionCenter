@@ -88,7 +88,7 @@ def IncreaseVolumeInodeValues(eventName,eventArgs,ClusterAuth,resource):
                 print(response.content)
                 exit()
         else:
-            print("### IncreaseVolumeInodeValues ###")
+            print("### Increase Volume Inode Values ###")
             print(" Inode persent value is "+int(float(eventArgs["dfInodesPercent"])))
             print(" AIQUM Set Inode alert persent value is "+int(float(eventArgs["inodesFull"])))
             exit()
@@ -123,7 +123,7 @@ def IncreaseVolumeInodeValues(eventName,eventArgs,ClusterAuth,resource):
                 print(response.content)
                 exit()
         else:
-            print("### IncreaseVolumeInodeValues ###")
+            print("### Increase Volume Inode Values ###")
             print(" Inode persent value is "+int(float(eventArgs["dfInodesPercent"])))
             print(" AIQUM Set Inode alert persent value is "+int(float(eventArgs["inodesNearlyFull"])))
             exit()
@@ -160,6 +160,11 @@ def IncreaseVolumeInodeValues(eventName,eventArgs,ClusterAuth,resource):
                 print(response.status_code)
                 print(json.loads(response.content))
                 exit()
+        else:
+            print("### Increase Volume Inode Values ###")
+            print(" EMS Inode persent value is "+int(float(eventArgs["percent_full_inodes"])))
+            print(" Set script Inode alert persent value is "+60)
+            exit()
             
 
 
@@ -173,7 +178,7 @@ def IncreaseVolumeInodeValues(eventName,eventArgs,ClusterAuth,resource):
                 files=json.loads(files.content)
                 print(files)
             else:
-                print("### Increase Volume Inode Values")
+                print("### Increase Volume Inode Values ###")
                 print(json.loads(files.content))
                 exit()
 
@@ -196,6 +201,11 @@ def IncreaseVolumeInodeValues(eventName,eventArgs,ClusterAuth,resource):
                 print(response.status_code)
                 print(json.loads(response.content))
             return response
+        else:
+            print("### Increase Volume Inode Values ###")
+            print(" EMS Inode persent value is "+int(float(eventArgs["percent_full_inodes"])))
+            print(" Set script Inode alert persent value is "+60)
+            exit()
 
     else:
         print("you need devolop "+eventName)
