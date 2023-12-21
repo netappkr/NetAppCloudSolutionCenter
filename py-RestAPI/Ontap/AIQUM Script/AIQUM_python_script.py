@@ -8,6 +8,7 @@ import base64
 import math
 from requests.auth import HTTPBasicAuth
 
+# AIQUM에서 전달하는 이벤트 정보를 받기위한 코드
 parser = argparse.ArgumentParser(description="Please refenace Netapp AIQUM doc : https://docs.netapp.com/us-en/active-iq-unified-manager/events/concept_how_scripts_work_with_alerts.html")
 parser.add_argument("-eventID", type=str, help="eventID get the AIQUM",required=False)
 parser.add_argument("-eventName", type=str, help="eventName get the AIQUM",required=False)
@@ -19,12 +20,14 @@ parser.add_argument("-eventState", type=str, help="eventState get the AIQUM",req
 parser.add_argument("-eventArgs", type=str, help="eventArgs get the AIQUM", required=False)
 parser.add_argument("-test", help="eventArgs get the AIQUM",action='store_const',required=False ,const="Netapp Korea PS team")
 args= parser.parse_args()
+
+# AIQUM에서 전달받은 이벤트정보입니다.
 print("### your input data ###")
 print(args)
-## test comanned case : Inodes Nearly Full
+# 스크립트 test를 위한 comanned line 입력1 : Inodes Nearly Full
 # python .\AIQUM_python_script.py -eventID=20189 -eventName='Inodes Nearly Full' -eventSourceType='VOLUME' -eventSourceName='svm_CVO:/vol' -eventArgs='inodesNearlyFull=11,inodesFull=90,dfMountedOn=vol,dfKBytesTotal=99614720,dfKBytesUsed=1164112,dfKBytesPercent=1.168614437705592,dfInodesTotal=3112959,dfInodesUsed=3049559,dfInodesPercent=97.96335255298897'
 
-## test comand Error EMS recived message
+# 스크립트 test를 위한 comanned line 입력2 : Error EMS received (ems event : Inodes Nearly Full of Inode Full)
 # python .\AIQUM_python_script.py -eventID='30797' -eventName='Error EMS received' -eventSeverity='warning' -eventSourceID='1' -eventSourceName='CVO' -eventSourceType='CLUSTER' -eventState='NEW' -eventArgs='ems-parameters=[percent_full_blocks=80, percent_full_inodes=90, app=ErrorEMSAlert7, vserver_uuid=924a8797-999a-11ee-a416-15bdde6a2aef, object_type=volume, name=vol2],ems-severity=error'
 
 
