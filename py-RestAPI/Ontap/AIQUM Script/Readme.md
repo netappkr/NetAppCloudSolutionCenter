@@ -110,9 +110,18 @@ optional arguments:
 위 항목들은 AIQUM에서 전달하는 기본 항목입니다. 각 이벤트 별로 AIQUM에서 eventArgs에 전달하는 항목이 조금씩 다릅니다. 여러 이벤트를 추가하시는 경우 이 전달자에 어떠한 값이 담기는지 확인하세요.
 
 ## test input case : Inodes Nearly Full
+```bash
+python3 /opt/netapp/ocum/scriptPlugin/AIQUM_python_script.py \
+ -eventArgs='inodesNearlyFull=80,inodesFull=90,dfMountedOn=inode_grow_test,dfKBytesTotal=5100273664,dfKBytesUsed=211736,dfKBytesPercent=0.004151463508605957,dfInodesTotal=49995,dfInodesUsed=46365,dfInodesPercent=92.73927392739274' \
+ -eventID='10688'\
+ -eventName='Inodes Full'\
+ -eventSeverity='error'\
+ -eventSourceID='136486'\
+ -eventSourceName='nvendorbktc_svm0:/inode_grow_test'\
+ -eventSourceType='VOLUME'\
+ -eventState='NEW'
 ```
-python .\AIQUM_python_script.py -eventID=20189 -eventName='Inodes Nearly Full' -eventSourceType='VOLUME' -eventSourceName='svm_CVO:/vol' -eventArgs='inodesNearlyFull=11,inodesFull=90,dfMountedOn=vol,dfKBytesTotal=99614720,dfKBytesUsed=1164112,dfKBytesPercent=1.168614437705592,dfInodesTotal=3112959,dfInodesUsed=3049559,dfInodesPercent=97.96335255298897'
-```
+
 ## test input Error EMS recived message
 ```
 python .\AIQUM_python_script.py -eventID='30797' -eventName='Error EMS received' -eventSeverity='warning' -eventSourceID='1' -eventSourceName='CVO' -eventSourceType='CLUSTER' -eventState='NEW' -eventArgs='ems-parameters=[percent_full_blocks=80, percent_full_inodes=90, app=ErrorEMSAlert7, vserver_uuid=924a8797-999a-11ee-a416-15bdde6a2aef, object_type=volume, name=vol2],ems-severity=error'
