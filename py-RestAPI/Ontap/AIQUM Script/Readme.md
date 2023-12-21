@@ -33,7 +33,7 @@ from requests.auth import HTTPBasicAuth
 > - [인터넷이 안되는곳에서 파이썬 패키지 설치하기! (pip download)](https://stricky.tistory.com/92)
 
 > ### Tips
-> Centos8 설치환경에서 파이선이 설치되어 있음에도 ocum-script.log 파일 message에서 ```cannot run program "python"``` 에러가 발견된 경우 아래 명령으로 심볼릭 링크를 생성합니다.
+> Centos8 설치환경에서 파이선이 설치되어 있음에도 ocum-script.log 파일 message에서 ```cannot run program "python"``` 에러가 발견된 경우 아래 명령으로 심볼릭 링크를 생성합니다.</br>
 > ``` Error while executing the script for EventId : 10687 : cannot run program "python" (in directory "/opt/netapp/ocum/scriptplugin"): error=2 No such file or directory```
 > ```bash
 > update-alternatives --config python
