@@ -1,6 +1,6 @@
 # AIQUM Python Script
-이 스크립트는 inode full 방지를 위해서 80% 이상 inode 사용 시 60% 로 inode 를 수정하는 스크립트 입니다.
-이 스크립트는 예시 입니다. 스크립트는 항상 운영자분이 직접 수정,관리하여야 합니다.
+이 스크립트는 inode full 방지를 위해서 80% 이상 inode 사용 시 60% 로 inode 를 수정하는 스크립트 입니다.</br>
+**이 스크립트는 엔지니어분들의 이해를 돕기위한 예시 입니다. 스크립트는 항상 운영자분이 직접 수정,관리하여야 합니다.** </br>
 자세한 설명은 [여기](https://dev.azure.com/sangwon0200/NetApp_KR_Cloud_KB/_wiki/wikis/NetApp_KR_Cloud_KB.wiki/360/AIQUM-Alert-%EB%B0%9C%EC%83%9D-%EC%8B%9C-Script%EA%B0%80-%EC%8B%A4%ED%96%89%EB%90%98%EB%8F%84%EB%A1%9D-%EC%84%A4%EC%A0%95%ED%95%98%EB%A0%A4%EB%A9%B4-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%B4%EC%95%BC%ED%95%A9%EB%8B%88%EA%B9%8C)를 참조하세요
 
 ## Pre requirement
@@ -122,9 +122,17 @@ python3 /opt/netapp/ocum/scriptPlugin/AIQUM_python_script.py \
  -eventState='NEW'
 ```
 
-## test input Error EMS recived message
-```
-python .\AIQUM_python_script.py -eventID='30797' -eventName='Error EMS received' -eventSeverity='warning' -eventSourceID='1' -eventSourceName='CVO' -eventSourceType='CLUSTER' -eventState='NEW' -eventArgs='ems-parameters=[percent_full_blocks=80, percent_full_inodes=90, app=ErrorEMSAlert7, vserver_uuid=924a8797-999a-11ee-a416-15bdde6a2aef, object_type=volume, name=vol2],ems-severity=error'
+## test input case : Error EMS recived message
+```bash
+python3 /opt/netapp/ocum/scriptPlugin/AIQUM_python_script.py \
+ -eventID='30797' \
+ -eventName='Error EMS received' \
+ -eventSeverity='warning' \
+ -eventSourceID='1' \
+ -eventSourceName='CVO' \
+ -eventSourceType='CLUSTER' \
+ -eventState='NEW' \
+ -eventArgs='ems-parameters=[percent_full_blocks=80, percent_full_inodes=90, app=ErrorEMSAlert7, vserver_uuid=924a8797-999a-11ee-a416-15bdde6a2aef, object_type=volume, name=vol2],ems-severity=error'
 ```
 4. 스크립트 출력을 확인합니다.
 AIQUM의 리눅스 설치 판의 경우 스크립트 실행 로그는 여기서 확인 할 수 있습니다.
