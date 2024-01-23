@@ -3,6 +3,8 @@ import json
 import argparse
 from datetime import datetime, timedelta
 import time
+import pandas
+import traceback
 
 parser = argparse.ArgumentParser(description="eg group-id,token,fromData,toData,severity 입력 자세한 내용은 spot api 문서에 eg 로그 조회 참조")
 parser.add_argument("-gid","--group-id", type=str, help="Elastigroup id")
