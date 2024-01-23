@@ -108,8 +108,10 @@ python GetSpotLog.py ocean `
     -o excel
 ```
 
+<details>
+<summary>추가 스크립트</summary>
 
-
+<!-- summary 아래 한칸 공백 두어야함 -->
 # get_EG_instance_list.py
 1. command
 ```
@@ -140,6 +142,7 @@ python json_to_csv.py
 ```
 python spot_inst_lifetime.py
 ```
+</details>
 
 # 참고
 - [elastigroup Aws Get Logs](https://docs.spot.io/api/#tag/Elastigroup-AWS/operation/elastigroupAwsGetLogs )
