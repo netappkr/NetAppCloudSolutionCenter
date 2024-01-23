@@ -5,12 +5,38 @@
 
 # 전제조건
 1. 필요한 파이선 패키지 설치
-
+2. python version : 3.11 이상
 ```bash
 $ pip install -r requirements.txt
 ```
+
 # GetSpotLog.py
-1. command
+API 또는 S3에서 다운로드 받던 로그를 python 스크립트를 통해 빠르게 다운로드 받을 수 있습니다.
+
+## 출력
+```json``` 또는 ```Excel``` 파일이 생성됩니다. excel 파일의 경우 2가지 시트를 보여줍니다. </br>
+![example](./Images/GetSpotlog.png)
+
+1. ```{groupid}```</br>
+#### {groupid}의 로그 파일
+|message|severity|createdAt|
+|---|---|---|
+|Can't scale down nodes from Virtual Node Groups: [c-large-vng (ols-7c0bdc14), c-xlarge-vng (ols-b1638b27), m-large-vng (ols-1aa7de19), m-xlarge-vng (ols-9f9b0edc), m-2xlarge-vng (ols-f371e586), c-2xlarge-vng (ols-04054a82)]. These Virtual Node Groups have reached the minimum capacity|WARN|2024-01-17T14:59:11.000Z
+|Can't scale down nodes from Virtual Node Groups: [c-large-vng (ols-7c0bdc14), c-xlarge-vng (ols-b1638b27), m-large-vng (ols-1aa7de19), m-xlarge-vng (ols-9f9b0edc), m-2xlarge-vng (ols-f371e586), c-2xlarge-vng (ols-04054a82)]. These Virtual Node Groups have reached the minimum capacity|WARN|2024-01-17T14:44:10.000Z
+
+2. ```instance_lifetime_history```</br>
+#### instance 별 시작시간 과 종료시간
+
+| InstanceId | lanch_at| detach_at | message |
+|---|---|---|---|
+|i-0041f2d110d428d68|2024-01-17T10:40:55.000Z| |		
+|i-005752cc0b4583a89|2024-01-22T20:39:03.000Z|2024-01-23T05:23:29.000Z|Reason: Scale down as part of instance recovery
+|i-005752cc0b4583a89|2024-01-22T20:39:03.000Z|2024-01-23T05:23:08.000Z|Reason: Detach instances due to interruption
+|i-00b5eb8b4e8a2c8a5|2024-01-23T03:07:30.000Z|2024-01-23T05:50:12.000Z|Reason: Auto scale
+|i-00c0e0d858a1b22b8|2024-01-17T10:31:55.000Z|2024-01-21T08:45:59.000Z|Reason: Scale down as part of instance recovery
+|i-00c0e0d858a1b22b8|2024-01-17T10:31:55.000Z|2024-01-21T08:45:38.000Z|Reason: Detach instances due to interruption
+
+## command
 ```bash
 python get-spot-eg-log.py -gid <group id> -aid <account id> -token <Bear token> -fromDay <%Y-%m-%d> -toDay %Y-%m-%d -level ALL
 ```
@@ -82,28 +108,7 @@ python GetSpotLog.py ocean `
     -o excel
 ```
 
-## 출력
-```json``` 또는 ```Excel``` 파일이 생성됩니다. excel 파일의 경우 2가지 시트를 보여줍니다. </br>
-![example](./Images/GetSpotlog.png)
 
-1. ```{groupid}```</br>
-#### {groupid}의 로그 파일
-|message|severity|createdAt|
-|---|---|---|
-|Can't scale down nodes from Virtual Node Groups: [c-large-vng (ols-7c0bdc14), c-xlarge-vng (ols-b1638b27), m-large-vng (ols-1aa7de19), m-xlarge-vng (ols-9f9b0edc), m-2xlarge-vng (ols-f371e586), c-2xlarge-vng (ols-04054a82)]. These Virtual Node Groups have reached the minimum capacity|WARN|2024-01-17T14:59:11.000Z
-|Can't scale down nodes from Virtual Node Groups: [c-large-vng (ols-7c0bdc14), c-xlarge-vng (ols-b1638b27), m-large-vng (ols-1aa7de19), m-xlarge-vng (ols-9f9b0edc), m-2xlarge-vng (ols-f371e586), c-2xlarge-vng (ols-04054a82)]. These Virtual Node Groups have reached the minimum capacity|WARN|2024-01-17T14:44:10.000Z
-
-2. ```instance_lifetime_history```</br>
-#### instance 별 시작시간 과 종료시간
-
-| InstanceId | lanch_at| detach_at | message |
-|---|---|---|---|
-|i-0041f2d110d428d68|2024-01-17T10:40:55.000Z| |		
-|i-005752cc0b4583a89|2024-01-22T20:39:03.000Z|2024-01-23T05:23:29.000Z|Reason: Scale down as part of instance recovery
-|i-005752cc0b4583a89|2024-01-22T20:39:03.000Z|2024-01-23T05:23:08.000Z|Reason: Detach instances due to interruption
-|i-00b5eb8b4e8a2c8a5|2024-01-23T03:07:30.000Z|2024-01-23T05:50:12.000Z|Reason: Auto scale
-|i-00c0e0d858a1b22b8|2024-01-17T10:31:55.000Z|2024-01-21T08:45:59.000Z|Reason: Scale down as part of instance recovery
-|i-00c0e0d858a1b22b8|2024-01-17T10:31:55.000Z|2024-01-21T08:45:38.000Z|Reason: Detach instances due to interruption
 
 # get_EG_instance_list.py
 1. command
