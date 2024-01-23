@@ -1,3 +1,6 @@
 requests>=2.28
 argparse>=1.4.0
-pandas>=0
+datetime>=0
+pandas>=2
+openpyxl>=0
+Pyarrow>=0
