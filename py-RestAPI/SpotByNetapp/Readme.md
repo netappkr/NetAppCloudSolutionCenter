@@ -80,7 +80,7 @@ options:
 python GetSpotLog.py eg \
     -gid sig-3e6f72ac \
     -aid act-8e1eda41 \
-    -token 220c8cf5592e9a022fff83248a58f42c3a1b8049344e01a2562af43d14f7862c \
+    -token 000000000000000000000000000000000000000 \
     -from 2024-01-17 00:00:00 \
     -to 2024-01-23 00:00:00 \
     -level INFO
@@ -90,7 +90,7 @@ python GetSpotLog.py eg \
 python GetSpotLog.py eg `
     -gid sig-3e6f72ac `
     -aid act-8e1eda41 `
-    -token 220c8cf5592e9a022fff83248a58f42c3a1b8049344e01a2562af43d14f7862c `
+    -token 000000000000000000000000000000000000000 `
     -from '2024-01-17 00:00:00' `
     -to '2024-01-23 00:00:00' `
     -level INFO `
@@ -101,7 +101,7 @@ python GetSpotLog.py eg `
 python GetSpotLog.py ocean `
     -gid o-0b1f9eb8 `
     -aid act-8e1eda41 `
-    -token 220c8cf5592e9a022fff83248a58f42c3a1b8049344e01a2562af43d14f7862c `
+    -token 000000000000000000000000000000000000000 `
     -from '2024-01-17 00:00:00' `
     -to '2024-01-23 00:00:00' `
     -level INFO `
