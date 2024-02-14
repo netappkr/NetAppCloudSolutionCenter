@@ -1,0 +1,11 @@
+vpc-cdir = "10.92.0.0/16"
+VPC-sub-cdir = {
+    "VPC-Public-sub-a-cdir" = "10.92.0.0/24",
+    "VPC-Private-sub-a-cdir" = "10.92.1.0/24",
+    "VPC-Public-sub-b-cdir" = "10.92.2.0/24",
+    "VPC-Private-sub-b-cdir" = "10.92.3.0/24",
+    "VPC-Public-sub-c-cdir" = "10.92.4.0/24",
+    "VPC-Private-sub-c-cdir" = "10.92.5.0/24"
+    "VPC-Public-sub-d-cdir" = "10.92.6.0/24",
+    "VPC-Private-sub-d-cdir" = "10.92.7.0/24"
+  }

@@ -4,12 +4,12 @@
 
 resource "aws_fsx_ontap_file_system" "SeanPFsxN" {
   storage_capacity    = 1024
-  subnet_ids          = [aws_subnet.SeanPVPC-Private-sub-a.id]
+  subnet_ids          = [aws_subnet.VPC-Private-sub-a.id]
   deployment_type     = "SINGLE_AZ_1"
   throughput_capacity = 128
-  preferred_subnet_id = aws_subnet.SeanPVPC-Private-sub-a.id
+  preferred_subnet_id = aws_subnet.VPC-Private-sub-a.id
   automatic_backup_retention_days = 0
-  # route_table_ids = [aws_route_table.SeanPVPC-public-rt.id, aws_route_table.SeanPVPC-private-rt.id]
+  # route_table_ids = [aws_route_table.VPC-public-rt.id, aws_route_table.VPC-private-rt.id]
   fsx_admin_password = var.fsx_admin_password
   tags = {
     Name = "SeanPFsxN"
@@ -32,14 +32,14 @@ resource "aws_fsx_ontap_file_system" "SeanPFsxN" {
 #       username    = "wyahn"
 #     }
 #   }
-#   depends_on = [aws_route_table.SeanPVPC-private-rt]
+#   depends_on = [aws_route_table.VPC-private-rt]
 # }
 
 #SVM
 resource "aws_fsx_ontap_storage_virtual_machine" "SeanPFsxNSVM" {
   file_system_id = aws_fsx_ontap_file_system.SeanPFsxN.id
   name           = "SeanPFsxN"
-  depends_on = [aws_route_table.SeanPVPC-private-rt]
+  depends_on = [aws_route_table.VPC-private-rt]
 }
 # #volume_cifs
 # resource "aws_fsx_ontap_volume" "cifs_Vol" {

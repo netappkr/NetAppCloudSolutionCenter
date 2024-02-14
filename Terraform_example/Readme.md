@@ -1,3 +1,6 @@
+# 시작하기 전에
+예시를 활용하는 것도 좋은 방법이지만 공개되어 있는 테라폼 모듈들을 다운받아 사용하여 구현한다면 조금 더 쉽게 구현할 수 있습니다
+
 # 사용중인 Terraform code
 [repo NetappKR_Terraform](https://github.com/netappkr/NetappKR_Terraform)
 
